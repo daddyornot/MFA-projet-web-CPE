@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>à trouver</title>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="assets/img/France/01.avif">JSP</a></li>
+                </ul>
+            </nav>
+            <a href="">Mon compte</a>
+        </header>
+        <h1>à trouver</h1>
+
+        <!-- Filtre -->
+        <form>
+            <h3>Filtre</h3>
+            <label for="prix-mini">Prix mini : </label>
+            <input id="prix-mini" type="range" max="300" min="0" value=0>
+
+            <label for="prix-max">Prix max : </label>
+            <input id="prix-max" type="range" max="300" min="0" value=300>
+
+            <label for="date-debut">Du : </label>
+            <input id="date-debut" type="date">
+            <label for="date-fin">Au : </label>
+            <input id="date-fin" type="date">
+
+            <label for="nombre-adulte">Adultes : </label>
+            <input id="nombre-adulte" type="number" value="1" min="1">
+
+            <label for="nombre-enfants">Enfants (-12 ans) : </label>
+            <input id="nombre-enfants" type="number" value="0" min="0">
+
+            <label for="animaux">Animaux autorisé : </label>
+            <input id="animaux" type="checkbox">
+            
+            <label for="petit-dejeuner">Petit dejeuner : </label>
+            <input id="petit-dejeuner" type="checkbox">
+            
+            <input type="reset">
+        </form>
+
+        <div>
+            <a href="detail-sejour.html">
+                <h2>Maldive</h2>
+                <img src="./assets/img/maldive/01.avif" alt="Photo des Maldive">
+                <p>Prix : 150€</p>
+            </a>
+        </div>
+
+        <div>
+            <a href="detail-sejour.html">
+                <h2>Canada</h2>
+                <img src="./assets/img/canada/alberta-2297204_1920.jpg" alt="Photo du canada">
+                <p>Prix : 130€</p>
+            </a>
+        </div>
+
+        <div>
+            <a href="detail-sejour.html">
+                <h2>chine</h2>
+                <img src="./assets/img/chine/01.avif" alt="Photo de la chine">
+                <p>Prix : 170€</p>
+            </a>
+        </div>
+
+
+        <footer>
+            <a href="./a-propos.html">A propos & contact</a>
+        </footer>
+    </body>
+</html>
