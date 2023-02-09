@@ -1,3 +1,159 @@
-h1 {
-    color: red;
+:root {
+    --color1 : #6E94E5;
+    --color2 : #00B5F9;
+    --color3 : #00D1EB;
+    --color4 : #00E7C2;
+    --color5 : #95F490;
+    --color6 : #F9F871
+}
+
+@font-face {
+    font-family: lusitana;
+    src: url(../assets/fonts/Lusitana/Lusitana-Regular.ttf);
+    src: url(../assets/fonts/Lusitana/Lusitana-Bold.ttf);
+}
+
+
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.main-container img {
+    max-width: 50%;
+    height: auto;
+    margin-left: 20px;
+}
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titre-destination {
+    font-size: 30px;
+    color: var(--color2);
+    font-family: 'lusitana', serif;
+}
+
+.desc-destination {
+    display: flex;
+    align-items: center;
+    font-family: lusitana, serif;
+}
+
+form section {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+}
+
+form section div {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+form + section {
+    margin-bottom: 50px;
+    background-color: rebeccapurple;
+}
+
+/*form {*/
+/*    margin: 10px;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-content: flex-start;*/
+/*}*/
+
+button {
+    text-decoration: none;
+    position: absolute;
+    border: none;
+    font-size: 14px;
+    font-family: inherit;
+    color: #fff;
+    width: 9em;
+    height: 3em;
+    line-height: 2em;
+    text-align: center;
+    background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+    background-size: 300%;
+    border-radius: 30px;
+    z-index: 1;
+}
+
+button:hover {
+    animation: ani 8s linear infinite;
+    border: none;
+}
+
+@keyframes ani {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 400%;
+    }
+}
+
+button:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+    background-size: 400%;
+    border-radius: 35px;
+    transition: 1s;
+}
+
+button:hover::before {
+    filter: blur(20px);
+}
+
+button:active {
+    background: linear-gradient(32deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+}
+
+label.checkbox {
+    display: block;
+    /*width: 20px;*/
+    height: 20px;
+    cursor: pointer;
+}
+
+input[type='checkbox'] {
+    position: absolute;
+    transform: scale(0);
+}
+
+input[type='checkbox']:checked ~ .checkbox {
+    transform: rotate(45deg);
+    width: 14px;
+    margin-left: 5px;
+    border-color: #24c78e;
+    border-width: 5px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-radius: 0;
+}
+
+span.checkbox {
+    display: block;
+    width: inherit;
+    height: inherit;
+    border: solid 3px #2a2a2ab7;
+    border-radius: 6px;
+    transition: all 0.375s;
 }
