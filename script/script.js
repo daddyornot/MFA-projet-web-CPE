@@ -18,15 +18,38 @@ let voyages = {
         "images": ["assets/img/maldive/01.avif", "assets/img/maldive/02.avif", "assets/img/maldive/03.avif"],
         "prix-nuit": 300,
         "prix-petitdej": 15,
-        "Annimaux": true,
+        "animaux": true,
     }
 }
 
 window.onload = () => {
-    let selection = "japon";
+    const url = window.location.search;
+    const urlParams = new URLSearchParams(url);
+    document.getElementById("form").addEventListener('change', changeform);
+
+    if (urlParams.get('selection'))
+        var selection = urlParams.get('selection');
+    else
+        var selection = "japon";
 
     console.log(voyages[selection].destination);
     document.getElementById("titre-destination").innerHTML = voyages[selection].destination;
     document.getElementById("desc-destination").innerHTML = voyages[selection].description;
     document.getElementById("img-destination").setAttribute('src', voyages[selection].images[0]);
+    if (voyages[selection].animaux)
+        document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les annimaux sont accepté !";
+    else
+        document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les annimaux ne sont pas accepté désolé !";
+
 }
+
+function changeform() {
+    console.log('Onchangeform');
+    let form = document.getElementById("form");
+    let solde = document.getElementById('solde-destination');
+    let datedebut = form.getElementById('date-debut').value;
+    let datefin = form.getElementById('date-fin').value;
+    console.log(datedebut);
+    console.log(datefin);
+    let nbrjour = datefin - datedebut;
+};
