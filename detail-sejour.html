@@ -42,7 +42,6 @@
             <div>
                 <label for="nb-adulte">Nombre d'adultes<br></label>
                 <select name="nb-adulte" id="nb-adulte">
-                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -73,12 +72,12 @@
             </div>
             <div>
                 <label class="checkbox">Animaux acceptés<br>
-                    <input checked="" class="check" type="checkbox">
+                    <input checked="" class="check" type="checkbox" id="animaux-form">
                 </label>
             </div>
             <div>
                 <label class="checkbox">Petit déjeuner<br>
-                    <input checked="" class="check" type="checkbox">
+                    <input checked="" class="check" type="checkbox" id="petitdej">
                 </label>
             </div>
         </section>
@@ -92,12 +91,12 @@
         </section>
     </form>
 
-    <table>
+    <table id="solde-destination">
         <tr>
             <th>Element</th>
+            <th>Nombre de jours</th>
+            <th>Nombre de personne</th>
             <th>Prix</th>
-        </tr>
-        <tr id="solde-destination">
         </tr>
     </table>
     <footer></footer>
