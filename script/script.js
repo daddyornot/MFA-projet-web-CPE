@@ -40,19 +40,22 @@ window.onload = () => {
         document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les animaux sont acceptés !";
     else
         document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les animaux ne sont pas acceptés désolé !";
+    changeform();
 }
 
 function changeform() {
     console.log('Onchangeform');
+    let tab = document.getElementById('solde-destination');
+    resettab();
+
     let form = document.getElementById("form");
-    let solde = document.getElementById('solde-destination');
     let datedebut = new Date(document.getElementById('date-debut').value);
     let datefin = new Date(document.getElementById('date-fin').value);
     let nbrjour = dateDiff(datedebut, datefin).day;
     console.log(nbrjour);
-    let nbadulte = document.getElementById('nb-adulte').value;
+    let nbadulte = Number(document.getElementById('nb-adulte').value);
     console.log("nb adulte " + nbadulte);
-    let nbenfant = document.getElementById('nb-enfant').value;
+    let nbenfant = Number(document.getElementById('nb-enfant').value);
     console.log("nbenfant " + nbenfant);
 
     let animaux = document.getElementById('animaux-form').checked;
@@ -63,8 +66,19 @@ function changeform() {
     let prixnuit = voyages[selection].prixnuit;
     let prixdej = voyages[selection].prixdej;
     console.log(prixnuit);
+    let total = 0;
+    addligne(["Nuits adultes", nbrjour, nbadulte, prixnuit, prixnuit * nbadulte * nbrjour]);
+    total += prixnuit * nbadulte * nbrjour;
+    addligne(["Nuits enfants", nbrjour, nbenfant, 0.6 * prixnuit , 0.6 * prixnuit * nbenfant * nbrjour]);
+    total += 0.6 * prixnuit * nbenfant * nbrjour;
 
-    addligne(["n", "h", "j"]);
+    if (petitdej){
+        addligne(["Petits déjeuner", nbrjour, nbenfant + nbadulte, prixdej , prixdej * nbrjour * (nbenfant + nbadulte)]);
+        total += prixdej * nbrjour * (nbenfant + nbadulte);
+    }
+
+    addligne(["Total", nbrjour, nbenfant + nbadulte, "-" , total]);
+
 
 };
 
@@ -77,6 +91,17 @@ function addligne(ligne) {
         row.appendChild(cell);
     }
     document.getElementById('solde-destination').appendChild(row);
+}
+
+function resettab(){
+    document.getElementById('solde-destination').innerHTML =
+    "        <tr>\n" +
+    "            <th>Element</th>\n" +
+    "            <th>Nombre de jours</th>\n" +
+    "            <th>Nombre de personne</th>\n" +
+    "            <th>Prix unitaire</th>\n" +
+    "            <th>Prix</th>\n" +
+    "        </tr>";
 }
 
 function dateDiff(date1, date2) {
