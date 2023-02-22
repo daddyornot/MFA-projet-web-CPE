@@ -116,13 +116,13 @@ a:active {
     align-items: center;
 }
 
-.titre-destination {
+#titre-destination {
     font-size: 30px;
     color: var(--color2);
     font-family: 'lusitana', serif;
 }
 
-.desc-destination {
+#desc-destination {
     display: flex;
     align-items: center;
     font-family: lusitana, serif;
