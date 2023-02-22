@@ -37,9 +37,9 @@ window.onload = () => {
     document.getElementById("desc-destination").innerHTML = voyages[selection].description;
     document.getElementById("img-destination").setAttribute('src', voyages[selection].images[0]);
     if (voyages[selection].animaux)
-        document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les annimaux sont accepté !";
+        document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les animaux sont acceptés !";
     else
-        document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les annimaux ne sont pas accepté désolé !";
+        document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les animaux ne sont pas acceptés désolé !";
 
 }
 
