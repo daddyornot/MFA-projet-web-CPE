@@ -175,6 +175,14 @@ function addligne(ligne) {
     document.getElementById('solde-destination').appendChild(row);
 }
 
+function imgNext(){
+    
+}
+
+function imgPrevious(){
+
+}
+
 function resettab(){
     document.getElementById('solde-destination').innerHTML =
     "        <tr>\n" +
