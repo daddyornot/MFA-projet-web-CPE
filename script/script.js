@@ -7,7 +7,7 @@ const voyages = {
     "japon": {
         destination: "Le Japon",
         description: "Le japon est beau",
-        images: ["assets/img/japon/01.jpg", "assets/img/japon/buildings.jpg", "assets/img/japon/fuji.jpg", "assets/img/japon/temple.jpg"],
+        images: ["assets/img/japon/01.jpg", "assets/img/japon/02.jpg", "assets/img/japon/03.jpg", "assets/img/japon/04.jpg"],
         prixnuit: 400,
         prixdej: 15,
         Annimaux: false,
@@ -15,11 +15,57 @@ const voyages = {
     "maldive": {
         destination: "Les Maldives",
         description: "Les maldive y'a de l'eau",
-        images: ["assets/img/maldive/01.jpg", "assets/img/maldive/02.avif", "assets/img/maldive/03.avif"],
+        images: ["assets/img/maldive/01.jpg", "assets/img/maldive/02.jpg", "assets/img/maldive/03.jpg"],
         prixnuit: 300,
         prixdej: 15,
         animaux: true,
     }
+}
+
+class Voyage {
+    constructor(_selection){
+        this._destination = voyages[_selection].destination;
+        this._description = voyages[_selection].description;
+        this._images = voyages[_selection].images;
+        this._prixnuit = voyages[_selection].prixnuit;
+        this._prixdej = voyages[_selection].prixdej;
+        this._animaux = voyages[_selection].animaux;
+    }
+
+    get destination() { return this._destination }
+    get description() { return this._description }
+    get images() { return this._images }
+    get prixnuit() { return this._prixnuit }
+    get prixdej() { return this._prixdej }
+    get animaux() { return this._animaux }
+
+}
+
+class Reservation extends Voyage{
+    constructor(m){
+        super(m);
+    }
+    set datedebut(a) { this._datedebut = a};
+    get datedebut() { return this._datedebut };
+    set datefin(a) { this._datefin = a};
+    get datefin() { return this._datefin };
+    get nbrjour() { return dateDiff(this._datedebut, this._datefin).day}
+
+    set nbadulte(a) { this._nbadulte = a};
+    get nbadulte() { return this._nbadulte };
+
+    set nbenfant(a) { this._nbenfant = a};
+    get nbenfant() { return this._nbenfant };
+    
+    set petitdej(a) { this._petitdej = a};
+    get petitdej() { return this._petitdej };
+
+    get totalpetitdej() { 
+        if (this._petitdej)
+            return this.nbrjour * this._nbadulte * this._nbenfant * this._prixdej;
+        else 
+            return 0;
+     }
 }
 
 window.onload = () => {
@@ -33,10 +79,12 @@ window.onload = () => {
         selection = "japon";
 
     console.log(voyages[selection].destination);
-    document.getElementById("titre-destination").innerHTML = voyages[selection].destination;
-    document.getElementById("desc-destination").innerHTML = voyages[selection].description;
-    document.getElementById("img-destination").setAttribute('src', voyages[selection].images[0]);
-    if (voyages[selection].animaux)
+    var levoyage = new Voyage(selection);
+
+    document.getElementById("titre-destination").innerHTML = levoyage.destination;
+    document.getElementById("desc-destination").innerHTML = levoyage.description;
+    document.getElementById("img-destination").setAttribute('src', levoyage.images[0]);
+    if (levoyage.animaux)
         document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les animaux sont acceptés !";
     else
         document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les animaux ne sont pas acceptés désolé !";
@@ -47,38 +95,31 @@ function changeform() {
     console.log('Onchangeform');
     let tab = document.getElementById('solde-destination');
     resettab();
-
+    resa = new Reservation(selection);
     let form = document.getElementById("form");
-    let datedebut = new Date(document.getElementById('date-debut').value);
-    let datefin = new Date(document.getElementById('date-fin').value);
-    let nbrjour = dateDiff(datedebut, datefin).day;
-    console.log(nbrjour);
-    let nbadulte = Number(document.getElementById('nb-adulte').value);
-    console.log("nb adulte " + nbadulte);
-    let nbenfant = Number(document.getElementById('nb-enfant').value);
-    console.log("nbenfant " + nbenfant);
 
-    let animaux = document.getElementById('animaux-form').checked;
-    console.log("animaux " + animaux);
-    let petitdej = document.getElementById('petitdej').checked;
-    console.log("petitdej " + petitdej);
+    resa.datedebut = new Date(document.getElementById('date-debut').value);
+    resa.datefin = new Date(document.getElementById('date-fin').value);
 
-    let prixnuit = voyages[selection].prixnuit;
-    let prixdej = voyages[selection].prixdej;
-    console.log(prixnuit);
-    let total = 0;
-    addligne(["Nuits adultes", nbrjour, nbadulte, prixnuit, prixnuit * nbadulte * nbrjour]);
-    total += prixnuit * nbadulte * nbrjour;
-    addligne(["Nuits enfants", nbrjour, nbenfant, 0.6 * prixnuit , 0.6 * prixnuit * nbenfant * nbrjour]);
-    total += 0.6 * prixnuit * nbenfant * nbrjour;
 
-    if (petitdej){
-        addligne(["Petits déjeuner", nbrjour, nbenfant + nbadulte, prixdej , prixdej * nbrjour * (nbenfant + nbadulte)]);
-        total += prixdej * nbrjour * (nbenfant + nbadulte);
-    }
+    resa.nbadulte = Number(document.getElementById('nb-adulte').value);
+    console.log("nb adulte " + resa.nbadulte);
+    resa.nbenfant = Number(document.getElementById('nb-enfant').value);
+    console.log("nbenfant " + resa.nbenfant);
 
-    addligne(["Total", nbrjour, nbenfant + nbadulte, "-" , total]);
+    resa.animaux = document.getElementById('animaux-form').checked;
+    console.log("animaux " + resa.animaux);
+    resa.petitdej = document.getElementById('petitdej').checked;
+    console.log("petitdej " + resa.petitdej);
 
+    console.log(resa.prixnuit);
+    addligne(["Nuits adultes", resa.nbrjour, resa.nbadulte, resa.prixnuit, resa.prixnuit * resa.nbadulte * resa.nbrjour]);
+    addligne(["Nuits enfants", resa.nbrjour, resa.nbenfant, 0.6 * resa.prixnuit , 0.6 * resa.prixnuit * resa.nbenfant * resa.nbrjour]);
+
+    if (resa.petitdej)
+        addligne(["Petits déjeuner", resa.nbrjour, resa.nbenfant + resa.nbadulte, resa.prixdej , resa.prixdej * resa.nbrjour * (resa.nbenfant + resa.nbadulte)]);
+    
+    addligne(["Total", resa.nbrjour, resa.nbenfant + resa.nbadulte, "-" , resa.total]);
 
 };
 
