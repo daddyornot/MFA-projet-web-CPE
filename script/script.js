@@ -210,10 +210,11 @@ function addligne(ligne) {
 }
 
 function imgNext(){
-    
+    alert("test");
 }
 
 function imgPrevious(){
+    alert("test 2");
 
 }
 
