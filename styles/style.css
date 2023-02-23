@@ -50,10 +50,10 @@ a:active {
 }
 
 .grid-container {
-    max-width: 1200px;
+    max-width: 2560px;
     margin: 40px;
     display: grid;
-    grid-template-columns: 300px;
+    grid-template-columns: 450px;
     gap: 1rem; 
     color: whitesmoke;  
     justify-content: space-around; 
@@ -64,8 +64,8 @@ a:active {
     background: linear-gradient(225deg, #cacaca, #f0f0f0);
     box-shadow:  -20px 20px 60px #bebebe,
                  20px -20px 60px #ffffff;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     object-fit: cover;
     justify-content: center;
 
