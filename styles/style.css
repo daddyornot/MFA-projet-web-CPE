@@ -114,6 +114,12 @@ a:active {
     justify-content: space-around;
 }
 
+.dest-infos span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .main-container {
     display: flex;
     flex-direction: row;
