@@ -10,7 +10,7 @@ const voyages = {
         images: ["assets/img/japon/01.jpg", "assets/img/japon/02.jpg", "assets/img/japon/03.jpg", "assets/img/japon/04.jpg"],
         prixnuit: 400,
         prixdej: 15,
-        Annimaux: false,
+        animaux: false,
     },
     "maldive": {
         destination: "Les Maldives",
@@ -18,6 +18,38 @@ const voyages = {
         images: ["assets/img/maldive/01.jpg", "assets/img/maldive/02.jpg", "assets/img/maldive/03.jpg"],
         prixnuit: 300,
         prixdej: 15,
+        animaux: false,
+    },
+    "canada": {
+        destination: "Le Canada",
+        description: "Des pancakes et du sirop d'erable !",
+        images: ["assets/img/canada/01.jpg", "assets/img/canada/02.jpg", "assets/img/canada/03.jpg"],
+        prixnuit: 250,
+        prixdej: 12,
+        animaux: true,
+    },
+    "chine": {
+        destination: "La Chine",
+        description: "Du riz et du saké !",
+        images: ["assets/img/chine/01.jpg", "assets/img/chine/02.jpg", "assets/img/chine/03.jpg"],
+        prixnuit: 500,
+        prixdej: 11,
+        animaux: false,
+    },
+    "espace": {
+        destination: "L'Espace ?!",
+        description: "Thanos et les aliens sont là !",
+        images: ["assets/img/espace/01.jpg", "assets/img/espace/02.jpg", "assets/img/espace/03.jpg"],
+        prixnuit: 50000,
+        prixdej: 850,
+        animaux: true,
+    },
+    "france": {
+        destination: "La France",
+        description: "Tout est bon dans le cochon !",
+        images: ["assets/img/france/01.jpg", "assets/img/france/02.jpg", "assets/img/france/03.jpg"],
+        prixnuit: 150,
+        prixdej: 8,
         animaux: true,
     }
 }
@@ -30,6 +62,7 @@ class Voyage {
         this._prixnuit = voyages[_selection].prixnuit;
         this._prixdej = voyages[_selection].prixdej;
         this._animaux = voyages[_selection].animaux;
+        this._selection = _selection;
     }
 
     get destination() { return this._destination }
@@ -38,6 +71,7 @@ class Voyage {
     get prixnuit() { return this._prixnuit }
     get prixdej() { return this._prixdej }
     get animaux() { return this._animaux }
+    get value() { return this._selection}
 
 }
 class Reservation extends Voyage{
@@ -203,4 +237,31 @@ function dateDiff(date1, date2) {
     diff.day = tmp;
 
     return diff;
+}
+
+
+let voyage = [new Voyage("maldive"), new Voyage("japon"), new Voyage("canada"),
+              new Voyage("chine"), new Voyage("espace"), new Voyage("france")];
+let template = document.querySelector("#listeDestinations");
+
+for (const d of voyage) {
+    let clone = document.importNode(template.content, true);
+    let animaux = "display: ";
+
+    if(d.animaux) 
+        animaux += "flex";
+    else
+        animaux += "none";
+
+    newDestination = clone.firstElementChild.innerHTML
+        .replace(/{{destination}}/g, d.destination)
+        .replace(/{{temperature}}/g, d.prixdej)
+        .replace(/{{prixNuit}}/g, d.prixnuit)
+        .replace(/{{imgDest}}/g, d.images[0])
+        .replace(/{{url}}/g, d.value)
+        .replace(/{{animaux}}/g, animaux);
+        
+        clone.firstElementChild.innerHTML = newDestination;
+        
+        document.getElementById("liste-destinations").appendChild(clone);
 }
