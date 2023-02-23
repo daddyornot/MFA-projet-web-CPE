@@ -8,11 +8,9 @@
         <link rel="stylesheet" href="./styles/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-        <script src="./script/script.js"></script>
     </head>
 
     <body>
-        <!-- TODO : include header-->
     <header>
     </header>
         
@@ -49,66 +47,29 @@
             <button class="reset" type="reset">Réinitialiser</button>
         </form>
 
-        <div class="grid-container">
-            <div class="grid-item">
-                <a href="detail-sejour.html?selection=maldive">
-                    <h2>Maldive</h2>
-                    <div class="img-temp">
-                        <p class="temperature">45°C</p>
-                        <img class="grid-img" src="./assets/img/maldive/01.jpg" alt="Photo des Maldive">
-                    </div>
-                    <div class="dest-infos">
-                        <span class="material-symbols-outlined" id="animaux-destination">
-                            pets
-                        </span>
-                        <p>Prix : 150€</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="grid-item">
-                <a href="detail-sejour.html">
-                    <h2>Canada</h2>
-                    <img class="grid-img" src="./assets/img/canada/01.jpg" alt="Photo du canada">
-                    <p>Animaux acceptés</p>
-                    <p>Prix : 130€</p>
-                </a>
-            </div>
-
-            <div class="grid-item">
-                <a href="detail-sejour.html">
-                    <h2>Chine</h2>
-                    <img class="grid-img" src="./assets/img/chine/01.jpg" alt="Photo de la chine">
-                    <p>Prix : 170€</p>
-                </a>
-            </div>
-            <div class="grid-item">
-                <a href="detail-sejour.html">
-                    <h2>Japon</h2>
-                    <img class="grid-img" src="./assets/img/japon/01.jpg" alt="Photo du Japon">
-                    <p>Prix : 400€</p>
-                </a>
-            </div>
-            <div class="grid-item">
-                <a href="detail-sejour.html">
-                    <h2>France</h2>
-                    <img class="grid-img" src="./assets/img/France/01.jpg" alt="Photo de la france">
-                    <p>Prix : 170€</p>
-                </a>
-            </div>
-            <div class="grid-item">
-                <a href="detail-sejour.html">
-                    <h2>Islande</h2>
-                    <img class="grid-img" src="./assets/img/islande/01.jpg" alt="Photo de l'islande">
-                    <p>Prix : 170€</p>
-                </a>
-            </div>
+        <div class="grid-container" id="liste-destinations">
+            <template id="listeDestinations">
+                <div class="grid-item">
+                    <a href="detail-sejour.html?selection={{url}}">
+                        <h2>{{destination}}</h2>
+                        <div class="img-temp">
+                            <p class="temperature">{{temperature}}°C</p>
+                            <img class="grid-img" src={{imgDest}} alt="Photo des Maldive">
+                        </div>
+                        <div class="dest-infos">
+                            <span class="material-symbols-outlined" id="animaux-destination" style={{animaux}}>
+                                pets
+                            </span>
+                            <p>Prix : {{prixNuit}}€</p>
+                        </div>
+                    </a>
+                </div>
+            </template>
         </div>
-
-
 
         <footer>
         </footer>
     </body>
 
+    <script src="./script/script.js"></script>
 </html>
