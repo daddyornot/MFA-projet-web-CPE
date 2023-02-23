@@ -246,13 +246,20 @@ let template = document.querySelector("#listeDestinations");
 
 for (const d of voyage) {
     let clone = document.importNode(template.content, true);
+    let animaux = "display: ";
+
+    if(d.animaux) 
+        animaux += "flex";
+    else
+        animaux += "none";
 
     newDestination = clone.firstElementChild.innerHTML
         .replace(/{{destination}}/g, d.destination)
         .replace(/{{temperature}}/g, d.prixdej)
         .replace(/{{prixNuit}}/g, d.prixnuit)
         .replace(/{{imgDest}}/g, d.images[0])
-        .replace(/{{url}}/g, d.value);
+        .replace(/{{url}}/g, d.value)
+        .replace(/{{animaux}}/g, animaux);
         
         clone.firstElementChild.innerHTML = newDestination;
         
