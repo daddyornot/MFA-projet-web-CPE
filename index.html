@@ -2,103 +2,108 @@
 
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Titre à trouver</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <head>
+        <meta charset="UTF-8">
+        <title>Titre à trouver</title>
+        <link rel="stylesheet" href="./styles/style.css">
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="./script/script.js"></script>
-</head>
+    </head>
 
-<body>
-    <!-- TODO : include header-->
+    <body>
+        <!-- TODO : include header-->
     <header>
     </header>
+        
+        <h1>Titre à trouver</h1>
 
-    <h1>Titre à trouver</h1>
+        <!-- Filtre -->
+        <form>
+            <h3>Filtre</h3>
+            <label for="prix-mini">Prix mini : </label>
+            <input id="prix-mini" type="range" max="300" min="0" value=0>
+            <output for="prix-mini" id="out-prix-mini"></output>
 
-    <!-- Filtre -->
-    <form>
-        <h3>Filtre</h3>
-        <label for="prix-mini">Prix mini : </label>
-        <input id="prix-mini" type="range" max="300" min="0" value=0>
-        <output for="prix-mini" id="out-prix-mini"></output>
+            <label for="prix-max">Prix max : </label>
+            <input id="prix-max" type="range" max="300" min="0" value=300>
+            <output for="prix-max" id="out-prix-max"></output>
 
-        <label for="prix-max">Prix max : </label>
-        <input id="prix-max" type="range" max="300" min="0" value=300>
-        <output for="prix-max" id="out-prix-max"></output>
+            <label for="date-debut">Du : </label>
+            <input id="date-debut" type="date">
+            <label for="date-fin">Au : </label>
+            <input id="date-fin" type="date">
 
-        <label for="date-debut">Du : </label>
-        <input id="date-debut" type="date">
-        <label for="date-fin">Au : </label>
-        <input id="date-fin" type="date">
+            <label for="nombre-adulte">Adultes : </label>
+            <input id="nombre-adulte" type="number" value="1" min="1">
 
-        <label for="nombre-adulte">Adultes : </label>
-        <input id="nombre-adulte" type="number" value="1" min="1">
+            <label for="nombre-enfants">Enfants (-12 ans) : </label>
+            <input id="nombre-enfants" type="number" value="0" min="0">
 
-        <label for="nombre-enfants">Enfants (-12 ans) : </label>
-        <input id="nombre-enfants" type="number" value="0" min="0">
+            <label for="animaux">Animaux autorisé : </label>
+            <input id="animaux" type="checkbox">
+            
+            <label for="petit-dejeuner">Petit dejeuner : </label>
+            <input id="petit-dejeuner" type="checkbox">
+            
+            <button class="reset" type="reset">Réinitialiser</button>
+        </form>
 
-        <label for="animaux">Animaux autorisé : </label>
-        <input id="animaux" type="checkbox">
-
-        <label for="petit-dejeuner">Petit dejeuner : </label>
-        <input id="petit-dejeuner" type="checkbox">
-
-        <button class="reset" type="reset">Réinitialiser</button>
-    </form>
-
-    <div class="grid-container">
-        <div class="grid-item">
+        <div class="grid-container">
+            <div class="grid-item">
             <a href="detail-sejour.html?selection=maldive">
-                <h2>Maldive</h2>
-                <img class="grid-img" src="./assets/img/maldive/01.avif" alt="Photo des Maldive">
-                <p>Prix : 150€</p>
-            </a>
+                    <h2>Maldive</h2>
+                    <div>
+                        <p class="temperature">45°C</p>
+                        <img class="grid-img" src="./assets/img/maldive/01.jpg" alt="Photo des Maldive">
+                    </div>
+                        <p>Animaux acceptés</p>
+                    <p>Prix : 150€</p>
+                </a>
+            </div>
+
+            <div class="grid-item">
+                <a href="detail-sejour.html">
+                    <h2>Canada</h2>
+                    <img class="grid-img" src="./assets/img/canada/01.jpg" alt="Photo du canada">
+                    <p>Animaux acceptés</p>
+                    <p>Prix : 130€</p>
+                </a>
+            </div>
+
+            <div class="grid-item">
+                <a href="detail-sejour.html">
+                    <h2>Chine</h2>
+                    <img class="grid-img" src="./assets/img/chine/01.jpg" alt="Photo de la chine">
+                    <p>Prix : 170€</p>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="detail-sejour.html">
+                    <h2>Japon</h2>
+                    <img class="grid-img" src="./assets/img/japon/01.jpg" alt="Photo du Japon">
+                    <p>Prix : 400€</p>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="detail-sejour.html">
+                    <h2>France</h2>
+                    <img class="grid-img" src="./assets/img/France/01.jpg" alt="Photo de la france">
+                    <p>Prix : 170€</p>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="detail-sejour.html">
+                    <h2>Islande</h2>
+                    <img class="grid-img" src="./assets/img/islande/01.jpg" alt="Photo de l'islande">
+                    <p>Prix : 170€</p>
+                </a>
+            </div>
         </div>
 
-        <div class="grid-item">
-            <a href="detail-sejour.html">
-                <h2>Canada</h2>
-                <img class="grid-img" src="./assets/img/canada/alberta-2297204_1920.jpg" alt="Photo du canada">
-                <p>Prix : 130€</p>
-            </a>
-        </div>
-
-        <div class="grid-item">
-            <a href="detail-sejour.html">
-                <h2>Chine</h2>
-                <img class="grid-img" src="./assets/img/chine/01.avif" alt="Photo de la chine">
-                <p>Prix : 170€</p>
-            </a>
-        </div>
-        <div class="grid-item">
-            <a href="detail-sejour.html">
-                <h2>Japon</h2>
-                <img class="grid-img" src="./assets/img/japon/fuji.jpg" alt="Photo du Japon">
-                <p>Prix : 400€</p>
-            </a>
-        </div>
-        <div class="grid-item">
-            <a href="detail-sejour.html">
-                <h2>France</h2>
-                <img class="grid-img" src="./assets/img/France/01.avif" alt="Photo de la france">
-                <p>Prix : 170€</p>
-            </a>
-        </div>
-        <div class="grid-item">
-            <a href="detail-sejour.html">
-                <h2>Islande</h2>
-                <img class="grid-img" src="./assets/img/islande/iceland-2111811_1920.jpg" alt="Photo de l'islande">
-                <p>Prix : 170€</p>
-            </a>
-        </div>
-    </div>
 
 
-
-    <footer>
-    </footer>
-</body>
+        <footer>
+        </footer>
+    </body>
 
 </html>

@@ -45,7 +45,7 @@ a:active {
 }
 
 .landing {
-    background: url("../assets/img/canada/road-g800c993ae_1920.jpg") no-repeat center center fixed;
+    background: url("../assets/img/canada/01.jpg") no-repeat center center fixed;
     overflow: hidden;
 }
 
@@ -75,22 +75,35 @@ a:active {
     position: relative;
     text-align: center;
     -webkit-text-stroke: 1px black;
+    box-shadow:  -20px 20px 60px #bebebe,
+    20px -20px 60px #ffffff;
+    border-radius: 50px;
 }
 
+
+/* 
 .grid-item h2 {
     position: absolute;
     margin: 0;
     top: 20px;
     right: 110px;
     font-size: 30px;
-}
+} */
 
 .grid-item p {
-    position: absolute;
-    margin: 0;
-    bottom: 10px;
-    right: 110px;
+    text-align: right;
+    padding-right: 30px;
     font-size: 20px;
+}
+
+.grid-item p.temperature {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    background-color: lightgray;
+    border-radius: 50%;
+    text-align: center;
+    padding-right: 0;
 }
 
 .main-container {

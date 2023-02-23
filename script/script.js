@@ -7,7 +7,7 @@ const voyages = {
     "japon": {
         destination: "Le Japon",
         description: "Le japon est beau",
-        images: ["assets/img/japon/beach.jpg", "assets/img/japon/buildings.jpg", "assets/img/japon/fuji.jpg", "assets/img/japon/temple.jpg"],
+        images: ["assets/img/japon/01.jpg", "assets/img/japon/buildings.jpg", "assets/img/japon/fuji.jpg", "assets/img/japon/temple.jpg"],
         prixnuit: 400,
         prixdej: 15,
         Annimaux: false,
@@ -15,7 +15,7 @@ const voyages = {
     "maldive": {
         destination: "Les Maldives",
         description: "Les maldive y'a de l'eau",
-        images: ["assets/img/maldive/01.avif", "assets/img/maldive/02.avif", "assets/img/maldive/03.avif"],
+        images: ["assets/img/maldive/01.jpg", "assets/img/maldive/02.avif", "assets/img/maldive/03.avif"],
         prixnuit: 300,
         prixdej: 15,
         animaux: true,
