@@ -63,6 +63,7 @@ class Voyage {
         this._prixdej = voyages[_selection].prixdej;
         this._animaux = voyages[_selection].animaux;
         this._selection = _selection;
+        this._idimg = 0;
     }
 
     get destination() { return this._destination }
@@ -72,6 +73,14 @@ class Voyage {
     get prixdej() { return this._prixdej }
     get animaux() { return this._animaux }
     get value() { return this._selection}
+    get vImage(){
+        let img = this._images[this._idimg];
+        if(this._images.length == (this._idimg + 1) )
+            this._idimg = 0;
+        else
+            this._idimg ++;
+        return img;
+    }
 
 }
 class Reservation extends Voyage{
@@ -167,11 +176,13 @@ window.onload = () => {
 
     document.getElementById("titre-destination").innerHTML = levoyage.destination;
     document.getElementById("desc-destination").innerHTML = levoyage.description;
-    document.getElementById("img-destination").setAttribute('src', levoyage.images[0]);
+    document.getElementById("img-destination").setAttribute('src', levoyage.vImage);
     if (levoyage.animaux)
-        document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les animaux sont acceptés !";
+        document.getElementById("animaux-destination").innerHTML = document
+            .getElementById("animaux-destination").innerHTML + "Les animaux sont acceptés !";
     else
-        document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les animaux ne sont pas acceptés désolé !";
+        document.getElementById("animaux-destination").innerHTML = document
+            .getElementById("animaux-destination").innerHTML + "Les animaux ne sont pas acceptés désolé !";
 
     let demain = new Date()
     demain.setDate(new Date().getDate() + 1);
@@ -210,7 +221,8 @@ function addligne(ligne) {
 }
 
 function imgNext(){
-    alert("test");
+    var levoyage = new Voyage(selection);
+    document.getElementById("img-destination").setAttribute('src', levoyage.images[1]);
 }
 
 function imgPrevious(){
