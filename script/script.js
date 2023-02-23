@@ -40,12 +40,45 @@ class Voyage {
     get animaux() { return this._animaux }
 
 }
-
 class Reservation extends Voyage{
     constructor(m){
         super(m);
+
+        
+        this._datedebut = new Date(document.getElementById('date-debut').value);
+        if( this._datedebut < Date.now()){
+            alert("La date de début n'est pas bonne");
+            let demain = new Date()
+            demain.setDate(new Date().getDate() + 1);
+            document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
+
+            let lendemain = new Date()
+            lendemain.setDate(demain.getDate() +1 );
+            document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
+            
+            this._datedebut = new Date(document.getElementById('date-debut').value);
+
+        }
+        
+        this._datefin = new Date(document.getElementById('date-fin').value);
+
+        if(this.nbrjour <= 0){
+            let lendemain = new Date()
+            lendemain.setDate(this._datedebut.getDate() +1 );
+            document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
+
+            this._datefin = new Date(document.getElementById('date-fin').value);
+
+        }
+
+        this._nbadulte = Number(document.getElementById('nb-adulte').value);
+        this._nbenfant = Number(document.getElementById('nb-enfant').value);
+        this._animaux = document.getElementById('animaux-form').checked;
+        this._petitdej = document.getElementById('petitdej').checked;
+
+        
     }
-    set datedebut(a) { this._datedebut = a};
+    set datedebut(a) {this._datedebut = a};
     get datedebut() { return this._datedebut };
     set datefin(a) { this._datefin = a};
     get datefin() { return this._datefin };
@@ -60,12 +93,29 @@ class Reservation extends Voyage{
     set petitdej(a) { this._petitdej = a};
     get petitdej() { return this._petitdej };
 
+    get nbrpersonnes(){ return this._nbenfant + this._nbadulte }
+
     get totalpetitdej() { 
         if (this._petitdej)
-            return this.nbrjour * this._nbadulte * this._nbenfant * this._prixdej;
+            return this.nbrjour * this.nbrpersonnes * this._prixdej;
         else 
             return 0;
      }
+    get totalAdulte(){ 
+        return this.nbrjour * this._nbadulte * this._prixnuit;
+    }
+
+    get prixnuitenfant(){
+        return this._prixnuit * 0.6;
+    }
+
+    get totalEnfants(){ 
+        return this.nbrjour * this._nbenfant * this.prixnuitenfant;
+    }
+
+    get total(){
+        return this.totalAdulte + this.totalEnfants + this.totalpetitdej;
+    }
 }
 
 window.onload = () => {
@@ -88,38 +138,29 @@ window.onload = () => {
         document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les animaux sont acceptés !";
     else
         document.getElementById("animaux-destination").innerHTML = document.getElementById("animaux-destination").innerHTML + "Les animaux ne sont pas acceptés désolé !";
+
+    let demain = new Date()
+    demain.setDate(new Date().getDate() + 1);
+    document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
+
+    let lendemain = new Date()
+    lendemain.setDate(demain.getDate() +1 );
+    document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
+    
     changeform();
 }
 
 function changeform() {
-    console.log('Onchangeform');
-    let tab = document.getElementById('solde-destination');
     resettab();
-    resa = new Reservation(selection);
-    let form = document.getElementById("form");
+    var resa = new Reservation(selection);
 
-    resa.datedebut = new Date(document.getElementById('date-debut').value);
-    resa.datefin = new Date(document.getElementById('date-fin').value);
-
-
-    resa.nbadulte = Number(document.getElementById('nb-adulte').value);
-    console.log("nb adulte " + resa.nbadulte);
-    resa.nbenfant = Number(document.getElementById('nb-enfant').value);
-    console.log("nbenfant " + resa.nbenfant);
-
-    resa.animaux = document.getElementById('animaux-form').checked;
-    console.log("animaux " + resa.animaux);
-    resa.petitdej = document.getElementById('petitdej').checked;
-    console.log("petitdej " + resa.petitdej);
-
-    console.log(resa.prixnuit);
-    addligne(["Nuits adultes", resa.nbrjour, resa.nbadulte, resa.prixnuit, resa.prixnuit * resa.nbadulte * resa.nbrjour]);
-    addligne(["Nuits enfants", resa.nbrjour, resa.nbenfant, 0.6 * resa.prixnuit , 0.6 * resa.prixnuit * resa.nbenfant * resa.nbrjour]);
+    addligne(["Nuits adultes", resa.nbrjour, resa.nbadulte, resa.prixnuit, resa.totalAdulte]);
+    addligne(["Nuits enfants", resa.nbrjour, resa.nbenfant, resa.prixnuitenfant , resa.totalEnfants]);
 
     if (resa.petitdej)
-        addligne(["Petits déjeuner", resa.nbrjour, resa.nbenfant + resa.nbadulte, resa.prixdej , resa.prixdej * resa.nbrjour * (resa.nbenfant + resa.nbadulte)]);
+        addligne(["Petits déjeuner", resa.nbrjour, resa.nbrpersonnes, resa.prixdej , resa.totalpetitdej]);
     
-    addligne(["Total", resa.nbrjour, resa.nbenfant + resa.nbadulte, "-" , resa.total]);
+    addligne(["Total", resa.nbrjour, resa.nbrpersonnes , "-" , resa.total]);
 
 };
 
