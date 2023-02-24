@@ -49,11 +49,17 @@
     20px -20px 60px #ffffff;
     border-radius: 50px;
     background-color: rgba(169, 189, 207, .4);
+    font-family: 'Lexend Deca';
 }
 
-.grid-item p {
+.grid-item h2 {
+    font-size: 30px;
+}
+
+.grid-item p.prix {
     text-align: right;
-    font-size: 20px;
+    font-size: 23px;
+    padding-left: 8px;
 }
 
 .grid-item p.temperature {
@@ -73,7 +79,7 @@
 
 .dest-infos {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .dest-infos span {
