@@ -11,9 +11,10 @@
     box-sizing: border-box;
     align-items: center;
     overflow: hidden;
-    box-shadow:  -20px 5px 60px #bebebe,
+    box-shadow: -20px 5px 60px #bebebe,
     20px -20px 60px #ffffff;
     border-radius: 50px;
+    background-color: rgba(60, 79, 94, .6)
 }
 
 .sticky {
@@ -23,11 +24,13 @@
 .header-navbar .homelink {
     font-size: 1.5em;
     font-weight: bold;
+    color: white;
 }
 
 .nav-links ul {
     display: flex;
     list-style-type: none;
+
 }
 
 .nav-links {
@@ -37,6 +40,7 @@
 .nav-links ul li{
     margin: 25px;
 }
+
 
 .nav-links ul li.active a{
     color: cadetblue;

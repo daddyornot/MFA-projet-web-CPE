@@ -12,7 +12,7 @@
     flex-wrap: nowrap;
     align-items: center;
     background-color: whitesmoke;
-
+    background-color: rgba(225, 249, 255, .1)
 }
 
 .nb-pers input{
@@ -32,8 +32,8 @@
 .grid-img {
     border-radius: 50px;
     background: linear-gradient(225deg, #cacaca, #f0f0f0);
-    box-shadow:  -20px 15px 60px #bebebe,
-    20px 0px 60px #ffffff;
+    /*box-shadow:  -20px 15px 60px #bebebe,*/
+    /*20px 0px 60px #ffffff;*/
     width: 400px;
     height: 400px;
     object-fit: cover;
@@ -48,6 +48,7 @@
     box-shadow:  -20px 20px 60px #bebebe,
     20px -20px 60px #ffffff;
     border-radius: 50px;
+    background-color: rgba(169, 189, 207, .4);
 }
 
 .grid-item p {
@@ -66,6 +67,7 @@
     border-radius: 50%;
     text-align: center;
     padding-right: 0;
+    background-color: rgba(60, 79, 94, .6)
 }
 
 

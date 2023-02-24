@@ -16,6 +16,8 @@
 body {
     color: grey;
     font-family: lusitana, serif;
+    background: url("../assets/img/maldive/03.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
 a {
@@ -24,11 +26,11 @@ a {
 }
 
 a:link {
-    color: grey;
+    color: white;
 }
 
 a:visited {
-    color: grey;
+    color: white;
 }
 
 .form-inline {
