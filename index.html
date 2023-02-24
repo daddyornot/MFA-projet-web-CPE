@@ -6,19 +6,17 @@
         <meta charset="UTF-8">
         <title>Titre à trouver</title>
         <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/index.css">
+        <link rel="stylesheet" href="./styles/header.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     </head>
 
     <body>
-    <header>
-    </header>
-        
-        <h1>Titre à trouver</h1>
-
+        <header></header>
         <!-- Filtre -->
-        <form>
-            <h3>Filtre</h3>
+        <form class="filtres">
+<!--            <h3>Filtre</h3>-->
             <label for="prix-mini">Prix mini : </label>
             <input id="prix-mini" type="range" max="300" min="0" value=0>
             <output for="prix-mini" id="out-prix-mini"></output>
@@ -32,13 +30,15 @@
             <label for="date-fin">Au : </label>
             <input id="date-fin" type="date">
 
-            <label for="nombre-adulte">Adultes : </label>
-            <input id="nombre-adulte" type="number" value="1" min="1">
+            <div class="nb-pers">
+                <label for="nombre-adulte">Adultes : </label>
+                <input id="nombre-adulte" type="number" value="1" min="1">
 
-            <label for="nombre-enfants">Enfants (-12 ans) : </label>
-            <input id="nombre-enfants" type="number" value="0" min="0">
+                <label for="nombre-enfants">Enfants (-12 ans) : </label>
+                <input id="nombre-enfants" type="number" value="0" min="0">
+            </div>
 
-            <label for="animaux">Animaux autorisé : </label>
+            <label for="animaux">Animaux autorisés : </label>
             <input id="animaux" type="checkbox">
             
             <label for="petit-dejeuner">Petit dejeuner : </label>

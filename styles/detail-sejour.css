@@ -1,0 +1,46 @@
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.main-container img {
+    max-width: 50%;
+    height: auto;
+    margin-left: 20px;
+    align-items: end ;
+    border-radius: 20px;
+}
+
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.navigate-img {
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 5px;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 23%;
+}
+
+#titre-destination {
+    font-size: 30px;
+    color: var(--color2);
+    font-family: 'lusitana', serif;
+}
+
+#desc-destination {
+    display: flex;
+    align-items: center;
+    font-family: lusitana, serif;
+}

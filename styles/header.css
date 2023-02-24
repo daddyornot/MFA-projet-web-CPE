@@ -1,0 +1,44 @@
+.header {
+    display: block;
+}
+
+.header-navbar {
+    position: absolute;
+    padding: 20px 30px 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    overflow: hidden;
+    box-shadow:  -20px 5px 60px #bebebe,
+    20px -20px 60px #ffffff;
+    border-radius: 50px;
+}
+
+.sticky {
+    position: sticky;
+}
+
+.header-navbar .homelink {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links ul li{
+    margin: 25px;
+}
+
+.nav-links ul li.active a{
+    color: cadetblue;
+    font-weight: 800;
+}
