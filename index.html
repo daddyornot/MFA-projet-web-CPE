@@ -19,8 +19,8 @@
         <form id="filtres">
 <!--            <h3>Filtre</h3>-->
             <label for="prix-mini">Prix mini : </label>
-            <input id="prix-mini" type="range" max="50000" min="0" value=0>
-            <output for="prix-mini" id="out-prix-mini"></output>
+            <input id="prix-mini" name="Range" type="range" max="50000" min="0" value=0>
+            <output for="out" name="result" id="out-prix-mini"></output>
 
             <label for="prix-max">Prix max : </label>
             <input id="prix-max" type="range" max="50000" min="0" value=50000>
@@ -65,12 +65,12 @@
 
             <div>
                 <label class="checkbox">Animaux acceptés<br>
-                    <input checked="" class="check" type="checkbox" id="animaux-form">
+                    <input class="check" type="checkbox" id="animaux-form">
                 </label>
             </div>
             <div>
                 <label class="checkbox">Petit déjeuner<br>
-                    <input checked="" class="check" type="checkbox" id="petitdej">
+                    <input class="check" type="checkbox" id="petitdej">
                 </label>
             </div>
             

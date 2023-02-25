@@ -1,7 +1,8 @@
 
 window.onload = () => {
     changeFilter();
-    document.getElementById("filtres").addEventListener('change', changeFilter);
+    document.getElementById("filtres").addEventListener('input', changeFilter);
+
 
 }
 
@@ -19,7 +20,10 @@ function changeFilter() {
             return dest._animaux;
         });
     let prixmax = document.getElementById("prix-max").value;
+    document.getElementById("out-prix-max").value = prixmax;
     let prixmin = document.getElementById("prix-mini").value;
+    document.getElementById("out-prix-mini").value = prixmin;
+
     voyage = voyage.filter(function (dest) {
         return prixmin <= dest._prixnuit && dest._prixnuit <= prixmax
     })
