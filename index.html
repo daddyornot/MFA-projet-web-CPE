@@ -19,11 +19,11 @@
         <form id="filtres">
 <!--            <h3>Filtre</h3>-->
             <label for="prix-mini">Prix mini : </label>
-            <input id="prix-mini" type="range" max="300" min="0" value=0>
+            <input id="prix-mini" type="range" max="50000" min="0" value=0>
             <output for="prix-mini" id="out-prix-mini"></output>
 
             <label for="prix-max">Prix max : </label>
-            <input id="prix-max" type="range" max="300" min="0" value=300>
+            <input id="prix-max" type="range" max="50000" min="0" value=50000>
             <output for="prix-max" id="out-prix-max"></output>
 
             <label for="date-debut">Du : </label>
@@ -31,19 +31,48 @@
             <label for="date-fin">Au : </label>
             <input id="date-fin" type="date">
 
-            <div class="nb-pers">
-                <label for="nombre-adulte">Adultes : </label>
-                <input id="nombre-adulte" type="number" value="1" min="1">
-
-                <label for="nombre-enfants">Enfants (-12 ans) : </label>
-                <input id="nombre-enfants" type="number" value="0" min="0">
+            <div>
+                <label for="nb-adulte">Nombre d'adultes<br></label>
+                <select name="nb-adulte" id="nb-adulte">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div>
+                <label for="nb-enfant">Nombre d'enfants (-12ans)</label>
+                <select name="nb-enfant" id="nb-enfant">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
             </div>
 
-            <label for="animaux">Animaux autorisés : </label>
-            <input id="animaux" type="checkbox">
-            
-            <label for="petit-dejeuner">Petit dejeuner : </label>
-            <input id="petit-dejeuner" type="checkbox">
+            <div>
+                <label class="checkbox">Animaux acceptés<br>
+                    <input checked="" class="check" type="checkbox" id="animaux-form">
+                </label>
+            </div>
+            <div>
+                <label class="checkbox">Petit déjeuner<br>
+                    <input checked="" class="check" type="checkbox" id="petitdej">
+                </label>
+            </div>
             
             <button class="reset" type="reset">Réinitialiser</button>
         </form>
@@ -55,7 +84,7 @@
                         <a href="detail-sejour.html?selection={{url}}">
                             <h2>{{destination}}</h2>
                             <p class="temperature">{{temperature}}°C</p>
-                            <img class="grid-img" src={{imgDest}} alt="Photo des Maldive">
+                            <img class="grid-img" src="{{imgDest}}" alt="Photo des Maldive">
                         </a>
                         </div>
                         <div class="dest-infos">

@@ -12,9 +12,18 @@ function changeFilter() {
     for (let dest of listDestination) {
         voyage.push(new Voyage(dest));
     }
+        // $("#liste-destinations").load('TemplateGrid.html');
     let template = document.querySelector("#listeDestinations");
+    if (document.getElementById("animaux-form").checked)
+        voyage = voyage.filter(function (dest) {
+            return dest._animaux;
+        });
+    let prixmax = document.getElementById("prix-max").value;
+    let prixmin = document.getElementById("prix-mini").value;
+    voyage = voyage.filter(function (dest) {
+        return prixmin <= dest._prixnuit && dest._prixnuit <= prixmax
+    })
 
-    voyage.filter(value => value._prixnuit < document.getElementById("prix-mini").value)
     for (const d of voyage) {
         let clone = document.importNode(template.content, true);
         let animaux = "display: ";
