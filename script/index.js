@@ -13,8 +13,6 @@ function changeFilter() {
     for (let dest of listDestination) {
         voyage.push(new Voyage(dest));
     }
-        // $("#liste-destinations").load('TemplateGrid.html');
-    let template = document.querySelector("#listeDestinations");
     if (document.getElementById("animaux-form").checked)
         voyage = voyage.filter(function (dest) {
             return dest._animaux;
@@ -28,6 +26,9 @@ function changeFilter() {
         return prixmin <= dest._prixnuit && dest._prixnuit <= prixmax
     })
 
+    document.getElementById("liste-destinations").innerHTML = templateGrid;
+
+    let template = document.querySelector("#listeDestinations");
     for (const d of voyage) {
         let clone = document.importNode(template.content, true);
         let animaux = "display: ";
@@ -50,3 +51,21 @@ function changeFilter() {
         document.getElementById("liste-destinations").appendChild(clone);
     }
 }
+
+var templateGrid = "<template id=\"listeDestinations\">\n" +
+    "                <div class=\"grid-item\">\n" +
+    "                    <div class=\"img-temp\">\n" +
+    "                        <a href=\"detail-sejour.html?selection={{url}}\">\n" +
+    "                            <h2>{{destination}}</h2>\n" +
+    "                            <p class=\"temperature\">{{temperature}}°C</p>\n" +
+    "                            <img class=\"grid-img\" src=\"{{imgDest}}\" alt=\"Photo des Maldive\">\n" +
+    "                        </a>\n" +
+    "                        </div>\n" +
+    "                        <div class=\"dest-infos\">\n" +
+    "                            <span class=\"material-symbols-outlined\" id=\"animaux-destination\" style={{animaux}}>\n" +
+    "                                pets\n" +
+    "                            </span>\n" +
+    "                            <p class=\"prix\">{{prixNuit}}€ /j</p>\n" +
+    "                        </div>\n" +
+    "                </div>\n" +
+    "            </template>";
