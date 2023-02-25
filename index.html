@@ -16,7 +16,7 @@
     <body>
         <header></header>
         <!-- Filtre -->
-        <form class="filtres">
+        <form id="filtres">
 <!--            <h3>Filtre</h3>-->
             <label for="prix-mini">Prix mini : </label>
             <input id="prix-mini" type="range" max="300" min="0" value=0>
@@ -51,11 +51,12 @@
         <div class="grid-container" id="liste-destinations">
             <template id="listeDestinations">
                 <div class="grid-item">
-                    <a href="detail-sejour.html?selection={{url}}">
-                        <h2>{{destination}}</h2>
-                        <div class="img-temp">
+                    <div class="img-temp">
+                        <a href="detail-sejour.html?selection={{url}}">
+                            <h2>{{destination}}</h2>
                             <p class="temperature">{{temperature}}°C</p>
                             <img class="grid-img" src={{imgDest}} alt="Photo des Maldive">
+                        </a>
                         </div>
                         <div class="dest-infos">
                             <span class="material-symbols-outlined" id="animaux-destination" style={{animaux}}>
@@ -63,7 +64,6 @@
                             </span>
                             <p class="prix">{{prixNuit}}€ /j</p>
                         </div>
-                    </a>
                 </div>
             </template>
         </div>
@@ -73,4 +73,5 @@
     </body>
 
     <script src="./script/script.js"></script>
+    <script src="./script/index.js"></script>
 </html>
