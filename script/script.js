@@ -129,13 +129,24 @@ class Voyage {
     get prixPetitDej() { return this._prixdej }
     get animaux() { return this._animaux }
     get value() { return this._selection}
-    get vImage(){
-        let img = this._images[this._idimg];
+    get nImage(){
         if(this._images.length == (this._idimg + 1) )
             this._idimg = 0;
         else
             this._idimg ++;
+        let img = this._images[this._idimg];
         return img;
+    }
+    get pImage(){
+        if(0 > (this._idimg - 1) )
+            this._idimg = this._images.length - 1;
+        else
+            this._idimg --;
+        let img = this._images[this._idimg];
+        return img;
+    }
+    get sImage(){
+        return this._images[this._idimg];
     }
 
 }
@@ -173,7 +184,7 @@ class Reservation extends Voyage{
         this._nbadulte = Number(document.getElementById('nb-adulte').value);
         this._nbenfant = Number(document.getElementById('nb-enfant').value);
         this._animaux = document.getElementById('animaux-form').checked;
-        this._petitdej = document.getElementById('petitDej').checked;
+        this._petitdej = document.getElementById('petitdej').checked;
 
         
     }
@@ -230,11 +241,11 @@ window.onload = () => {
         selection = "japon";
 
     console.log(voyages[selection].destination);
-    var levoyage = new Voyage(selection);
+    levoyage = new Voyage(selection);
 
     document.getElementById("titre-destination").innerHTML = levoyage.destination;
     document.getElementById("desc-destination").innerHTML = levoyage.description;
-    document.getElementById("img-destination").setAttribute('src', levoyage.vImage);
+    document.getElementById("img-destination").setAttribute('src', levoyage.sImage);
     if (levoyage.animaux)
         document.getElementById("animaux-destination").innerHTML = document
             .getElementById("animaux-destination").innerHTML + "Les animaux sont acceptés !";
@@ -279,12 +290,11 @@ function addLigne(ligne) {
 }
 
 function imgNext(){
-    var levoyage = new Voyage(selection);
-    document.getElementById("img-destination").setAttribute('src', levoyage.images[1]);
+    document.getElementById("img-destination").setAttribute('src', levoyage.nImage);
 }
 
 function imgPrevious(){
-    alert("test 2");
+    document.getElementById("img-destination").setAttribute('src', levoyage.pImage);
 
 }
 
