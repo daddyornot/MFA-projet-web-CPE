@@ -48,8 +48,8 @@
 .info-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .info-left-container {
@@ -73,5 +73,29 @@
 .animaux #animaux-destination {
     font-family: 'lusitana', serif;
     font-size: 15px;
+}
+
+table {
+    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
+    border-radius: 20px;
+    background-color: white;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    width: 50px;
+}
+
+tr:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.resume-container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
