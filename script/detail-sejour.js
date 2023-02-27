@@ -66,9 +66,10 @@ function changeForm() {
     addLigne(["Total", resa.nbJour, resa.nbPersonnes , "-" , resa.total]);
 }
 
-function valider(){
+function valider() {
     var resa = new Reservation(selection);
     resa.setValue();
     var panier = new Panier();
     panier.add = resa;
+    location.href = "panier.html";
 }

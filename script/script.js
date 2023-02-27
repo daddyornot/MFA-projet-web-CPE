@@ -85,7 +85,7 @@ const voyages = {
             "\n" +
             "En somme, un voyage interplanétaire serait une expérience incroyable et unique pour les amateurs d'astronomie, pour une immersion totale dans l'univers fascinant et infini qui nous entoure.",
         images: ["assets/img/espace/01.jpg", "assets/img/espace/02.jpg", "assets/img/espace/03.jpg"],
-        prixnuit: 50000,
+        prixnuit: 5000,
         prixdej: 850,
         animaux: true,
     },
