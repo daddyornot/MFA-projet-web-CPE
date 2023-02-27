@@ -154,8 +154,17 @@ class Voyage {
 class Reservation extends Voyage{
     constructor(m){
         super(m);
+    }
+    all(dDebut, dFin,nbAdultes, nbEnfants, petitDej, id){
+        this._datedebut = new Date(dDebut);
+        this._datefin = new Date(dFin);
+        this._nbadulte = nbAdultes;
+        this._nbenfant = nbEnfants;
+        this._petitdej = petitDej;
+        this._id = id;
+    }
 
-        
+    setValue() {
         this._datedebut = new Date(document.getElementById('date-debut').value);
         if( this._datedebut < Date.now()){
             alert("La date de début n'est pas bonne");
@@ -166,11 +175,11 @@ class Reservation extends Voyage{
             let lendemain = new Date()
             lendemain.setDate(demain.getDate() +1 );
             document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
-            
+
             this._datedebut = new Date(document.getElementById('date-debut').value);
 
         }
-        
+
         this._datefin = new Date(document.getElementById('date-fin').value);
 
         if(this.nbJour <= 0){
@@ -184,16 +193,15 @@ class Reservation extends Voyage{
 
         this._nbadulte = Number(document.getElementById('nb-adulte').value);
         this._nbenfant = Number(document.getElementById('nb-enfant').value);
-        this._animaux = document.getElementById('animaux-form').checked;
         this._petitdej = document.getElementById('petitdej').checked;
-
-        
     }
     get datedebut() { return this._datedebut };
     set datedebut(a) {this._datedebut = a};
 
     get datefin() { return this._datefin };
     set datefin(a) { this._datefin = a};
+    get id() { return this._id };
+    set id(m) { this._id = m};
 
     get nbJour() { return dateDiff(this._datedebut, this._datefin).day}
 
@@ -231,8 +239,41 @@ class Reservation extends Voyage{
     }
 }
 
-window.onload = () => {
+class Panier {
+    constructor() {
+        if(localStorage.panier)
+            this._panier = JSON.parse(localStorage.panier);
+        console.log(this._panier);
+    }
+    set add(a) {
 
+        if (this._panier){
+            a.id = this._panier.length;
+            this._panier.push(a);
+        }
+        else
+        {
+            a.id = 0;
+            this._panier = [a];
+        }
+        window.localStorage.setItem("panier", JSON.stringify(this._panier));
+        console.log(this._panier);
+    }
+    get (){
+        return this._panier;
+    }
+
+    remove(m){
+        console.log(m);
+        this._panier.splice(m, 1);
+        window.localStorage.setItem("panier", JSON.stringify(this._panier));
+        console.log(this._panier);
+    }
+}
+
+window.onload = () => {
+    // const resa = localStorage.getItem("res");
+    console.log(JSON.parse(localStorage.res));
 }
 
 function imgNext(){

@@ -27,6 +27,7 @@ function changeFilter() {
     })
 
     document.getElementById("liste-destinations").innerHTML = templateGrid;
+    // $("#liste-destinations").load("templateGrid.html");
 
     let template = document.querySelector("#listeDestinations");
     for (const d of voyage) {

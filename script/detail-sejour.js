@@ -1,8 +1,7 @@
 
 window.onload = () => {
 
-    const url = window.location.search;
-    const urlParams = new URLSearchParams(url);
+    const urlParams = new URLSearchParams(window.location.search);
 
     document.getElementById("form").addEventListener('change', changeForm);
     if (urlParams.get('selection'))
@@ -56,6 +55,7 @@ function addLigne(ligne) {
 function changeForm() {
     resetTab();
     var resa = new Reservation(selection);
+    resa.setValue();
 
     addLigne(["Nuits adultes", resa.nbJour, resa.nbAdulte, resa.prixNuit, resa.totalAdulte]);
     addLigne(["Nuits enfants", resa.nbJour, resa.nbEnfant, resa.prixnuitenfant , resa.totalEnfants]);
@@ -64,4 +64,11 @@ function changeForm() {
         addLigne(["Petits déjeuner", resa.nbJour, resa.nbPersonnes, resa.prixPetitDej , resa.totalpetitdej]);
 
     addLigne(["Total", resa.nbJour, resa.nbPersonnes , "-" , resa.total]);
+}
+
+function valider(){
+    var resa = new Reservation(selection);
+    resa.setValue();
+    var panier = new Panier();
+    panier.add = resa;
 }
