@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/detail-sejour.css">
     <link rel="stylesheet" href="./styles/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@600&family=Rampart+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="./script/script.js"></script>
@@ -27,78 +28,70 @@
         <button onclick="imgNext()"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
         
     </div>
-    <span class="material-symbols-outlined" id="animaux-destination">pets</span>
-    <form id="form" method="post" action="panier.html">
-        <section>
-            <div>
-                <p>Début du Séjour</p>
-                <input required type="date" id="date-debut" name="date-debut" value="2023-01-01">
-            </div>
-            <div>
-                <p>Fin du Séjour</p>
-                <input required type="date" id="date-fin" name="date-fin" value="2023-01-01">
-            </div>
-            <div>
-                <label for="nb-adulte">Nombre d'adultes<br></label>
-                <select name="nb-adulte" id="nb-adulte">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
-            <div>
-                <label for="nb-enfant">Nombre d'enfants (-12ans)</label>
-                <select name="nb-enfant" id="nb-enfant">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
-            <div>
-                <label class="checkbox">Animaux acceptés<br>
-                    <input checked="" class="check" type="checkbox" id="animaux-form" name="animaux-form">
-                </label>
-            </div>
-            <div>
-                <label class="checkbox">Petit déjeuner<br>
-                    <input checked="" class="check" type="checkbox" id="petitdej" name="petitdej">
-                </label>
-            </div>
-        </section>
-        <section>
-            <div>
-                <button type="submit" value="Je pars en voyage !" onclick="valider()">Je pars en voyage !</button>
-            </div>
-        </section>
-        <section>
-            <button class="reset" type="reset">Réinitialiser</button>
-        </section>
-    </form>
+    <div class="animaux">
+        <span class="material-symbols-outlined">pets</span>
+        <span id="animaux-destination"></span>
+    </div>
+    <div class="info-container">
+        <div class="info-left-container">
+            <form action="panier.html" id="form">
+                <div class="choix">
+    <!--                Colomnes de la grille-->
+                    <p>Début du Séjour</p>
+                    <p>Fin du Séjour</p>
+                    <label for="nb-adulte">Nombre d'adultes</label>
+                    <label for="nb-enfant">Nombre d'enfants (-12ans)</label>
+                    <label class="checkbox">Petit déjeuner</label>
 
-    <table id="solde-destination">
-        <tr>
-            <th>Element</th>
-            <th>Nombre de jours</th>
-            <th>Nombre de personne</th>
-            <th>Prix unitaire</th>
-            <th>Prix</th>
-        </tr>
-    </table>
+                    <input required type="date" id="date-debut" value="2023-01-01">
+                    <input required type="date" id="date-fin" value="2023-01-01">
+                    <select name="nb-adulte" id="nb-adulte">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <select name="nb-enfant" id="nb-enfant">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <input checked="" class="check" type="checkbox" id="petitdej">
+                </div>
+<!--                <button type="submit" value="Je pars en voyage !">Je pars en voyage !</button>-->
+<!--                <button class="reset" type="reset">Réinitialiser</button>-->
+            </form>
+        </div>
+        <div class="resume-container">
+            <table id="solde-destination">
+                <tr>
+                    <th>Element</th>
+                    <th>Nombre de jours</th>
+                    <th>Nombre de personne</th>
+                    <th>Prix unitaire</th>
+                    <th>Prix</th>
+                </tr>
+            </table>
+        </div>
+        <button onclick="valider()" value="Je pars en voyage !">Je pars en voyage !</button>
+        <button onclick="resetForm()" class="reset" >Réinitialiser</button>
+    </div>
+
+
     <footer></footer>
 </body>
 

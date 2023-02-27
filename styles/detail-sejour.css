@@ -44,3 +44,34 @@
     align-items: center;
     font-family: lusitana, serif;
 }
+
+.info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center
+}
+
+.info-left-container {
+    color: black;
+}
+
+.choix {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    column-gap: 20px;
+    margin-bottom: 20px;
+}
+
+.animaux {
+    display: inline;
+    padding: 10px;
+    border: 1px solid grey;
+}
+
+.animaux #animaux-destination {
+    font-family: 'lusitana', serif;
+    font-size: 15px;
+}
+
