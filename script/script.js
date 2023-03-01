@@ -8,6 +8,7 @@ let listDestination = ["maldive", "japon","canada",
 const voyages = {
     "japon": {
         destination: "Le Japon",
+        ville: "Tokyo",
         description: "Un voyage au Japon est une expérience incroyable qui offre un mélange unique de traditions anciennes et de modernité. Imaginez-vous flâner dans les rues de Tokyo, une ville qui ne dort jamais, avec ses gratte-ciel illuminés, ses magasins colorés et ses restaurants de rue qui proposent une cuisine délicieuse.\n" +
             "\n" +
             "Ensuite, rendez-vous dans la ville historique de Kyoto, où vous pourrez découvrir des temples et des jardins japonais magnifiques et paisibles. Puis, pourquoi ne pas partir à la découverte de la culture japonaise en visitant le mont Fuji, l'emblématique montagne japonaise, ou en assistant à une cérémonie du thé traditionnelle ?\n" +
@@ -24,6 +25,7 @@ const voyages = {
     },
     "maldive": {
         destination: "Les Maldives",
+        ville: "Malé",
         description: "Imaginez-vous sur des plages de sable blanc immaculées et des eaux cristallines d'un bleu turquoise éclatant, où vous pouvez vous détendre sous le soleil chaud et respirer l'air frais de l'océan Indien.\n" +
             "\n" +
             "Les Maldives offrent également une expérience unique de plongée sous-marine avec des récifs coralliens spectaculaires et une faune marine abondante. Vous pouvez nager avec des raies manta, des requins-baleines, des tortues et des poissons multicolores, et explorer des épaves sous-marines.\n" +
@@ -40,6 +42,7 @@ const voyages = {
     },
     "canada": {
         destination: "Le Canada",
+        ville: "Quebec",
         description: "Le Canada est un pays immense avec des paysages spectaculaires. Imaginez-vous explorer les magnifiques parcs nationaux des Rocheuses canadiennes, avec leurs montagnes majestueuses, leurs lacs cristallins et leurs forêts luxuriantes. Vous pourrez y randonner, faire du vélo, du kayak, du rafting et même de l'escalade.\n" +
             "\n" +
             "Vous pourrez également découvrir la culture dynamique et cosmopolite de Toronto, la plus grande ville du Canada, avec ses musées, ses galeries d'art, ses restaurants internationaux et ses spectacles de Broadway. Ou bien vous pouvez vous promener dans les charmantes rues de la ville de Québec, la plus vieille ville du Canada, avec son architecture européenne, sa culture française et son patrimoine historique.\n" +
@@ -56,6 +59,7 @@ const voyages = {
     },
     "chine": {
         destination: "La Chine",
+        ville: "Shangai",
         description: "La Chine est un pays vaste et fascinant, avec une histoire et une culture riches qui remontent à des milliers d'années. Imaginez-vous visiter la Grande Muraille de Chine, l'une des sept merveilles du monde, et découvrir l'histoire et la signification de cette structure emblématique. Vous pouvez également explorer les anciennes villes impériales telles que Pékin et Xi'an, avec leurs palais somptueux, leurs temples bouddhistes et leurs rues animées.\n" +
             "\n" +
             "La Chine est également célèbre pour sa cuisine délicieuse et variée, avec des plats tels que les dumplings, les nouilles sautées et le canard laqué de Pékin. Vous pourrez également découvrir le thé chinois dans des salons de thé traditionnels ou visiter des marchés alimentaires locaux pour goûter une grande variété de plats et de collations.\n" +
@@ -72,6 +76,7 @@ const voyages = {
     },
     "espace": {
         destination: "L'Espace ?!",
+        ville: "ISS",
         description: "Imaginez-vous pouvoir voyager dans l'espace et visiter d'autres planètes de notre système solaire. Vous pourriez découvrir les paysages fascinants et les phénomènes uniques de chaque planète, ainsi que les technologies avancées nécessaires pour voyager dans l'espace.\n" +
             "\n" +
             "Sur Mars, vous pourriez explorer les vastes étendues de la planète rouge, y compris ses volcans éteints et ses canyons profonds. Vous pourriez également visiter le cratère de Gale, où le rover Curiosity de la NASA a découvert des preuves de l'ancienne présence d'eau sur Mars.\n" +
@@ -92,6 +97,7 @@ const voyages = {
     },
     "france": {
         destination: "La France",
+        ville: "Paris",
         description: "La France est un pays riche en histoire, culture et gastronomie, célèbre pour ses villes romantiques, ses châteaux majestueux, ses musées et ses galeries d'art, ainsi que sa cuisine délicieuse.\n" +
             "\n" +
             "Imaginez-vous flâner dans les rues étroites et pavées du Marais à Paris, où vous pourrez découvrir les boutiques de mode, les galeries d'art contemporain, les musées et les boulangeries pittoresques. Vous pouvez également vous promener le long de la Seine, visiter la Tour Eiffel et le Louvre, ou découvrir l'architecture gothique de Notre-Dame de Paris.\n" +
@@ -115,6 +121,7 @@ const voyages = {
 class Voyage {
     constructor(_selection){
         this._destination = voyages[_selection].destination;
+        this._ville = voyages[_selection].ville;
         this._description = voyages[_selection].description;
         this._images = voyages[_selection].images;
         this._prixnuit = voyages[_selection].prixnuit;
@@ -124,7 +131,7 @@ class Voyage {
         this._idimg = 0;
 
         if (this.value !== "espace") {
-            const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.value + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";
+            const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";
             $.ajax({
                 url: url,
                 type: "GET",
@@ -146,6 +153,9 @@ class Voyage {
     }
 
     get destination() { return this._destination }
+    get ville() {
+        return this._ville
+    }
     get description() { return this._description }
     get images() { return this._images }
     get prixNuit() { return this._prixnuit }

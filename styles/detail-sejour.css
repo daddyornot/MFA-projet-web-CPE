@@ -4,6 +4,7 @@
     flex-direction: row;
     justify-content: space-between;
     text-align: center;
+    margin: 30px 10px 10px;
 }
 
 .main-container img {
@@ -35,14 +36,11 @@
 
 #titre-destination {
     font-size: 30px;
-    color: var(--color2);
-    font-family: 'lusitana', serif;
 }
 
 #desc-destination {
     display: flex;
     align-items: center;
-    font-family: lusitana, serif;
 }
 
 .info-container {

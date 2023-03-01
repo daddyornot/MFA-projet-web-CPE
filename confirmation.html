@@ -14,20 +14,25 @@
 
 <body>
     <header></header>
-    <h1>Félicitations, vous prenez la fusée pour l'espace !</h1>
-    <div>Retrouvez les détails juste en dessous, ou retournez sur notre page d'accueil pour partir ailleurs</div>
-    <div id="resume-voyage">
+    <div class="confirmation">
+        <h1>Félicitations, plus que <span id="nb-jour-restants"></span> jours à attendre avant votre voyage !</h1>
+        <p>Retrouvez les détails juste en dessous, ou vous pouvez revenir sur notre <a href="index.html">page d'accueil</a> pour voir nos autres voyages !</p>
+    </div>
+    <div id="resume-voyage" class="confirmation-voyage">
         <template id="resumeVoyage">
+<!--            Les balises de ce template sont remplies par le confirmation.js-->
             <img class="img-resume" src="{{imgDest}}">
-            <h3>C'est un excellent choix !</h3>
-            <p>Pour rappel, vous partez à {{destination}}</p><br>
-            <p>Du {{dateDebut}} au {{dateFin}}, soit {{nbJour}} jours (ou {{nbJour-1}} nuitées si vous préférez)</p><br>
-            <p>Vous serez {{nbAdultes}} adultes et {{nbEnfants}} enfants</p><br>
-            <p>Est ce que vous avez pris le pti dej' ? => {{petitdej}}</p><br>
-            <p>Et tout ça pour un total de {{prixTotal}}€ </p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
         </template>
     </div>
-    <a href="index.html">Retour à l'accueil</a>
+    <div class="prix-total">
+        <p>Coût total : <span id="prix-total"></span></p>
+    </div>
+
     <footer></footer>
 
 <script src="./script/confirmation.js"></script>

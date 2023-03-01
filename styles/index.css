@@ -32,8 +32,6 @@
 .grid-img {
     border-radius: 50px;
     background: linear-gradient(225deg, #cacaca, #f0f0f0);
-    /*box-shadow:  -20px 15px 60px #bebebe,*/
-    /*20px 0px 60px #ffffff;*/
     width: 400px;
     height: 400px;
     object-fit: cover;
@@ -62,13 +60,14 @@
     padding-left: 8px;
 }
 
+/* ronds de temperature */
 .grid-item p.temperature {
     position: absolute;
     top: 20%;
     left: 65%;
-    height: 50px;
-    width: 50px;
-    line-height: 50px;
+    height: 65px;
+    width: 65px;
+    line-height: 400%;
     background-color: lightgray;
     border-radius: 50%;
     text-align: center;

@@ -1,21 +1,21 @@
-:root {
-    --color1: #6E94E5;
-    --color2: #00B5F9;
-    --color3: #00D1EB;
-    --color4: #00E7C2;
-    --color5: #95F490;
-    --color6: #F9F871
-}
+/*:root {*/
+/*    --color1: #6E94E5;*/
+/*    --color2: #00B5F9;*/
+/*    --color3: #00D1EB;*/
+/*    --color4: #00E7C2;*/
+/*    --color5: #95F490;*/
+/*    --color6: #F9F871*/
+/*}*/
 
-@font-face {
-    font-family: lusitana;
-    src: url(../assets/fonts/Lusitana/Lusitana-Regular.ttf);
-    src: url(../assets/fonts/Lusitana/Lusitana-Bold.ttf);
-}
+/*@font-face {*/
+/*    font-family: lusitana;*/
+/*    src: url(../assets/fonts/Lusitana/Lusitana-Regular.ttf);*/
+/*    src: url(../assets/fonts/Lusitana/Lusitana-Bold.ttf);*/
+/*}*/
 
 body {
     color: grey;
-    font-family: lusitana, serif;
+    font-family: "Lexend Deca", serif;
     background: url("../assets/img/maldive/03.jpg") no-repeat center center fixed;
     background-size: cover;
 }
