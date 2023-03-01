@@ -11,6 +11,9 @@ for (let dest of listDestination) {
     voyage.push(new Voyage(dest));
 }
 
+function onUpdate(){
+    changeFilter();
+}
 function changeFilter() {
     // console.log('ChangeFilter');
     let filter = voyage;

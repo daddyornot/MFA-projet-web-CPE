@@ -1,36 +1,54 @@
+const urlParams = new URLSearchParams(window.location.search);
+
+if (urlParams.get('selection'))
+    selection = urlParams.get('selection');
+else
+    selection = "japon";
+
+var resa = new Reservation(selection);
 
 window.onload = () => {
 
-    const urlParams = new URLSearchParams(window.location.search);
-
     document.getElementById("form").addEventListener('change', changeForm);
-    if (urlParams.get('selection'))
-        selection = urlParams.get('selection');
-    else
-        selection = "japon";
-    levoyage = new Voyage(selection);
-    document.getElementById("titre-destination").innerHTML = levoyage.destination;
-    document.getElementById("desc-destination").innerHTML = levoyage.description;
-    document.getElementById("img-destination").setAttribute('src', levoyage.sImage);
-    if (levoyage.animaux)
+
+    let template = document.querySelector("#template");
+
+    let clone = document.importNode(template.content, true);
+    newsejour = clone.firstElementChild.innerHTML
+        .replace(/{{destination}}/g, resa.destination)
+        .replace(/{{description}}/g, resa.description);
+    newimg = clone.lastElementChild.innerHTML
+        .replace(/{{destination}}/g, resa.value)
+        .replace(/{{imgDest}}/g, resa.images[0]);
+    clone.firstElementChild.innerHTML = newsejour;
+    clone.lastElementChild.innerHTML = newimg;
+    document.getElementById("main-container").innerHTML= "";
+    document.getElementById("main-container").appendChild(clone);
+
+
+    if (resa.animaux)
         document.getElementById("animaux-destination").innerHTML = document
             .getElementById("animaux-destination").innerHTML + "Les animaux sont acceptés !";
     else
         document.getElementById("animaux-destination").innerHTML = document
             .getElementById("animaux-destination").innerHTML + "Les animaux ne sont pas acceptés désolé !";
 
-    let demain = new Date()
+    let demain = new Date();
     demain.setDate(new Date().getDate() + 1);
     document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
 
-    let lendemain = new Date()
+    let lendemain = new Date();
     lendemain.setDate(demain.getDate() +1 );
     document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
 
     changeForm();
 }
 
-    function resetTab(){
+function onUpdate(){
+    console.log("à implementer avec la météo : " + resa.temperature);
+}
+
+function resetTab(){
     document.getElementById('solde-destination').innerHTML =
         "        <tr>\n" +
         "            <th>Element</th>\n" +
@@ -54,7 +72,6 @@ function addLigne(ligne) {
 
 function changeForm() {
     resetTab();
-    var resa = new Reservation(selection);
     resa.setValue();
 
     if (resa.check) {

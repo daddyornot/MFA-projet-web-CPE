@@ -132,7 +132,7 @@ class Voyage {
                 success: (data) => {
                     console.log(data);
                     this._temperature = data.main.temp;
-                    changeFilter();
+                    onUpdate();
                 },
                 error: () => {
                     alert("Erreur dans la requete API");
@@ -312,11 +312,11 @@ class Panier {
 // }
 
 function imgNext(){
-    document.getElementById("img-destination").setAttribute('src', levoyage.nImage);
+    document.getElementById("img-destination").setAttribute('src', resa.nImage);
 }
 
 function imgPrevious(){
-    document.getElementById("img-destination").setAttribute('src', levoyage.pImage);
+    document.getElementById("img-destination").setAttribute('src', resa.pImage);
 }
 
 function dateDiff(date1, date2) {

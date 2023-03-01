@@ -16,12 +16,16 @@
 
 <body>
     <header></header>
-    <div class="main-container">
+    <template id="template">
         <div class="left-container">
-            <h1 id="titre-destination">Le Japon !</h1>
-            <section id="desc-destination"></section>
+            <h1 id="titre-destination">{{destination}}</h1>
+            <section id="desc-destination">{{description}}</section>
         </div>
-        <img alt="image du séjour" src="assets/img/japon/temple.jpg" id="img-destination">
+        <div >
+            <img alt="image de {{destination}}" src="{{imgDest}}" id="img-destination">
+        </div>
+    </template>
+    <div class="main-container" id="main-container">
     </div>
     <div class="navigate-img">
         <button onclick="imgPrevious()"><span class="material-symbols-outlined">arrow_back_ios</span></button>
