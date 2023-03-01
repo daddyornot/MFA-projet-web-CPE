@@ -312,3 +312,11 @@ function dateDiff(date1, date2) {
 
     return diff;
 }
+
+function toFormattedDate(date) {
+    return date.toLocaleString("fr-FR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    })
+}

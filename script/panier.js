@@ -63,13 +63,13 @@ function creationtableau(){
     document.getElementById("divtotal").appendChild(clone);
 }
 
-function toFormattedDate(date) {
-    return date.toLocaleString("fr-FR", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-    })
-}
+// function toFormattedDate(date) {
+//     return date.toLocaleString("fr-FR", {
+//         year: "numeric",
+//         month: "long",
+//         day: "numeric"
+//     })
+// }
 
 function confirmer() {
     location.href = "confirmation.html"
