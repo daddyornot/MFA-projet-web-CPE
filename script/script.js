@@ -122,6 +122,26 @@ class Voyage {
         this._animaux = voyages[_selection].animaux;
         this._selection = _selection;
         this._idimg = 0;
+
+        if (this.value !== "espace") {
+            const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.value + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: (data) => {
+                    console.log(data);
+                    this._temperature = data.main.temp;
+                },
+                error: () => {
+                    alert("Erreur dans la requete API");
+                }
+            });
+        }
+        else {
+            this._temperature = -272; //temperature de l'espace, openWeather n'a pas cette donnée malheureusement
+        }
+
     }
 
     get destination() { return this._destination }
@@ -149,6 +169,10 @@ class Voyage {
     }
     get sImage(){
         return this._images[this._idimg];
+    }
+
+    get temperature() {
+        return this._temperature;
     }
 
 }

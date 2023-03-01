@@ -5,13 +5,15 @@ window.onload = () => {
     document.getElementById("filtres").addEventListener('reset', resetForm);
 }
 
-function changeFilter() {
-    console.log('ChangeFilter');
-    let voyage = [];
+let voyage = [];
 
-    for (let dest of listDestination) {
-        voyage.push(new Voyage(dest));
-    }
+for (let dest of listDestination) {
+    voyage.push(new Voyage(dest));
+}
+
+function changeFilter() {
+    // console.log('ChangeFilter');
+
     if (document.getElementById("animaux-form").checked)
         voyage = voyage.filter(function (dest) {
             return dest._animaux;
@@ -23,13 +25,14 @@ function changeFilter() {
         return prixmin <= dest._prixnuit && dest._prixnuit <= prixmax
     })
 
-    if (voyage.length == 0 ){
+    if (voyage.length === 0 ){
         document.getElementById("liste-destinations").innerHTML = "Désolé aucun voyage correspond à vos critère\n" +
             " merci de modifier vos critères pour plus de résultats"
     }
     else
     {
         let template = document.querySelector("#listeDestinations");
+        document.getElementById("liste-destinations").innerHTML = "";
         for (const d of voyage) {
             let clone = document.importNode(template.content, true);
             let animaux = "display: ";
@@ -41,7 +44,7 @@ function changeFilter() {
 
             newDestination = clone.firstElementChild.innerHTML
                 .replace(/{{destination}}/g, d.destination)
-                .replace(/{{temperature}}/g, d.prixPetitDej)
+                .replace(/{{temperature}}/g, d.temperature)
                 .replace(/{{prixNuit}}/g, d.prixNuit)
                 .replace(/{{imgDest}}/g, d.images[0])
                 .replace(/{{url}}/g, d.value)
