@@ -13,19 +13,19 @@ for (let dest of listDestination) {
 
 function changeFilter() {
     // console.log('ChangeFilter');
-
+    let filter = voyage;
     if (document.getElementById("animaux-form").checked)
-        voyage = voyage.filter(function (dest) {
+        filter = filter.filter(function (dest) {
             return dest._animaux;
         });
     let prixmax = document.getElementById("prix-max").value;
     let prixmin = document.getElementById("prix-mini").value;
 
-    voyage = voyage.filter(function (dest) {
+    filter = filter.filter(function (dest) {
         return prixmin <= dest._prixnuit && dest._prixnuit <= prixmax
     })
 
-    if (voyage.length === 0 ){
+    if (filter.length === 0 ){
         document.getElementById("liste-destinations").innerHTML = "Désolé aucun voyage correspond à vos critère\n" +
             " merci de modifier vos critères pour plus de résultats"
     }
@@ -33,7 +33,7 @@ function changeFilter() {
     {
         let template = document.querySelector("#listeDestinations");
         document.getElementById("liste-destinations").innerHTML = "";
-        for (const d of voyage) {
+        for (const d of filter) {
             let clone = document.importNode(template.content, true);
             let animaux = "display: ";
 

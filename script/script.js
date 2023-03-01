@@ -132,6 +132,7 @@ class Voyage {
                 success: (data) => {
                     console.log(data);
                     this._temperature = data.main.temp;
+                    changeFilter();
                 },
                 error: () => {
                     alert("Erreur dans la requete API");
