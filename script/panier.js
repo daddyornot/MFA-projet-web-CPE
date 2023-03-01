@@ -1,6 +1,6 @@
 
+var panier = new Panier();
 window.onload = () => {
-    panier = new Panier();
     if (!panier.get()){ //Si le local storage n'existe pas
         document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
         document.getElementById("divtotal").style.display = 'none';
@@ -27,9 +27,7 @@ function remove(id){
 function creationtableau(){
     let template = document.querySelector("#listeDestinations");
     let total = 0;
-    for (e of panier.get()) {
-        const voyage = new Reservation(e._selection);
-        voyage.all(e._datedebut, e._datefin, e._nbadulte, e._nbenfant, e._petitdej, e._id);
+    for (let voyage of panier.get()) {
         if(voyage.petitDej)
             var dej = "Pti dej' inclus";
         else

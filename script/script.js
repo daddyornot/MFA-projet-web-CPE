@@ -246,9 +246,14 @@ class Reservation extends Voyage{
 
 class Panier {
     constructor() {
-        if(localStorage.panier)
-            this._panier = JSON.parse(localStorage.panier);
-        console.log(this._panier);
+        if(localStorage.panier){
+            let panier = JSON.parse(localStorage.panier);
+            for (let e of panier){
+                const voyage = new Reservation(e._selection);
+                voyage.all(e._datedebut, e._datefin, e._nbadulte, e._nbenfant, e._petitdej, e._id);
+                this.add = voyage;
+            }
+        }
     }
     set add(a) {
 
@@ -262,7 +267,7 @@ class Panier {
             this._panier = [a];
         }
         window.localStorage.setItem("panier", JSON.stringify(this._panier));
-        console.log(this._panier);
+        console.log(a.id);
     }
     get (){
         return this._panier;
