@@ -19,6 +19,7 @@ for (let voyage of panier.get()) {
     }
     clone.querySelector("p:nth-of-type(5)").textContent = `Ce voyage coute donc ${voyage.total}€`;
     document.getElementById("resume-voyage").appendChild(clone);
+<<<<<<< HEAD
 }
 
 function onUpdate(){
@@ -26,15 +27,26 @@ function onUpdate(){
         console.log("à implementer avec la météo : " + v.temperature);
     }
 }
+=======
+>>>>>>> 6a5b270 (fix rebase)
     if (dateDiff(new Date(), voyage.datedebut).day < nbJourRestants) {
         nbJourRestants = dateDiff(new Date(), voyage.datedebut).day;
     }
     prixTotal += voyage.total;
 }
 
+
 document.getElementById("nb-jour-restants").innerHTML = nbJourRestants;
 document.getElementById("prix-total").innerHTML = " " + prixTotal + " €";
 
+<<<<<<< HEAD
 window.onunload = () => {
     window.localStorage.clear();
 }
+=======
+function onUpdate(){
+    for (v of panier.get()){
+        console.log("à implementer avec la météo : " + v.temperature);
+    }
+}
+>>>>>>> 6a5b270 (fix rebase)
