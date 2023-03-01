@@ -16,3 +16,9 @@ for (let voyage of panier.get()) {
 
     document.getElementById("resume-voyage").appendChild(clone);
 }
+
+function onUpdate(){
+    for (v of panier.get()){
+        console.log("à implementer avec la météo : " + v.temperature);
+    }
+}

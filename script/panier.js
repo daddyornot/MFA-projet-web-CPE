@@ -1,7 +1,6 @@
 
 var panier = new Panier();
 window.onload = () => {
-    console.log("onLoad");
     panier = new Panier();
     if (!panier.get()){ //Si le local storage n'existe pas
         document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
@@ -18,6 +17,12 @@ window.onload = () => {
         }
         else
         creationtableau();
+    }
+}
+
+function onUpdate(){
+    for (v of panier.get()){
+        console.log("à implementer avec la météo : " + v.temperature);
     }
 }
 

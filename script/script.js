@@ -130,7 +130,7 @@ class Voyage {
                 type: "GET",
                 dataType: "json",
                 success: (data) => {
-                    console.log(data);
+                    // console.log(data);
                     this._temperature = data.main.temp;
                     onUpdate();
                 },
@@ -293,7 +293,6 @@ class Panier {
             this._panier = [a];
         }
         window.localStorage.setItem("panier", JSON.stringify(this._panier));
-        console.log(a.id);
     }
     get (){
         return this._panier;
