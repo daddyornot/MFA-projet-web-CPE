@@ -7,7 +7,7 @@ table img {
     clip-path: circle(50%);
 }
 
-.contenu-panier {
+.contenu-panier, #divtotal {
     box-shadow:  -20px 20px 60px #bebebe,
     20px -20px 60px #ffffff;
     background-color: rgba(255, 255, 255, .5);
@@ -31,4 +31,8 @@ table img {
 button {
     display: block;
     margin: auto;
+}
+
+#divtotal{
+   width: fit-content;
 }

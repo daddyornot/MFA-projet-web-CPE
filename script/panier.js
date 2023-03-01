@@ -1,15 +1,19 @@
 
 window.onload = () => {
-    console.log("onLoad");
     panier = new Panier();
-    console.log(panier.get());
-
-    if (!panier.get()){
+    if (!panier.get()){ //Si le local storage n'existe pas
         document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
+        document.getElementById("divtotal").style.display = 'none';
+        document.getElementsByClassName("info-commande")[0].style.display = 'none';
+        document.getElementsByTagName("button")[0].style.display = 'none';
     }
     else {
-        if (panier.get().length == 0)
+        if (panier.get().length == 0){ //si le local storage est vide
             document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
+            document.getElementById("divtotal").style.display = 'none';
+            document.getElementsByClassName("info-commande")[0].style.display = 'none';
+            document.getElementsByTagName("button")[0].style.display = 'none';
+        }
         else
         creationtableau();
     }
@@ -22,7 +26,7 @@ function remove(id){
 
 function creationtableau(){
     let template = document.querySelector("#listeDestinations");
-
+    let total = 0;
     for (e of panier.get()) {
         const voyage = new Reservation(e._selection);
         voyage.all(e._datedebut, e._datefin, e._nbadulte, e._nbenfant, e._petitdej, e._id);
@@ -32,7 +36,7 @@ function creationtableau(){
             var dej = "Pas de Pti dej'";
 
         let clone = document.importNode(template.content, true);
-
+        total += voyage.total;
         newDestination = clone.firstElementChild.innerHTML
             .replace(/{{destination}}/g, voyage.destination)
             .replace(/{{dateDebut}}/g, toFormattedDate(voyage.datedebut))
@@ -46,6 +50,14 @@ function creationtableau(){
         clone.firstElementChild.innerHTML = newDestination;
         document.getElementById("contenu-panier").appendChild(clone);
     }
+
+    let templatetotal = document.querySelector("#total");
+
+    let clone = document.importNode(templatetotal.content, true);
+    newtotal = clone.firstElementChild.innerHTML
+        .replace(/{{prix}}/g, total);
+    clone.firstElementChild.innerHTML = newtotal;
+    document.getElementById("divtotal").appendChild(clone);
 }
 
 function toFormattedDate(date) {
