@@ -281,10 +281,10 @@ class Panier {
     }
 }
 
-window.onload = () => {
-    // const resa = localStorage.getItem("res");
-    console.log(JSON.parse(localStorage.res));
-}
+// window.onload = () => {
+//     // const resa = localStorage.getItem("res");
+//     console.log(JSON.parse(localStorage.res));
+// }
 
 function imgNext(){
     document.getElementById("img-destination").setAttribute('src', levoyage.nImage);

@@ -73,7 +73,6 @@ function changeForm() {
 }
 
 function valider() {
-
     var resa = new Reservation(selection);
     resa.setValue();
     if (resa.check){

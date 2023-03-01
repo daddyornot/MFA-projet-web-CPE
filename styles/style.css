@@ -70,8 +70,14 @@ button:active {
     box-shadow: 0 0 0 0 black;
 }
 
-button:disabled {
+button:disabled:hover {
     transform: none;
+    box-shadow: none;
+}
+
+button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
 }
 
 .check {

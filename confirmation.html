@@ -16,20 +16,22 @@
     <header></header>
     <h1>Félicitations, vous prenez la fusée pour l'espace !</h1>
     <div>Retrouvez les détails juste en dessous, ou retournez sur notre page d'accueil pour partir ailleurs</div>
-    <div class="resume-voyage">
-        <template id="listeDestinations">
-            <img class="img-panier" src="{{imgDest}}">
+    <div id="resume-voyage">
+        <template id="resumeVoyage">
+            <img class="img-resume" src="{{imgDest}}">
             <h3>C'est un excellent choix !</h3>
             <p>Pour rappel, vous partez à {{destination}}</p><br>
             <p>Du {{dateDebut}} au {{dateFin}}, soit {{nbJour}} jours (ou {{nbJour-1}} nuitées si vous préférez)</p><br>
             <p>Vous serez {{nbAdultes}} adultes et {{nbEnfants}} enfants</p><br>
             <p>Est ce que vous avez pris le pti dej' ? => {{petitdej}}</p><br>
-            <p>Et tout ça pour un total de {{prix}}€ </p>
-            <button onclick="remove({{suppr}})">Supprimer</button></td>
+            <p>Et tout ça pour un total de {{prixTotal}}€ </p>
         </template>
     </div>
     <a href="index.html">Retour à l'accueil</a>
     <footer></footer>
+
+<script src="./script/confirmation.js"></script>
 </body>
+
 
 </html>
