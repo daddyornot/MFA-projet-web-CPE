@@ -70,6 +70,10 @@ button:active {
     box-shadow: 0 0 0 0 black;
 }
 
+button:disabled {
+    transform: none;
+}
+
 .check {
     position: relative;
     width: 20px;

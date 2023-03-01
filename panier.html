@@ -15,49 +15,41 @@
 
 <body>
     <header></header>
-    <table id="liste-destinations">
-        <tr>
-            <th>Photo</th>
-            <th>Destinations</th>
-            <th>Adultes</th>
-            <th>Enfants</th>
-            <th>Petit déjeuner</th>
-            <th>Prix</th>
-            <th>Supprimer/Modifer</th>
-        </tr>
+    <table id="contenu-panier" class="contenu-panier">
         <template id="listeDestinations">
-            <tr>
-                <td><img src="{{imgDest}}"></td>
-                <td>{{destination}}</td>
-                <td>{{nbAdultes}}</td>
-                <td>{{nbEnfants}}</td>
-                <td>{{petitdej}}</td>
-                <td>{{prix}}</td>
-                <td><button onclick="remove({{suppr}})">Supprimer</button></td>
-            </tr>
+                <tr>
+                    <td><img src="{{imgDest}}"></td>
+                    <td>{{destination}}</td>
+                    <td>Du {{dateDebut}}<br>Au {{dateFin}}</td>
+                    <td>{{nbAdultes}} adulte(s)</td>
+                    <td>{{nbEnfants}} enfant(s)</td>
+                    <td>{{petitdej}}</td>
+                    <td>{{prix}} €</td>
+                    <td><button onclick="remove({{suppr}})">Supprimer</button></td>
+                </tr>
         </template>
     </table>
 
-    <form action="confirmation.html">
+    <form action="confirmation.html" class="info-commande">
         <label for="nom">Nom</label>
-        <input required id="nom" type="text">
         <label for="prenom">Prenom</label>
-        <input required id="prenom" type="text">
         <label for="adresse">Adresse</label>
-        <input id="adresse" type="text">
         <label for="ville">Ville</label>
-        <input id="ville" type="text">
         <label for="code-postal">Code Postal</label>
-        <input id="code-postal" type="text">
         <label for="tel">N° de Téléphone</label>
-        <input id="tel" type="tel">
         <label for="email">email</label>
-        <input required id="email" type="email">
         <label for="carte-bleue">N° de Carte Bancaire</label>
-        <input required id="carte-bleue" type="text">
-        <button type="submit">Cette fois ca y est !</button>
-    </form>
 
+        <input required id="nom" type="text">
+        <input required id="prenom" type="text">
+        <input id="adresse" type="text">
+        <input id="ville" type="text">
+        <input id="code-postal" type="text">
+        <input id="tel" type="tel">
+        <input required id="email" type="email">
+        <input required id="carte-bleue" type="text">
+    </form>
+    <button onclick="confirmer()">Cette fois ca y est !</button>
     <footer></footer>
 </body>
 
