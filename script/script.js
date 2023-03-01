@@ -167,7 +167,7 @@ class Reservation extends Voyage{
     setValue() {
         this._datedebut = new Date(document.getElementById('date-debut').value);
         if( this._datedebut < Date.now()){
-            alert("La date de début n'est pas bonne");
+            // alert("La date de début n'est pas bonne");
             let demain = new Date()
             demain.setDate(new Date().getDate() + 1);
             document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
@@ -188,8 +188,12 @@ class Reservation extends Voyage{
             document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
 
             this._datefin = new Date(document.getElementById('date-fin').value);
-
         }
+
+        if(this.nbJour <= 0)
+            this._check = false;
+        else
+            this._check = true;
 
         this._nbadulte = Number(document.getElementById('nb-adulte').value);
         this._nbenfant = Number(document.getElementById('nb-enfant').value);
@@ -202,6 +206,7 @@ class Reservation extends Voyage{
     set datefin(a) { this._datefin = a};
     get id() { return this._id };
     set id(m) { this._id = m};
+    get check(){ return this._check };
 
     get nbJour() { return dateDiff(this._datedebut, this._datefin).day}
 

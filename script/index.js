@@ -29,9 +29,6 @@ function changeFilter() {
     }
     else
     {
-        document.getElementById("liste-destinations").innerHTML = templateGrid;
-        // $("#liste-destinations").load("templateGrid.html");
-
         let template = document.querySelector("#listeDestinations");
         for (const d of voyage) {
             let clone = document.importNode(template.content, true);
@@ -57,24 +54,6 @@ function changeFilter() {
         }
     }
 }
-
-var templateGrid = "<template id=\"listeDestinations\">\n" +
-    "                <div class=\"grid-item\">\n" +
-    "                    <div class=\"img-temp\">\n" +
-    "                        <a href=\"detail-sejour.html?selection={{url}}\">\n" +
-    "                            <h2>{{destination}}</h2>\n" +
-    "                            <p class=\"temperature\">{{temperature}}°C</p>\n" +
-    "                            <img class=\"grid-img\" src=\"{{imgDest}}\" alt=\"Photo des Maldive\">\n" +
-    "                        </a>\n" +
-    "                        </div>\n" +
-    "                        <div class=\"dest-infos\">\n" +
-    "                            <span class=\"material-symbols-outlined\" id=\"animaux-destination\" style={{animaux}}>\n" +
-    "                                pets\n" +
-    "                            </span>\n" +
-    "                            <p class=\"prix\">{{prixNuit}}€ /j</p>\n" +
-    "                        </div>\n" +
-    "                </div>\n" +
-    "            </template>";
 
 function resetForm(){
     console.log("reset");

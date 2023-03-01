@@ -39,8 +39,8 @@
                     <label for="nb-enfant">Nombre d'enfants (-12ans)</label>
                     <label class="checkbox">Petit déjeuner</label>
 
-                    <input required type="date" id="date-debut" value="2023-01-01">
-                    <input required type="date" id="date-fin" value="2023-01-01">
+                    <input required type="date" id="date-debut" value="2023-01-01" placeholder="dd-mm-yyyy">
+                    <input required type="date" id="date-fin" value="2023-01-01" placeholder="dd-mm-yyyy">
                     <select name="nb-adulte" id="nb-adulte">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -85,7 +85,7 @@
                     <th>Prix</th>
                 </tr>
             </table>
-            <button onclick="valider()" value="Je pars en voyage !">Je pars en voyage !</button>
+            <button onclick="valider()" value="Je pars en voyage !" id="btnvalider">Je pars en voyage !</button>
             <button onclick="resetForm()" class="reset" >Réinitialiser</button>
         </div>
     </div>

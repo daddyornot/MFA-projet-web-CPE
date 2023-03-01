@@ -57,19 +57,35 @@ function changeForm() {
     var resa = new Reservation(selection);
     resa.setValue();
 
-    addLigne(["Nuits adultes", resa.nbJour, resa.nbAdulte, resa.prixNuit, resa.totalAdulte]);
-    addLigne(["Nuits enfants", resa.nbJour, resa.nbEnfant, resa.prixnuitenfant , resa.totalEnfants]);
+    if (resa.check) {
+        document.getElementById('btnvalider').disabled = false;
+        addLigne(["Nuits adultes", resa.nbJour, resa.nbAdulte, resa.prixNuit, resa.totalAdulte]);
+        addLigne(["Nuits enfants", resa.nbJour, resa.nbEnfant, resa.prixnuitenfant, resa.totalEnfants]);
 
-    if (resa.petitDej)
-        addLigne(["Petits déjeuner", resa.nbJour, resa.nbPersonnes, resa.prixPetitDej , resa.totalpetitdej]);
+        if (resa.petitDej)
+            addLigne(["Petits déjeuner", resa.nbJour, resa.nbPersonnes, resa.prixPetitDej, resa.totalpetitdej]);
 
-    addLigne(["Total", resa.nbJour, resa.nbPersonnes , "-" , resa.total]);
+        addLigne(["Total", resa.nbJour, resa.nbPersonnes, "-", resa.total]);
+    } else {
+        document.getElementById('solde-destination').innerHTML = "Veuillez selectionner des dates correctes";
+        document.getElementById('btnvalider').disabled = true;
+    }
 }
 
 function valider() {
+
     var resa = new Reservation(selection);
     resa.setValue();
-    var panier = new Panier();
-    panier.add = resa;
-    location.href = "panier.html";
+    if (resa.check){
+        var panier = new Panier();
+        panier.add = resa;
+        location.href = "panier.html";
+    } else {
+        alert("Veuillez selectionner des dates correctes");
+    }
+}
+
+function resetForm(){
+    document.getElementById('form').reset();
+    changeForm();
 }
