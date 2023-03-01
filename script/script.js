@@ -2,6 +2,7 @@ $(function() {
     $("header").load("header.html");
     $("footer").load("footer.html");
 });
+
 let listDestination = ["maldive", "japon","canada",
    "chine", "espace", "france"];
 const voyages = {
@@ -282,8 +283,7 @@ class Panier {
 }
 
 // window.onload = () => {
-//     // const resa = localStorage.getItem("res");
-//     console.log(JSON.parse(localStorage.res));
+//     changeHeader();
 // }
 
 function imgNext(){

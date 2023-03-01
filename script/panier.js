@@ -1,11 +1,8 @@
 
 var panier = new Panier();
 window.onload = () => {
-<<<<<<< HEAD
-=======
     console.log("onLoad");
     panier = new Panier();
->>>>>>> 57ad9e4 (feat: start confirmation)
     if (!panier.get()){ //Si le local storage n'existe pas
         document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
         document.getElementById("divtotal").style.display = 'none';
@@ -62,14 +59,6 @@ function creationtableau(){
     clone.firstElementChild.innerHTML = newtotal;
     document.getElementById("divtotal").appendChild(clone);
 }
-
-// function toFormattedDate(date) {
-//     return date.toLocaleString("fr-FR", {
-//         year: "numeric",
-//         month: "long",
-//         day: "numeric"
-//     })
-// }
 
 function confirmer() {
     location.href = "confirmation.html"
