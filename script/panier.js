@@ -66,5 +66,5 @@ function creationtableau(){
 }
 
 function confirmer() {
-    location.href = "confirmation.html"
+    location.href = "confirmation.html";
 }

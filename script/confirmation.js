@@ -19,7 +19,6 @@ for (let voyage of panier.get()) {
     }
     clone.querySelector("p:nth-of-type(5)").textContent = `Ce voyage coute donc ${voyage.total}€`;
     document.getElementById("resume-voyage").appendChild(clone);
-<<<<<<< HEAD
 }
 
 function onUpdate(){
@@ -27,8 +26,6 @@ function onUpdate(){
         console.log("à implementer avec la météo : " + v.temperature);
     }
 }
-=======
-
     if (dateDiff(new Date(), voyage.datedebut).day < nbJourRestants) {
         nbJourRestants = dateDiff(new Date(), voyage.datedebut).day;
     }
@@ -37,4 +34,7 @@ function onUpdate(){
 
 document.getElementById("nb-jour-restants").innerHTML = nbJourRestants;
 document.getElementById("prix-total").innerHTML = " " + prixTotal + " €";
->>>>>>> e9c130a (feat: add confirmation)
+
+window.onunload = () => {
+    window.localStorage.clear();
+}
