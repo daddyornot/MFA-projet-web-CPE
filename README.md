@@ -12,4 +12,4 @@ Sur landing et index
 - pop up accepter les cookies a l'arrivée
 - responsive
 - bouton modifier panier : sur la meme page ! remplacer les lignes correspodnantes
-- adulte(s) a remplacer par singulier et pluriel
+- ~~adulte(s) a remplacer par singulier et pluriel~~
