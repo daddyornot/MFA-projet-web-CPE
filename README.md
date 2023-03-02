@@ -1,1 +1,15 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10017282&assignment_repo_type=AssignmentRepo)
+# IDEES TODO
+
+- background "live" => faire défiler les photos des destinations
+Sur landing et index
+- background "conditionnel" sur detail sejour
+- virer le .html dans l'url
+- arriver sur la landing page du site
+- harmoniser le style de tous les inputs
+- optimiser requete API : si on a deja la T°C on refait pas de requete
+- authentification
+- historique des voyages
+- pop up accepter les cookies a l'arrivée
+- responsive
+- bouton modifier panier : sur la meme page ! remplacer les lignes correspodnantes
+- adulte(s) a remplacer par singulier et pluriel

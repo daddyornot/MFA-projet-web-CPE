@@ -20,10 +20,10 @@ function genererResume() {
             .replace(/{{dateDebut}}/g, toFormattedDate(voyage.datedebut))
             .replace(/{{dateFin}}/g, toFormattedDate(voyage.datefin))
             .replace(/{{nbJour}}/g, voyage.nbJour)
-            .replace(/{{nbAdultes}}/g, voyage.nbAdulte)
-            .replace(/{{nbEnfants}}/g, voyage.nbEnfant)
-                            // exp ternaire :   condition testée ?  valeur si true      :  valeur si false
+                            // expr ternaire :  condition testée ?  valeur si true      :  valeur si false
             .replace(/{{petitDej}}/g, (voyage.petitDej ? "Avec le Pti dej' !" : "Sans pti dej'"))
+            .replace(/{{nbAdultes}}/g, voyage.nbAdulte>1 ? voyage.nbAdulte + " adultes" : voyage.nbAdulte + " adulte")
+            .replace(/{{nbEnfants}}/g, voyage.nbEnfant>1 ? voyage.nbEnfant + " enfants" : voyage.nbEnfant===1 ? voyage.nbEnfant + " enfant" : "sans enfants en plus !")
             .replace(/{{prixVoyage}}/g, voyage.total)
 
         clone.firstElementChild.innerHTML = imgSejour;
@@ -41,7 +41,7 @@ function genererResume() {
         document.getElementById("nb-jour-restants").innerHTML = "Félicitations, plus que " + nbJourRestants + " jours avant de partir en voyage !";
     }
     else {
-        document.getElementById("nb-jour-restants").innerHTML = "Wow, vous partez aujourd'hui ?! Dépêchez vous de faire vos valises !";
+        document.getElementById("nb-jour-restants").innerHTML = "Wow, vous partez demain ?! Dépêchez vous de faire vos valises !";
     }
     document.getElementById("prix-total").innerHTML = " " + prixTotal + " €";
 }
@@ -50,7 +50,7 @@ function genererResume() {
 
 // on vide le panier une fois qu'on est arrivé sur la page de confirmation
 window.onunload = () => {
-    // window.localStorage.clear();
+    window.localStorage.clear();
 }
 
 function onUpdate(){
