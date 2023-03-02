@@ -13,3 +13,4 @@ Sur landing et index
 - responsive
 - bouton modifier panier : sur la meme page ! remplacer les lignes correspodnantes
 - ~~adulte(s) a remplacer par singulier et pluriel~~
+- ajouter prévisions météo ?
