@@ -4,7 +4,6 @@ window.onload = () => {
 
     changeFilter();
     document.getElementById("filtres").addEventListener('input', changeFilter);
-    document.getElementById("filtres").addEventListener('reset', resetForm);
 }
 
 let voyage = [];
@@ -62,13 +61,20 @@ function changeFilter() {
         }
     }
     lectureCritere();
+    verificationDate();
 }
 
 function resetForm(){
     console.log("reset");
     document.getElementById("prix-mini").value = document.getElementById("prix-mini").min;
     document.getElementById("prix-max").value = document.getElementById("prix-max").max;
-
+    document.getElementById("nb-adulte").value = 1;
+    document.getElementById("nb-enfant").value = 0;
+    document.getElementById("animaux-form").checked = false;
+    document.getElementById("petitdej").checked = false;
+    sessionStorage.clear();
+    ecritureCritere();
+    verificationDate();
     changeFilter();
 }
 

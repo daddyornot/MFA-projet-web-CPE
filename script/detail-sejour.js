@@ -33,23 +33,8 @@ window.onload = () => {
         document.getElementById("animaux-destination").innerHTML = document
             .getElementById("animaux-destination").innerHTML + "Les animaux ne sont pas acceptés désolé !";
 
-    let demain = new Date();
-    demain.setDate(new Date().getDate() + 1);
-    document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
-
-    let lendemain = new Date();
-    lendemain.setDate(demain.getDate() +1 );
-    document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
-
-    if (sessionStorage.getItem("critere")){
-        crit = JSON.parse(sessionStorage.getItem("critere"));
-        document.getElementById("date-debut").value = crit.datedebut ;
-        document.getElementById("date-fin").value = crit.datefin;
-        document.getElementById("nb-adulte").value= crit.nbadulte ;
-        document.getElementById("nb-enfant").value = crit.nbenfant;
-        document.getElementById("petitdej").checked = crit.petitdej;
-    }
-
+    ecritureCritere();
+    verificationDate();
     changeForm();
 }
 

@@ -201,33 +201,9 @@ class Reservation extends Voyage{
     }
 
     setValue() {
+        verificationDate();
         this._datedebut = new Date(document.getElementById('date-debut').value);
-            let demain = new Date()
-            demain.setDate(new Date().getDate() + 1);
-
-            document.getElementById('date-debut').min = demain.toISOString().substring(0,10);
-        if( this._datedebut < Date.now()){
-            // alert("La date de début n'est pas bonne");
-            document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
-
-            let lendemain = new Date()
-            lendemain.setDate(demain.getDate() +1 );
-            document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
-
-            this._datedebut = new Date(document.getElementById('date-debut').value);
-
-        }
-        let lendemain = new Date()
-        lendemain.setDate(this._datedebut.getDate() + 1 );
-
-        document.getElementById('date-fin').min = lendemain.toISOString().substring(0,10);
         this._datefin = new Date(document.getElementById('date-fin').value);
-
-        if(this.nbJour <= 0){
-            document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
-
-            this._datefin = new Date(document.getElementById('date-fin').value);
-        }
 
         if(this.nbJour <= 0)
             this._check = false;
@@ -366,13 +342,35 @@ function toFormattedDate(date) {
 }
 
 function ecritureCritere(){
+    let demain = new Date();
+    demain.setDate(new Date().getDate() + 1);
+    let lendemain = new Date();
+    lendemain.setDate(demain.getDate() +1 );
+
     if (sessionStorage.getItem("critere")){
         crit = JSON.parse(sessionStorage.getItem("critere"));
-        document.getElementById("date-debut").value = crit.datedebut ;
-        document.getElementById("date-fin").value = crit.datefin;
-        document.getElementById("nb-adulte").value= crit.nbadulte ;
-        document.getElementById("nb-enfant").value = crit.nbenfant;
-        document.getElementById("petitdej").checked = crit.petitdej;
+        if(crit.datedebut == ""){
+            document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
+        }else
+        {
+            document.getElementById("date-debut").value = crit.datedebut ;
+            lendemain = new Date();
+            lendemain.setDate(new Date(crit.datedebut).getDate() +1 );
+        }
+        if(crit.datefin == ""){
+            document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
+        } else {
+            document.getElementById("date-fin").value = crit.datefin;
+        }
+        if(crit.nbadulte != "")
+            document.getElementById("nb-adulte").value= crit.nbadulte ;
+        if(crit.nbenfant != "")
+            document.getElementById("nb-enfant").value = crit.nbenfant;
+        if(crit.petitdej != "")
+            document.getElementById("petitdej").checked = crit.petitdej;
+    } else {
+        document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
+        document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
     }
 }
 
@@ -385,4 +383,32 @@ function lectureCritere(){
         petitdej : document.getElementById("petitdej").checked,
     }
     window.sessionStorage.setItem("critere", JSON.stringify(critere));
+}
+
+function verificationDate(){
+    let datedebut = new Date(document.getElementById('date-debut').value);
+    let demain = new Date();
+    demain.setDate(new Date().getDate() + 1);
+    document.getElementById('date-debut').min = demain.toISOString().substring(0,10);
+
+    if( datedebut < Date.now()){
+        // alert("La date de début n'est pas bonne");
+        document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
+
+        let lendemain = new Date();
+        lendemain.setDate(demain.getDate() +1 );
+        document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
+
+        datedebut = new Date(document.getElementById('date-debut').value);
+
+    }
+    let lendemain = new Date();
+    lendemain.setDate(datedebut.getDate() + 1 );
+    document.getElementById('date-fin').min = lendemain.toISOString().substring(0,10);
+
+    datefin = new Date(document.getElementById('date-fin').value);
+
+    if(dateDiff(datedebut, datefin).day <= 0){
+        document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
+    }
 }
