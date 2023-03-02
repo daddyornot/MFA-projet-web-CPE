@@ -1,22 +1,40 @@
 
-#filtres {
-    margin: 30px 4% 20px 4%;
-    padding: 10px;
-    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    width: 90%;
-    height: 26px;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    background-color: whitesmoke;
-    background-color: rgba(225, 249, 255, .1)
+#toggle-filtres {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 1em;
 }
 
-.nb-pers input{
-    width: 25px;
+.hidden {
+    display: none;
+}
+
+.active-filter {
+    margin: 30px 4% 20px 4%;
+    padding: 15px;
+    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
+    border-radius: 20px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(8, 1fr);
+    width: 90%;
+    height: fit-content;
+    background-color: rgba(225, 249, 255, .1);
+}
+
+input {
+    background-color: rgba(255, 255, 255, .5);
+    border: none;
+}
+
+select {
+    background-color: rgba(255, 255, 255, .5);
+    border: none;
+}
+
+.age {
+    font-size: 12px;
 }
 
 .grid-container {

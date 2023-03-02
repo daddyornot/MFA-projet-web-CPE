@@ -71,3 +71,18 @@ function resetForm(){
 
     changeFilter();
 }
+
+// Permet d'afficher/cacher les filtres et changer le texte du bouton
+const toggleButton = document.getElementById('toggle-filtres');
+const formFiltres = document.getElementById('filtres');
+
+toggleButton.addEventListener('click', () => {
+    formFiltres.classList.toggle("active-filter");
+    console.log(formFiltres.className);
+    if (formFiltres.className === "hidden") {
+        toggleButton.innerText = "Afficher les filtres";
+    }
+    else {
+        toggleButton.innerText = "Cacher les filtres";
+    }
+})

@@ -15,62 +15,48 @@
     <body>
         <header></header>
         <!-- Filtre -->
-        <form id="filtres">
-<!--            <h3>Filtre</h3>-->
-            <label for="prix-mini">Prix mini : </label>
+        <button id="toggle-filtres">Afficher les filtres</button>
+        <form id="filtres" class="hidden">
+            <label for="prix-mini">Prix mini :</label>
+            <label for="prix-max">Prix max :</label>
+            <label for="date-debut">Du :</label><label for="date-fin">Au : </label>
+            <label for="nb-adulte">Nombre d'adultes</label>
+            <label for="nb-enfant">Nombre d'enfants<p class="age">-12ans</p></label>
+            <label class="checkbox">Animaux acceptés</label>
+            <label class="checkbox">Petit déjeuner</label>
+
             <input id="prix-mini" name="Range" type="number" max="5000" min="0" value=0>
-
-            <label for="prix-max">Prix max : </label>
             <input id="prix-max" type="number" max="5000" min="0" value=5000>
-
-            <label for="date-debut">Du : </label>
             <input id="date-debut" type="date">
-            <label for="date-fin">Au : </label>
             <input id="date-fin" type="date">
+            <select name="nb-adulte" id="nb-adulte">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <select name="nb-enfant" id="nb-enfant">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <input class="check" type="checkbox" id="animaux-form">
+            <input class="check" type="checkbox" id="petitdej">
 
-            <div>
-                <label for="nb-adulte">Nombre d'adultes<br></label>
-                <select name="nb-adulte" id="nb-adulte">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
-            <div>
-                <label for="nb-enfant">Nombre d'enfants (-12ans)</label>
-                <select name="nb-enfant" id="nb-enfant">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
-
-            <div>
-                <label class="checkbox">Animaux acceptés<br>
-                    <input class="check" type="checkbox" id="animaux-form">
-                </label>
-            </div>
-            <div>
-                <label class="checkbox">Petit déjeuner<br>
-                    <input class="check" type="checkbox" id="petitdej">
-                </label>
-            </div>
-            
             <button class="reset" type="reset">Réinitialiser</button>
         </form>
 
