@@ -3,8 +3,7 @@ $(function() {
     $("footer").load("footer.html");
 });
 
-let listDestination = ["maldive", "japon","canada",
-   "chine", "espace", "france"];
+let listDestination = ["maldive", "japon", "canada", "chine", "espace", "france", "islande"];
 const voyages = {
     "japon": {
         destination: "Le Japon",
@@ -52,7 +51,7 @@ const voyages = {
             "Enfin, ne manquez pas l'occasion de découvrir la culture autochtone du Canada en visitant des communautés et des réserves autochtones, et apprendre leur histoire, leur culture, mais aussi leur gastronomie.\n" +
             "\n" +
             "En somme, un voyage au Canada est une expérience passionnante pour les amoureux de la nature, de la culture et des grandes villes, pour une immersion totale dans un pays fascinant et accueillant.",
-        images: ["assets/img/canada/01.jpg", "assets/img/canada/02.jpg", "assets/img/canada/03.jpg"],
+        images: ["assets/img/canada/01.jpg", "assets/img/canada/02.jpg", "assets/img/canada/03.jpg", "assets/img/canada/04.jpg", "assets/img/canada/05.jpg"],
         prixnuit: 250,
         prixdej: 12,
         animaux: true,
@@ -115,6 +114,27 @@ const voyages = {
         prixnuit: 150,
         prixdej: 8,
         animaux: true,
+    },
+    "islande": {
+        destination: "L'Islande",
+        ville: "Reykjavík",
+        description: "L'Islande est une île fascinante située dans l'océan Atlantique Nord, célèbre pour ses paysages à couper le souffle, ses sources chaudes naturelles, ses glaciers majestueux, ses aurores boréales et sa culture unique.\n" +
+            "\n" +
+            "Imaginez-vous explorer les paysages volcaniques spectaculaires de l'île, y compris les geysers, les cascades, les cratères et les champs de lave. Vous pourriez également visiter les glaciers, comme le Vatnajökull, qui est le plus grand glacier d'Europe, où vous pourriez faire de la randonnée sur la glace et explorer les grottes de glace.\n" +
+            "\n" +
+            "Vous pourriez également vous détendre dans l'une des nombreuses sources chaudes naturelles de l'Islande, telles que le Blue Lagoon, où vous pourriez profiter des eaux chaudes et apaisantes riches en minéraux.\n" +
+            "\n" +
+            "L'Islande est également célèbre pour ses aurores boréales, un spectacle incroyable de lumières colorées dans le ciel nocturne, qui peuvent être observées pendant les mois d'hiver.\n" +
+            "\n" +
+            "En outre, la culture islandaise est riche en folklore, en musique et en littérature. Vous pourriez visiter la capitale, Reykjavik, où vous pourriez découvrir les musées, les galeries d'art, les bars animés et les restaurants proposant des spécialités culinaires islandaises.\n" +
+            "\n" +
+            "Enfin, ne manquez pas l'opportunité de visiter les fjords de l'ouest de l'Islande, les plages de sable noir de Vik, les falaises de Latrabjarg et la péninsule de Snaefellsnes, qui ont inspiré Jules Verne pour son livre 'Voyage au centre de la Terre'.\n" +
+            "\n" +
+            "En somme, un voyage en Islande est une expérience inoubliable pour les amoureux de la nature, de la culture et de l'aventure, pour une immersion totale dans un pays unique et spectaculaire.",
+        images: ["assets/img/islande/01.jpg", "assets/img/islande/02.jpg"],
+        prixnuit: 180,
+        prixdej: 10,
+        animaux: false,
     }
 }
 

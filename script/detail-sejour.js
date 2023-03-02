@@ -19,7 +19,8 @@ window.onload = () => {
         .replace(/{{description}}/g, resa.description);
     newimg = clone.lastElementChild.innerHTML
         .replace(/{{destination}}/g, resa.value)
-        .replace(/{{imgDest}}/g, resa.images[0]);
+        .replace(/{{imgDest}}/g, resa.images[0])
+        .replace(/{{temperature}}/g, resa.temperature);
     clone.firstElementChild.innerHTML = newsejour;
     clone.lastElementChild.innerHTML = newimg;
     document.getElementById("main-container").innerHTML= "";
