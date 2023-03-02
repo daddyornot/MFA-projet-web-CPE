@@ -1,5 +1,7 @@
 
 window.onload = () => {
+    ecritureCritere();
+
     changeFilter();
     document.getElementById("filtres").addEventListener('input', changeFilter);
     document.getElementById("filtres").addEventListener('reset', resetForm);
@@ -59,6 +61,7 @@ function changeFilter() {
 
         }
     }
+    lectureCritere();
 }
 
 function resetForm(){

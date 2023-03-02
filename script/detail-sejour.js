@@ -41,6 +41,15 @@ window.onload = () => {
     lendemain.setDate(demain.getDate() +1 );
     document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
 
+    if (sessionStorage.getItem("critere")){
+        crit = JSON.parse(sessionStorage.getItem("critere"));
+        document.getElementById("date-debut").value = crit.datedebut ;
+        document.getElementById("date-fin").value = crit.datefin;
+        document.getElementById("nb-adulte").value= crit.nbadulte ;
+        document.getElementById("nb-enfant").value = crit.nbenfant;
+        document.getElementById("petitdej").checked = crit.petitdej;
+    }
+
     changeForm();
 }
 
@@ -83,6 +92,7 @@ function changeForm() {
             addLigne(["Petits déjeuner", resa.nbJour, resa.nbPersonnes, resa.prixPetitDej, resa.totalpetitdej]);
 
         addLigne(["Total", resa.nbJour, resa.nbPersonnes, "-", resa.total]);
+        lectureCritere();
     } else {
         document.getElementById('solde-destination').innerHTML = "Veuillez selectionner des dates correctes";
         document.getElementById('btnvalider').disabled = true;

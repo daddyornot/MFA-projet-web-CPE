@@ -202,10 +202,12 @@ class Reservation extends Voyage{
 
     setValue() {
         this._datedebut = new Date(document.getElementById('date-debut').value);
-        if( this._datedebut < Date.now()){
-            // alert("La date de début n'est pas bonne");
             let demain = new Date()
             demain.setDate(new Date().getDate() + 1);
+
+            document.getElementById('date-debut').min = demain.toISOString().substring(0,10);
+        if( this._datedebut < Date.now()){
+            // alert("La date de début n'est pas bonne");
             document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
 
             let lendemain = new Date()
@@ -215,12 +217,13 @@ class Reservation extends Voyage{
             this._datedebut = new Date(document.getElementById('date-debut').value);
 
         }
+        let lendemain = new Date()
+        lendemain.setDate(this._datedebut.getDate() + 1 );
 
+        document.getElementById('date-fin').min = lendemain.toISOString().substring(0,10);
         this._datefin = new Date(document.getElementById('date-fin').value);
 
         if(this.nbJour <= 0){
-            let lendemain = new Date()
-            lendemain.setDate(this._datedebut.getDate() +1 );
             document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
 
             this._datefin = new Date(document.getElementById('date-fin').value);
@@ -360,4 +363,26 @@ function toFormattedDate(date) {
         month: "long",
         day: "numeric"
     })
+}
+
+function ecritureCritere(){
+    if (sessionStorage.getItem("critere")){
+        crit = JSON.parse(sessionStorage.getItem("critere"));
+        document.getElementById("date-debut").value = crit.datedebut ;
+        document.getElementById("date-fin").value = crit.datefin;
+        document.getElementById("nb-adulte").value= crit.nbadulte ;
+        document.getElementById("nb-enfant").value = crit.nbenfant;
+        document.getElementById("petitdej").checked = crit.petitdej;
+    }
+}
+
+function lectureCritere(){
+    let critere = {
+        datedebut : document.getElementById("date-debut").value,
+        datefin : document.getElementById("date-fin").value,
+        nbadulte : document.getElementById("nb-adulte").value,
+        nbenfant : document.getElementById("nb-enfant").value,
+        petitdej : document.getElementById("petitdej").checked,
+    }
+    window.sessionStorage.setItem("critere", JSON.stringify(critere));
 }
