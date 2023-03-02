@@ -231,7 +231,7 @@ class Reservation extends Voyage{
         else
             this._check = true;
 
-        this._nbadulte = Number(document.getElementById('nb-adulte').value);
+        this.nbAdulte = Number(document.getElementById('nb-adulte').value);
         this._nbenfant = Number(document.getElementById('nb-enfant').value);
         this._petitdej = document.getElementById('petitdej').checked;
     }
@@ -246,7 +246,14 @@ class Reservation extends Voyage{
 
     get nbJour() { return dateDiff(this._datedebut, this._datefin).day}
 
-    set nbAdulte(a) { this._nbadulte = a};
+    set nbAdulte(a) {
+        if (a < 1){
+            alert("Il faut au minimum un adulte pour le voyage !");
+            this._nbadulte = 1;
+            document.getElementById('nb-adulte').value = 1;
+        } else {
+            this._nbadulte = a};
+        }
     get nbAdulte() { return this._nbadulte };
 
     set nbEnfant(a) { this._nbenfant = a};
