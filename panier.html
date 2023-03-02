@@ -14,26 +14,29 @@
 
 <body>
     <header></header>
+    <template id="listeDestinations">
+        <tr>
+            <td>
+                <div class="img-destination">
+                    <img src="{{imgDest}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
+                </div>
+            </td>
+            <td>{{destination}}</td>
+            <td>Du {{dateDebut}}<br>Au {{dateFin}}</td>
+            <td>{{nbAdultes}} adulte(s)</td>
+            <td>{{nbEnfants}} enfant(s)</td>
+            <td>{{petitdej}}</td>
+            <td>{{prix}} €</td>
+            <td><button onclick="remove({{suppr}})">Supprimer</button></td>
+        </tr>
+    </template>
     <table id="contenu-panier" class="contenu-panier">
-        <template id="listeDestinations">
-                <tr>
-                    <td><img src="{{imgDest}}"></td>
-                    <td>{{destination}}</td>
-                    <td>Du {{dateDebut}}<br>Au {{dateFin}}</td>
-                    <td>{{nbAdultes}} adulte(s)</td>
-                    <td>{{nbEnfants}} enfant(s)</td>
-                    <td>{{petitdej}}</td>
-                    <td>{{prix}} €</td>
-                    <td><button onclick="remove({{suppr}})">Supprimer</button></td>
-                </tr>
-        </template>
     </table>
 
-
-    <div id="divtotal">
-        <template id="total">
-            <span id="spantotal">Total {{prix}} €</span>
-        </template>
+    <template id="total">
+        <span id="spantotal">Total {{prix}} €</span>
+    </template>
+    <div id="divtotal" class="total">
     </div>
 
 

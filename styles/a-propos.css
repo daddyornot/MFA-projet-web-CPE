@@ -18,3 +18,7 @@ section {
     margin: 25px;
     width: 50%;
 }
+
+section a:link, section a:visited{
+    color: var(--color2);
+}

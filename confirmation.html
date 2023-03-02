@@ -14,19 +14,22 @@
 <body>
     <header></header>
     <div class="confirmation">
-        <h1>Félicitations, plus que <span id="nb-jour-restants"></span> jours à attendre avant votre voyage !</h1>
+        <h1><span id="nb-jour-restants"></span></h1>
         <p>Retrouvez les détails juste en dessous, ou vous pouvez revenir sur notre <a href="index.html">page d'accueil</a> pour voir nos autres voyages !</p>
     </div>
+    <template id="resumeVoyage">
+        <div class="img-destination">
+            <img src="{{imgDest}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
+        </div>
+        <div class="resume-voyage">
+            <p>Vous partez à <b>{{destination}}</b></p>
+            <p>Du <b>{{dateDebut}}</b> au <b>{{dateFin}}</b>, soit <b>{{nbJour}}</b> jour(s)</p>
+            <p>Vous serez <b>{{nbAdultes}}</b> adulte(s) et <b>{{nbEnfants}}</b> enfant(s)</p>
+            <p><b>{{petitDej}}</b></p>
+            <p>Ce voyage coûte donc <b>{{prixVoyage}}€</b></p>
+        </div>
+    </template>
     <div id="resume-voyage" class="confirmation-voyage">
-        <template id="resumeVoyage">
-<!--            Les balises de ce template sont remplies par le confirmation.js-->
-            <img class="img-resume" src="{{imgDest}}">
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-        </template>
     </div>
     <div class="prix-total">
         <p>Coût total : <span id="prix-total"></span></p>

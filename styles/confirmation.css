@@ -1,22 +1,35 @@
+/*@keyframes color {*/
+/*    0%   { background: #A309DA80; }*/
+/*    20%  { background: #FE00A580; }*/
+/*    40%  { background: #FF367180; }*/
+/*    60%  { background: #FF864C80; }*/
+/*    80%  { background: #FFC44680; }*/
+/*    100% { background: #A309DA80; }*/
+/*}*/
+
 .confirmation {
     margin: 15px;
     padding: 10px;
     box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, .7);
+    /*animation: color 5s infinite linear;*/
     display: flex;
     flex-direction: column;
     align-items: center;
+
+}
+
+.confirmation a:link, .confirmation a:visited{
+    color: var(--color2);
 }
 
 .confirmation-voyage {
-    box-shadow:  -20px 20px 60px #bebebe,
-    20px -20px 60px #ffffff;
+    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
     background-color: rgba(255, 255, 255, .5);
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    padding: 20px;
-    margin: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 30px;
     border-radius: 20px;
     column-gap: 30px;
     align-items: center;
@@ -24,8 +37,33 @@
 }
 
 .confirmation-voyage img {
-    width: 100%;
+    width: 85%;
     clip-path: circle(50%);
+}
+
+.img-destination {
+    position: relative;
+}
+
+/* ronds de temperature */
+.img-destination p.temperature {
+    position: absolute;
+    top: 0;
+    left: 38%;
+    height: 90px;
+    width: 90px;
+    line-height: 4.4em;
+    font-size: 20px;
+    background-color: lightgray;
+    color: whitesmoke;
+    border-radius: 50%;
+    text-align: center;
+    padding-right: 0;
+    background-color: rgba(60, 79, 94, .6);
+}
+
+.resume-voyage b {
+    font-size: 30px;
 }
 
 .prix-total {

@@ -7,13 +7,44 @@ table img {
     clip-path: circle(50%);
 }
 
+.img-destination {
+    position: relative;
+}
+
+/* ronds de temperature */
+.img-destination p.temperature {
+    position: absolute;
+    top: 0;
+    left: 40%;
+    height: 50px;
+    width: 50px;
+    line-height: 4em;
+    font-size: 12px;
+    background-color: lightgray;
+    color: whitesmoke;
+    border-radius: 50%;
+    text-align: center;
+    padding-right: 0;
+    background-color: rgba(60, 79, 94, .6);
+}
+
+.contenu-panier {
+    margin: 50px 50px 10px 50px;
+}
+
 .contenu-panier, #divtotal {
     box-shadow:  -20px 20px 60px #bebebe,
     20px -20px 60px #ffffff;
     background-color: rgba(255, 255, 255, .5);
     border-radius: 20px;
-    margin: 50px;
     padding: 10px;
+}
+
+.total {
+    width: fit-content;
+    float: right;
+    margin: 1em 10% 2em 0;
+    font-size: 25px;
 }
 
 .info-commande {
@@ -26,13 +57,10 @@ table img {
     margin: 50px;
     border-radius: 20px;
     column-gap: 30px;
+    clear: both; /* On clear la propriété float du .total pour que les infos reprennent leur position donnée */
 }
 
 button {
     display: block;
     margin: auto;
-}
-
-#divtotal{
-   width: fit-content;
 }

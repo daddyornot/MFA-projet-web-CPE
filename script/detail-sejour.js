@@ -39,7 +39,8 @@ window.onload = () => {
 }
 
 function onUpdate(){
-    console.log("à implementer avec la météo : " + resa.temperature);
+    // console.log("à implementer avec la météo : " + resa.temperature);
+    document.getElementById("temperature").innerHTML = resa.temperature + "°C";
 }
 
 function resetTab(){

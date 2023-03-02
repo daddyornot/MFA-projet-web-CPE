@@ -23,6 +23,7 @@
     background-color: rgba(225, 249, 255, .1);
 }
 
+/*On place le bouton reset en 3e ligne, dans les colonnes 4 et 5, et on le décale un peu du reste*/
 .reset {
     grid-row: 3;
     grid-column: 4/6;
@@ -67,7 +68,6 @@ input, select {
     20px -20px 60px #ffffff;
     border-radius: 50px;
     background-color: rgba(169, 189, 207, .4);
-    font-family: 'Lexend Deca';
 }
 
 .grid-item h2 {
@@ -87,14 +87,13 @@ input, select {
     left: 65%;
     height: 65px;
     width: 65px;
-    line-height: 400%;
+    line-height: 4em;
     background-color: lightgray;
     border-radius: 50%;
     text-align: center;
     padding-right: 0;
     background-color: rgba(60, 79, 94, .6)
 }
-
 
 .dest-infos {
     display: flex;

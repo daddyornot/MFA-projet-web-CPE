@@ -21,9 +21,7 @@ window.onload = () => {
 }
 
 function onUpdate(){
-    for (v of panier.get()){
-        console.log("à implementer avec la météo : " + v.temperature);
-    }
+    creationtableau();
 }
 
 function remove(id){
@@ -34,6 +32,8 @@ function remove(id){
 function creationtableau(){
     let template = document.querySelector("#listeDestinations");
     let total = 0;
+    document.getElementById("divtotal").innerHTML = "";
+    document.getElementById("contenu-panier").innerHTML = "";
     for (let voyage of panier.get()) {
         if(voyage.petitDej)
             var dej = "Pti dej' inclus";
@@ -43,6 +43,7 @@ function creationtableau(){
         let clone = document.importNode(template.content, true);
         total += voyage.total;
         newDestination = clone.firstElementChild.innerHTML
+            .replace(/{{temperature}}/g, voyage.temperature)
             .replace(/{{destination}}/g, voyage.destination)
             .replace(/{{dateDebut}}/g, toFormattedDate(voyage.datedebut))
             .replace(/{{dateFin}}/g, toFormattedDate(voyage.datefin))
@@ -57,7 +58,6 @@ function creationtableau(){
     }
 
     let templatetotal = document.querySelector("#total");
-
     let clone = document.importNode(templatetotal.content, true);
     newtotal = clone.firstElementChild.innerHTML
         .replace(/{{prix}}/g, total);
