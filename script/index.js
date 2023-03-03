@@ -4,6 +4,7 @@ window.onload = () => {
 
     changeFilter();
     document.getElementById("filtres").addEventListener('input', changeFilter);
+    document.getElementById("searchbar").addEventListener('input', changeFilter);
 }
 
 let voyage = [];
@@ -18,6 +19,14 @@ function onUpdate(){
 function changeFilter() {
     // console.log('ChangeFilter');
     let filter = voyage;
+    let search = document.getElementById("searchbar").value;
+    if(search != ""){
+        filter = filter.filter(function (dest) {
+            return dest.destination.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+                dest.ville.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+        })
+    }
+
     if (document.getElementById("animaux-form").checked)
         filter = filter.filter(function (dest) {
             return dest._animaux;
@@ -72,6 +81,7 @@ function resetForm(){
     document.getElementById("nb-enfant").value = 0;
     document.getElementById("animaux-form").checked = false;
     document.getElementById("petitdej").checked = false;
+    document.getElementById('searchbar').value = "";
     sessionStorage.clear();
     ecritureCritere();
     verificationDate();

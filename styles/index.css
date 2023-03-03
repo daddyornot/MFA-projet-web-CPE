@@ -1,9 +1,14 @@
 
-#toggle-filtres {
+#toggle-filtres, #searchbar {
     display: block;
     margin: auto;
     margin-top: 20px;
     font-size: 1em;
+}
+
+#searchbar{
+    width: 25%;
+    text-align: center;
 }
 
 .hidden {
