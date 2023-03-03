@@ -41,10 +41,10 @@
                 </div>
             </td>
             <td>{{destination}}</td>
-            <td>Du <input id="dateDebutModif" type="date" value="{{dateDebut}}"> Au <input id="dateFinModif" type="date" value="{{dateFin}}"></td>
-            <td>Adultes <input id="nbAdultesModif" type="number" value="{{nbAdultes}}"></td>
-            <td>Enfants <input id="nbEnfantsModif" type="number" value="{{nbEnfants}}"></td>
-            <td><input id="petitDejModif" type="checkbox" checked="{{petitdej}}">Petit dej</td>
+            <td onchange="changeValue({{idVoyage}})">Du <input id="dateDebutModif" type="date" value="{{dateDebut}}"> Au <input id="dateFinModif" type="date" value="{{dateFin}}"></td>
+            <td onchange="changeValue({{idVoyage}})">Adultes <input id="nbAdultesModif" type="number" value="{{nbAdultes}}"></td>
+            <td onchange="changeValue({{idVoyage}})">Enfants <input id="nbEnfantsModif" type="number" value="{{nbEnfants}}"></td>
+            <td onchange="changeValue({{idVoyage}})"><input id="petitDejModif" type="checkbox" {{petitdej}}>Petit dej</td>
             <td>{{prix}} €</td>
             <td>
                 <button id="modifier" onclick="validerModif({{idVoyage}})">Valider</button>

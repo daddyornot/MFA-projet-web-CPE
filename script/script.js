@@ -315,10 +315,15 @@ class Panier {
     }
 
     remove(m){
-        console.log(m);
+        // console.log(m);
         this._panier.splice(m, 1);
         window.localStorage.setItem("panier", JSON.stringify(this._panier));
-        console.log(this._panier);
+        // console.log(this._panier);
+    }
+
+    modifi(id, a){
+        remove(id);
+        this.add = a;
     }
 }
 

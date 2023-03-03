@@ -14,3 +14,5 @@
 - bouton modifier panier : sur la meme page ! remplacer les lignes correspodnantes
 - ajouter prévisions météo ?
 - ~~Une recherche de destination~~
+- Accessibilité 
+- w3school

@@ -32,33 +32,54 @@ function creationtableau(){
     document.getElementById("divtotal").innerHTML = "";
     document.getElementById("contenu-panier").innerHTML = "";
     for (let voyage of panier.get()) {
+        let clone;
 
         if (voyage.modif) {
             template = document.querySelector("#modifDestination");
+            if(voyage.petitDej)
+                var dej = "checked";
+            else
+                var dej = "";
+            clone = document.importNode(template.content, true);
+            total += voyage.total;
+            newDestination = clone.firstElementChild.innerHTML
+                .replace(/{{temperature}}/g, voyage.temperature)
+                .replace(/{{destination}}/g, voyage.destination)
+                .replace(/{{dateDebut}}/g, voyage.datedebut.toISOString().substring(0,10))
+                .replace(/{{dateFin}}/g, voyage.datefin.toISOString().substring(0,10))
+                .replace(/{{nbAdultes}}/g, voyage.nbAdulte)
+                .replace(/{{nbEnfants}}/g, voyage.nbEnfant)
+                .replace(/{{imgDest}}/g, voyage.images[0])
+                .replace(/{{petitdej}}/g, dej)
+                .replace(/{{prix}}/g, voyage.total)
+                .replace(/{{idVoyage}}/g, voyage.id);
+            clone.firstElementChild.innerHTML = newDestination;
+            verificationDateModif(clone);
         }
         else {
             template = document.querySelector("#listeDestinations");
+            if(voyage.petitDej)
+                var dej = "Pti dej' inclus";
+            else
+                var dej = "Pas de Pti dej'";
+
+            clone = document.importNode(template.content, true);
+            total += voyage.total;
+            newDestination = clone.firstElementChild.innerHTML
+                .replace(/{{temperature}}/g, voyage.temperature)
+                .replace(/{{destination}}/g, voyage.destination)
+                .replace(/{{dateDebut}}/g, toFormattedDate(voyage.datedebut))
+                .replace(/{{dateFin}}/g, toFormattedDate(voyage.datefin))
+                .replace(/{{nbAdultes}}/g, voyage.nbAdulte>1 ? voyage.nbAdulte + " adultes" : voyage.nbAdulte + " adulte")
+                .replace(/{{nbEnfants}}/g, voyage.nbEnfant>1 ? voyage.nbEnfant + " enfants" : voyage.nbEnfant === 1 ? voyage.nbEnfant + " enfant" : "Pas d'enfants, youpi !")
+                .replace(/{{imgDest}}/g, voyage.images[0])
+                .replace(/{{petitdej}}/g, dej)
+                .replace(/{{prix}}/g, voyage.total)
+                .replace(/{{idVoyage}}/g, voyage.id);
+                clone.firstElementChild.innerHTML = newDestination;
         }
 
-        if(voyage.petitDej)
-            var dej = "Pti dej' inclus";
-        else
-            var dej = "Pas de Pti dej'";
 
-        let clone = document.importNode(template.content, true);
-        total += voyage.total;
-        newDestination = clone.firstElementChild.innerHTML
-            .replace(/{{temperature}}/g, voyage.temperature)
-            .replace(/{{destination}}/g, voyage.destination)
-            .replace(/{{dateDebut}}/g, toFormattedDate(voyage.datedebut))
-            .replace(/{{dateFin}}/g, toFormattedDate(voyage.datefin))
-            .replace(/{{nbAdultes}}/g, voyage.nbAdulte>1 ? voyage.nbAdulte + " adultes" : voyage.nbAdulte + " adulte")
-            .replace(/{{nbEnfants}}/g, voyage.nbEnfant>1 ? voyage.nbEnfant + " enfants" : voyage.nbEnfant===1 ? voyage.nbEnfant + " enfant" : "Pas d'enfants, youpi !")
-            .replace(/{{imgDest}}/g, voyage.images[0])
-            .replace(/{{petitdej}}/g, dej)
-            .replace(/{{prix}}/g, voyage.total)
-            .replace(/{{idVoyage}}/g, voyage.id);
-        clone.firstElementChild.innerHTML = newDestination;
         document.getElementById("contenu-panier").appendChild(clone);
     }
 
@@ -126,13 +147,45 @@ function cancelModif(id) {
 function validerModif(id) {
     let sejour = panier.get()[id]
     sejour.modif = false;
-    console.log(document.getElementById("nbAdultesModif"));
-    sejour.datedebut = document.getElementById("dateDebutModif").;
-    sejour.datefin = document.getElementById("dateFinModif");
-    sejour.nbAdulte = document.getElementById("nbAdultesModif");
-    sejour.nbEnfant = document.getElementById("nbEnfantsModif");
-    sejour.petitDej = document.getElementById("petitDejModif");
-    sejour.total;
-    console.log(sejour);
+    panier.modifi(id,sejour);
+    creationtableau();
+}
+
+function verificationDateModif(element){
+    console.log(element.getElementById('dateDebutModif').value);
+    let datedebut = new Date(element.getElementById('dateDebutModif').value);
+    let demain = new Date();
+    demain.setDate(new Date().getDate() + 1);
+    element.getElementById('dateDebutModif').min = demain.toISOString().substring(0,10);
+
+    if( datedebut < Date.now()){
+        // alert("La date de début n'est pas bonne");
+        element.getElementById('dateDebutModif').value = demain.toISOString().substring(0,10);
+
+        let lendemain = new Date();
+        lendemain.setDate(demain.getDate() +1 );
+        element.getElementById('dateFinModif').value = lendemain.toISOString().substring(0,10);
+
+        datedebut = new Date(element.getElementById('dateDebutModif').value);
+
+    }
+    let lendemain = new Date();
+    lendemain.setDate(datedebut.getDate() + 1 );
+    element.getElementById('dateFinModif').min = lendemain.toISOString().substring(0,10);
+
+    datefin = new Date(element.getElementById('dateFinModif').value);
+
+    if(dateDiff(datedebut, datefin).day <= 0){
+        element.getElementById('dateFinModif').value = lendemain.toISOString().substring(0,10);
+    }
+}
+
+function changeValue(id){
+    let sejour = panier.get()[id]
+    sejour.datedebut = new Date(document.getElementById("dateDebutModif").value);
+    sejour.datefin = new Date(document.getElementById("dateFinModif").value);
+    sejour.nbAdulte = Number(document.getElementById("nbAdultesModif").value);
+    sejour.nbEnfant = Number(document.getElementById("nbEnfantsModif").value);
+    sejour.petitDej = document.getElementById("petitDejModif").checked;
     creationtableau();
 }
