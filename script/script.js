@@ -322,9 +322,9 @@ class Panier {
         // console.log(this._panier);
     }
 
-    modifi(id, a){
+    modifi(id, sejour){
         remove(id);
-        this.add = a;
+        this.add = sejour;
     }
 }
 

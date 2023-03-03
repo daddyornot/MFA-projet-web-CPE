@@ -16,3 +16,5 @@
 - ~~Une recherche de destination~~
 - Accessibilité 
 - w3school
+- Modification plusieur destination a la fois
+- 

@@ -3,6 +3,7 @@
 
 var panier = new Panier();
 var panierLocal = new Panier();
+
 window.onload = () => {
     panier = new Panier();
     // Si le local storage n'existe pas ou s'il est vide, on n'affiche pas le panier
@@ -33,7 +34,7 @@ function creationtableau(){
     let total = 0;
     document.getElementById("divtotal").innerHTML = "";
     document.getElementById("contenu-panier").innerHTML = "";
-    for (let voyage of panier.get()) {
+    for (let voyage of panierLocal.get()) {
         let clone;
 
         if (voyage.modif) {
@@ -136,60 +137,59 @@ function checkFields() {
 
 function modifSejour(id) {
     // console.log(panier.get()[id]);
-    panier.get()[id].modif = true;
+    panierLocal.get()[id].modif = true;
     creationtableau();
 }
 
 function cancelModif(id) {
-    panier.get()[id].modif = false;
+    panierLocal.get()[id].modif = false;
+    panier.modifi(id, panier.get()[id]);
     creationtableau();
 }
 
 function validerModif(id) {
-    let sejour = panier.get()[id]
-    sejour.modif = false;
-    let pan = new Panier();
-    pan.modifi(id,sejour);
-    panier = pan;
+    let sejour = panierLocal.get()[id];
+    panierLocal.get()[id].modif = false;
+    panier.modifi(id, sejour);
     creationtableau();
 }
 
 function verificationDateModif(id){
-    let datedebut = new Date(document.getElementsByClassName('dateDebutModif')[id].value);
+    let datedebut = new Date(document.getElementById('dateDebutModif' + id).value);
     let demain = new Date();
     demain.setTime(new Date().getTime() + 24 * 3600 * 1000);
 
-    document.getElementsByClassName('dateDebutModif')[id].min = demain.toISOString().substring(0,10);
+    document.getElementById('dateDebutModif'+ id ).min = demain.toISOString().substring(0,10);
 
     if( datedebut < Date.now()){
         // alert("La date de début n'est pas bonne");
-        document.getElementsByClassName('dateDebutModif')[id].value = demain.toISOString().substring(0,10);
+        document.getElementById('dateDebutModif' + id).value = demain.toISOString().substring(0,10);
 
         let lendemain = new Date();
         lendemain.setTime(demain.getTime() + 24 * 3600 * 1000);
-        document.getElementsByClassName('dateFinModif')[id].value = lendemain.toISOString().substring(0,10);
+        document.getElementById('dateFinModif' + id).value = lendemain.toISOString().substring(0,10);
 
-        datedebut = new Date(document.getElementsByClassName('dateDebutModif')[id].value);
+        datedebut = new Date(document.getElementById('dateDebutModif' + id).value);
 
     }
     let lendemain = new Date();
     lendemain.setTime(datedebut.getTime() + 24 * 3600 * 1000);
-    document.getElementsByClassName('dateFinModif')[id].min = lendemain.toISOString().substring(0,10);
+    document.getElementById('dateFinModif'+ id).min = lendemain.toISOString().substring(0,10);
 
-    let datefin = new Date(document.getElementsByClassName('dateFinModif')[id].value);
+    let datefin = new Date(document.getElementById('dateFinModif' + id).value);
 
     if(dateDiff(datedebut, datefin).day <= 0){
-        document.getElementsByClassName('dateFinModif')[id].value = lendemain.toISOString().substring(0,10);
+        document.getElementById('dateFinModif' + id).value = lendemain.toISOString().substring(0,10);
     }
 }
 
 function changeValue(id){
     verificationDateModif(id);
-    let sejour = panier.get()[id]
-    sejour.datedebut = new Date(document.getElementsByClassName("dateDebutModif")[id].value);
-    sejour.datefin = new Date(document.getElementsByClassName("dateFinModif")[id].value);
-    sejour.nbAdulte = Number(document.getElementsByClassName("nbAdultesModif")[id].value);
-    sejour.nbEnfant = Number(document.getElementsByClassName("nbEnfantsModif")[id].value);
-    sejour.petitDej = document.getElementsByClassName("petitDejModif")[id].checked;
+    let sejour = panierLocal.get()[id]
+    sejour.datedebut = new Date(document.getElementById("dateDebutModif" + id).value);
+    sejour.datefin = new Date(document.getElementById("dateFinModif" + id).value);
+    sejour.nbAdulte = Number(document.getElementById("nbAdultesModif" + id).value);
+    sejour.nbEnfant = Number(document.getElementById("nbEnfantsModif" + id).value);
+    sejour.petitDej = document.getElementById("petitDejModif" + id).checked;
     creationtableau();
 }
