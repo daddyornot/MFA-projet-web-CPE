@@ -437,3 +437,18 @@ function verificationDate(){
         document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
     }
 }
+
+function randomBackground() {
+    let rand = Math.floor(Math.random() * 10);
+    let listBackgrounds = [];
+    for (let dest in voyages) {
+        listBackgrounds.push(voyages[dest].images);
+    }
+    // On concatène toutes nos url dans un seul tableau
+    // l'opérateur de decomposition "..." extrait les éléments du tableau 1 à 1, pour les concaténer dans un seul
+    // et même tableau
+    let allBackgrounds = [].concat(...listBackgrounds);
+    // console.log(allBackgrounds)
+}
+
+// randomBackground();

@@ -41,10 +41,11 @@
                 </div>
             </td>
             <td>{{destination}}</td>
-            <td onchange="changeValue({{idVoyage}})">Du <input id="dateDebutModif" type="date" value="{{dateDebut}}"> Au <input id="dateFinModif" type="date" value="{{dateFin}}"></td>
-            <td onchange="changeValue({{idVoyage}})">Adultes <input id="nbAdultesModif" type="number" value="{{nbAdultes}}"></td>
-            <td onchange="changeValue({{idVoyage}})">Enfants <input id="nbEnfantsModif" type="number" value="{{nbEnfants}}"></td>
-            <td onchange="changeValue({{idVoyage}})"><input id="petitDejModif" type="checkbox" {{petitdej}}>Petit dej</td>
+            <td onchange="changeValue({{idVoyage}})">Du <input id="dateDebutModif" type="date" value="{{dateDebut}}"><br>
+                Au <input id="dateFinModif" type="date" value="{{dateFin}}"></td>
+            <td onchange="changeValue({{idVoyage}})">Adultes<br><input id="nbAdultesModif" type="number" value="{{nbAdultes}}"></td>
+            <td onchange="changeValue({{idVoyage}})">Enfants<br><input id="nbEnfantsModif" type="number" value="{{nbEnfants}}"></td>
+            <td onchange="changeValue({{idVoyage}})">Petit dej<br><input id="petitDejModif" class="check" type="checkbox" {{petitdej}}></td>
             <td>{{prix}} €</td>
             <td>
                 <button id="modifier" onclick="validerModif({{idVoyage}})">Valider</button>
@@ -55,33 +56,50 @@
     <table id="contenu-panier" class="contenu-panier">
     </table>
 
-    <template id="total">
-        <span id="spantotal">Total {{prix}} €</span>
-    </template>
-    <div id="divtotal" class="total">
+
+
+    <div class="infos">
+        <div class="form-complet">
+            <h2>Plus qu'une étape avant de prendre du bon temps...</h2>
+            <form id="formulaire" action="confirmation.html" class="info-commande">
+                <div>
+                    <label for="nom">Nom</label>
+                    <input required id="nom" type="text" pattern="[a-zA-Z ]+" placeholder="(requis) Van Damne" autocomplete="nom">
+
+                    <label for="prenom">Prenom</label>
+                    <input required id="prenom" type="text" pattern="[a-zA-Z ]+" placeholder="(requis) Jean Claude">
+                </div>
+                <div>
+                    <label for="adresse">Adresse</label>
+                    <input id="adresse" type="text" placeholder="42 rue des karatekas">
+
+                    <label for="ville">Ville</label>
+                    <input id="ville" type="text" placeholder="Bourges">
+
+                    <label for="code-postal">Code Postal</label>
+                    <input id="code-postal" type="text" placeholder="12000">
+                </div>
+                <div>
+                    <label for="tel">N° de Téléphone</label>
+                    <input id="tel" type="tel" placeholder="06 05 04 09 08">
+
+                    <label for="email">email</label>
+                    <input required id="email" type="email" placeholder="(requis) jcvd@kungfu.com">
+                </div>
+                <div>
+                    <label for="carte-bleue">N° de Carte Bancaire</label>
+                    <input required id="carte-bleue" type="text" pattern="[0-9]+" minlength="16" maxlength="16" placeholder="(requis) 0123 4567 8901 2345">
+                </div>
+            </form>
+        </div>
+        <div class="confirm-total">
+            <template id="total">
+                <span id="spantotal">Total {{prix}} €</span>
+            </template>
+            <span id="divtotal" class="total"></span>
+            <button id="confirm-commande" type="button">Cette fois ca y est !</button>
+        </div>
     </div>
-
-
-    <form id="formulaire" action="confirmation.html" class="info-commande">
-        <label for="nom">Nom</label>
-        <label for="prenom">Prenom</label>
-        <label for="adresse">Adresse</label>
-        <label for="ville">Ville</label>
-        <label for="code-postal">Code Postal</label>
-        <label for="tel">N° de Téléphone</label>
-        <label for="email">email</label>
-        <label for="carte-bleue">N° de Carte Bancaire</label>
-
-        <input required id="nom" type="text" pattern="[a-zA-Z ]+" placeholder="(requis) Van Damne" autocomplete="nom">
-        <input required id="prenom" type="text" pattern="[a-zA-Z ]+" placeholder="(requis) Jean Claude">
-        <input id="adresse" type="text" placeholder="42 rue des karatekas">
-        <input id="ville" type="text" placeholder="Bourges">
-        <input id="code-postal" type="text" placeholder="12000">
-        <input id="tel" type="tel" placeholder="06 05 04 09 08">
-        <input required id="email" type="email" placeholder="(requis) jcvd@kungfu.com">
-        <input required id="carte-bleue" type="text" pattern="[0-9]+" minlength="16" maxlength="16" placeholder="(requis) 0123 4567 8901 2345">
-    </form>
-    <button id="confirm-commande" type="button">Cette fois ca y est !</button>
     <footer></footer>
 </body>
 

@@ -9,6 +9,7 @@ window.onload = () => {
         document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
         document.getElementById("divtotal").style.display = 'none';
         document.getElementsByClassName("info-commande")[0].style.display = 'none';
+        document.getElementsByClassName("infos")[0].style.display = 'none';
         document.getElementsByTagName("button")[0].style.display = 'none';
     // sinon on créé un panier
     } else creationtableau();

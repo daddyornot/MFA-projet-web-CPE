@@ -57,21 +57,50 @@ table img {
     font-size: 25px;
 }
 
-.info-commande {
-    box-shadow:  -20px 20px 60px #bebebe,
-    20px -20px 60px #ffffff;
-    background-color: rgba(255, 255, 255, .5);
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
+.infos {
+    display: flex;
+    flex-wrap: wrap;
     padding: 25px;
     margin: 50px;
     border-radius: 20px;
-    column-gap: 30px;
-    clear: both; /* On clear la propriété float du .total pour que les infos reprennent leur position donnée */
+    gap: 10px;
+    justify-content: space-evenly;
+    /*clear: both; !* On clear la propriété float du .total pour que les infos reprennent leur position donnée *!*/
+}
+
+.form-complet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.form-complet h2 {
+    width: 80%;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.info-commande {
+    display: flex;
+    flex-flow: column wrap;
+    padding: 25px;
+    align-items: flex-start;
+    row-gap: 5px;
+}
+
+.confirm-total {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
 }
 
 .invalid {
     border: 2px solid red;
+    background-color: #a5252a20;
 }
 
 button {
