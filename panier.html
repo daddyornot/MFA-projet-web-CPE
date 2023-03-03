@@ -41,17 +41,13 @@
                 </div>
             </td>
             <td>{{destination}}</td>
-            <td onchange="changeValue({{idVoyage}})">Du <input id="dateDebutModif" type="date" value="{{dateDebut}}"><br>
-                Au <input id="dateFinModif" type="date" value="{{dateFin}}"></td>
-            <td onchange="changeValue({{idVoyage}})">Adultes<br><input id="nbAdultesModif" type="number" value="{{nbAdultes}}"></td>
-            <td onchange="changeValue({{idVoyage}})">Enfants<br><input id="nbEnfantsModif" type="number" value="{{nbEnfants}}"></td>
-            <td onchange="changeValue({{idVoyage}})">Petit dej<br><input id="petitDejModif" class="check" type="checkbox" {{petitdej}}></td>
 
-            <td onchange="changeValue({{idVoyage}})">Du <input class="dateDebutModif" type="date" value="{{dateDebut}}">
+            <td onchange="changeValue({{idVoyage}})">Du <input class="dateDebutModif" type="date" value="{{dateDebut}}"><br>
                 Au <input class="dateFinModif" type="date" value="{{dateFin}}"></td>
-            <td onchange="changeValue({{idVoyage}})">Adultes <input class="nbAdultesModif" type="number" value="{{nbAdultes}}"></td>
-            <td onchange="changeValue({{idVoyage}})">Enfants <input class="nbEnfantsModif" type="number" value="{{nbEnfants}}"></td>
-            <td onchange="changeValue({{idVoyage}})"><input class="petitDejModif" type="checkbox" {{petitdej}}>Petit dej</td>
+            <td onchange="changeValue({{idVoyage}})">Adultes<br><input class="nbAdultesModif" type="number" value="{{nbAdultes}}"></td>
+            <td onchange="changeValue({{idVoyage}})">Enfants<br><input class="nbEnfantsModif" type="number" value="{{nbEnfants}}"></td>
+            <td onchange="changeValue({{idVoyage}})">Petit dej<br><input class="petitDejModif" class="check" type="checkbox" {{petitdej}}></td>
+
             <td>{{prix}} €</td>
             <td>
                 <button id="modifier" onclick="validerModif({{idVoyage}})">Valider</button>
