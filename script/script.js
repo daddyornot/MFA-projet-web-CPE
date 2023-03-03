@@ -252,7 +252,7 @@ class Reservation extends Voyage{
             this._nbadulte = 1;
             document.getElementById('nb-adulte').value = 1;
         } else {
-            this._nbadulte = a};
+            this._nbadulte = a}
         }
     get nbAdulte() { return this._nbadulte };
 

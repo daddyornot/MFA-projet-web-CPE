@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="./styles/panier.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@600&family=Rampart+One&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-    <script src="./script/script.js"></script>
-    <script src="./script/panier.js"></script>
 </head>
 
 <body>
@@ -99,15 +97,19 @@
                 </div>
             </form>
         </div>
+        //TODO faire 3 div pour la partie du bas : total au dessus du bouton
         <div class="confirm-total">
             <template id="total">
-                <span id="spantotal">Total {{prix}} €</span>
+<!--                <span id="spantotal"></span>-->
+                <span id="divtotal" class="total">Total {{prix}} €</span>
             </template>
-            <span id="divtotal" class="total"></span>
             <button id="confirm-commande" type="button">Cette fois ca y est !</button>
         </div>
     </div>
     <footer></footer>
 </body>
+
+<script src="./script/script.js"></script>
+<script src="./script/panier.js"></script>
 
 </html>
