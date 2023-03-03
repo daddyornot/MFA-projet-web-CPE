@@ -207,6 +207,7 @@ class Voyage {
     }
 
 }
+
 class Reservation extends Voyage{
     constructor(m){
         super(m);
@@ -327,10 +328,6 @@ class Panier {
     }
 }
 
-// window.onload = () => {
-//     changeHeader();
-// }
-
 function imgNext(){
     document.getElementById("img-destination").setAttribute('src', resa.nImage);
 }
@@ -438,8 +435,7 @@ function verificationDate(){
     }
 }
 
-function randomBackground() {
-    let rand = Math.floor(Math.random() * 10);
+function randomizeBackground() {
     let listBackgrounds = [];
     for (let dest in voyages) {
         listBackgrounds.push(voyages[dest].images);
@@ -448,7 +444,16 @@ function randomBackground() {
     // l'opérateur de decomposition "..." extrait les éléments du tableau 1 à 1, pour les concaténer dans un seul
     // et même tableau
     let allBackgrounds = [].concat(...listBackgrounds);
-    // console.log(allBackgrounds)
+    let rand = Math.floor(Math.random() * allBackgrounds.length);
+    // console.log(allBackgrounds.length)
+    // console.log("changing background");
+    // console.log(allBackgrounds[rand]);
+    document.body.style.transition = "background-image 1.5s ease"
+    document.body.style.background = `url(${allBackgrounds[rand]}) no-repeat center center fixed`;
+    document.body.style.backgroundSize = 'cover';
 }
 
-// randomBackground();
+randomizeBackground();
+let backgroundInterval = setInterval(function () {
+    randomizeBackground();
+}, 4000);
