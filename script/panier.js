@@ -57,7 +57,7 @@ function creationtableau(){
             .replace(/{{imgDest}}/g, voyage.images[0])
             .replace(/{{petitdej}}/g, dej)
             .replace(/{{prix}}/g, voyage.total)
-            .replace(/{{suppr}}/g, voyage.id);
+            .replace(/{{idVoyage}}/g, voyage.id);
         clone.firstElementChild.innerHTML = newDestination;
         document.getElementById("contenu-panier").appendChild(clone);
     }
@@ -112,7 +112,7 @@ function checkFields() {
     return true
 }
 
-function modif(id) {
+function modifSejour(id) {
     // console.log(panier.get()[id]);
     panier.get()[id].modif = true;
     creationtableau();
@@ -120,5 +120,19 @@ function modif(id) {
 
 function cancelModif(id) {
     panier.get()[id].modif = false;
+    creationtableau();
+}
+
+function validerModif(id) {
+    let sejour = panier.get()[id]
+    sejour.modif = false;
+    console.log(document.getElementById("nbAdultesModif"));
+    sejour.datedebut = document.getElementById("dateDebutModif").;
+    sejour.datefin = document.getElementById("dateFinModif");
+    sejour.nbAdulte = document.getElementById("nbAdultesModif");
+    sejour.nbEnfant = document.getElementById("nbEnfantsModif");
+    sejour.petitDej = document.getElementById("petitDejModif");
+    sejour.total;
+    console.log(sejour);
     creationtableau();
 }

@@ -28,8 +28,8 @@
             <td>{{petitdej}}</td>
             <td>{{prix}} €</td>
             <td>
-                <button id="modifier" onclick="modif({{suppr}})">Modifier</button>
-                <button id="supprimer" onclick="remove({{suppr}})">Supprimer</button>
+                <button id="modifier" onclick="modifSejour({{idVoyage}})">Modifier</button>
+                <button id="supprimer" onclick="remove({{idVoyage}})">Supprimer</button>
             </td>
         </tr>
     </template>
@@ -41,14 +41,14 @@
                 </div>
             </td>
             <td>{{destination}}</td>
-            <td>Du <input type="date" value="{{dateDebut}}"> Au <input type="date" value="{{dateFin}}"></td>
-            <td>Adultes <input type="number" value="{{nbAdultes}}"></td>
-            <td>Enfants <input type="number" value="{{nbEnfants}}"></td>
-            <td><input type="checkbox" checked="{{petitdej}}">Petit dej</td>
+            <td>Du <input id="dateDebutModif" type="date" value="{{dateDebut}}"> Au <input id="dateFinModif" type="date" value="{{dateFin}}"></td>
+            <td>Adultes <input id="nbAdultesModif" type="number" value="{{nbAdultes}}"></td>
+            <td>Enfants <input id="nbEnfantsModif" type="number" value="{{nbEnfants}}"></td>
+            <td><input id="petitDejModif" type="checkbox" checked="{{petitdej}}">Petit dej</td>
             <td>{{prix}} €</td>
             <td>
-                <button id="modifier" onclick="validerModif({{suppr}})">Valider</button>
-                <button id="supprimer" onclick="cancelModif({{suppr}})">Annuler</button>
+                <button id="modifier" onclick="validerModif({{idVoyage}})">Valider</button>
+                <button id="supprimer" onclick="cancelModif({{idVoyage}})">Annuler</button>
             </td>
         </tr>
     </template>
