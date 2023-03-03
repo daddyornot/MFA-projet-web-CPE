@@ -40,7 +40,7 @@
     </div>
 
 
-    <form action="confirmation.html" class="info-commande">
+    <form id="formulaire" action="confirmation.html" class="info-commande">
         <label for="nom">Nom</label>
         <label for="prenom">Prenom</label>
         <label for="adresse">Adresse</label>
@@ -50,16 +50,16 @@
         <label for="email">email</label>
         <label for="carte-bleue">N° de Carte Bancaire</label>
 
-        <input required id="nom" type="text">
-        <input required id="prenom" type="text">
-        <input id="adresse" type="text">
-        <input id="ville" type="text">
-        <input id="code-postal" type="text">
-        <input id="tel" type="tel">
-        <input required id="email" type="email">
-        <input required id="carte-bleue" type="text">
+        <input required id="nom" type="text" pattern="[a-zA-Z ]+" placeholder="(requis) Van Damne" autocomplete="nom">
+        <input required id="prenom" type="text" pattern="[a-zA-Z ]+" placeholder="(requis) Jean Claude">
+        <input id="adresse" type="text" placeholder="42 rue des karatekas">
+        <input id="ville" type="text" placeholder="Bourges">
+        <input id="code-postal" type="text" placeholder="12000">
+        <input id="tel" type="tel" placeholder="06 05 04 09 08">
+        <input required id="email" type="email" placeholder="(requis) jcvd@kungfu.com">
+        <input required id="carte-bleue" type="text" pattern="[0-9]+" minlength="16" maxlength="16" placeholder="(requis) 0123 4567 8901 2345">
     </form>
-    <button onclick="confirmer()">Cette fois ca y est !</button>
+    <button id="confirm-commande" type="button">Cette fois ca y est !</button>
     <footer></footer>
 </body>
 

@@ -60,6 +60,10 @@ table img {
     clear: both; /* On clear la propriété float du .total pour que les infos reprennent leur position donnée */
 }
 
+.invalid {
+    border: 2px solid red;
+}
+
 button {
     display: block;
     margin: auto;

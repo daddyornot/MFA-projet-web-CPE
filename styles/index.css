@@ -21,19 +21,14 @@
     width: 90%;
     height: fit-content;
     background-color: rgba(225, 249, 255, .1);
+    row-gap: 1em;
 }
 
 /*On place le bouton reset en 3e ligne, dans les colonnes 4 et 5, et on le décale un peu du reste*/
 .reset {
     grid-row: 3;
     grid-column: 4/6;
-    margin-top: 25px;
-}
-
-input, select {
-    background-color: rgba(255, 255, 255, .5);
-    border: none;
-    border-radius: 10px;
+    margin-top: 15px;
 }
 
 .age {

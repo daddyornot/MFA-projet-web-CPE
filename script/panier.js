@@ -1,3 +1,5 @@
+// peut remplacer window.onload
+// document.addEventListener("DOMContentLoaded", function () {});
 
 var panier = new Panier();
 window.onload = () => {
@@ -18,6 +20,9 @@ window.onload = () => {
         else
         creationtableau();
     }
+    // on ne test le form que si les champs sont respectés
+    if (checkFields())
+    checkAndValidateForm();
 }
 
 function onUpdate(){
@@ -65,6 +70,39 @@ function creationtableau(){
     document.getElementById("divtotal").appendChild(clone);
 }
 
-function confirmer() {
-    location.href = "confirmation.html";
+function checkAndValidateForm() {
+    // check du formulaire
+    let formulaire = document.getElementById("formulaire");
+    let confirmForm = document.getElementById("confirm-commande");
+// comme le bouton "valider" est sorti du form, on ajoute un listener dessus
+    confirmForm.addEventListener("click", () => {
+        if (formulaire.checkValidity()) {
+            //si le form est rempli correctement, on passe a la suite
+            formulaire.submit();
+        } else {
+            // s'il manque ou s'il y a des infos erronées
+            alert("A priori, tous les champs requis ne sont pas correctement remplis !");
+        }
+    });
+}
+
+function checkFields() {
+    let fields = document.querySelectorAll("input:required");
+    // console.log(fields);
+
+    for (let i = 0; i < fields.length; i++) {
+        fields[i].addEventListener("input", () => {
+            console.log(fields[i]);
+
+            if (!fields[i].validity.valid) {
+                // si un champ est invalide, on change sa classe et on ne valide pas le form
+                fields[i].classList.add("invalid");
+                return false
+            }
+            else {
+                fields[i].classList.remove("invalid");
+            }
+        })
+    }
+    return true
 }
