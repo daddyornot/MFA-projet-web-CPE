@@ -52,6 +52,7 @@ function creationtableau(){
                 .replace(/{{dateFin}}/g, voyage.datefin.toISOString().substring(0,10))
                 .replace(/{{nbAdultes}}/g, voyage.nbAdulte)
                 .replace(/{{nbEnfants}}/g, voyage.nbEnfant)
+                .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
                 .replace(/{{imgDest}}/g, voyage.images[0])
                 .replace(/{{petitdej}}/g, dej)
                 .replace(/{{prix}}/g, voyage.total)
@@ -74,6 +75,7 @@ function creationtableau(){
                 .replace(/{{dateFin}}/g, toFormattedDate(voyage.datefin))
                 .replace(/{{nbAdultes}}/g, voyage.nbAdulte>1 ? voyage.nbAdulte + " adultes" : voyage.nbAdulte + " adulte")
                 .replace(/{{nbEnfants}}/g, voyage.nbEnfant>1 ? voyage.nbEnfant + " enfants" : voyage.nbEnfant === 1 ? voyage.nbEnfant + " enfant" : "Pas d'enfants, youpi !")
+                .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
                 .replace(/{{imgDest}}/g, voyage.images[0])
                 .replace(/{{petitdej}}/g, dej)
                 .replace(/{{prix}}/g, voyage.total)

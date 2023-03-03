@@ -59,6 +59,7 @@ function changeFilter() {
                 .replace(/{{destination}}/g, d.destination)
                 .replace(/{{temperature}}/g, d.temperature)
                 .replace(/{{prixNuit}}/g, d.prixNuit)
+                .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
                 .replace(/{{imgDest}}/g, d.images[0])
                 .replace(/{{url}}/g, d.value)
                 .replace(/{{animaux}}/g, animaux);

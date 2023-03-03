@@ -12,6 +12,7 @@ function genererResume() {
         let clone = document.importNode(template.content, true);
 
         let imgSejour = clone.firstElementChild.innerHTML
+            .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
             .replace(/{{imgDest}}/g, voyage.images[0])
             .replace(/{{temperature}}/g, voyage.temperature);
 

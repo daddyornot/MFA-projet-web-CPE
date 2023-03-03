@@ -19,6 +19,7 @@ window.onload = () => {
         .replace(/{{description}}/g, resa.description);
     newimg = clone.lastElementChild.innerHTML
         .replace(/{{destination}}/g, resa.value)
+        .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
         .replace(/{{imgDest}}/g, resa.images[0])
         .replace(/{{temperature}}/g, resa.temperature);
     clone.firstElementChild.innerHTML = newsejour;
