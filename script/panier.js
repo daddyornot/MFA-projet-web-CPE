@@ -4,23 +4,15 @@
 var panier = new Panier();
 window.onload = () => {
     panier = new Panier();
-    if (!panier.get()){ //Si le local storage n'existe pas
+    // Si le local storage n'existe pas ou s'il est vide, on n'affiche pas le panier
+    if (!panier.get() || panier.get().length === 0) {
         document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
         document.getElementById("divtotal").style.display = 'none';
         document.getElementsByClassName("info-commande")[0].style.display = 'none';
         document.getElementsByTagName("button")[0].style.display = 'none';
-    }
-    else {
-        if (panier.get().length == 0){ //si le local storage est vide
-            document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
-            document.getElementById("divtotal").style.display = 'none';
-            document.getElementsByClassName("info-commande")[0].style.display = 'none';
-            document.getElementsByTagName("button")[0].style.display = 'none';
-        }
-        else
-        creationtableau();
-    }
-    // on ne test le form que si les champs sont respectés
+    // sinon on créé un panier
+    } else creationtableau();
+    // on ne test et valide le form que si les champs sont respectés
     if (checkFields())
     checkAndValidateForm();
 }
@@ -65,7 +57,7 @@ function creationtableau(){
     let templatetotal = document.querySelector("#total");
     let clone = document.importNode(templatetotal.content, true);
     newtotal = clone.firstElementChild.innerHTML
-        .replace(/{{prix}}/g, total);
+        .replace(/{{prix}}/g, total.toString());
     clone.firstElementChild.innerHTML = newtotal;
     document.getElementById("divtotal").appendChild(clone);
 }
@@ -74,28 +66,32 @@ function checkAndValidateForm() {
     // check du formulaire
     let formulaire = document.getElementById("formulaire");
     let confirmForm = document.getElementById("confirm-commande");
-// comme le bouton "valider" est sorti du form, on ajoute un listener dessus
+    // comme le bouton "valider" est sorti du form, on ajoute un listener dessus
     confirmForm.addEventListener("click", () => {
         if (formulaire.checkValidity()) {
             //si le form est rempli correctement, on passe a la suite
             formulaire.submit();
         } else {
             // s'il manque ou s'il y a des infos erronées
-            alert("A priori, tous les champs requis ne sont pas correctement remplis !");
+            let invalidFields = [] ;
+            let req = formulaire.querySelectorAll("input:required");
+            // on stocke dans un tableau les noms des champs non ok
+            for (let champ of req)  {
+                if (!champ.validity.valid) {
+                    invalidFields.push(champ.id);
+                }
+            }
+            alert("Attention ! Les champs suivants ne sont pas correctement remplis : " + invalidFields.join(", "));
         }
     });
 }
 
 function checkFields() {
     let fields = document.querySelectorAll("input:required");
-    // console.log(fields);
-
     for (let i = 0; i < fields.length; i++) {
         fields[i].addEventListener("input", () => {
-            console.log(fields[i]);
-
             if (!fields[i].validity.valid) {
-                // si un champ est invalide, on change sa classe et on ne valide pas le form
+                // si un champ est invalide, on change sa classe et on ne test/valide pas le form
                 fields[i].classList.add("invalid");
                 return false
             }
