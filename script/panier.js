@@ -32,6 +32,14 @@ function creationtableau(){
     document.getElementById("divtotal").innerHTML = "";
     document.getElementById("contenu-panier").innerHTML = "";
     for (let voyage of panier.get()) {
+
+        if (voyage.modif) {
+            template = document.querySelector("#modifDestination");
+        }
+        else {
+            template = document.querySelector("#listeDestinations");
+        }
+
         if(voyage.petitDej)
             var dej = "Pti dej' inclus";
         else
@@ -75,9 +83,10 @@ function checkAndValidateForm() {
             // s'il manque ou s'il y a des infos erronées
             let invalidFields = [] ;
             let req = formulaire.querySelectorAll("input:required");
-            // on stocke dans un tableau les noms des champs non ok
+            // on stocke dans un tableau les noms des champs non ok et on les met en surbrillance
             for (let champ of req)  {
                 if (!champ.validity.valid) {
+                    champ.classList.add("invalid");
                     invalidFields.push(champ.id);
                 }
             }
@@ -101,4 +110,15 @@ function checkFields() {
         })
     }
     return true
+}
+
+function modif(id) {
+    // console.log(panier.get()[id]);
+    panier.get()[id].modif = true;
+    creationtableau();
+}
+
+function cancelModif(id) {
+    panier.get()[id].modif = false;
+    creationtableau();
 }

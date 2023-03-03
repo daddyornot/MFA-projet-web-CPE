@@ -27,7 +27,29 @@
             <td>{{nbEnfants}}</td>
             <td>{{petitdej}}</td>
             <td>{{prix}} €</td>
-            <td><button onclick="remove({{suppr}})">Supprimer</button></td>
+            <td>
+                <button id="modifier" onclick="modif({{suppr}})">Modifier</button>
+                <button id="supprimer" onclick="remove({{suppr}})">Supprimer</button>
+            </td>
+        </tr>
+    </template>
+    <template id="modifDestination">
+        <tr>
+            <td>
+                <div class="img-destination">
+                    <img src="{{imgDest}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
+                </div>
+            </td>
+            <td>{{destination}}</td>
+            <td>Du <input type="date" value="{{dateDebut}}"> Au <input type="date" value="{{dateFin}}"></td>
+            <td>Adultes <input type="number" value="{{nbAdultes}}"></td>
+            <td>Enfants <input type="number" value="{{nbEnfants}}"></td>
+            <td><input type="checkbox" checked="{{petitdej}}">Petit dej</td>
+            <td>{{prix}} €</td>
+            <td>
+                <button id="modifier" onclick="validerModif({{suppr}})">Valider</button>
+                <button id="supprimer" onclick="cancelModif({{suppr}})">Annuler</button>
+            </td>
         </tr>
     </template>
     <table id="contenu-panier" class="contenu-panier">

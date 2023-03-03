@@ -2,6 +2,16 @@ table td, table th{
     width: 15%;
     text-align: center;
 }
+
+#modifier {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+#supprimer {
+    font-size: 12px;
+}
+
 table img {
     width: 100%;
     clip-path: circle(50%);

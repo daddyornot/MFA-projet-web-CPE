@@ -20,7 +20,7 @@ function changeFilter() {
     // console.log('ChangeFilter');
     let filter = voyage;
     let search = document.getElementById("searchbar").value;
-    if(search != ""){
+    if(search !== ""){
         filter = filter.filter(function (dest) {
             return dest.destination.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
                 dest.ville.toLocaleLowerCase().includes(search.toLocaleLowerCase());
