@@ -410,7 +410,8 @@ function lectureCritere(){
 function verificationDate(){
     let datedebut = new Date(document.getElementById('date-debut').value);
     let demain = new Date();
-    demain.setDate(new Date().getDate() + 1);
+    demain.setTime(new Date().getTime() + 24 * 3600 * 1000);
+
     document.getElementById('date-debut').min = demain.toISOString().substring(0,10);
 
     if( datedebut < Date.now()){
@@ -418,14 +419,14 @@ function verificationDate(){
         document.getElementById('date-debut').value = demain.toISOString().substring(0,10);
 
         let lendemain = new Date();
-        lendemain.setDate(demain.getDate() +1 );
+        lendemain.setTime(demain.getTime() + 24 * 3600 * 1000);
         document.getElementById('date-fin').value = lendemain.toISOString().substring(0,10);
 
         datedebut = new Date(document.getElementById('date-debut').value);
 
     }
     let lendemain = new Date();
-    lendemain.setDate(datedebut.getDate() + 1 );
+    lendemain.setTime(datedebut.getTime() + 24 * 3600 * 1000);
     document.getElementById('date-fin').min = lendemain.toISOString().substring(0,10);
 
     datefin = new Date(document.getElementById('date-fin').value);

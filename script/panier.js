@@ -2,6 +2,7 @@
 // document.addEventListener("DOMContentLoaded", function () {});
 
 var panier = new Panier();
+var panierLocal = new Panier();
 window.onload = () => {
     panier = new Panier();
     // Si le local storage n'existe pas ou s'il est vide, on n'affiche pas le panier
@@ -55,7 +56,6 @@ function creationtableau(){
                 .replace(/{{prix}}/g, voyage.total)
                 .replace(/{{idVoyage}}/g, voyage.id);
             clone.firstElementChild.innerHTML = newDestination;
-            verificationDateModif(clone);
         }
         else {
             template = document.querySelector("#listeDestinations");
@@ -148,45 +148,48 @@ function cancelModif(id) {
 function validerModif(id) {
     let sejour = panier.get()[id]
     sejour.modif = false;
-    panier.modifi(id,sejour);
+    let pan = new Panier();
+    pan.modifi(id,sejour);
+    panier = pan;
     creationtableau();
 }
 
-function verificationDateModif(element){
-    console.log(element.getElementById('dateDebutModif').value);
-    let datedebut = new Date(element.getElementById('dateDebutModif').value);
+function verificationDateModif(id){
+    let datedebut = new Date(document.getElementsByClassName('dateDebutModif')[id].value);
     let demain = new Date();
-    demain.setDate(new Date().getDate() + 1);
-    element.getElementById('dateDebutModif').min = demain.toISOString().substring(0,10);
+    demain.setTime(new Date().getTime() + 24 * 3600 * 1000);
+
+    document.getElementsByClassName('dateDebutModif')[id].min = demain.toISOString().substring(0,10);
 
     if( datedebut < Date.now()){
         // alert("La date de début n'est pas bonne");
-        element.getElementById('dateDebutModif').value = demain.toISOString().substring(0,10);
+        document.getElementsByClassName('dateDebutModif')[id].value = demain.toISOString().substring(0,10);
 
         let lendemain = new Date();
-        lendemain.setDate(demain.getDate() +1 );
-        element.getElementById('dateFinModif').value = lendemain.toISOString().substring(0,10);
+        lendemain.setTime(demain.getTime() + 24 * 3600 * 1000);
+        document.getElementsByClassName('dateFinModif')[id].value = lendemain.toISOString().substring(0,10);
 
-        datedebut = new Date(element.getElementById('dateDebutModif').value);
+        datedebut = new Date(document.getElementsByClassName('dateDebutModif')[id].value);
 
     }
     let lendemain = new Date();
-    lendemain.setDate(datedebut.getDate() + 1 );
-    element.getElementById('dateFinModif').min = lendemain.toISOString().substring(0,10);
+    lendemain.setTime(datedebut.getTime() + 24 * 3600 * 1000);
+    document.getElementsByClassName('dateFinModif')[id].min = lendemain.toISOString().substring(0,10);
 
-    datefin = new Date(element.getElementById('dateFinModif').value);
+    let datefin = new Date(document.getElementsByClassName('dateFinModif')[id].value);
 
     if(dateDiff(datedebut, datefin).day <= 0){
-        element.getElementById('dateFinModif').value = lendemain.toISOString().substring(0,10);
+        document.getElementsByClassName('dateFinModif')[id].value = lendemain.toISOString().substring(0,10);
     }
 }
 
 function changeValue(id){
+    verificationDateModif(id);
     let sejour = panier.get()[id]
-    sejour.datedebut = new Date(document.getElementById("dateDebutModif").value);
-    sejour.datefin = new Date(document.getElementById("dateFinModif").value);
-    sejour.nbAdulte = Number(document.getElementById("nbAdultesModif").value);
-    sejour.nbEnfant = Number(document.getElementById("nbEnfantsModif").value);
-    sejour.petitDej = document.getElementById("petitDejModif").checked;
+    sejour.datedebut = new Date(document.getElementsByClassName("dateDebutModif")[id].value);
+    sejour.datefin = new Date(document.getElementsByClassName("dateFinModif")[id].value);
+    sejour.nbAdulte = Number(document.getElementsByClassName("nbAdultesModif")[id].value);
+    sejour.nbEnfant = Number(document.getElementsByClassName("nbEnfantsModif")[id].value);
+    sejour.petitDej = document.getElementsByClassName("petitDejModif")[id].checked;
     creationtableau();
 }
