@@ -6,10 +6,13 @@ else
     selection = "japon";
 
 var resa = new Reservation(selection);
+document.body.style.background = `url(${resa.images[0]}) no-repeat center center fixed`;
+document.body.style.backgroundSize = 'cover';
 
 window.onload = () => {
 
     document.getElementById("form").addEventListener('change', changeForm);
+
 
     let template = document.querySelector("#template");
 
