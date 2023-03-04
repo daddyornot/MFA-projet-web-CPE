@@ -6,16 +6,30 @@
     font-size: 1em;
 }
 
+.searchAndFilters {
+    display: flex;
+}
+
 #searchbar{
     width: 25%;
     text-align: center;
 }
 
 .hidden {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
 }
 
+/* #filtres.active-filter.hidden {
+    opacity: 0;
+    transition: opacity 500ms ease;
+} */
+
 .active-filter {
+    opacity: 1;
+    max-height: fit-content;
     margin: 30px 4% 20px 4%;
     padding: 15px;
     box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
@@ -25,7 +39,7 @@
     grid-template-columns: repeat(8, 1fr);
     width: 90%;
     height: fit-content;
-    background-color: rgba(225, 249, 255, .1);
+    background-color: rgba(169, 189, 207, .85);
     row-gap: 1em;
 }
 
@@ -45,18 +59,9 @@
     margin: 40px;
     display: grid;
     grid-template-columns: 450px;
-    gap: 1rem;
+    gap: 3rem;
     color: whitesmoke;
     justify-content: space-around;
-}
-
-.grid-img {
-    border-radius: 50px;
-    background: linear-gradient(225deg, #cacaca, #f0f0f0);
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-    justify-content: center;
 }
 
 .grid-item {
@@ -67,7 +72,7 @@
     box-shadow:  -20px 20px 60px #bebebe,
     20px -20px 60px #ffffff;
     border-radius: 50px;
-    background-color: rgba(169, 189, 207, .4);
+    background-color: rgba(169, 189, 207, .85);
 }
 
 .grid-item h2 {
@@ -92,7 +97,27 @@
     border-radius: 50%;
     text-align: center;
     padding-right: 0;
-    background-color: rgba(60, 79, 94, .6)
+    background-color: rgba(60, 79, 94, .6);
+    z-index: 1;
+    transition: transform 500ms ease;
+}
+
+.grid-img {
+    border-radius: 50px;
+    background: linear-gradient(225deg, #cacaca, #f0f0f0);
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    justify-content: center;
+    transition: transform 500ms ease;
+}
+
+.grid-item:hover .grid-img{
+    transform: scale(1.1);
+}
+
+.grid-item:hover .temperature {
+    transform: scale(1.5);
 }
 
 .dest-infos {

@@ -95,7 +95,8 @@ const formFiltres = document.getElementById('filtres');
 
 toggleButton.addEventListener('click', () => {
     formFiltres.classList.toggle("active-filter");
-    console.log(formFiltres.className);
+    formFiltres.classList.toggle("hidden");
+    // console.log(formFiltres.className);
     if (formFiltres.className === "hidden") {
         toggleButton.innerText = "Afficher les filtres";
     }
