@@ -214,6 +214,7 @@ function changeValue(id){
     sejour.datefin = new Date(document.getElementById("dateFinModif" + id).value);
     sejour.nbAdulte = Number(document.getElementById("nbAdultesModif" + id).value);
     sejour.nbEnfant = Number(document.getElementById("nbEnfantsModif" + id).value);
-    sejour.petitDej = document.getElementById("petitDejModif" + id).checked;
+    if (sejour.petitDejAvailable)
+        sejour.petitDej = document.getElementById("petitDejModif" + id).checked;
     creationtableau();
 }
