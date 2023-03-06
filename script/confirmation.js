@@ -52,15 +52,14 @@ function genererResume() {
     document.getElementById("prix-total").innerHTML = " " + prixTotal + " €";
 }
 
-
+function onUpdate(){
+    genererResume();
+}
 
 // on vide le panier une fois qu'on est arrivé sur la page de confirmation
 window.onunload = () => {
     window.localStorage.clear();
 }
 
-function onUpdate(){
-    genererResume();
-}
 
 genererResume();

@@ -51,7 +51,7 @@ function onUpdate(){
 function resetTab(){
     document.getElementById('solde-destination').innerHTML =
         "        <tr>\n" +
-        "            <th>Element</th>\n" +
+        "            <th></th>\n" +
         "            <th>Nombre de jours</th>\n" +
         "            <th>Nombre de personne</th>\n" +
         "            <th>Prix unitaire</th>\n" +
