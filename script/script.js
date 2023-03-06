@@ -19,7 +19,7 @@ const voyages = {
             "Un voyage au Japon est une expérience inoubliable et unique, mélangeant traditions ancestrales et modernité, pour une immersion totale dans une culture riche et fascinante.",
         images: ["assets/img/japon/01.jpg", "assets/img/japon/02.jpg", "assets/img/japon/03.jpg", "assets/img/japon/04.jpg"],
         prixnuit: 400,
-        prixdej: 15,
+        petitDejAvailable: false,
         animaux: false,
     },
     "maldive": {
@@ -36,7 +36,7 @@ const voyages = {
             "En somme, un voyage aux Maldives est un véritable paradis pour les amoureux de la plage, de la plongée, du luxe et de la nature, pour une expérience inoubliable dans un cadre idyllique.",
         images: ["assets/img/maldive/01.jpg", "assets/img/maldive/02.jpg", "assets/img/maldive/03.jpg"],
         prixnuit: 300,
-        prixdej: 15,
+        petitDejAvailable: true,
         animaux: false,
     },
     "canada": {
@@ -53,7 +53,7 @@ const voyages = {
             "En somme, un voyage au Canada est une expérience passionnante pour les amoureux de la nature, de la culture et des grandes villes, pour une immersion totale dans un pays fascinant et accueillant.",
         images: ["assets/img/canada/01.jpg", "assets/img/canada/02.jpg", "assets/img/canada/03.jpg", "assets/img/canada/04.jpg", "assets/img/canada/05.jpg"],
         prixnuit: 250,
-        prixdej: 12,
+        petitDejAvailable: true,
         animaux: true,
     },
     "chine": {
@@ -70,7 +70,7 @@ const voyages = {
             "En somme, un voyage en Chine est une expérience fascinante pour les amoureux de l'histoire, de la culture et de la cuisine, pour une immersion totale dans un pays incroyablement diversifié et passionnant.",
         images: ["assets/img/chine/01.jpg", "assets/img/chine/02.jpg", "assets/img/chine/03.jpg"],
         prixnuit: 500,
-        prixdej: 11,
+        petitDejAvailable: false,
         animaux: false,
     },
     "espace": {
@@ -91,7 +91,7 @@ const voyages = {
             "En somme, un voyage interplanétaire serait une expérience incroyable et unique pour les amateurs d'astronomie, pour une immersion totale dans l'univers fascinant et infini qui nous entoure.",
         images: ["assets/img/espace/01.jpg", "assets/img/espace/02.jpg", "assets/img/espace/03.jpg"],
         prixnuit: 5000,
-        prixdej: 850,
+        petitDejAvailable: false,
         animaux: true,
     },
     "france": {
@@ -112,7 +112,7 @@ const voyages = {
             "En somme, un voyage en France est une expérience inoubliable pour les amoureux de la culture, de la gastronomie et de la beauté, pour une immersion totale dans un pays romantique et historique.",
         images: ["assets/img/france/01.jpg", "assets/img/france/02.jpg", "assets/img/france/03.jpg"],
         prixnuit: 150,
-        prixdej: 8,
+        petitDejAvailable: true,
         animaux: true,
     },
     "islande": {
@@ -133,7 +133,7 @@ const voyages = {
             "En somme, un voyage en Islande est une expérience inoubliable pour les amoureux de la nature, de la culture et de l'aventure, pour une immersion totale dans un pays unique et spectaculaire.",
         images: ["assets/img/islande/01.jpg", "assets/img/islande/02.jpg"],
         prixnuit: 180,
-        prixdej: 10,
+        petitDejAvailable: true,
         animaux: false,
     }
 }
@@ -145,7 +145,8 @@ class Voyage {
         this._description = voyages[_selection].description;
         this._images = voyages[_selection].images;
         this._prixnuit = voyages[_selection].prixnuit;
-        this._prixdej = voyages[_selection].prixdej;
+        this._prixdej = 15;
+        this._petitDejAvailable = voyages[_selection].petitDejAvailable;
         this._animaux = voyages[_selection].animaux;
         this._selection = _selection;
         this._idimg = 0;
@@ -204,6 +205,10 @@ class Voyage {
 
     get temperature() {
         return this._temperature;
+    }
+
+    get petitDejAvailable(){
+        return this._petitDejAvailable;
     }
 
 }
@@ -275,7 +280,7 @@ class Reservation extends Voyage{
     }
 
     get prixnuitenfant(){
-        return this._prixnuit * 0.6;
+        return this._prixnuit * 0.4;
     }
 
     get totalEnfants(){ 

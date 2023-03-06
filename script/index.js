@@ -26,10 +26,15 @@ function changeFilter() {
                 dest.ville.toLocaleLowerCase().includes(search.toLocaleLowerCase());
         })
     }
-
+    console.log($("#petitdej")[0].checked);
+    if($("#petitdej")[0].checked){
+        filter = filter.filter(function (dest) {
+            return dest.petitDejAvailable
+        })
+    }
     if (document.getElementById("animaux-form").checked)
         filter = filter.filter(function (dest) {
-            return dest._animaux;
+            return dest.animaux;
         });
     let prixmax = document.getElementById("prix-max").value;
     let prixmin = document.getElementById("prix-mini").value;
