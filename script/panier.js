@@ -5,19 +5,10 @@ var panier = new Panier();
 var panierLocal = new Panier();
 
 window.onload = () => {
-    panier = new Panier();
-    // Si le local storage n'existe pas ou s'il est vide, on n'affiche pas le panier
-    if (!panier.get() || panier.get().length === 0) {
-        document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
-        document.getElementById("divtotal").style.display = 'none';
-        document.getElementsByClassName("info-commande")[0].style.display = 'none';
-        document.getElementsByClassName("infos")[0].style.display = 'none';
-        document.getElementsByTagName("button")[0].style.display = 'none';
-    // sinon on créé un panier
-    } else creationtableau();
+    creationtableau();
     // on ne test et valide le form que si les champs sont respectés
     if (checkFields())
-    checkAndValidateForm();
+        checkAndValidateForm();
 }
 
 function onUpdate(){
@@ -26,73 +17,84 @@ function onUpdate(){
 
 function remove(id){
     panier.remove(id);
-    location.reload();
+    panierLocal.remove(id);
+    // panier = new Panier();
+    // panierLocal = new Panier();
+    // location.reload();
+    creationtableau();
 }
 
 function creationtableau(){
-    let template = document.querySelector("#listeDestinations");
-    let total = 0;
-    document.getElementById("divtotal").innerHTML = "";
-    document.getElementById("contenu-panier").innerHTML = "";
-    for (let voyage of panierLocal.get()) {
-        let clone;
+    // Si le local storage n'existe pas ou s'il est vide, on n'affiche pas le panier
+    if (!panierLocal.get() || panierLocal.get().length === 0) {
+        document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
+        document.getElementById("divtotal").style.display = 'none';
+        document.getElementsByClassName("info-commande")[0].style.display = 'none';
+        document.getElementsByClassName("infos")[0].style.display = 'none';
+        document.getElementsByTagName("button")[0].style.display = 'none';
+        // sinon on affiche le panier
+    } else {
+        let template = document.querySelector("#listeDestinations");
+        let total = 0;
+        document.getElementById("divtotal").innerHTML = "";
+        document.getElementById("contenu-panier").innerHTML = "";
+        for (let voyage of panierLocal.get()) {
+            let clone;
 
-        if (voyage.modif) {
-            template = document.querySelector("#modifDestination");
-            if(voyage.petitDej)
-                var dej = "checked";
-            else
-                var dej = "";
-            clone = document.importNode(template.content, true);
-            total += voyage.total;
-            newDestination = clone.firstElementChild.innerHTML
-                .replace(/{{temperature}}/g, voyage.temperature)
-                .replace(/{{destination}}/g, voyage.destination)
-                .replace(/{{dateDebut}}/g, voyage.datedebut.toISOString().substring(0,10))
-                .replace(/{{dateFin}}/g, voyage.datefin.toISOString().substring(0,10))
-                .replace(/{{nbAdultes}}/g, voyage.nbAdulte)
-                .replace(/{{nbEnfants}}/g, voyage.nbEnfant)
-                .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
-                .replace(/{{imgDest}}/g, voyage.images[0])
-                .replace(/{{petitdej}}/g, dej)
-                .replace(/{{prix}}/g, voyage.total)
-                .replace(/{{idVoyage}}/g, voyage.id);
+            if (voyage.modif) {
+                template = document.querySelector("#modifDestination");
+                if (voyage.petitDej)
+                    var dej = "checked";
+                else
+                    var dej = "";
+                clone = document.importNode(template.content, true);
+                total += voyage.total;
+                newDestination = clone.firstElementChild.innerHTML
+                    .replace(/{{temperature}}/g, voyage.temperature)
+                    .replace(/{{destination}}/g, voyage.destination)
+                    .replace(/{{dateDebut}}/g, voyage.datedebut.toISOString().substring(0, 10))
+                    .replace(/{{dateFin}}/g, voyage.datefin.toISOString().substring(0, 10))
+                    .replace(/{{nbAdultes}}/g, voyage.nbAdulte)
+                    .replace(/{{nbEnfants}}/g, voyage.nbEnfant)
+                    .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
+                    .replace(/{{imgDest}}/g, voyage.images[0])
+                    .replace(/{{petitdej}}/g, dej)
+                    .replace(/{{prix}}/g, voyage.total)
+                    .replace(/{{idVoyage}}/g, voyage.id);
+            } else {
+                template = document.querySelector("#listeDestinations");
+                if (voyage.petitDej)
+                    var dej = "Pti dej' inclus";
+                else
+                    var dej = "Pas de Pti dej'";
+
+                clone = document.importNode(template.content, true);
+                total += voyage.total;
+                newDestination = clone.firstElementChild.innerHTML
+                    .replace(/{{temperature}}/g, voyage.temperature)
+                    .replace(/{{destination}}/g, voyage.destination)
+                    .replace(/{{dateDebut}}/g, toFormattedDate(voyage.datedebut))
+                    .replace(/{{dateFin}}/g, toFormattedDate(voyage.datefin))
+                    .replace(/{{nbAdultes}}/g, voyage.nbAdulte > 1 ? voyage.nbAdulte + " adultes" : voyage.nbAdulte + " adulte")
+                    .replace(/{{nbEnfants}}/g, voyage.nbEnfant > 1 ? voyage.nbEnfant + " enfants" : voyage.nbEnfant === 1 ? voyage.nbEnfant + " enfant" : "Pas d'enfants, youpi !")
+                    .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
+                    .replace(/{{imgDest}}/g, voyage.images[0])
+                    .replace(/{{petitdej}}/g, dej)
+                    .replace(/{{prix}}/g, voyage.total)
+                    .replace(/{{idVoyage}}/g, voyage.id);
+            }
+
             clone.firstElementChild.innerHTML = newDestination;
-        }
-        else {
-            template = document.querySelector("#listeDestinations");
-            if(voyage.petitDej)
-                var dej = "Pti dej' inclus";
-            else
-                var dej = "Pas de Pti dej'";
-
-            clone = document.importNode(template.content, true);
-            total += voyage.total;
-            newDestination = clone.firstElementChild.innerHTML
-                .replace(/{{temperature}}/g, voyage.temperature)
-                .replace(/{{destination}}/g, voyage.destination)
-                .replace(/{{dateDebut}}/g, toFormattedDate(voyage.datedebut))
-                .replace(/{{dateFin}}/g, toFormattedDate(voyage.datefin))
-                .replace(/{{nbAdultes}}/g, voyage.nbAdulte>1 ? voyage.nbAdulte + " adultes" : voyage.nbAdulte + " adulte")
-                .replace(/{{nbEnfants}}/g, voyage.nbEnfant>1 ? voyage.nbEnfant + " enfants" : voyage.nbEnfant === 1 ? voyage.nbEnfant + " enfant" : "Pas d'enfants, youpi !")
-                .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
-                .replace(/{{imgDest}}/g, voyage.images[0])
-                .replace(/{{petitdej}}/g, dej)
-                .replace(/{{prix}}/g, voyage.total)
-                .replace(/{{idVoyage}}/g, voyage.id);
-                clone.firstElementChild.innerHTML = newDestination;
+            document.getElementById("contenu-panier").appendChild(clone);
         }
 
-
-        document.getElementById("contenu-panier").appendChild(clone);
+        let templatetotal = document.querySelector("#total");
+        let clone = document.importNode(templatetotal.content, true);
+        newtotal = clone.firstElementChild.innerHTML
+            .replace(/{{prix}}/g, total.toString());
+        clone.firstElementChild.innerHTML = newtotal;
+        document.getElementById("divtotal").appendChild(clone);
     }
-
-    let templatetotal = document.querySelector("#total");
-    let clone = document.importNode(templatetotal.content, true);
-    newtotal = clone.firstElementChild.innerHTML
-        .replace(/{{prix}}/g, total.toString());
-    clone.firstElementChild.innerHTML = newtotal;
-    document.getElementById("divtotal").appendChild(clone);
 }
 
 function checkAndValidateForm() {
@@ -144,15 +146,18 @@ function modifSejour(id) {
 }
 
 function cancelModif(id) {
+    panier = new Panier();
     panierLocal.get()[id].modif = false;
-    panier.modifi(id, panier.get()[id]);
+    panierLocal.modifi(id, panier.get()[id]);
     creationtableau();
 }
 
 function validerModif(id) {
+    panier = new Panier();
     let sejour = panierLocal.get()[id];
-    panierLocal.get()[id].modif = false;
     panier.modifi(id, sejour);
+    panier = new Panier();
+    panierLocal = new Panier();
     creationtableau();
 }
 

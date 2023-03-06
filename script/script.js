@@ -312,13 +312,33 @@ class Panier {
         window.localStorage.setItem("panier", JSON.stringify(this._panier));
     }
     get (){
-        return this._panier;
+        if (this._panier == undefined){
+            console.log("le panier est vide");
+            return [];
+        } else {
+            this._panier.sort(function (a, b) {
+                return a.datedebut - b.datedebut;
+            }).forEach(function (element, index) {
+                element.id = index;
+            });
+
+            return this._panier.sort(function (a, b) {
+                return a.datedebut - b.datedebut;
+            });
+        }
     }
 
     remove(m){
         // console.log(m);
-        this._panier.splice(m, 1);
+        let toSuppr = "";
+        this._panier.forEach(function (element, index){
+            if(element.id == m){
+                toSuppr = index;
+            }
+        })
+        this._panier.splice(toSuppr, 1);
         window.localStorage.setItem("panier", JSON.stringify(this._panier));
+
         // console.log(this._panier);
     }
 
