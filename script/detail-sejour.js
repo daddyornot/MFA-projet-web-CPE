@@ -104,12 +104,10 @@ function valider() {
 
 function resetForm(){
     console.log("reset");
-    console.log(document.getElementById("nb-adulte").value);
     document.getElementById("nb-adulte").value = 1;
-    console.log(document.getElementById("nb-adulte").value);
-
     document.getElementById("nb-enfant").value = 0;
     document.getElementById("petitdej").checked = false;
+    sessionStorage.clear();
     ecritureCritere();
     verificationDate();
     changeForm();
