@@ -2,6 +2,11 @@
 let panier = new Panier();
 let template = document.querySelector("#resumeVoyage");
 
+window.onload = () => {
+    if(panier.get().length == 0)
+        window.location = "./index.html"
+}
+
 function genererResume() {
 
     let nbJourRestants = 9999999;
