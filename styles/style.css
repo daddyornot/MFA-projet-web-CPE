@@ -122,3 +122,28 @@ button:disabled {
     opacity: 1;
     transform: rotate(405deg);
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: visible;
+    width: 18rem;
+    background-color: rgba(60, 79, 94, .9);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 80%;
+    left: 30%;
+    font-size: 13px;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    transition: 500ms ease;
+    transform: translate3d(10%, -10%, 5px);
+}
