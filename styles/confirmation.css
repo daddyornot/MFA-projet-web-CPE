@@ -12,7 +12,7 @@
     padding: 10px;
     box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
     border-radius: 20px;
-    background-color: rgba(255, 255, 255, .7);
+    background-color: rgba(255, 255, 255, .8);
     /*animation: color 5s infinite linear;*/
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
 
 .confirmation-voyage {
     box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .8);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin: 30px;

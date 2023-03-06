@@ -59,9 +59,7 @@
     <template id="total">
         <span id="spantotal">Total {{prix}} €</span>
     </template>
-    <div id="divtotal" class="total">
     </div>
-
 
     <div class="infos">
         <div class="form-complet">
@@ -97,12 +95,10 @@
                 </div>
             </form>
         </div>
-        //TODO faire 3 div pour la partie du bas : total au dessus du bouton
         <div class="confirm-total">
-            <template id="total">
-<!--                <span id="spantotal"></span>-->
-                <span id="divtotal" class="total">Total {{prix}} €</span>
-            </template>
+            <div id="divtotal" class="total">
+                    Total {{prix}} €
+            </div>
             <button id="confirm-commande" type="button">Cette fois ca y est !</button>
         </div>
     </div>

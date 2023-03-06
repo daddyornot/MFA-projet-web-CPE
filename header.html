@@ -11,7 +11,18 @@
             </ul>
         </div>
 <!--        Pour arreter le défilement des backgrounds-->
-        <button onclick="clearInterval(backgroundInterval)" class="stop-background">STOP background</button>
+        <aside class="background-action">
+            <a onclick="randomizeBackground()" class="play-background">
+                <span class="material-symbols-outlined">
+                    play_arrow
+                </span>
+            </a>
+            <a onclick="clearInterval(backgroundInterval)" class="stop-background">
+                <span class="material-symbols-outlined">
+                    stop
+                </span>
+            </a>
+        </aside>
     </nav>
 <!--    <a href="">Mon compte</a>-->
 </header>

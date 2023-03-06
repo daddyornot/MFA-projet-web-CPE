@@ -8,7 +8,7 @@
 }
 
 body {
-    color: grey;
+    color: #3c3c3c;
     font-family: "Lexend Deca", serif;
     /*background: url("../assets/img/maldive/03.jpg") no-repeat center center fixed;*/
     /*background-size: cover;*/
@@ -16,7 +16,8 @@ body {
     /*background-repeat: no-repeat;*/
     /*background-attachment: fixed;*/
     backdrop-filter: blur(5px);
-    margin: 10px 0px;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 a {
