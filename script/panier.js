@@ -61,6 +61,19 @@ function creationtableau(){
                     .replace(/{{petitdej}}/g, dej)
                     .replace(/{{prix}}/g, voyage.total)
                     .replace(/{{idVoyage}}/g, voyage.id);
+                clone.firstElementChild.innerHTML = newDestination;
+                let selectAdulte = clone.getElementById("nbAdultesModif" + voyage.id);
+                [...selectAdulte].forEach(element => {
+                    if (element.value == voyage.nbAdulte){
+                        element.setAttribute("selected", "");
+                    }
+                });
+                let selectEnfant = clone.getElementById("nbEnfantsModif" + voyage.id);
+                [...selectEnfant].forEach(element => {
+                    if (element.value == voyage.nbEnfant){
+                        element.setAttribute("selected", "");
+                    }
+                });
             } else {
                 template = document.querySelector("#listeDestinations");
                 if (voyage.petitDej)
@@ -82,9 +95,9 @@ function creationtableau(){
                     .replace(/{{petitdej}}/g, dej)
                     .replace(/{{prix}}/g, voyage.total)
                     .replace(/{{idVoyage}}/g, voyage.id);
+                clone.firstElementChild.innerHTML = newDestination;
             }
 
-            clone.firstElementChild.innerHTML = newDestination;
             document.getElementById("contenu-panier").appendChild(clone);
         }
 

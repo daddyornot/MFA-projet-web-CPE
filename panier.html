@@ -42,8 +42,35 @@
 
             <td onchange="changeValue({{idVoyage}})">Du <input id="dateDebutModif{{idVoyage}}" type="date" value="{{dateDebut}}"><br>
                 Au <input id="dateFinModif{{idVoyage}}" type="date" value="{{dateFin}}"></td>
-            <td onchange="changeValue({{idVoyage}})">Adultes<br><input id="nbAdultesModif{{idVoyage}}" type="number" value="{{nbAdultes}}"></td>
-            <td onchange="changeValue({{idVoyage}})">Enfants<br><input id="nbEnfantsModif{{idVoyage}}" type="number" value="{{nbEnfants}}"></td>
+            <td onchange="changeValue({{idVoyage}})">Adultes<br>
+                <select name="nb-adulte" id="nbAdultesModif{{idVoyage}}">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td onchange="changeValue({{idVoyage}})">Enfants<br>
+                <select name="nb-enfant" id="nbEnfantsModif{{idVoyage}}">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
             <td onchange="changeValue({{idVoyage}})">Petit dej<br><input id="petitDejModif{{idVoyage}}" class="check" type="checkbox" {{petitdej}}></td>
 
             <td>{{prix}} €</td>
