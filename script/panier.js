@@ -74,12 +74,16 @@ function creationtableau(){
                         element.setAttribute("selected", "");
                     }
                 });
+                if (!voyage.petitDejAvailable)
+                    clone.getElementById("caseDej" + voyage.id).innerHTML = "Pti dej' non dispo";
             } else {
                 template = document.querySelector("#listeDestinations");
                 if (voyage.petitDej)
                     var dej = "Pti dej' inclus";
                 else
                     var dej = "Pas de Pti dej'";
+                if(!voyage.petitDejAvailable)
+                    dej = "Pti dej' non dispo";
 
                 clone = document.importNode(template.content, true);
                 total += voyage.total;

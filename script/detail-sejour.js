@@ -5,7 +5,7 @@ if (urlParams.get('selection'))
 else
     selection = "japon";
 
-var resa = new Reservation(selection);
+const resa = new Reservation(selection);
 document.body.style.background = `url(${resa.images[0]}) no-repeat center center fixed`;
 document.body.style.backgroundSize = 'cover';
 
@@ -51,6 +51,7 @@ window.onload = () => {
     ecritureCritere();
     verificationDate();
     changeForm();
+    onUpdate();
 }
 
 function onUpdate(){

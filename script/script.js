@@ -251,7 +251,13 @@ class Reservation extends Voyage{
     set id(m) { this._id = m};
     get check(){ return this._check };
 
-    get nbJour() { return dateDiff(this._datedebut, this._datefin).day}
+    get nbJour() {
+        if (dateDiff(this._datedebut, this._datefin).day > 0)
+            return dateDiff(this._datedebut, this._datefin).day
+        else
+            alert("Le nombre de jour n'est pas bon");
+        return 0;
+    }
 
     set nbAdulte(a) {
         if (a < 1){
@@ -271,10 +277,10 @@ class Reservation extends Voyage{
 
     get nbPersonnes(){ return this._nbenfant + this._nbadulte }
 
-    get totalpetitdej() { 
+    get totalpetitdej() {
         if (this._petitdej)
             return this.nbJour * this.nbPersonnes * this._prixdej;
-        else 
+        else
             return 0;
      }
     get totalAdulte(){ 
