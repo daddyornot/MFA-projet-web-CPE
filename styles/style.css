@@ -129,7 +129,7 @@ button:disabled {
 }
 
 .tooltip .tooltip-text {
-    visibility: visible;
+    visibility: hidden;
     width: 18rem;
     background-color: rgba(60, 79, 94, .9);
     color: #fff;
@@ -140,10 +140,12 @@ button:disabled {
     bottom: 80%;
     left: 30%;
     font-size: 13px;
+    opacity: 0;
 }
 
 .tooltip:hover .tooltip-text {
     visibility: visible;
     transition: 500ms ease;
+    opacity: 1;
     transform: translate3d(10%, -10%, 5px);
 }

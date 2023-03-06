@@ -13,16 +13,19 @@ switch (true) {
 }
 
 let toggleBackgroundAnimation = document.getElementById("button-background");
+let animationText = document.getElementById("animer");
 toggleBackgroundAnimation.addEventListener("click", () => {
     if (toggleBackgroundAnimation.className === "stop-background") {
         clearInterval(backgroundInterval);
         toggleBackgroundAnimation.className = "play-background";
         toggleBackgroundAnimation.getElementsByTagName("span")[0].innerHTML = "play_arrow";
+        animationText.innerHTML = "Démarrer";
     }
     else {
         randomizeBackground();
         toggleBackgroundAnimation.className = "stop-background";
         toggleBackgroundAnimation.getElementsByTagName("span")[0].innerHTML = "stop";
+        animationText.innerHTML = "Arrêter";
     }
 
 

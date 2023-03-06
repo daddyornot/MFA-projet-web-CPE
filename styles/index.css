@@ -127,6 +127,7 @@
 .dest-infos {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .dest-infos span {
