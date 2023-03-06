@@ -73,6 +73,7 @@
 #desc-destination {
     display: flex;
     align-items: center;
+    padding: 20px;
 }
 
 .info-container {
@@ -84,25 +85,37 @@
 
 .choix {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    /*grid-template-columns: repeat(5, 1fr);*/
+    /*grid-auto-columns: auto;*/
     align-items: center;
     justify-items: center;
     column-gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    padding: 1rem 2rem;
     box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, .8);
 }
 
-.animaux {
-    grid-row: 3;
+.animaux, .petit-dej {
+    display: flex;
+    align-items: center;
     grid-column: 1/6;
     text-align: center;
     margin-top: 15px;
-    padding: 10px;
 }
 
-.animaux #animaux-destination {
+.animaux {
+    grid-row: 3;
+    padding: 0px;
+}
+
+.petit-dej {
+    grid-row: 4;
+    padding: 0px;
+}
+
+.animaux #animaux-destination, .petit-dej #petit-dej-destination {
     font-size: 15px;
 }
 

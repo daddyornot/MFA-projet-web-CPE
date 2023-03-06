@@ -38,6 +38,16 @@ window.onload = () => {
         document.getElementById("animaux-destination").innerHTML = document
             .getElementById("animaux-destination").innerHTML + "Les animaux ne sont pas acceptés désolé !";
 
+    if (!resa.petitDejAvailable) {
+        document.getElementsByClassName("choix")[0].style.gridTemplateColumns = "repeat(4, 1fr)"
+        document.getElementsByClassName("animaux")[0].style.gridColumn = "1/5"
+        let col = document.getElementsByClassName("col-petit-dej");
+        for (let e of col) {
+            e.style.display = "none";
+        }
+        document.getElementById("petit-dej-destination").innerHTML = "Nous ne proposons pas le petit déjeuner pour ce voyage..."
+    }
+
     ecritureCritere();
     verificationDate();
     changeForm();

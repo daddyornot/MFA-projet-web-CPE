@@ -76,6 +76,7 @@ function changeFilter() {
     verificationDate();
 }
 
+
 function resetForm(){
     console.log("reset");
     document.getElementById("prix-mini").value = document.getElementById("prix-mini").min;
