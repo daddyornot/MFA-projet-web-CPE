@@ -153,19 +153,21 @@ class Voyage {
 
         if (this.value !== "espace") {
             const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";
-            $.ajax({
-                url: url,
-                type: "GET",
-                dataType: "json",
-                success: (data) => {
-                    // console.log(data);
-                    this._temperature = data.main.temp;
-                    onUpdate();
-                },
-                error: () => {
-                    alert("Erreur dans la requete API");
-                }
-            });
+            if (this._temperature !== null) {
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    dataType: "json",
+                    success: (data) => {
+                        // console.log(data);
+                        this._temperature = data.main.temp;
+                        onUpdate();
+                    },
+                    error: () => {
+                        alert("Erreur dans la requete API");
+                    }
+                });
+            }
         }
         else {
             this._temperature = -272; //temperature de l'espace, openWeather n'a pas cette donnée malheureusement

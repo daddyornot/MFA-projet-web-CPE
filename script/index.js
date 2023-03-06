@@ -26,7 +26,7 @@ function changeFilter() {
                 dest.ville.toLocaleLowerCase().includes(search.toLocaleLowerCase());
         })
     }
-    console.log($("#petitdej")[0].checked);
+    // console.log($("#petitdej")[0].checked);
     if($("#petitdej")[0].checked){
         filter = filter.filter(function (dest) {
             return dest.petitDejAvailable
@@ -53,12 +53,6 @@ function changeFilter() {
         document.getElementById("liste-destinations").innerHTML = "";
         for (const d of filter) {
             let clone = document.importNode(template.content, true);
-            let animaux = "display: ";
-
-            if (d.animaux)
-                animaux += "flex";
-            else
-                animaux += "none";
 
             newDestination = clone.firstElementChild.innerHTML
                 .replace(/{{destination}}/g, d.destination)
@@ -66,13 +60,16 @@ function changeFilter() {
                 .replace(/{{prixNuit}}/g, d.prixNuit)
                 .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
                 .replace(/{{imgDest}}/g, d.images[0])
-                .replace(/{{url}}/g, d.value)
-                .replace(/{{animaux}}/g, animaux);
+                .replace(/{{url}}/g, d.value);
+                // .replace(/{{animaux}}/g, animaux);
 
             clone.firstElementChild.innerHTML = newDestination;
+            if (!d.petitDejAvailable)
+                clone.getElementById("ptidej-destination").style.display = "none";
+            if (!d.animaux)
+                clone.getElementById("animaux-destination").style.display = "none";
 
             document.getElementById("liste-destinations").appendChild(clone);
-
         }
     }
     lectureCritere();

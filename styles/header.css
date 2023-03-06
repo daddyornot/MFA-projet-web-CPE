@@ -59,6 +59,7 @@
     height: 3rem;
     text-align: center;
     line-height: 3.8rem;
+    border: solid 1px white;
 }
 
 .background-action:hover {
