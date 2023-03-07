@@ -17,18 +17,13 @@
 }
 
 .hidden {
-    display: none;
+    /*display: none;*/
     opacity: 0;
+    transform: scale(0);
 }
-
-/* #filtres.active-filter.hidden {
-    opacity: 0;
-    transition: opacity 500ms ease;
-} */
 
 .active-filter {
     opacity: 1;
-    /*max-height: fit-content;*/
     margin: 30px 4% 20px 4%;
     padding: 15px;
     box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
@@ -40,6 +35,8 @@
     height: fit-content;
     background-color: rgba(169, 189, 207, .85);
     row-gap: 1em;
+    transition: all 500ms ease;
+    transform: scale(1);
 }
 
 /*On place le bouton reset en 3e ligne, dans les colonnes 4 et 5, et on le décale un peu du reste*/

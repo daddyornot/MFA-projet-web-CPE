@@ -9,13 +9,11 @@ const resa = new Reservation(selection);
 document.body.style.background = `url(${resa.images[0]}) no-repeat center center fixed`;
 document.body.style.backgroundSize = 'cover';
 
-
 window.onload = () => {
 
     document.getElementById("form").addEventListener('change', changeForm);
 
     let template = document.querySelector("#template");
-
     let clone = document.importNode(template.content, true);
     newsejour = clone.firstElementChild.innerHTML
         .replace(/{{destination}}/g, resa.destination)
@@ -29,7 +27,6 @@ window.onload = () => {
     clone.lastElementChild.innerHTML = newimg;
     document.getElementById("main-container").innerHTML= "";
     document.getElementById("main-container").appendChild(clone);
-
 
     if (resa.animaux)
         document.getElementById("animaux-destination").innerHTML = document
