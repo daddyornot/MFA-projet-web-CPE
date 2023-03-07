@@ -138,6 +138,27 @@ const voyages = {
     }
 }
 
+const users = [
+    {
+        username: "usernameTest",
+        password: "passwordTest",
+        nom: "nomTest",
+        prenom: "prenomTest"
+    },
+    {
+        username: "usernameTest1",
+        password: "passwordTest1",
+        nom: "nomTest1",
+        prenom: "prenomTest1"
+    },
+    {
+        username: "usernameTest2",
+        password: "passwordTest2",
+        nom: "nomTest2",
+        prenom: "prenomTest2"
+    }
+]
+
 class Voyage {
     constructor(_selection){
         this._destination = voyages[_selection].destination;
@@ -164,7 +185,7 @@ class Voyage {
                         onUpdate();
                     },
                     error: () => {
-                        alert("Erreur dans la requete API");
+                        // alert("Erreur dans la requete API");
                     }
                 });
             }
@@ -508,4 +529,52 @@ if (window.location.href.includes("index.html")
     backgroundInterval = setInterval(function () {
         randomizeBackground();
     }, 4000);
+}
+
+function verifierLogin() {
+    // let loginUser = document.getElementById("username").value;
+    // let passwordUser = document.getElementById("password").value;
+
+    let loginUser = $("#username")
+    let passwordUser = $("#password")
+
+    // on regarde d'abord si l'username existe
+    let user = users.find(function(userTry) {
+        return userTry.username === loginUser.val();
+    })
+    // s'il existe, on test le password
+    if (user) {
+        if (user.password === passwordUser.val()) {
+            console.log("connecte")
+            passwordUser.removeClass("wrongCredential");
+            passwordUser.addClass("rightCredential");
+            loginUser.removeClass("wrongCredential");
+            loginUser.addClass("rightCredential");
+        }
+        else
+        {
+            console.log("mauvais mdp");
+            loginUser.removeClass("wrongCredential");
+            passwordUser.addClass("wrongCredential");
+        }
+    }
+    else
+    {
+        console.log("l'user n'existe pas")
+        loginUser.addClass("wrongCredential");
+    }
+}
+
+function toggleShowPassword() {
+    let buttonPasswd = $("#show-password");
+    let passwordInput = $("#password");
+
+    if (buttonPasswd.text() === "visibility") {
+        passwordInput.attr("type", "text");
+        buttonPasswd.text("visibility_off");
+    }
+    else {
+        passwordInput.attr("type", "password");
+        buttonPasswd.text("visibility");
+    }
 }

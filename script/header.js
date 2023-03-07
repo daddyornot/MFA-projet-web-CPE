@@ -27,6 +27,25 @@ toggleBackgroundAnimation.addEventListener("click", () => {
         toggleBackgroundAnimation.getElementsByTagName("span")[0].innerHTML = "stop";
         animationText.innerHTML = "Arrêter";
     }
-
-
 })
+
+// JavaScript pour afficher la modal
+function showModal() {
+    document.getElementById("login-modal").style.display = "flex";
+}
+
+// JavaScript pour masquer la modal
+function hideModal() {
+    console.log("hidemodal");
+    document.getElementById("login-modal").style.display = "none";
+}
+
+// Fermer la modal lorsque l'utilisateur clique sur le bouton "x"
+document.getElementsByClassName("close")[0].addEventListener("click", hideModal);
+
+// Fermer la modal lorsque l'utilisateur clique en dehors de la modal
+window.addEventListener("click", (event) => {
+    if (event.target === document.getElementById("login-modal")) {
+        hideModal();
+    }
+});

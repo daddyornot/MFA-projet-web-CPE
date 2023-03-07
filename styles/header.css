@@ -13,6 +13,7 @@
     /*20px -20px 60px #ffffff;*/
     /*border-radius: 50px;*/
     background-color: rgba(60, 79, 94, .6);
+    height: 16rem;
 }
 
 .sticky {
@@ -47,23 +48,42 @@
     font-weight: 800;
 }
 
-.background-action{
+.action-icon-header {
     cursor: pointer;
     color: white;
-    position: absolute;
-    left: 3rem;
-    bottom: 1rem;
     background-color: rgba(60, 79, 94, .9);
     border-radius: 50%;
     width: 3rem;
     height: 3rem;
     text-align: center;
-    line-height: 3.8rem;
     border: solid 1px white;
+    line-height: 3.8rem;
 }
 
-.background-action:hover {
+.background-action{
+    position: absolute;
+    left: 3rem;
+    bottom: 1rem;
+}
+
+.action-icon-header:hover {
     animation: 1s ease;
     transform: scale(1.3);
+}
+
+.connexion-icon {
+    position: absolute;
+    right: 3rem;
+    bottom: 1rem;
+}
+
+.connexion-card {
+    position: absolute;
+    z-index: 10;
+    float: right;
+}
+
+.hidden {
+    visibility: visible;
 }
 
