@@ -18,4 +18,4 @@
 - Accessibilité 
 - w3school
 - Modification plusieurs destination a la fois
-- bug pannier modifier annuler 
+

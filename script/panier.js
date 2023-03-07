@@ -24,16 +24,30 @@ function remove(id){
     creationtableau();
 }
 
-function creationtableau(){
-    // Si le local storage n'existe pas ou s'il est vide, on n'affiche pas le panier
-    if (!panierLocal.get() || panierLocal.get().length === 0) {
+function desactivationDesChamps(toDesactivate){
+    if (toDesactivate){
         document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
         document.getElementById("divtotal").style.display = 'none';
         document.getElementsByClassName("info-commande")[0].style.display = 'none';
         document.getElementsByClassName("infos")[0].style.display = 'none';
         document.getElementsByTagName("button")[0].style.display = 'none';
+    } else {
+        document.getElementById("divtotal").style.display = '';
+        document.getElementsByClassName("info-commande")[0].style.display = '';
+        document.getElementsByClassName("infos")[0].style.display = '';
+        document.getElementsByTagName("button")[0].style.display = '';
+    }
+}
+
+function creationtableau(){
+    // Si le local storage n'existe pas ou s'il est vide, on n'affiche pas le panier
+    console.log(panierLocal.get().length);
+    console.log(!panierLocal.get());
+    if (!panierLocal.get() || panierLocal.get().length === 0) {
+        desactivationDesChamps(true);
         // sinon on affiche le panier
     } else {
+        desactivationDesChamps(false);
         let template = document.querySelector("#listeDestinations");
         let total = 0;
         document.getElementById("divtotal").innerHTML = "";
