@@ -148,7 +148,7 @@ function checkAndValidateForm() {
                     invalidFields.push(champ.id);
                 }
             }
-            alert("Attention ! Les champs suivants ne sont pas correctement remplis : " + invalidFields.join(", "));
+            // alert("Attention ! Les champs suivants ne sont pas correctement remplis : " + invalidFields.join(", "));
         }
     });
 }
