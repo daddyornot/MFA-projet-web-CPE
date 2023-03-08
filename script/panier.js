@@ -132,21 +132,33 @@ function checkAndValidateForm() {
     let confirmForm = document.getElementById("confirm-commande");
     // comme le bouton "valider" est sorti du form, on ajoute un listener dessus
     confirmForm.addEventListener("click", () => {
-        if (formulaire.checkValidity()) {
-            //si le form est rempli correctement, on passe a la suite
-            formulaire.submit();
-        } else {
-            // s'il manque ou s'il y a des infos erronées
-            let invalidFields = [] ;
-            let req = formulaire.querySelectorAll("input:required");
-            // on stocke dans un tableau les noms des champs non ok et on les met en surbrillance
-            for (let champ of req)  {
-                if (!champ.validity.valid) {
-                    champ.classList.add("invalid");
-                    invalidFields.push(champ.id);
+        let isModified = false;
+        panierLocal.get().forEach(function (dest) {
+            if(dest.modif)
+                if(dest != panier.get()[dest.id]){
+                    if(!isModified) {
+                        alert('Modification non enregistré !');
+                        isModified = true;
+                    }
                 }
+        });
+        if (!isModified) {
+            if (formulaire.checkValidity()) {
+                //si le form est rempli correctement, on passe a la suite
+                formulaire.submit();
+            } else {
+                // s'il manque ou s'il y a des infos erronées
+                let invalidFields = [];
+                let req = formulaire.querySelectorAll("input:required");
+                // on stocke dans un tableau les noms des champs non ok et on les met en surbrillance
+                for (let champ of req) {
+                    if (!champ.validity.valid) {
+                        champ.classList.add("invalid");
+                        invalidFields.push(champ.id);
+                    }
+                }
+                // alert("Attention ! Les champs suivants ne sont pas correctement remplis : " + invalidFields.join(", "));
             }
-            // alert("Attention ! Les champs suivants ne sont pas correctement remplis : " + invalidFields.join(", "));
         }
     });
 }
