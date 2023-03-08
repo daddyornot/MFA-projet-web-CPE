@@ -156,6 +156,12 @@ const users = [
         password: "passwordTest2",
         nom: "nomTest2",
         prenom: "prenomTest2"
+    },
+    {
+        username: "test",
+        password: "test",
+        nom: "nomTest3",
+        prenom: "prenomTest3"
     }
 ]
 
@@ -561,20 +567,8 @@ function randomizeBackground() {
     document.body.style.background = `url(${allBackgrounds[rand]}) no-repeat center center fixed`;
     document.body.style.backgroundSize = 'cover';
 }
-let backgroundInterval;
-randomizeBackground();
-if (window.location.href.includes("index.html")
-    || window.location.href.includes("landing-page.html")
-    || window.location.href.includes("a-propos.html")) {
-    backgroundInterval = setInterval(function () {
-        randomizeBackground();
-    }, 4000);
-}
 
 function verifierLogin() {
-    // let loginUser = document.getElementById("username").value;
-    // let passwordUser = document.getElementById("password").value;
-
     let loginUser = $("#username")
     let passwordUser = $("#password")
 
@@ -585,15 +579,21 @@ function verifierLogin() {
     // s'il existe, on test le password
     if (user) {
         if (user.password === passwordUser.val()) {
-            console.log("connecte")
+            console.log("connecte");
             passwordUser.removeClass("wrongCredential");
-            passwordUser.addClass("rightCredential");
+            // passwordUser.addClass("rightCredential");
             loginUser.removeClass("wrongCredential");
-            loginUser.addClass("rightCredential");
+            // loginUser.addClass("rightCredential");
+            loginUser.val("");
+            passwordUser.val("");
+            hideModal();
+            document.cookie = "currentUser=" + user.username;
+            verifUserConnected();
         }
         else
         {
             console.log("mauvais mdp");
+            loginUser.addClass("rightCredential");
             loginUser.removeClass("wrongCredential");
             passwordUser.addClass("wrongCredential");
         }
@@ -618,3 +618,51 @@ function toggleShowPassword() {
         buttonPasswd.text("visibility");
     }
 }
+
+function verifUserConnected() {
+    console.log(getCookie("currentUser") + " connecté");
+    let currentUser = getCookie("currentUser");
+    if (currentUser) {
+        let connectedUser = users.find(function(connectedUser) {
+            return connectedUser.username === currentUser;
+        })
+        document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.prenom;
+    }
+    else {
+        document.getElementById("msg-accueil").innerHTML = "";
+        hideModal();
+    }
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function logout() {
+    document.cookie = "currentUser=";
+    verifUserConnected();
+}
+
+let backgroundInterval;
+randomizeBackground();
+if (window.location.href.includes("index.html")
+    || window.location.href.includes("landing-page.html")
+    || window.location.href.includes("a-propos.html")) {
+    backgroundInterval = setInterval(function () {
+        randomizeBackground();
+    }, 4000);
+}
+
+

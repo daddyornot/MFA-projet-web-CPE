@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
 <link rel="stylesheet" href="./styles/header.css">
-<link rel="stylesheet" href="./styles/login.css">
+<link rel="stylesheet" href="styles/account.css">
 
 <header class="header">
     <nav class="header-navbar sticky">
@@ -11,6 +11,7 @@
                 <li id="panier"><a href="./panier.html">Panier</a></li>
                 <li id="a-propos"><a href="./a-propos.html">A propos</a></li>
             </ul>
+
         </div>
 <!--        Pour arreter le défilement des backgrounds-->
         <div class="background-action action-icon-header">
@@ -30,8 +31,9 @@
                 </span>
             </a>
         </div>
+<!--        Si on est pas connecté-->
         <div id="login-modal" class="modal">
-            <div class="modal-content connexion-card">
+            <div class="modal-content account-card">
                 <span class="close">&times;</span>
                 <form class="login-form">
                     <h2>CONNEXION</h2>
@@ -54,8 +56,27 @@
             </div>
         </div>
 
+<!--        Si on est connecté-->
+        <span id="msg-accueil"></span>
+        <div id="account-modal" class="modal">
+            <div class="modal-content account-card">
+                <span id="close-modal" class="close">&times;</span>
+                <form class="login-form">
+                    <h2>Mon Compte</h2>
+                    <div class="compte-infos">
+                        <a href="mes-infos.html">Mes infos</a>
+                        <a href="historique.html">Mon historique</a>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" id="btn-logout" onclick="logout()">Deconnexion</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </nav>
 <!--    <a href="">Mon compte</a>-->
 </header>
 
 <script src="./script/header.js"></script>
+<script src="./script/script.js"></script>
