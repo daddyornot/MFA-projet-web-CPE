@@ -41,8 +41,6 @@ function desactivationDesChamps(toDesactivate){
 
 function creationtableau(){
     // Si le local storage n'existe pas ou s'il est vide, on n'affiche pas le panier
-    console.log(panierLocal.get().length);
-    console.log(!panierLocal.get());
     if (!panierLocal.get() || panierLocal.get().length === 0) {
         desactivationDesChamps(true);
         // sinon on affiche le panier

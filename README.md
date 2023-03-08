@@ -6,7 +6,7 @@
 - ~~background "conditionnel" sur detail sejour~~
 - virer le .html dans l'url
 - arriver sur la landing page du site
-- optimiser requete API : si on a deja la T°C on refait pas de requete
+- ~~optimiser requete API : si on a deja la T°C on refait pas de requete~~
 - authentification
 - historique des voyages
 - pop up accepter les cookies a l'arrivée

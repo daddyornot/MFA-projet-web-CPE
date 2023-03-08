@@ -7,6 +7,10 @@
     --color6: #F9F871
 }
 
+html {
+    height: 100%;
+}
+
 body {
     color: #3c3c3c;
     font-family: "Lexend Deca", serif;
@@ -17,7 +21,14 @@ body {
     /*background-attachment: fixed;*/
     backdrop-filter: blur(5px);
     margin: 0;
+    padding:0;
     overflow-x: hidden;
+    height:100%;
+}
+
+main{
+    position:relative;
+    padding-bottom:100px;   /* Hauteur du pied de page */
 }
 
 a {

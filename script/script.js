@@ -161,37 +161,83 @@ const users = [
 
 class Voyage {
     constructor(_selection){
-        this._destination = voyages[_selection].destination;
-        this._ville = voyages[_selection].ville;
-        this._description = voyages[_selection].description;
-        this._images = voyages[_selection].images;
-        this._prixnuit = voyages[_selection].prixnuit;
-        this._prixdej = 15;
-        this._petitDejAvailable = voyages[_selection].petitDejAvailable;
-        this._animaux = voyages[_selection].animaux;
-        this._selection = _selection;
-        this._idimg = 0;
+        if (localStorage.voyages){
+            var dest = JSON.parse(localStorage.voyages).find(function (voy) {
+                return voy._selection == _selection;
+            });
 
-        if (this.value !== "espace") {
-            const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";
-            if (this._temperature !== null) {
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    dataType: "json",
-                    success: (data) => {
-                        // console.log(data);
-                        this._temperature = data.main.temp;
-                        onUpdate();
-                    },
-                    error: () => {
-                        // alert("Erreur dans la requete API");
+        } else
+            var dest = true;
+            if (!localStorage.voyages || localStorage.voyages.length === 0 || !dest) {
+                console.log("Requete API");
+                this._destination = voyages[_selection].destination;
+                this._ville = voyages[_selection].ville;
+                this._description = voyages[_selection].description;
+                this._images = voyages[_selection].images;
+                this._prixnuit = voyages[_selection].prixnuit;
+                this._prixdej = 15;
+                this._petitDejAvailable = voyages[_selection].petitDejAvailable;
+                this._animaux = voyages[_selection].animaux;
+                this._selection = _selection;
+                this._idimg = 0;
+
+                if (this.value !== "espace") {
+                    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";
+                    if (this._temperature !== null) {
+                        $.ajax({
+                            url: url,
+                            type: "GET",
+                            dataType: "json",
+                            success: (data) => {
+                                // console.log(data);
+                                this._temperature = data.main.temp;
+                                let tab = [];
+                                if (localStorage.voyages){
+                                    let info = JSON.parse(localStorage.voyages);
+                                    for (let e of info){
+                                        if(e._selection == _selection){
+                                            e._temperature = data.main.temp;
+                                        }
+                                        tab.push(e);
+                                    }
+                                }
+                                localStorage.setItem("voyages", JSON.stringify(tab));
+                                onUpdate();
+                            },
+                            error: () => {
+                                alert("Erreur dans la requete API");
+                            }
+                        });
                     }
-                });
-            }
-        }
-        else {
-            this._temperature = -272; //temperature de l'espace, openWeather n'a pas cette donnée malheureusement
+                } else {
+                    this._temperature = -272; //temperature de l'espace, openWeather n'a pas cette donnée malheureusement
+                }
+                let tab = [];
+                if (localStorage.voyages){
+                    let info = JSON.parse(localStorage.voyages);
+                    for (let e of info){
+                        tab.push(e);
+                    }
+                }
+                if (tab)
+                    tab.push(this);
+                else
+                    tab = [this];
+                localStorage.setItem("voyages", JSON.stringify(tab));
+
+            } else {
+                console.log("Pas de requetes API");
+                this._destination = dest._destination;
+                this._ville = dest._ville;
+                this._description = dest._description;
+                this._images = dest._images;
+                this._prixnuit = dest._prixnuit;
+                this._prixdej = 15;
+                this._petitDejAvailable = dest._petitDejAvailable;
+                this._animaux = dest._animaux;
+                this._selection = _selection;
+                this._idimg = 0;
+                this._temperature = dest._temperature;
         }
 
     }
