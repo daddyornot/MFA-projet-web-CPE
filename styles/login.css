@@ -2,11 +2,12 @@
     display: none; /* cache la fenêtre modale */
     position: fixed;
     right: 5%;
-    top: -5rem;
+    top: -4.5rem;
     align-items: center;
     justify-content: center;
-    width: 25%;
-    height: 70%;
+    width: 400px;
+    /*height: 70%;*/
+    height: 400px;
     overflow: hidden;
     /*background-color: rgba(0,0,0,0.5); !* fond semi-transparent *!*/
 }
