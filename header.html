@@ -36,17 +36,19 @@
                 <form class="login-form">
                     <h2>CONNEXION</h2>
                     <div class="login-infos">
-                        <label for="username">Username</label>
-                        <input required id="username" type="text" pattern="[a-zA-Z1-9]+" placeholder="Nom d'Utilisateur">
-                        <label for="password">Password</label>
-                        <input required id="password" type="password" placeholder="Mot de Passe">
-                        <span id="show-password" class="material-symbols-outlined" onclick="toggleShowPassword()">
-                            visibility
-                        </span>
+                        <label for="username">
+                            <input required id="username" type="text" pattern="[a-zA-Z1-9]+" placeholder="Nom d'Utilisateur">
+                        </label>
+                        <label class="passwd-input" for="password">
+                            <input required id="password" type="password" placeholder="Mot de Passe">
+                                <span id="show-password" class="material-symbols-outlined" onclick="toggleShowPassword()">
+                                    visibility
+                                </span>
+                        </label>
                     </div>
                     <div class="buttons">
                         <button type="button" onclick="verifierLogin()">Login</button>
-                        <button type="button" onclick="hideModal()">Annuler</button>
+                        <button type="button" id="cancel-login" onclick="hideModal()">Annuler</button>
                     </div>
                 </form>
             </div>

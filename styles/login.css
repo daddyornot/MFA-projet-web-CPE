@@ -2,12 +2,11 @@
     display: none; /* cache la fenêtre modale */
     position: fixed;
     right: 5%;
-    top: -2rem;
+    top: -5rem;
     align-items: center;
     justify-content: center;
-    z-index: 99999;
-    width: 30%;
-    height: 20%;
+    width: 23%;
+    height: 18%;
     overflow: hidden;
     /*background-color: rgba(0,0,0,0.5); !* fond semi-transparent *!*/
 }
@@ -27,6 +26,9 @@
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    position: relative;
+    margin-left: 85%;
+    margin-bottom: 2%
 }
 
 .close:hover,
@@ -45,18 +47,26 @@
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
     padding: 1rem;
+    /*transition: transform 0.3s ease-in-out;*/
 }
 
 .login-infos {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     line-height: 1.7rem;
+}
+
+.passwd-input {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
 }
 
 .buttons {
     display: flex;
     flex-direction: row;
+    column-gap: 3rem;
 }
 
 .login-form {
@@ -64,6 +74,17 @@
     flex-direction: column;
     align-items: center;
     row-gap: 1rem;
+}
+
+
+
+.login-form h2 {
+    margin: 0;
+}
+
+#cancel-login {
+    font-size: 12px;
+    padding: 0 14px;
 }
 
 .wrongCredential {
