@@ -433,21 +433,18 @@ function imgNext(){
     //on stocke l'image, car à chaque appel de nImage on change d'index, idem pour imgPrevious()
     let currentImg = resa.nImage;
     document.getElementById("img-destination").setAttribute('src', currentImg);
-    document.body.style.transition = "background-image 1.5s ease"
+    document.body.style.transition = "background-image 0.5s ease"
     document.body.style.background = `url(${currentImg}) no-repeat center center fixed`;
     document.body.style.backgroundSize = 'cover';
-    document.body.style.ba = 'cover';
-    document.getElementById("img-destination").setAttribute('src', resa.nImage);
 }
 
 function imgPrevious(){
     clearInterval(backgroundInterval);
     let currentImg = resa.pImage;
     document.getElementById("img-destination").setAttribute('src', currentImg);
-    document.body.style.transition = "background-image 1.5s ease"
+    document.body.style.transition = "background-image 0.5s ease"
     document.body.style.background = `url(${currentImg}) no-repeat center center fixed`;
     document.body.style.backgroundSize = 'cover';
-    document.getElementById("img-destination").setAttribute('src', resa.pImage);
 }
 
 function dateDiff(date1, date2) {
@@ -560,14 +557,11 @@ function randomizeBackground() {
     // et même tableau
     let allBackgrounds = [].concat(...listBackgrounds);
     let rand = Math.floor(Math.random() * allBackgrounds.length);
-    // console.log(allBackgrounds.length)
-    // console.log("changing background");
-    // console.log(allBackgrounds[rand]);
     document.body.style.transition = "background-image 1.5s ease"
     document.body.style.background = `url(${allBackgrounds[rand]}) no-repeat center center fixed`;
     document.body.style.backgroundSize = 'cover';
 }
-
+let backgroundInterval;
 randomizeBackground();
 if (window.location.href.includes("index.html")
     || window.location.href.includes("landing-page.html")
