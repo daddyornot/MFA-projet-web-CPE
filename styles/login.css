@@ -5,8 +5,8 @@
     top: -5rem;
     align-items: center;
     justify-content: center;
-    width: 23%;
-    height: 18%;
+    width: 25%;
+    height: 70%;
     overflow: hidden;
     /*background-color: rgba(0,0,0,0.5); !* fond semi-transparent *!*/
 }
@@ -21,7 +21,7 @@
 }
 
 .close {
-    color: #aaa;
+    color: whitesmoke;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -45,8 +45,8 @@
     box-shadow:  -20px 20px 60px #bebebe,
     20px -20px 60px #ffffff;
     background-color: rgb(255, 255, 255);
-    border-radius: 20px;
-    padding: 1rem;
+    border-radius: 120px;
+    padding: 0;
     /*transition: transform 0.3s ease-in-out;*/
 }
 
@@ -80,11 +80,17 @@
 
 .login-form h2 {
     margin: 0;
+    border: none;
 }
 
-#cancel-login {
+#btn-cancel-login {
     font-size: 12px;
-    padding: 0 14px;
+    padding: 15px 20px;
+}
+
+#btn-login {
+    font-size: 15px;
+    padding: 20px 35px;
 }
 
 .wrongCredential {
