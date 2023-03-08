@@ -626,7 +626,7 @@ function verifUserConnected() {
         let connectedUser = users.find(function(connectedUser) {
             return connectedUser.username === currentUser;
         })
-        document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.prenom;
+        document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.prenom + " !";
     }
     else {
         document.getElementById("msg-accueil").innerHTML = "";
