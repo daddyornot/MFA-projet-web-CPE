@@ -17,9 +17,11 @@
         <template id="listeDestinations">
             <tr>
                 <td>
-                    <div class="img-destination">
-                        <img {{src}}="{{imgDest}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
-                    </div>
+                    <a href="./detail-sejour.html?{{selection}}">
+                        <div class="img-destination">
+                            <img {{src}}="{{imgDest}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
+                        </div>
+                    </a>
                 </td>
                 <td>{{destination}}</td>
                 <td>Du {{dateDebut}}<br>Au {{dateFin}}</td>

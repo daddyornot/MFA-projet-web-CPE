@@ -19,5 +19,5 @@
 - w3school
 - Modification plusieurs destination a la fois
 - Panier "Attention modification en cours"
-- Panier click sur la destination pour aller vers la page détail sejour
-- Caroussel image buggé
+- ~~Panier click sur la destination pour aller vers la page détail sejour~~
+- ~~Caroussel image buggé~~

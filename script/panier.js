@@ -62,6 +62,7 @@ function creationtableau(){
                 clone = document.importNode(template.content, true);
                 total += voyage.total;
                 newDestination = clone.firstElementChild.innerHTML
+                    .replace(/{{selection}}/g, voyage.value)
                     .replace(/{{temperature}}/g, voyage.temperature)
                     .replace(/{{destination}}/g, voyage.destination)
                     .replace(/{{dateDebut}}/g, voyage.datedebut.toISOString().substring(0, 10))
@@ -100,6 +101,7 @@ function creationtableau(){
                 clone = document.importNode(template.content, true);
                 total += voyage.total;
                 newDestination = clone.firstElementChild.innerHTML
+                    .replace(/{{selection}}/g, voyage.value)
                     .replace(/{{temperature}}/g, voyage.temperature)
                     .replace(/{{destination}}/g, voyage.destination)
                     .replace(/{{dateDebut}}/g, toFormattedDate(voyage.datedebut))
