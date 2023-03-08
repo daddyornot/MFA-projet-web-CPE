@@ -13,121 +13,123 @@
 
 <body>
     <header></header>
-    <template id="listeDestinations">
-        <tr>
-            <td>
-                <div class="img-destination">
-                    <img {{src}}="{{imgDest}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
-                </div>
-            </td>
-            <td>{{destination}}</td>
-            <td>Du {{dateDebut}}<br>Au {{dateFin}}</td>
-            <td>{{nbAdultes}}</td>
-            <td>{{nbEnfants}}</td>
-            <td>{{petitdej}}</td>
-            <td>{{prix}} €</td>
-            <td>
-                <button id="modifier" onclick="modifSejour({{idVoyage}})">Modifier</button>
-                <button id="supprimer" onclick="remove({{idVoyage}})">Supprimer</button>
-            </td>
-        </tr>
-    </template>
-    <template id="modifDestination">
-        <tr>
-            <td>
-                <div class="img-destination">
-                    <img {{src}}="{{imgDest}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
-                </div>
-            </td>
-            <td>{{destination}}</td>
+    <div class="main-content">
+        <template id="listeDestinations">
+            <tr>
+                <td>
+                    <div class="img-destination">
+                        <img {{src}}="{{imgDest}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
+                    </div>
+                </td>
+                <td>{{destination}}</td>
+                <td>Du {{dateDebut}}<br>Au {{dateFin}}</td>
+                <td>{{nbAdultes}}</td>
+                <td>{{nbEnfants}}</td>
+                <td>{{petitdej}}</td>
+                <td>{{prix}} €</td>
+                <td>
+                    <button id="modifier" onclick="modifSejour({{idVoyage}})">Modifier</button>
+                    <button id="supprimer" onclick="remove({{idVoyage}})">Supprimer</button>
+                </td>
+            </tr>
+        </template>
+        <template id="modifDestination">
+            <tr>
+                <td>
+                    <div class="img-destination">
+                        <img {{src}}="{{imgDest}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
+                    </div>
+                </td>
+                <td>{{destination}}</td>
 
-            <td onchange="changeValue({{idVoyage}})">Du <input id="dateDebutModif{{idVoyage}}" type="date" value="{{dateDebut}}"><br>
-                Au <input id="dateFinModif{{idVoyage}}" type="date" value="{{dateFin}}"></td>
-            <td onchange="changeValue({{idVoyage}})">Adultes<br>
-                <select name="nb-adulte" id="nbAdultesModif{{idVoyage}}">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </td>
-            <td onchange="changeValue({{idVoyage}})">Enfants<br>
-                <select name="nb-enfant" id="nbEnfantsModif{{idVoyage}}">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </td>
-            <td id="caseDej{{idVoyage}}" onchange="changeValue({{idVoyage}})">Petit dej<br><input id="petitDejModif{{idVoyage}}" class="check" type="checkbox" {{petitdej}}></td>
+                <td onchange="changeValue({{idVoyage}})">Du <input id="dateDebutModif{{idVoyage}}" type="date" value="{{dateDebut}}"><br>
+                    Au <input id="dateFinModif{{idVoyage}}" type="date" value="{{dateFin}}"></td>
+                <td onchange="changeValue({{idVoyage}})">Adultes<br>
+                    <select name="nb-adulte" id="nbAdultesModif{{idVoyage}}">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </td>
+                <td onchange="changeValue({{idVoyage}})">Enfants<br>
+                    <select name="nb-enfant" id="nbEnfantsModif{{idVoyage}}">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </td>
+                <td id="caseDej{{idVoyage}}" onchange="changeValue({{idVoyage}})">Petit dej<br><input id="petitDejModif{{idVoyage}}" class="check" type="checkbox" {{petitdej}}></td>
 
-            <td>{{prix}} €</td>
-            <td>
-                <button id="modifier" onclick="validerModif({{idVoyage}})">Valider</button>
-                <button id="supprimer" onclick="cancelModif({{idVoyage}})">Annuler</button>
-            </td>
-        </tr>
-    </template>
-    <table id="contenu-panier" class="contenu-panier">
-    </table>
+                <td>{{prix}} €</td>
+                <td>
+                    <button id="modifier" onclick="validerModif({{idVoyage}})">Valider</button>
+                    <button id="supprimer" onclick="cancelModif({{idVoyage}})">Annuler</button>
+                </td>
+            </tr>
+        </template>
+        <table id="contenu-panier" class="contenu-panier">
+        </table>
 
-    <template id="total">
-        <span id="spantotal">Total {{prix}} €</span>
-    </template>
-    </div>
-
-    <div class="infos">
-        <div class="form-complet">
-            <h2>Plus qu'une étape avant de prendre du bon temps...</h2>
-            <form id="formulaire" action="confirmation.html" class="info-commande">
-                <div>
-                    <label for="lastName">Nom</label>
-                    <input required id="lastName" type="text" pattern="[a-zA-Z ]+" placeholder="(requis) Van Damne">
-
-                    <label for="firstName">Prenom</label>
-                    <input required id="firstName" type="text" pattern="[a-zA-Z ]+" placeholder="(requis) Jean Claude">
-                </div>
-                <div>
-                    <label for="adresse">Adresse</label>
-                    <input id="adresse" type="text" placeholder="42 rue des karatekas">
-
-                    <label for="ville">Ville</label>
-                    <input id="ville" type="text" placeholder="Bourges">
-
-                    <label for="code-postal">Code Postal</label>
-                    <input id="code-postal" type="text" placeholder="12000">
-                </div>
-                <div>
-                    <label for="tel">N° de Téléphone</label>
-                    <input id="tel" type="tel" placeholder="06 05 04 09 08">
-
-                    <label for="email">email</label>
-                    <input required id="email" type="email" placeholder="(requis) jcvd@kungfu.com">
-                </div>
-                <div>
-                    <label for="carte-bleue">N° de Carte Bancaire</label>
-                    <input required id="carte-bleue" type="text" pattern="[0-9]+" minlength="16" maxlength="16" placeholder="(requis) 0123 4567 8901 2345">
-                </div>
-            </form>
+        <template id="total">
+            <span id="spantotal">Total {{prix}} €</span>
+        </template>
         </div>
-        <div class="confirm-total">
-            <div id="divtotal" class="total">
-                    Total {{prix}} €
+
+        <div class="infos">
+            <div class="form-complet">
+                <h2>Plus qu'une étape avant de prendre du bon temps...</h2>
+                <form id="formulaire" action="confirmation.html" class="info-commande">
+                    <div>
+                        <label for="lastName">Nom</label>
+                        <input required id="lastName" type="text" pattern="[a-zA-Z ]+" placeholder="(requis) Van Damne">
+
+                        <label for="firstName">Prenom</label>
+                        <input required id="firstName" type="text" pattern="[a-zA-Z ]+" placeholder="(requis) Jean Claude">
+                    </div>
+                    <div>
+                        <label for="adresse">Adresse</label>
+                        <input id="adresse" type="text" placeholder="42 rue des karatekas">
+
+                        <label for="ville">Ville</label>
+                        <input id="ville" type="text" placeholder="Bourges">
+
+                        <label for="code-postal">Code Postal</label>
+                        <input id="code-postal" type="text" placeholder="12000">
+                    </div>
+                    <div>
+                        <label for="tel">N° de Téléphone</label>
+                        <input id="tel" type="tel" placeholder="06 05 04 09 08">
+
+                        <label for="email">email</label>
+                        <input required id="email" type="email" placeholder="(requis) jcvd@kungfu.com">
+                    </div>
+                    <div>
+                        <label for="carte-bleue">N° de Carte Bancaire</label>
+                        <input required id="carte-bleue" type="text" pattern="[0-9]+" minlength="16" maxlength="16" placeholder="(requis) 0123 4567 8901 2345">
+                    </div>
+                </form>
             </div>
-            <button id="confirm-commande" type="button">Cette fois ca y est !</button>
+            <div class="confirm-total">
+                <div id="divtotal" class="total">
+                    Total {{prix}} €
+                </div>
+                <button id="confirm-commande" type="button">Cette fois ca y est !</button>
+            </div>
         </div>
     </div>
     <footer></footer>

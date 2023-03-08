@@ -13,79 +13,81 @@
 
 <body>
     <header></header>
-    <template id="template">
-        <div class="left-container">
-            <h1 id="titre-destination">{{destination}}</h1>
-            <section id="desc-destination">{{description}}</section>
+    <div class="main">
+        <template id="template">
+            <div class="left-container">
+                <h1 id="titre-destination">{{destination}}</h1>
+                <section id="desc-destination">{{description}}</section>
+            </div>
+            <div class="img-destination">
+                <p id="temperature" class="temperature">°C</p>
+                <img alt="image de {{destination}}" {{src}}="{{imgDest}}" id="img-destination">
+            </div>
+        </template>
+        <div class="main-container" id="main-container">
         </div>
-        <div class="img-destination">
-            <p id="temperature" class="temperature">°C</p>
-            <img alt="image de {{destination}}" {{src}}="{{imgDest}}" id="img-destination">
-        </div>
-    </template>
-    <div class="main-container" id="main-container">
-    </div>
-    <div class="navigate-img">
-        <button onclick="imgPrevious()"><span class="material-symbols-outlined">arrow_back_ios</span></button>
-        <button onclick="imgNext()"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
-        
-    </div>
-    <div class="info-container">
-        <div class="info-left-container">
-            <form action="panier.html" id="form">
-                <div class="choix">
-    <!--                Colonnes de la grille-->
-                    <p>Début du Séjour</p>
-                    <p>Fin du Séjour</p>
-                    <label for="nb-adulte">Nombre d'adultes</label>
-                    <label for="nb-enfant">Nombre d'enfants (-12ans)</label>
-                    <label class="checkbox col-petit-dej">Petit déjeuner</label>
+        <div class="navigate-img">
+            <button onclick="imgPrevious()"><span class="material-symbols-outlined">arrow_back_ios</span></button>
+            <button onclick="imgNext()"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
 
-                    <input required type="date" id="date-debut">
-                    <input required type="date" id="date-fin">
-                    <select name="nb-adulte" id="nb-adulte">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <select name="nb-enfant" id="nb-enfant">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <input class="check col-petit-dej" type="checkbox" id="petitdej">
-                    <div class="animaux">
-                        <span class="material-symbols-outlined">pets</span>
-                        <span id="animaux-destination"></span>
-                    </div>
-                    <div class="petit-dej">
-                        <span class="material-symbols-outlined">bakery_dining</span>
-                        <span id="petit-dej-destination">Le petit déjeuner est disponible si vous le souhaitez</span>
-                    </div>
-                </div>
-
-            </form>
         </div>
-        <div class="resume-container">
-            <table id="solde-destination">
-            </table>
-            <button onclick="valider()" value="Je pars en voyage !" id="btnvalider">Je pars en voyage !</button>
-            <button onclick="resetForm()" class="reset" >Réinitialiser</button>
+        <div class="info-container">
+            <div class="info-left-container">
+                <form action="panier.html" id="form">
+                    <div class="choix">
+                        <!--                Colonnes de la grille-->
+                        <p>Début du Séjour</p>
+                        <p>Fin du Séjour</p>
+                        <label for="nb-adulte">Nombre d'adultes</label>
+                        <label for="nb-enfant">Nombre d'enfants (-12ans)</label>
+                        <label class="checkbox col-petit-dej">Petit déjeuner</label>
+
+                        <input required type="date" id="date-debut">
+                        <input required type="date" id="date-fin">
+                        <select name="nb-adulte" id="nb-adulte">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <select name="nb-enfant" id="nb-enfant">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <input class="check col-petit-dej" type="checkbox" id="petitdej">
+                        <div class="animaux">
+                            <span class="material-symbols-outlined">pets</span>
+                            <span id="animaux-destination"></span>
+                        </div>
+                        <div class="petit-dej">
+                            <span class="material-symbols-outlined">bakery_dining</span>
+                            <span id="petit-dej-destination">Le petit déjeuner est disponible si vous le souhaitez</span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="resume-container">
+                <table id="solde-destination">
+                </table>
+                <button onclick="valider()" value="Je pars en voyage !" id="btnvalider">Je pars en voyage !</button>
+                <button onclick="resetForm()" class="reset" >Réinitialiser</button>
+            </div>
         </div>
     </div>
     <footer></footer>
