@@ -7,6 +7,7 @@ var panierLocal = new Panier();
 window.onload = () => {
     creationtableau();
     // on ne test et valide le form que si les champs sont respectés
+    // TODO : et si un user est connecté on préremplit les champs
     if (checkFields())
         checkAndValidateForm();
 }

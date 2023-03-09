@@ -57,4 +57,10 @@ window.addEventListener("click", (event) => {
     }
 });
 
-verifUserConnected()
+
+verifUserConnected();
+document.getElementById("password").addEventListener("keyup", function(key) {
+    if (key.code === "NumpadEnter" || key.code === "Enter") {
+        verifierLogin();
+    }
+})
