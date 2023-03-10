@@ -3,6 +3,12 @@ $(function() {
     $("footer").load("footer.html");
 });
 
+// TODO : le header n'est pas chargé au moment de l'appel des fonctions, on a donc cette erreur :
+// Uncaught (in promise) TypeError: Cannot set properties of null (setting 'innerHTML')
+// at verifUserConnected (script.js:682:58)
+// at script.js:204:5
+
+
 let listDestination = [];
 // const voyages = {
 //     "japon": {
@@ -166,7 +172,7 @@ let listDestination = [];
 // ]
 
 let voyagesJSON = {};
-let allUsers = {};
+let allUsers = [];
 
 function getVoyages(){
     if (localStorage.voyages && localStorage.voyages.length === listDestination.length){ //on vérifie qu'on as tous les voyages
@@ -183,7 +189,7 @@ function getVoyages(){
 async function fetchJSONVoyages() {
     const response = await fetch('../voyages.json');
     const jsonVoyages = await response.json();
-    console.log("fetch données json");
+    // console.log("fetch données json");
     console.log(jsonVoyages);
     // voyagesJSON = jsonVoyages;
     for (let val in jsonVoyages){
@@ -197,6 +203,7 @@ async function fetchJSONUsers() {
     // const jsonUsers = await response.json();
     return await response.json();
 }
+
 
 fetchJSONUsers().then(users => {
     allUsers = users;
@@ -271,7 +278,7 @@ class Voyage {
                 localStorage.setItem("voyages", JSON.stringify(tab));
 
             } else {
-                console.log("Pas de requetes API");
+                // console.log("Pas de requetes API");
                 this._destination = dest._destination;
                 this._ville = dest._ville;
                 this._description = dest._description;
@@ -627,7 +634,7 @@ function verifierLogin() {
             passwordUser.val("");
             hideModal();
             document.cookie = "currentUser=" + user.username;
-            verifUserConnected();
+            // verifUserConnected();
         }
         else
         {
@@ -662,27 +669,26 @@ let connectedUser;
 
 // On vérifie si un user est connecté pour afficher son prénom
 function verifUserConnected() {
+    console.log("verifUserConnected - all users");
     console.log(allUsers)
-    console.log("verifUserConnected");
+    console.log("verifUserConnected - each user");
     let currentUserCookie = getCookie("currentUser");
     if (currentUserCookie) {
         for (const user of allUsers) {
             console.log(user);
             if (user.username === currentUserCookie) {
-                document.getElementById("msg-accueil").innerHTML = "Salut " + user.username + " !";
-                return user;
+                connectedUser = user;
+                console.log("verifUserConnected - connectedUser");
+                console.log(connectedUser);
+                document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.username + " !";
             }
         }
-        // let connectedUser = allUsers.find(function(connectedUser) {
-        //     return connectedUser.username === currentUser;
-        // })
-        // document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.prenom + " !";
-        // return currentUser;
     }
     else {
         document.getElementById("msg-accueil").innerHTML = "";
         hideModal();
     }
+    console.log("verifUserConnected - end");
 }
 
 function getCookie(cname) {

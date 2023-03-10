@@ -1,7 +1,7 @@
 [
   {
-    "username": "usernameTest",
-    "password": "passwordTest",
+    "username": "test",
+    "password": "test",
     "nom": "nomTest",
     "prenom": "prenomTest",
     "adresse": "9 rue de la paix",
@@ -11,8 +11,8 @@
     "tel": "0123456789"
   },
   {
-    "username": "usernameTest1",
-    "password": "passwordTest1",
+    "username": "test2",
+    "password": "test2",
     "nom": "nomTest1",
     "prenom": "prenomTest1",
     "adresse": "19 rue de la paix",
@@ -22,8 +22,8 @@
     "tel": "0123456789"
   },
   {
-    "username": "usernameTest2",
-    "password": "passwordTest2",
+    "username": "test2",
+    "password": "test2",
     "nom": "nomTest2",
     "prenom": "prenomTest2",
     "adresse": "29 rue de la paix",
@@ -33,8 +33,8 @@
     "tel": "0123456789"
   },
   {
-    "username": "test",
-    "password": "test",
+    "username": "test3",
+    "password": "test3",
     "nom": "nomTest3",
     "prenom": "prenomTest3",
     "adresse": "39 rue de la paix",
