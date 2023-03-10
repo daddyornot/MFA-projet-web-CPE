@@ -1,6 +1,6 @@
 
 
-let connectedUser = verifUserConnected();
+console.log("compte js "+ connectedUser);
 if (connectedUser) {
     document.getElementById("nom").innerHTML = connectedUser.nom;
     document.getElementById("prenom").innerHTML = connectedUser.prenom;

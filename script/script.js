@@ -166,7 +166,7 @@ let listDestination = [];
 // ]
 
 let voyagesJSON = {};
-let users = {};
+let allUsers = {};
 
 function getVoyages(){
     if (localStorage.voyages && localStorage.voyages.length === listDestination.length){ //on vérifie qu'on as tous les voyages
@@ -185,8 +185,6 @@ async function fetchJSONVoyages() {
     const jsonVoyages = await response.json();
     console.log("fetch données json");
     console.log(jsonVoyages);
-    // console.log(json.canada.destination);
-
     // voyagesJSON = jsonVoyages;
     for (let val in jsonVoyages){
         listDestination.push(val);
@@ -194,15 +192,16 @@ async function fetchJSONVoyages() {
     return jsonVoyages;
 }
 
-async function fetchUsers() {
+async function fetchJSONUsers() {
     const response = await fetch('../users.json');
-    const jsonUsers = await response.json();
-
-    users = jsonUsers;
-    // return jsonUsers;
+    // const jsonUsers = await response.json();
+    return await response.json();
 }
 
-fetchUsers();
+fetchJSONUsers().then(users => {
+    allUsers = users;
+    verifUserConnected();
+});
 
 
 class Voyage {
@@ -613,7 +612,7 @@ function verifierLogin() {
     let passwordUser = $("#password")
 
     // on regarde d'abord si l'username existe
-    let user = users.find(function(userTry) {
+    let user = allUsers.find(userTry => {
         return userTry.username === loginUser.val();
     })
     // s'il existe, on test le password
@@ -659,14 +658,26 @@ function toggleShowPassword() {
     }
 }
 
+let connectedUser;
+
+// On vérifie si un user est connecté pour afficher son prénom
 function verifUserConnected() {
-    // console.log("utilisateur : " + getCookie("currentUser") + " connecté");
-    let currentUser = getCookie("currentUser");
-    if (currentUser) {
-        let connectedUser = users.find(function(connectedUser) {
-            return connectedUser.username === currentUser;
-        })
-        document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.prenom + " !";
+    console.log(allUsers)
+    console.log("verifUserConnected");
+    let currentUserCookie = getCookie("currentUser");
+    if (currentUserCookie) {
+        for (const user of allUsers) {
+            console.log(user);
+            if (user.username === currentUserCookie) {
+                document.getElementById("msg-accueil").innerHTML = "Salut " + user.username + " !";
+                return user;
+            }
+        }
+        // let connectedUser = allUsers.find(function(connectedUser) {
+        //     return connectedUser.username === currentUser;
+        // })
+        // document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.prenom + " !";
+        // return currentUser;
     }
     else {
         document.getElementById("msg-accueil").innerHTML = "";
@@ -695,9 +706,7 @@ function logout() {
     verifUserConnected();
 }
 
-
 let backgroundInterval;
-
 
 if (window.location.href.includes("index.html")
     || window.location.href.includes("landing-page.html")
