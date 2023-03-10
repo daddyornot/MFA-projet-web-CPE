@@ -1,10 +1,21 @@
 
-let panier = new Panier();
+let panier;
 let template = document.querySelector("#resumeVoyage");
 
 window.onload = () => {
+    getVoyages();
+}
+
+// on vide le panier une fois qu'on est arrivé sur la page de confirmation
+window.onunload = () => {
+    window.localStorage.clear();
+}
+function start(){
+    panier = new Panier();
     if(panier.get().length == 0)
         window.location = "./index.html"
+    genererResume();
+
 }
 
 function genererResume() {
@@ -56,10 +67,4 @@ function onUpdate(){
     genererResume();
 }
 
-// on vide le panier une fois qu'on est arrivé sur la page de confirmation
-window.onunload = () => {
-    window.localStorage.clear();
-}
 
-
-genererResume();

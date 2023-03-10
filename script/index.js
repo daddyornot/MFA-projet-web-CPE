@@ -2,15 +2,19 @@
 window.onload = () => {
     ecritureCritere();
 
-    changeFilter();
     document.getElementById("filtres").addEventListener('input', changeFilter);
     document.getElementById("searchbar").addEventListener('input', changeFilter);
+    getVoyages();
+
 }
 
-let voyage = [];
-
-for (let dest of listDestination) {
-    voyage.push(new Voyage(dest));
+let voyagesLocal = [];
+function start() { //on créé la liste de voyages et on génère le tableau une fois qu'on a les donnees
+    for (let dest of listDestination) {
+        voyagesLocal.push(new Voyage(dest));
+    }
+    randomizeBackground();
+    changeFilter();
 }
 
 function onUpdate(){
@@ -18,7 +22,7 @@ function onUpdate(){
 }
 function changeFilter() {
     // console.log('ChangeFilter');
-    let filter = voyage;
+    let filter = voyagesLocal;
     let search = document.getElementById("searchbar").value;
     if(search !== ""){
         filter = filter.filter(function (dest) {

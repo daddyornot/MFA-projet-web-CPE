@@ -21,3 +21,10 @@
 - Panier "Attention modification en cours"
 - ~~Panier click sur la destination pour aller vers la page détail sejour~~
 - ~~Caroussel image buggé~~
+
+# Questions
+- Compatibilité navigateurs
+- JSON
+- User dans le même ou un nouveau JSON
+- Sécurité ?
+- Gestion des cas particuliers (suppression des données, modification cookies, ...)

@@ -165,18 +165,30 @@ let listDestination = ["maldive", "japon", "canada", "chine", "espace", "france"
 //     }
 // ]
 
-let voyages = {};
+let voyagesJSON = {};
 let users = {};
 
-async function fetchVoyages() {
+function getVoyages(){
+    if (localStorage.voyages && localStorage.voyages.length === listDestination.length){ //on vérifie qu'on as tous les voyages
+        // voyagesJSON = JSON.parse(localStorage.voyages);
+        start();
+    } else { //sinon on recupere les voyages par l'API
+        fetchJSONVoyages().then(voyages => {
+            voyagesJSON = voyages;
+            start(); // on appel start une fois qu'on as les données
+        });
+    }
+}
+
+async function fetchJSONVoyages() {
     const response = await fetch('../voyages.json');
     const jsonVoyages = await response.json();
     console.log("fetch données json");
     console.log(jsonVoyages);
     // console.log(json.canada.destination);
 
-    voyages = jsonVoyages;
-    // return jsonVoyages;
+    // voyagesJSON = jsonVoyages;
+    return jsonVoyages;
 }
 
 async function fetchUsers() {
@@ -187,8 +199,6 @@ async function fetchUsers() {
     // return jsonUsers;
 }
 
-fetchVoyages();
-// console.log("fetchVoyages : " + voyages);
 fetchUsers();
 
 
@@ -203,14 +213,14 @@ class Voyage {
             dest = true;
             if (!localStorage.voyages || localStorage.voyages.length === 0 || !dest) {
                 // console.log("Requete API");
-                this._destination = voyages[_selection].destination;
-                this._ville = voyages[_selection].ville;
-                this._description = voyages[_selection].description;
-                this._images = voyages[_selection].images;
-                this._prixnuit = voyages[_selection].prixnuit;
+                this._destination = voyagesJSON[_selection].destination;
+                this._ville = voyagesJSON[_selection].ville;
+                this._description = voyagesJSON[_selection].description;
+                this._images = voyagesJSON[_selection].images;
+                this._prixnuit = voyagesJSON[_selection].prixnuit;
                 this._prixdej = 15;
-                this._petitDejAvailable = voyages[_selection].petitDejAvailable;
-                this._animaux = voyages[_selection].animaux;
+                this._petitDejAvailable = voyagesJSON[_selection].petitDejAvailable;
+                this._animaux = voyagesJSON[_selection].animaux;
                 this._selection = _selection;
                 this._idimg = 0;
 
@@ -582,8 +592,8 @@ function verificationDate(){
 
 function randomizeBackground() {
     let listBackgrounds = [];
-    for (let dest in voyages) {
-        listBackgrounds.push(voyages[dest].images);
+    for (let dest of voyagesLocal) {
+        listBackgrounds.push(dest.images);
     }
     // On concatène toutes nos url dans un seul tableau
     // l'opérateur de decomposition "..." extrait les éléments du tableau 1 à 1, pour les concaténer dans un seul
@@ -685,13 +695,7 @@ function logout() {
 
 let backgroundInterval;
 
-if (document.body.style.background === "url(\"undefined\") no-repeat center center fixed'") {
-    document.body.style.background = 'url("../assets/img/canada/03.jpg") no-repeat center center fixed';
-    document.body.style.backgroundSize = 'cover';
-    }
-else {
-        randomizeBackground();
-    }
+
 if (window.location.href.includes("index.html")
     || window.location.href.includes("landing-page.html")
     || window.location.href.includes("a-propos.html")) {

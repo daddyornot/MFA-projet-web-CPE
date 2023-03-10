@@ -1,16 +1,36 @@
-const urlParams = new URLSearchParams(window.location.search);
 
-if (urlParams.get('selection'))
-    selection = urlParams.get('selection');
-else
-    selection = "japon";
+let resa;
 
-const resa = new Reservation(selection);
-document.body.style.background = `url(${resa.images[0]}) no-repeat center center fixed`;
-document.body.style.backgroundSize = 'cover';
 
 window.onload = () => {
+    getVoyages();
+}
 
+function start(){
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.get('selection'))
+        selection = urlParams.get('selection');
+    else
+        selection = "japon";
+
+    resa = new Reservation(selection);
+    document.body.style.background = `url(${resa.images[0]}) no-repeat center center fixed`;
+    document.body.style.backgroundSize = 'cover';
+
+    generationTemplate();
+    ecritureCritere();
+    verificationDate();
+    changeForm();
+    onUpdate();
+}
+
+function onUpdate(){
+    // console.log("à implementer avec la météo : " + resa.temperature);
+    document.getElementById("temperature").innerHTML = resa.temperature + "°C";
+}
+
+function generationTemplate(){
     document.getElementById("form").addEventListener('change', changeForm);
 
     let template = document.querySelector("#template");
@@ -45,16 +65,6 @@ window.onload = () => {
         }
         document.getElementById("petit-dej-destination").innerHTML = "Nous ne proposons pas le petit déjeuner pour ce voyage..."
     }
-
-    ecritureCritere();
-    verificationDate();
-    changeForm();
-    onUpdate();
-}
-
-function onUpdate(){
-    // console.log("à implementer avec la météo : " + resa.temperature);
-    document.getElementById("temperature").innerHTML = resa.temperature + "°C";
 }
 
 function resetTab(){
