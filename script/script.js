@@ -3,7 +3,7 @@ $(function() {
     $("footer").load("footer.html");
 });
 
-let listDestination = ["maldive", "japon", "canada", "chine", "espace", "france", "islande"];
+let listDestination = [];
 // const voyages = {
 //     "japon": {
 //         destination: "Le Japon",
@@ -188,6 +188,9 @@ async function fetchJSONVoyages() {
     // console.log(json.canada.destination);
 
     // voyagesJSON = jsonVoyages;
+    for (let val in jsonVoyages){
+        listDestination.push(val);
+    }
     return jsonVoyages;
 }
 
