@@ -10,6 +10,9 @@ switch (true) {
     case url.includes("propos"):
         document.getElementById("a-propos").className += "active";
         break;
+    case url.includes("detail-sejour"):
+        document.getElementById("round-button").style.display = "none";
+        break;
 }
 
 let toggleBackgroundAnimation = document.getElementById("button-background");

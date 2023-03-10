@@ -11,15 +11,21 @@ window.onload = () => {
     if (checkFields())
         checkAndValidateForm();
 }
+let voyagesLocal = [];
 
 function start(){
-
     panier = new Panier();
     panierLocal = new Panier();
+    for (let dest of panierLocal.get()) {
+        voyagesLocal.push(new Voyage(dest.value));
+    }
     creationtableau();
+    randomizeBackground();
 }
 
 function onUpdate(){
+    panier = new Panier();
+    panierLocal = new Panier();
     creationtableau();
 }
 
