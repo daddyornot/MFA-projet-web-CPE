@@ -3,24 +3,44 @@
     "username": "usernameTest",
     "password": "passwordTest",
     "nom": "nomTest",
-    "prenom": "prenomTest"
+    "prenom": "prenomTest",
+    "adresse": "9 rue de la paix",
+    "codePostal": "69300",
+    "ville": "Lyon",
+    "pays": "France",
+    "tel": "0123456789"
   },
   {
     "username": "usernameTest1",
     "password": "passwordTest1",
     "nom": "nomTest1",
-    "prenom": "prenomTest1"
+    "prenom": "prenomTest1",
+    "adresse": "19 rue de la paix",
+    "codePostal": "69301",
+    "ville": "Lyonne",
+    "pays": "Françonne",
+    "tel": "0123456789"
   },
   {
     "username": "usernameTest2",
     "password": "passwordTest2",
     "nom": "nomTest2",
-    "prenom": "prenomTest2"
+    "prenom": "prenomTest2",
+    "adresse": "29 rue de la paix",
+    "codePostal": "69302",
+    "ville": "Lyonceau",
+    "pays": "Franceau",
+    "tel": "0123456789"
   },
   {
     "username": "test",
     "password": "test",
     "nom": "nomTest3",
-    "prenom": "prenomTest3"
+    "prenom": "prenomTest3",
+    "adresse": "39 rue de la paix",
+    "codePostal": "69303",
+    "ville": "Lyoncelle",
+    "pays": "Francelle",
+    "tel": "0123456789"
   }
 ]
