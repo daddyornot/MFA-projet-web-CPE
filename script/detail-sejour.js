@@ -18,6 +18,15 @@ function start(){
     document.body.style.background = `url(${resa.images[0]}) no-repeat center center fixed`;
     document.body.style.backgroundSize = 'cover';
 
+    document.body.addEventListener("keyup", function(key) {
+        if (key.code === "ArrowRight"){
+            imgNext();
+        }
+        if(key.code === "ArrowLeft") {
+            imgPrevious();
+        }
+    })
+
     generationTemplate();
     ecritureCritere();
     verificationDate();
