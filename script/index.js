@@ -106,18 +106,3 @@ toggleButton.addEventListener('click', () => {
         toggleButton.innerText = "Cacher les filtres";
     }
 })
-
-// $("#toggle-filtres").on("click", () => {
-//     $("#filtres").toggleClass("active-filter");
-//
-//     if ($("#filtres").hasClass("hidden")) {
-//         $("#filtres").slideDown(500);
-//         $("#filtres").removeClass("hidden");
-//         $("#toggle-filtres").text("Cacher les filtres");
-//     } else {
-//         $("#filtres").slideUp(500, () => {
-//             $("#filtres").addClass("hidden");
-//         });
-//         $("#toggle-filtres").text("Afficher les filtres");
-//     }
-// })

@@ -4,166 +4,193 @@ $(function() {
 });
 
 let listDestination = ["maldive", "japon", "canada", "chine", "espace", "france", "islande"];
-const voyages = {
-    "japon": {
-        destination: "Le Japon",
-        ville: "Tokyo",
-        description: "Un voyage au Japon est une expérience incroyable qui offre un mélange unique de traditions anciennes et de modernité. Imaginez-vous flâner dans les rues de Tokyo, une ville qui ne dort jamais, avec ses gratte-ciel illuminés, ses magasins colorés et ses restaurants de rue qui proposent une cuisine délicieuse.\n" +
-            "\n" +
-            "Ensuite, rendez-vous dans la ville historique de Kyoto, où vous pourrez découvrir des temples et des jardins japonais magnifiques et paisibles. Puis, pourquoi ne pas partir à la découverte de la culture japonaise en visitant le mont Fuji, l'emblématique montagne japonaise, ou en assistant à une cérémonie du thé traditionnelle ?\n" +
-            "\n" +
-            "Vous pourrez également goûter à la cuisine japonaise délicieuse et diversifiée, des sushis et des ramens à la street food comme les takoyakis ou okonomiyakis, ou encore vous détendre dans les onsens, les sources chaudes naturelles du pays.\n" +
-            "\n" +
-            "Enfin, ne manquez pas l'opportunité de découvrir la culture pop japonaise en visitant des quartiers comme Harajuku, Akihabara ou Shibuya, célèbres pour leurs magasins de mangas, leurs cafés à thème et leurs concerts de J-pop.\n" +
-            "\n" +
-            "Un voyage au Japon est une expérience inoubliable et unique, mélangeant traditions ancestrales et modernité, pour une immersion totale dans une culture riche et fascinante.",
-        images: ["assets/img/japon/01.jpg", "assets/img/japon/02.jpg", "assets/img/japon/03.jpg", "assets/img/japon/04.jpg"],
-        prixnuit: 400,
-        petitDejAvailable: false,
-        animaux: false,
-    },
-    "maldive": {
-        destination: "Les Maldives",
-        ville: "Malé",
-        description: "Imaginez-vous sur des plages de sable blanc immaculées et des eaux cristallines d'un bleu turquoise éclatant, où vous pouvez vous détendre sous le soleil chaud et respirer l'air frais de l'océan Indien.\n" +
-            "\n" +
-            "Les Maldives offrent également une expérience unique de plongée sous-marine avec des récifs coralliens spectaculaires et une faune marine abondante. Vous pouvez nager avec des raies manta, des requins-baleines, des tortues et des poissons multicolores, et explorer des épaves sous-marines.\n" +
-            "\n" +
-            "Les Maldives sont également connues pour leur hospitalité et leur luxe inégalé, avec des complexes hôteliers cinq étoiles offrant des villas privées sur pilotis au-dessus de l'océan ou des suites avec accès direct à la plage. Les spas de renommée mondiale proposent des soins relaxants pour le corps et l'esprit, tandis que les restaurants proposent des plats délicieux à base de fruits de mer frais et de cuisine internationale.\n" +
-            "\n" +
-            "Enfin, les Maldives sont également une destination parfaite pour les amateurs de sports nautiques, tels que le surf, le kitesurf, le paddle, le ski nautique et le wakeboard.\n" +
-            "\n" +
-            "En somme, un voyage aux Maldives est un véritable paradis pour les amoureux de la plage, de la plongée, du luxe et de la nature, pour une expérience inoubliable dans un cadre idyllique.",
-        images: ["assets/img/maldive/01.jpg", "assets/img/maldive/02.jpg", "assets/img/maldive/03.jpg"],
-        prixnuit: 300,
-        petitDejAvailable: true,
-        animaux: false,
-    },
-    "canada": {
-        destination: "Le Canada",
-        ville: "Quebec",
-        description: "Le Canada est un pays immense avec des paysages spectaculaires. Imaginez-vous explorer les magnifiques parcs nationaux des Rocheuses canadiennes, avec leurs montagnes majestueuses, leurs lacs cristallins et leurs forêts luxuriantes. Vous pourrez y randonner, faire du vélo, du kayak, du rafting et même de l'escalade.\n" +
-            "\n" +
-            "Vous pourrez également découvrir la culture dynamique et cosmopolite de Toronto, la plus grande ville du Canada, avec ses musées, ses galeries d'art, ses restaurants internationaux et ses spectacles de Broadway. Ou bien vous pouvez vous promener dans les charmantes rues de la ville de Québec, la plus vieille ville du Canada, avec son architecture européenne, sa culture française et son patrimoine historique.\n" +
-            "\n" +
-            "Le Canada est également célèbre pour ses vastes étendues de nature sauvage, notamment dans les parcs nationaux de Banff, Jasper et Yoho. Vous pourrez y observer des animaux tels que les ours, les wapitis, les caribous et les orignaux, et profiter de la beauté naturelle époustouflante des lacs, des montagnes et des glaciers.\n" +
-            "\n" +
-            "Enfin, ne manquez pas l'occasion de découvrir la culture autochtone du Canada en visitant des communautés et des réserves autochtones, et apprendre leur histoire, leur culture, mais aussi leur gastronomie.\n" +
-            "\n" +
-            "En somme, un voyage au Canada est une expérience passionnante pour les amoureux de la nature, de la culture et des grandes villes, pour une immersion totale dans un pays fascinant et accueillant.",
-        images: ["assets/img/canada/01.jpg", "assets/img/canada/02.jpg", "assets/img/canada/03.jpg", "assets/img/canada/04.jpg", "assets/img/canada/05.jpg"],
-        prixnuit: 250,
-        petitDejAvailable: true,
-        animaux: true,
-    },
-    "chine": {
-        destination: "La Chine",
-        ville: "Shangai",
-        description: "La Chine est un pays vaste et fascinant, avec une histoire et une culture riches qui remontent à des milliers d'années. Imaginez-vous visiter la Grande Muraille de Chine, l'une des sept merveilles du monde, et découvrir l'histoire et la signification de cette structure emblématique. Vous pouvez également explorer les anciennes villes impériales telles que Pékin et Xi'an, avec leurs palais somptueux, leurs temples bouddhistes et leurs rues animées.\n" +
-            "\n" +
-            "La Chine est également célèbre pour sa cuisine délicieuse et variée, avec des plats tels que les dumplings, les nouilles sautées et le canard laqué de Pékin. Vous pourrez également découvrir le thé chinois dans des salons de thé traditionnels ou visiter des marchés alimentaires locaux pour goûter une grande variété de plats et de collations.\n" +
-            "\n" +
-            "En Chine, vous pourrez également découvrir des paysages naturels époustouflants, tels que les montagnes karstiques de Guilin, les paysages de la rivière Yangtze et les vastes plaines de la Mongolie intérieure. Vous pouvez également découvrir la culture chinoise à travers les arts traditionnels, tels que la calligraphie, la peinture, la sculpture et les opéras chinois.\n" +
-            "\n" +
-            "Enfin, ne manquez pas l'opportunité de découvrir la vie moderne en Chine en visitant des villes dynamiques telles que Shanghai et Hong Kong, avec leurs gratte-ciel impressionnants, leurs quartiers commerçants et leurs bars et restaurants branchés.\n" +
-            "\n" +
-            "En somme, un voyage en Chine est une expérience fascinante pour les amoureux de l'histoire, de la culture et de la cuisine, pour une immersion totale dans un pays incroyablement diversifié et passionnant.",
-        images: ["assets/img/chine/01.jpg", "assets/img/chine/02.jpg", "assets/img/chine/03.jpg"],
-        prixnuit: 500,
-        petitDejAvailable: false,
-        animaux: false,
-    },
-    "espace": {
-        destination: "L'Espace ?!",
-        ville: "ISS",
-        description: "Imaginez-vous pouvoir voyager dans l'espace et visiter d'autres planètes de notre système solaire. Vous pourriez découvrir les paysages fascinants et les phénomènes uniques de chaque planète, ainsi que les technologies avancées nécessaires pour voyager dans l'espace.\n" +
-            "\n" +
-            "Sur Mars, vous pourriez explorer les vastes étendues de la planète rouge, y compris ses volcans éteints et ses canyons profonds. Vous pourriez également visiter le cratère de Gale, où le rover Curiosity de la NASA a découvert des preuves de l'ancienne présence d'eau sur Mars.\n" +
-            "\n" +
-            "Sur Vénus, vous pourriez découvrir la planète la plus chaude de notre système solaire, où les températures peuvent atteindre plus de 460 degrés Celsius. Vous pourriez également étudier les émissions volcaniques de Vénus, qui ont été détectées par des sondes spatiales.\n" +
-            "\n" +
-            "Sur Jupiter, la plus grande planète de notre système solaire, vous pourriez découvrir les tempêtes incroyables et les nuages colorés qui tourbillonnent autour de la planète. Vous pourriez également visiter les lunes de Jupiter, y compris Io, qui est l'une des lunes les plus volcaniques de notre système solaire.\n" +
-            "\n" +
-            "Sur Saturne, vous pourriez admirer ses célèbres anneaux, qui sont constitués de milliards de particules de glace et de roche. Vous pourriez également découvrir Titan, la plus grande lune de Saturne, qui possède une atmosphère dense et des lacs liquides de méthane et d'éthane à sa surface.\n" +
-            "\n" +
-            "Enfin, sur Pluton, vous pourriez explorer cette petite planète naine située à la frontière de notre système solaire. Vous pourriez y découvrir ses montagnes glacées, ses plaines lisses et ses cratères, ainsi que les mystères qui entourent la formation et l'évolution de cette planète.\n" +
-            "\n" +
-            "En somme, un voyage interplanétaire serait une expérience incroyable et unique pour les amateurs d'astronomie, pour une immersion totale dans l'univers fascinant et infini qui nous entoure.",
-        images: ["assets/img/espace/01.jpg", "assets/img/espace/02.jpg", "assets/img/espace/03.jpg"],
-        prixnuit: 5000,
-        petitDejAvailable: false,
-        animaux: true,
-    },
-    "france": {
-        destination: "La France",
-        ville: "Paris",
-        description: "La France est un pays riche en histoire, culture et gastronomie, célèbre pour ses villes romantiques, ses châteaux majestueux, ses musées et ses galeries d'art, ainsi que sa cuisine délicieuse.\n" +
-            "\n" +
-            "Imaginez-vous flâner dans les rues étroites et pavées du Marais à Paris, où vous pourrez découvrir les boutiques de mode, les galeries d'art contemporain, les musées et les boulangeries pittoresques. Vous pouvez également vous promener le long de la Seine, visiter la Tour Eiffel et le Louvre, ou découvrir l'architecture gothique de Notre-Dame de Paris.\n" +
-            "\n" +
-            "La France est également célèbre pour ses magnifiques régions viticoles, telles que la Bourgogne, la Champagne et la vallée de la Loire. Vous pourrez y découvrir les vignobles, visiter les caves et déguster des vins de renommée mondiale.\n" +
-            "\n" +
-            "Les villes françaises telles que Nice, Cannes, Saint-Tropez et Monaco offrent des plages de sable fin, des eaux turquoise, des restaurants de fruits de mer et des marchés provençaux.\n" +
-            "\n" +
-            "La France est également un pays célèbre pour sa cuisine, avec ses plats raffinés et ses desserts délicieux. Vous pourrez déguster des plats comme le boeuf bourguignon, le coq au vin, les escargots, les crêpes et les macarons.\n" +
-            "\n" +
-            "Enfin, ne manquez pas l'opportunité de découvrir les châteaux de la Loire, les paysages pittoresques de la Provence, les montagnes majestueuses des Alpes et les falaises de la côte normande.\n" +
-            "\n" +
-            "En somme, un voyage en France est une expérience inoubliable pour les amoureux de la culture, de la gastronomie et de la beauté, pour une immersion totale dans un pays romantique et historique.",
-        images: ["assets/img/france/01.jpg", "assets/img/france/02.jpg", "assets/img/france/03.jpg"],
-        prixnuit: 150,
-        petitDejAvailable: true,
-        animaux: true,
-    },
-    "islande": {
-        destination: "L'Islande",
-        ville: "Reykjavík",
-        description: "L'Islande est une île fascinante située dans l'océan Atlantique Nord, célèbre pour ses paysages à couper le souffle, ses sources chaudes naturelles, ses glaciers majestueux, ses aurores boréales et sa culture unique.\n" +
-            "\n" +
-            "Imaginez-vous explorer les paysages volcaniques spectaculaires de l'île, y compris les geysers, les cascades, les cratères et les champs de lave. Vous pourriez également visiter les glaciers, comme le Vatnajökull, qui est le plus grand glacier d'Europe, où vous pourriez faire de la randonnée sur la glace et explorer les grottes de glace.\n" +
-            "\n" +
-            "Vous pourriez également vous détendre dans l'une des nombreuses sources chaudes naturelles de l'Islande, telles que le Blue Lagoon, où vous pourriez profiter des eaux chaudes et apaisantes riches en minéraux.\n" +
-            "\n" +
-            "L'Islande est également célèbre pour ses aurores boréales, un spectacle incroyable de lumières colorées dans le ciel nocturne, qui peuvent être observées pendant les mois d'hiver.\n" +
-            "\n" +
-            "En outre, la culture islandaise est riche en folklore, en musique et en littérature. Vous pourriez visiter la capitale, Reykjavik, où vous pourriez découvrir les musées, les galeries d'art, les bars animés et les restaurants proposant des spécialités culinaires islandaises.\n" +
-            "\n" +
-            "Enfin, ne manquez pas l'opportunité de visiter les fjords de l'ouest de l'Islande, les plages de sable noir de Vik, les falaises de Latrabjarg et la péninsule de Snaefellsnes, qui ont inspiré Jules Verne pour son livre 'Voyage au centre de la Terre'.\n" +
-            "\n" +
-            "En somme, un voyage en Islande est une expérience inoubliable pour les amoureux de la nature, de la culture et de l'aventure, pour une immersion totale dans un pays unique et spectaculaire.",
-        images: ["assets/img/islande/01.jpg", "assets/img/islande/02.jpg"],
-        prixnuit: 180,
-        petitDejAvailable: true,
-        animaux: false,
-    }
+// const voyages = {
+//     "japon": {
+//         destination: "Le Japon",
+//         ville: "Tokyo",
+//         description: "Un voyage au Japon est une expérience incroyable qui offre un mélange unique de traditions anciennes et de modernité. Imaginez-vous flâner dans les rues de Tokyo, une ville qui ne dort jamais, avec ses gratte-ciel illuminés, ses magasins colorés et ses restaurants de rue qui proposent une cuisine délicieuse.\n" +
+//             "\n" +
+//             "Ensuite, rendez-vous dans la ville historique de Kyoto, où vous pourrez découvrir des temples et des jardins japonais magnifiques et paisibles. Puis, pourquoi ne pas partir à la découverte de la culture japonaise en visitant le mont Fuji, l'emblématique montagne japonaise, ou en assistant à une cérémonie du thé traditionnelle ?\n" +
+//             "\n" +
+//             "Vous pourrez également goûter à la cuisine japonaise délicieuse et diversifiée, des sushis et des ramens à la street food comme les takoyakis ou okonomiyakis, ou encore vous détendre dans les onsens, les sources chaudes naturelles du pays.\n" +
+//             "\n" +
+//             "Enfin, ne manquez pas l'opportunité de découvrir la culture pop japonaise en visitant des quartiers comme Harajuku, Akihabara ou Shibuya, célèbres pour leurs magasins de mangas, leurs cafés à thème et leurs concerts de J-pop.\n" +
+//             "\n" +
+//             "Un voyage au Japon est une expérience inoubliable et unique, mélangeant traditions ancestrales et modernité, pour une immersion totale dans une culture riche et fascinante.",
+//         images: ["assets/img/japon/01.jpg", "assets/img/japon/02.jpg", "assets/img/japon/03.jpg", "assets/img/japon/04.jpg"],
+//         prixnuit: 400,
+//         petitDejAvailable: false,
+//         animaux: false,
+//     },
+//     "maldive": {
+//         destination: "Les Maldives",
+//         ville: "Malé",
+//         description: "Imaginez-vous sur des plages de sable blanc immaculées et des eaux cristallines d'un bleu turquoise éclatant, où vous pouvez vous détendre sous le soleil chaud et respirer l'air frais de l'océan Indien.\n" +
+//             "\n" +
+//             "Les Maldives offrent également une expérience unique de plongée sous-marine avec des récifs coralliens spectaculaires et une faune marine abondante. Vous pouvez nager avec des raies manta, des requins-baleines, des tortues et des poissons multicolores, et explorer des épaves sous-marines.\n" +
+//             "\n" +
+//             "Les Maldives sont également connues pour leur hospitalité et leur luxe inégalé, avec des complexes hôteliers cinq étoiles offrant des villas privées sur pilotis au-dessus de l'océan ou des suites avec accès direct à la plage. Les spas de renommée mondiale proposent des soins relaxants pour le corps et l'esprit, tandis que les restaurants proposent des plats délicieux à base de fruits de mer frais et de cuisine internationale.\n" +
+//             "\n" +
+//             "Enfin, les Maldives sont également une destination parfaite pour les amateurs de sports nautiques, tels que le surf, le kitesurf, le paddle, le ski nautique et le wakeboard.\n" +
+//             "\n" +
+//             "En somme, un voyage aux Maldives est un véritable paradis pour les amoureux de la plage, de la plongée, du luxe et de la nature, pour une expérience inoubliable dans un cadre idyllique.",
+//         images: ["assets/img/maldive/01.jpg", "assets/img/maldive/02.jpg", "assets/img/maldive/03.jpg"],
+//         prixnuit: 300,
+//         petitDejAvailable: true,
+//         animaux: false,
+//     },
+//     "canada": {
+//         destination: "Le Canada",
+//         ville: "Quebec",
+//         description: "Le Canada est un pays immense avec des paysages spectaculaires. Imaginez-vous explorer les magnifiques parcs nationaux des Rocheuses canadiennes, avec leurs montagnes majestueuses, leurs lacs cristallins et leurs forêts luxuriantes. Vous pourrez y randonner, faire du vélo, du kayak, du rafting et même de l'escalade.\n" +
+//             "\n" +
+//             "Vous pourrez également découvrir la culture dynamique et cosmopolite de Toronto, la plus grande ville du Canada, avec ses musées, ses galeries d'art, ses restaurants internationaux et ses spectacles de Broadway. Ou bien vous pouvez vous promener dans les charmantes rues de la ville de Québec, la plus vieille ville du Canada, avec son architecture européenne, sa culture française et son patrimoine historique.\n" +
+//             "\n" +
+//             "Le Canada est également célèbre pour ses vastes étendues de nature sauvage, notamment dans les parcs nationaux de Banff, Jasper et Yoho. Vous pourrez y observer des animaux tels que les ours, les wapitis, les caribous et les orignaux, et profiter de la beauté naturelle époustouflante des lacs, des montagnes et des glaciers.\n" +
+//             "\n" +
+//             "Enfin, ne manquez pas l'occasion de découvrir la culture autochtone du Canada en visitant des communautés et des réserves autochtones, et apprendre leur histoire, leur culture, mais aussi leur gastronomie.\n" +
+//             "\n" +
+//             "En somme, un voyage au Canada est une expérience passionnante pour les amoureux de la nature, de la culture et des grandes villes, pour une immersion totale dans un pays fascinant et accueillant.",
+//         images: ["assets/img/canada/01.jpg", "assets/img/canada/02.jpg", "assets/img/canada/03.jpg", "assets/img/canada/04.jpg", "assets/img/canada/05.jpg"],
+//         prixnuit: 250,
+//         petitDejAvailable: true,
+//         animaux: true,
+//     },
+//     "chine": {
+//         destination: "La Chine",
+//         ville: "Shangai",
+//         description: "La Chine est un pays vaste et fascinant, avec une histoire et une culture riches qui remontent à des milliers d'années. Imaginez-vous visiter la Grande Muraille de Chine, l'une des sept merveilles du monde, et découvrir l'histoire et la signification de cette structure emblématique. Vous pouvez également explorer les anciennes villes impériales telles que Pékin et Xi'an, avec leurs palais somptueux, leurs temples bouddhistes et leurs rues animées.\n" +
+//             "\n" +
+//             "La Chine est également célèbre pour sa cuisine délicieuse et variée, avec des plats tels que les dumplings, les nouilles sautées et le canard laqué de Pékin. Vous pourrez également découvrir le thé chinois dans des salons de thé traditionnels ou visiter des marchés alimentaires locaux pour goûter une grande variété de plats et de collations.\n" +
+//             "\n" +
+//             "En Chine, vous pourrez également découvrir des paysages naturels époustouflants, tels que les montagnes karstiques de Guilin, les paysages de la rivière Yangtze et les vastes plaines de la Mongolie intérieure. Vous pouvez également découvrir la culture chinoise à travers les arts traditionnels, tels que la calligraphie, la peinture, la sculpture et les opéras chinois.\n" +
+//             "\n" +
+//             "Enfin, ne manquez pas l'opportunité de découvrir la vie moderne en Chine en visitant des villes dynamiques telles que Shanghai et Hong Kong, avec leurs gratte-ciel impressionnants, leurs quartiers commerçants et leurs bars et restaurants branchés.\n" +
+//             "\n" +
+//             "En somme, un voyage en Chine est une expérience fascinante pour les amoureux de l'histoire, de la culture et de la cuisine, pour une immersion totale dans un pays incroyablement diversifié et passionnant.",
+//         images: ["assets/img/chine/01.jpg", "assets/img/chine/02.jpg", "assets/img/chine/03.jpg"],
+//         prixnuit: 500,
+//         petitDejAvailable: false,
+//         animaux: false,
+//     },
+//     "espace": {
+//         destination: "L'Espace ?!",
+//         ville: "ISS",
+//         description: "Imaginez-vous pouvoir voyager dans l'espace et visiter d'autres planètes de notre système solaire. Vous pourriez découvrir les paysages fascinants et les phénomènes uniques de chaque planète, ainsi que les technologies avancées nécessaires pour voyager dans l'espace.\n" +
+//             "\n" +
+//             "Sur Mars, vous pourriez explorer les vastes étendues de la planète rouge, y compris ses volcans éteints et ses canyons profonds. Vous pourriez également visiter le cratère de Gale, où le rover Curiosity de la NASA a découvert des preuves de l'ancienne présence d'eau sur Mars.\n" +
+//             "\n" +
+//             "Sur Vénus, vous pourriez découvrir la planète la plus chaude de notre système solaire, où les températures peuvent atteindre plus de 460 degrés Celsius. Vous pourriez également étudier les émissions volcaniques de Vénus, qui ont été détectées par des sondes spatiales.\n" +
+//             "\n" +
+//             "Sur Jupiter, la plus grande planète de notre système solaire, vous pourriez découvrir les tempêtes incroyables et les nuages colorés qui tourbillonnent autour de la planète. Vous pourriez également visiter les lunes de Jupiter, y compris Io, qui est l'une des lunes les plus volcaniques de notre système solaire.\n" +
+//             "\n" +
+//             "Sur Saturne, vous pourriez admirer ses célèbres anneaux, qui sont constitués de milliards de particules de glace et de roche. Vous pourriez également découvrir Titan, la plus grande lune de Saturne, qui possède une atmosphère dense et des lacs liquides de méthane et d'éthane à sa surface.\n" +
+//             "\n" +
+//             "Enfin, sur Pluton, vous pourriez explorer cette petite planète naine située à la frontière de notre système solaire. Vous pourriez y découvrir ses montagnes glacées, ses plaines lisses et ses cratères, ainsi que les mystères qui entourent la formation et l'évolution de cette planète.\n" +
+//             "\n" +
+//             "En somme, un voyage interplanétaire serait une expérience incroyable et unique pour les amateurs d'astronomie, pour une immersion totale dans l'univers fascinant et infini qui nous entoure.",
+//         images: ["assets/img/espace/01.jpg", "assets/img/espace/02.jpg", "assets/img/espace/03.jpg"],
+//         prixnuit: 5000,
+//         petitDejAvailable: false,
+//         animaux: true,
+//     },
+//     "france": {
+//         destination: "La France",
+//         ville: "Paris",
+//         description: "La France est un pays riche en histoire, culture et gastronomie, célèbre pour ses villes romantiques, ses châteaux majestueux, ses musées et ses galeries d'art, ainsi que sa cuisine délicieuse.\n" +
+//             "\n" +
+//             "Imaginez-vous flâner dans les rues étroites et pavées du Marais à Paris, où vous pourrez découvrir les boutiques de mode, les galeries d'art contemporain, les musées et les boulangeries pittoresques. Vous pouvez également vous promener le long de la Seine, visiter la Tour Eiffel et le Louvre, ou découvrir l'architecture gothique de Notre-Dame de Paris.\n" +
+//             "\n" +
+//             "La France est également célèbre pour ses magnifiques régions viticoles, telles que la Bourgogne, la Champagne et la vallée de la Loire. Vous pourrez y découvrir les vignobles, visiter les caves et déguster des vins de renommée mondiale.\n" +
+//             "\n" +
+//             "Les villes françaises telles que Nice, Cannes, Saint-Tropez et Monaco offrent des plages de sable fin, des eaux turquoise, des restaurants de fruits de mer et des marchés provençaux.\n" +
+//             "\n" +
+//             "La France est également un pays célèbre pour sa cuisine, avec ses plats raffinés et ses desserts délicieux. Vous pourrez déguster des plats comme le boeuf bourguignon, le coq au vin, les escargots, les crêpes et les macarons.\n" +
+//             "\n" +
+//             "Enfin, ne manquez pas l'opportunité de découvrir les châteaux de la Loire, les paysages pittoresques de la Provence, les montagnes majestueuses des Alpes et les falaises de la côte normande.\n" +
+//             "\n" +
+//             "En somme, un voyage en France est une expérience inoubliable pour les amoureux de la culture, de la gastronomie et de la beauté, pour une immersion totale dans un pays romantique et historique.",
+//         images: ["assets/img/france/01.jpg", "assets/img/france/02.jpg", "assets/img/france/03.jpg"],
+//         prixnuit: 150,
+//         petitDejAvailable: true,
+//         animaux: true,
+//     },
+//     "islande": {
+//         destination: "L'Islande",
+//         ville: "Reykjavík",
+//         description: "L'Islande est une île fascinante située dans l'océan Atlantique Nord, célèbre pour ses paysages à couper le souffle, ses sources chaudes naturelles, ses glaciers majestueux, ses aurores boréales et sa culture unique.\n" +
+//             "\n" +
+//             "Imaginez-vous explorer les paysages volcaniques spectaculaires de l'île, y compris les geysers, les cascades, les cratères et les champs de lave. Vous pourriez également visiter les glaciers, comme le Vatnajökull, qui est le plus grand glacier d'Europe, où vous pourriez faire de la randonnée sur la glace et explorer les grottes de glace.\n" +
+//             "\n" +
+//             "Vous pourriez également vous détendre dans l'une des nombreuses sources chaudes naturelles de l'Islande, telles que le Blue Lagoon, où vous pourriez profiter des eaux chaudes et apaisantes riches en minéraux.\n" +
+//             "\n" +
+//             "L'Islande est également célèbre pour ses aurores boréales, un spectacle incroyable de lumières colorées dans le ciel nocturne, qui peuvent être observées pendant les mois d'hiver.\n" +
+//             "\n" +
+//             "En outre, la culture islandaise est riche en folklore, en musique et en littérature. Vous pourriez visiter la capitale, Reykjavik, où vous pourriez découvrir les musées, les galeries d'art, les bars animés et les restaurants proposant des spécialités culinaires islandaises.\n" +
+//             "\n" +
+//             "Enfin, ne manquez pas l'opportunité de visiter les fjords de l'ouest de l'Islande, les plages de sable noir de Vik, les falaises de Latrabjarg et la péninsule de Snaefellsnes, qui ont inspiré Jules Verne pour son livre 'Voyage au centre de la Terre'.\n" +
+//             "\n" +
+//             "En somme, un voyage en Islande est une expérience inoubliable pour les amoureux de la nature, de la culture et de l'aventure, pour une immersion totale dans un pays unique et spectaculaire.",
+//         images: ["assets/img/islande/01.jpg", "assets/img/islande/02.jpg"],
+//         prixnuit: 180,
+//         petitDejAvailable: true,
+//         animaux: false,
+//     }
+// }
+
+// const users = [
+//     {
+//         username: "usernameTest",
+//         password: "passwordTest",
+//         nom: "nomTest",
+//         prenom: "prenomTest"
+//     },
+//     {
+//         username: "usernameTest1",
+//         password: "passwordTest1",
+//         nom: "nomTest1",
+//         prenom: "prenomTest1"
+//     },
+//     {
+//         username: "usernameTest2",
+//         password: "passwordTest2",
+//         nom: "nomTest2",
+//         prenom: "prenomTest2"
+//     },
+//     {
+//         username: "test",
+//         password: "test",
+//         nom: "nomTest3",
+//         prenom: "prenomTest3"
+//     }
+// ]
+
+let voyages = {};
+let users = {};
+
+async function fetchVoyages() {
+    const response = await fetch('../voyages.json');
+    const jsonVoyages = await response.json();
+    console.log("fetch données json");
+    console.log(jsonVoyages);
+    // console.log(json.canada.destination);
+
+    voyages = jsonVoyages;
+    // return jsonVoyages;
 }
 
-const users = [
-    {
-        username: "usernameTest",
-        password: "passwordTest",
-        nom: "nomTest",
-        prenom: "prenomTest"
-    },
-    {
-        username: "usernameTest1",
-        password: "passwordTest1",
-        nom: "nomTest1",
-        prenom: "prenomTest1"
-    },
-    {
-        username: "usernameTest2",
-        password: "passwordTest2",
-        nom: "nomTest2",
-        prenom: "prenomTest2"
-    },
-    {
-        username: "test",
-        password: "test",
-        nom: "nomTest3",
-        prenom: "prenomTest3"
-    }
-]
+async function fetchUsers() {
+    const response = await fetch('../users.json');
+    const jsonUsers = await response.json();
+
+    users = jsonUsers;
+    // return jsonUsers;
+}
+
+fetchVoyages();
+// console.log("fetchVoyages : " + voyages);
+fetchUsers();
+
 
 class Voyage {
     constructor(_selection){
@@ -173,9 +200,9 @@ class Voyage {
             });
 
         } else
-            var dest = true;
+            dest = true;
             if (!localStorage.voyages || localStorage.voyages.length === 0 || !dest) {
-                console.log("Requete API");
+                // console.log("Requete API");
                 this._destination = voyages[_selection].destination;
                 this._ville = voyages[_selection].ville;
                 this._description = voyages[_selection].description;
@@ -344,7 +371,7 @@ class Reservation extends Voyage{
 
     set nbEnfant(a) { this._nbenfant = a};
     get nbEnfant() { return this._nbenfant };
-    
+
     set petitDej(a) { this._petitdej = a};
     get petitDej() { return this._petitdej };
 
@@ -356,7 +383,7 @@ class Reservation extends Voyage{
         else
             return 0;
      }
-    get totalAdulte(){ 
+    get totalAdulte(){
         return this.nbJour * this._nbadulte * this._prixnuit;
     }
 
@@ -364,7 +391,7 @@ class Reservation extends Voyage{
         return this._prixnuit * 0.4;
     }
 
-    get totalEnfants(){ 
+    get totalEnfants(){
         return this.nbJour * this._nbenfant * this.prixnuitenfant;
     }
 
@@ -563,8 +590,8 @@ function randomizeBackground() {
     // et même tableau
     let allBackgrounds = [].concat(...listBackgrounds);
     let rand = Math.floor(Math.random() * allBackgrounds.length);
-    document.body.style.transition = "background-image 1.5s ease"
     document.body.style.background = `url(${allBackgrounds[rand]}) no-repeat center center fixed`;
+    document.body.style.transition = "background-image 0.5s ease";
     document.body.style.backgroundSize = 'cover';
 }
 
@@ -620,7 +647,7 @@ function toggleShowPassword() {
 }
 
 function verifUserConnected() {
-    console.log(getCookie("currentUser") + " connecté");
+    // console.log("utilisateur : " + getCookie("currentUser") + " connecté");
     let currentUser = getCookie("currentUser");
     if (currentUser) {
         let connectedUser = users.find(function(connectedUser) {
@@ -655,8 +682,16 @@ function logout() {
     verifUserConnected();
 }
 
+
 let backgroundInterval;
-randomizeBackground();
+
+if (document.body.style.background === "url(\"undefined\") no-repeat center center fixed'") {
+    document.body.style.background = 'url("../assets/img/canada/03.jpg") no-repeat center center fixed';
+    document.body.style.backgroundSize = 'cover';
+    }
+else {
+        randomizeBackground();
+    }
 if (window.location.href.includes("index.html")
     || window.location.href.includes("landing-page.html")
     || window.location.href.includes("a-propos.html")) {
@@ -664,5 +699,3 @@ if (window.location.href.includes("index.html")
         randomizeBackground();
     }, 4000);
 }
-
-

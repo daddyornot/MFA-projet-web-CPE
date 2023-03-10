@@ -57,8 +57,10 @@ window.addEventListener("click", (event) => {
     }
 });
 
-
+// On vérifie si un user est connecté pour afficher son prénom
 verifUserConnected();
+
+// On écoute si l'user appuie sur entrée pour se connecter
 document.getElementById("password").addEventListener("keyup", function(key) {
     if (key.code === "NumpadEnter" || key.code === "Enter") {
         verifierLogin();
