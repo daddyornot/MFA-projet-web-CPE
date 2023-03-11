@@ -1,7 +1,12 @@
 
 window.onload = () => {
 
-    // console.log("compte.js : "+ connectedUser);
+
+
+}
+
+function displayInfosUser() {
+    // console.log("compte.js : "+ connectedUser.username);
     if (connectedUser) {
         document.getElementById("nom").innerHTML = connectedUser.nom;
         document.getElementById("prenom").innerHTML = connectedUser.prenom;

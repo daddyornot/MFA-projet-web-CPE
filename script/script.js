@@ -3,12 +3,6 @@ $(function() {
     $("footer").load("footer.html");
 });
 
-// TODO : le header n'est pas chargé au moment de l'appel des fonctions, on a donc cette erreur :
-// Uncaught (in promise) TypeError: Cannot set properties of null (setting 'innerHTML')
-// at verifUserConnected (script.js:682:58)
-// at script.js:204:5
-
-
 let listDestination = [];
 // const voyages = {
 //     "japon": {
@@ -190,7 +184,7 @@ async function fetchJSONVoyages() {
     const response = await fetch('../voyages.json');
     const jsonVoyages = await response.json();
     // console.log("fetch données json");
-    console.log(jsonVoyages);
+    // console.log(jsonVoyages);
     // voyagesJSON = jsonVoyages;
     for (let val in jsonVoyages){
         listDestination.push(val);
@@ -204,12 +198,13 @@ async function fetchJSONUsers() {
     return await response.json();
 }
 
-
-fetchJSONUsers().then(users => {
-    allUsers = users;
-    verifUserConnected();
-});
-
+function getUser() {
+    fetchJSONUsers().then(users => {
+        allUsers = users;
+        verifUserConnected();
+        if (window.location.href.includes("compte.html")) displayInfosUser();
+    });
+}
 
 class Voyage {
     constructor(_selection){
@@ -614,83 +609,6 @@ function randomizeBackground() {
     document.body.style.backgroundSize = 'cover';
 }
 
-function verifierLogin() {
-    let loginUser = $("#username")
-    let passwordUser = $("#password")
-
-    // on regarde d'abord si l'username existe
-    let user = allUsers.find(userTry => {
-        return userTry.username === loginUser.val();
-    })
-    // s'il existe, on test le password
-    if (user) {
-        if (user.password === passwordUser.val()) {
-            console.log("connecte");
-            passwordUser.removeClass("wrongCredential");
-            // passwordUser.addClass("rightCredential");
-            loginUser.removeClass("wrongCredential");
-            // loginUser.addClass("rightCredential");
-            loginUser.val("");
-            passwordUser.val("");
-            hideModal();
-            document.cookie = "currentUser=" + user.username;
-            // verifUserConnected();
-        }
-        else
-        {
-            console.log("mauvais mdp");
-            loginUser.addClass("rightCredential");
-            loginUser.removeClass("wrongCredential");
-            passwordUser.addClass("wrongCredential");
-        }
-    }
-    else
-    {
-        console.log("l'user n'existe pas")
-        loginUser.addClass("wrongCredential");
-    }
-}
-
-function toggleShowPassword() {
-    let buttonPasswd = $("#show-password");
-    let passwordInput = $("#password");
-
-    if (buttonPasswd.text() === "visibility") {
-        passwordInput.attr("type", "text");
-        buttonPasswd.text("visibility_off");
-    }
-    else {
-        passwordInput.attr("type", "password");
-        buttonPasswd.text("visibility");
-    }
-}
-
-let connectedUser;
-
-// On vérifie si un user est connecté pour afficher son prénom
-function verifUserConnected() {
-    console.log("verifUserConnected - all users");
-    console.log(allUsers)
-    console.log("verifUserConnected - each user");
-    let currentUserCookie = getCookie("currentUser");
-    if (currentUserCookie) {
-        for (const user of allUsers) {
-            console.log(user);
-            if (user.username === currentUserCookie) {
-                connectedUser = user;
-                console.log("verifUserConnected - connectedUser");
-                console.log(connectedUser);
-                document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.username + " !";
-            }
-        }
-    }
-    else {
-        document.getElementById("msg-accueil").innerHTML = "";
-        hideModal();
-    }
-    console.log("verifUserConnected - end");
-}
-
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -707,15 +625,12 @@ function getCookie(cname) {
     return "";
 }
 
-function logout() {
-    document.cookie = "currentUser=";
-    verifUserConnected();
-}
 
 let backgroundInterval;
 
 if (window.location.href.includes("index.html")
     || window.location.href.includes("landing-page.html")
+    || window.location.href.includes("compte.html")
     || window.location.href.includes("a-propos.html")) {
     backgroundInterval = setInterval(function () {
         randomizeBackground();
