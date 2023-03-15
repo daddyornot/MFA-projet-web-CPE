@@ -122,7 +122,7 @@ function valider() {
     var resa = new Reservation(selection);
     resa.setValue();
     if (resa.check){
-        var panier = new Panier();
+        var panier = new ListeReservations();
         panier.add = resa;
         location.href = "panier.html";
     } else {

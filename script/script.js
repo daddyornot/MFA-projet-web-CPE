@@ -202,7 +202,7 @@ function getUser() {
     fetchJSONUsers().then(users => {
         allUsers = users;
         verifUserConnected();
-        if (window.location.href.includes("compte.html")) displayInfosUser();
+        if (window.location.href.includes("compte.html")) afficherInfosUser();
     });
 }
 
@@ -414,7 +414,7 @@ class Reservation extends Voyage{
     }
 }
 
-class Panier {
+class ListeReservations {
     constructor() {
         if(localStorage.panier){
             let panier = JSON.parse(localStorage.panier);

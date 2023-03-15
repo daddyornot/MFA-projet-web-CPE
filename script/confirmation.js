@@ -11,7 +11,7 @@ window.onunload = () => {
     window.localStorage.clear();
 }
 function start(){
-    panier = new Panier();
+    panier = new ListeReservations();
     if(panier.get().length == 0)
         window.location = "./index.html"
     genererResume();

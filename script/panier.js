@@ -14,8 +14,8 @@ window.onload = () => {
 let voyagesLocal = [];
 
 function start(){
-    panier = new Panier();
-    panierLocal = new Panier();
+    panier = new ListeReservations();
+    panierLocal = new ListeReservations();
     for (let dest of panierLocal.get()) {
         voyagesLocal.push(new Voyage(dest.value));
     }
@@ -24,16 +24,16 @@ function start(){
 }
 
 function onUpdate(){
-    panier = new Panier();
-    panierLocal = new Panier();
+    panier = new ListeReservations();
+    panierLocal = new ListeReservations();
     creationtableau();
 }
 
 function remove(id){
     panier.remove(id);
     panierLocal.remove(id);
-    // panier = new Panier();
-    // panierLocal = new Panier();
+    // panier = new ListeReservations();
+    // panierLocal = new ListeReservations();
     // location.reload();
     creationtableau();
 }
@@ -203,18 +203,18 @@ function modifSejour(id) {
 }
 
 function cancelModif(id) {
-    panier = new Panier();
+    panier = new ListeReservations();
     panierLocal.get()[id].modif = false;
     panierLocal.modifi(id, panier.get()[id]);
     creationtableau();
 }
 
 function validerModif(id) {
-    panier = new Panier();
+    panier = new ListeReservations();
     let sejour = panierLocal.get()[id];
     panier.modifi(id, sejour);
-    panier = new Panier();
-    panierLocal = new Panier();
+    panier = new ListeReservations();
+    panierLocal = new ListeReservations();
     creationtableau();
 }
 

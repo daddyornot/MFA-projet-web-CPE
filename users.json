@@ -8,7 +8,17 @@
     "codePostal": "69300",
     "ville": "Lyon",
     "pays": "France",
-    "tel": "0123456789"
+    "tel": "0123456789",
+    "historique": [
+      {
+        "_selection": "canada",
+        "_datedebut": "2023-03-16T00:00:00.000Z",
+        "_datefin": "2023-03-17T00:00:00.000Z",
+        "_nbadulte": 1,
+        "_nbenfant": 0,
+        "_petitdej": false
+      }
+    ]
   },
   {
     "username": "test1",
@@ -44,3 +54,5 @@
     "tel": "0123456789"
   }
 ]
+
+
