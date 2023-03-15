@@ -20,17 +20,24 @@
     position: sticky;
 }
 
-.header-navbar .homelink {
-    font-family: 'Rampart One';
-    font-size: 80px;
-    color: white;
-    padding-top: 20px;
+/*.header-navbar .homelink {*/
+/*    font-family: 'Rampart One';*/
+/*    font-size: 80px;*/
+/*    color: white;*/
+/*    padding-top: 20px;*/
+/*}*/
+
+.homelink img {
+    height: 10rem;
+    width: 10rem;
+    padding-top: 1rem;
 }
 
 .nav-links ul {
     display: flex;
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .nav-links {
