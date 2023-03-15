@@ -15,7 +15,9 @@ let voyagesLocal = [];
 
 function start(){
     panier = new ListeReservations();
+    panier.setFromLocalStorage();
     panierLocal = new ListeReservations();
+    panierLocal.setFromLocalStorage();
     for (let dest of panierLocal.get()) {
         voyagesLocal.push(new Voyage(dest.value));
     }
@@ -25,7 +27,9 @@ function start(){
 
 function onUpdate(){
     panier = new ListeReservations();
+    panier.setFromLocalStorage();
     panierLocal = new ListeReservations();
+    panierLocal.setFromLocalStorage();
     creationtableau();
 }
 
@@ -204,6 +208,7 @@ function modifSejour(id) {
 
 function cancelModif(id) {
     panier = new ListeReservations();
+    panier.setFromLocalStorage();
     panierLocal.get()[id].modif = false;
     panierLocal.modifi(id, panier.get()[id]);
     creationtableau();
@@ -211,10 +216,13 @@ function cancelModif(id) {
 
 function validerModif(id) {
     panier = new ListeReservations();
+    panier.setFromLocalStorage();
     let sejour = panierLocal.get()[id];
     panier.modifi(id, sejour);
     panier = new ListeReservations();
+    panier.setFromLocalStorage();
     panierLocal = new ListeReservations();
+    panierLocal.setFromLocalStorage();
     creationtableau();
 }
 

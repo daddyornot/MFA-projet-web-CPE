@@ -416,6 +416,12 @@ class Reservation extends Voyage{
 
 class ListeReservations {
     constructor() {
+        
+    }
+    setFromHistory(){
+
+    }
+    setFromLocalStorage(){
         if(localStorage.panier){
             let panier = JSON.parse(localStorage.panier);
             for (let e of panier){
