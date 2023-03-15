@@ -32,8 +32,8 @@
                 <td>{{petitdej}}</td>
                 <td>{{prix}} €</td>
                 <td>
-                    <button id="modifier" onclick="modifSejour({{idVoyage}})">Modifier</button>
-                    <button id="supprimer" onclick="remove({{idVoyage}})">Supprimer</button>
+                    <button id="modifier" onclick="modifSejour('{{idVoyage}}')">Modifier</button>
+                    <button id="supprimer" onclick="remove('{{idVoyage}}')">Supprimer</button>
                 </td>
             </tr>
         </template>
@@ -46,9 +46,9 @@
                 </td>
                 <td>{{destination}}</td>
 
-                <td onchange="changeValue({{idVoyage}})">Du <input id="dateDebutModif{{idVoyage}}" type="date" value="{{dateDebut}}"><br>
+                <td onchange="changeValue('{{idVoyage}}')">Du <input id="dateDebutModif{{idVoyage}}" type="date" value="{{dateDebut}}"><br>
                     Au <input id="dateFinModif{{idVoyage}}" type="date" value="{{dateFin}}"></td>
-                <td onchange="changeValue({{idVoyage}})">Adultes<br>
+                <td onchange="changeValue('{{idVoyage}}')">Adultes<br>
                     <select name="nb-adulte" id="nbAdultesModif{{idVoyage}}">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -62,7 +62,7 @@
                         <option value="10">10</option>
                     </select>
                 </td>
-                <td onchange="changeValue({{idVoyage}})">Enfants<br>
+                <td onchange="changeValue('{{idVoyage}}')">Enfants<br>
                     <select name="nb-enfant" id="nbEnfantsModif{{idVoyage}}">
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -77,12 +77,12 @@
                         <option value="10">10</option>
                     </select>
                 </td>
-                <td id="caseDej{{idVoyage}}" onchange="changeValue({{idVoyage}})">Petit dej<br><input id="petitDejModif{{idVoyage}}" class="check" type="checkbox" {{petitdej}}></td>
+                <td id="caseDej{{idVoyage}}" onchange="changeValue('{{idVoyage}}')">Petit dej<br><input id="petitDejModif{{idVoyage}}" class="check" type="checkbox" {{petitdej}}></td>
 
                 <td>{{prix}} €</td>
                 <td>
-                    <button id="modifier" onclick="validerModif({{idVoyage}})">Valider</button>
-                    <button id="supprimer" onclick="cancelModif({{idVoyage}})">Annuler</button>
+                    <button id="modifier" onclick="validerModif('{{idVoyage}}')">Valider</button>
+                    <button id="supprimer" onclick="cancelModif('{{idVoyage}}')">Annuler</button>
                 </td>
             </tr>
         </template>

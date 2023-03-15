@@ -25,8 +25,8 @@
 - Panier > pas de fond d'écran par défault
 
 # Questions
-- Compatibilité navigateurs
-- JSON
+- Compatibilité navigateurs > Firefox / chrome
+- JSON 
 - User dans le même ou un nouveau JSON
-- Sécurité ?
-- Gestion des cas particuliers (suppression des données, modification cookies, ...)
+- Sécurité ? > non
+- Gestion des cas particuliers (suppression des données, modification cookies, ...) > NOn

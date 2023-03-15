@@ -123,6 +123,7 @@ function valider() {
     resa.setValue();
     if (resa.check){
         var panier = new ListeReservations();
+        panier.setFromLocalStorage();
         panier.add = resa;
         location.href = "panier.html";
     } else {
