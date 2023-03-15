@@ -28,8 +28,8 @@ function afficherHistorique() {
 
         let detailSejour = clone.lastElementChild.innerHTML
             .replace(/{{destination}}/g, voyage.ville)
-            .replace(/{{dateDebut}}/g, toFormattedDate(voyage.datedebut))
-            .replace(/{{dateFin}}/g, toFormattedDate(voyage.datefin))
+            .replace(/{{dateDebut}}/g, toFormattedDate(new Date(voyage.datedebut)))
+            .replace(/{{dateFin}}/g, toFormattedDate(new Date(voyage.datefin)))
             // .replace(/{{nbJour}}/g, voyage.nbJour > 1 ? voyage.nbJour + " jours" : voyage.nbJour + " jour")
             // expr ternaire :  condition testée ?  valeur si true      :  valeur si false
             .replace(/{{petitDej}}/g, (voyage.petitDej ? "Avec le Pti dej' !" : "Sans pti dej'"))

@@ -7,8 +7,9 @@
 - virer le .html dans l'url
 - arriver sur la landing page du site
 - ~~optimiser requete API : si on a deja la T°C on refait pas de requete~~
-- authentification
-- historique des voyages
+- ~~authentification~~
+- ~~historique des voyages mode dur~~
+- historique des voyages mode dynamique
 - pop up accepter les cookies a l'arrivée
 - responsive
 - ~~bouton modifier panier : sur la meme page ! remplacer les lignes correspodnantes~~
@@ -23,6 +24,7 @@
 - ~~Caroussel image buggé~~
 - Panier > background ne change pas tout seul
 - Panier > pas de fond d'écran par défault
+- Panier > boutton "Ajouter un voyage"
 
 # Questions
 - Compatibilité navigateurs > Firefox / chrome
