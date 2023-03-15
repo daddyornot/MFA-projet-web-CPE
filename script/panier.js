@@ -201,27 +201,22 @@ function checkFields() {
 }
 
 function modifSejour(id) {
-    // console.log(panier.get()[id]);
-    panierLocal.get()[id].modif = true;
+    panierLocal.getByID(id).modif = true;
     creationtableau();
 }
 
 function cancelModif(id) {
-    panier = new ListeReservations();
     panier.setFromLocalStorage();
-    panierLocal.get()[id].modif = false;
-    panierLocal.modifi(id, panier.get()[id]);
+    panierLocal.getByID(id).modif = false;
+    panierLocal.modifi(id, panier.getByID(id));
     creationtableau();
 }
 
 function validerModif(id) {
-    panier = new ListeReservations();
     panier.setFromLocalStorage();
-    let sejour = panierLocal.get()[id];
+    let sejour = panierLocal.getByID(id);
     panier.modifi(id, sejour);
-    panier = new ListeReservations();
     panier.setFromLocalStorage();
-    panierLocal = new ListeReservations();
     panierLocal.setFromLocalStorage();
     creationtableau();
 }
@@ -257,7 +252,7 @@ function verificationDateModif(id){
 
 function changeValue(id){
     verificationDateModif(id);
-    let sejour = panierLocal.get()[id]
+    let sejour = panierLocal.getByID(id);
     sejour.datedebut = new Date(document.getElementById("dateDebutModif" + id).value);
     sejour.datefin = new Date(document.getElementById("dateFinModif" + id).value);
     sejour.nbAdulte = Number(document.getElementById("nbAdultesModif" + id).value);
