@@ -22,6 +22,7 @@
 - ~~Panier click sur la destination pour aller vers la page détail sejour~~
 - ~~Caroussel image buggé~~
 - Panier > background ne change pas tout seul
+- Panier > pas de fond d'écran par défault
 
 # Questions
 - Compatibilité navigateurs
