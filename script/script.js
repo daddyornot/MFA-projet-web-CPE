@@ -425,9 +425,9 @@ class ListeReservations {
     }
     setFromLocalStorage(){
         if(localStorage.panier){
-            this._panier = [];
-            let panier = JSON.parse(localStorage.panier);
-            for (let e of panier){
+            this._listReservations = [];
+            let listReservation = JSON.parse(localStorage.panier);
+            for (let e of listReservation){
                 const voyage = new Reservation(e._selection);
                 voyage.all(e._datedebut, e._datefin, e._nbadulte, e._nbenfant, e._petitdej, e._id);
                 this.add = voyage;
@@ -436,27 +436,27 @@ class ListeReservations {
     }
     set add(a) {
         a.id = MD5(a._destination + a._datedebut + a._datefin + a._nbadulte + a._nbenfant + a._petitdej);
-        if (this._panier){
-            this._panier.push(a);
+        if (this._listReservations){
+            this._listReservations.push(a);
         }
         else
         {
-            this._panier = [a];
+            this._listReservations = [a];
         }
-        window.localStorage.setItem("panier", JSON.stringify(this._panier));
+        window.localStorage.setItem("panier", JSON.stringify(this._listReservations));
     }
     get (){
-        if (this._panier == undefined){
-            console.log("le panier est vide");
+        if (this._listReservations == undefined){
+            console.log("la liste est vide");
             return [];
         } else {
-            return this._panier.sort(function (a, b) {
+            return this._listReservations.sort(function (a, b) {
                 return a.datedebut - b.datedebut;
             });
         }
     }
     getByID(id){
-        for (let e of this._panier){
+        for (let e of this._listReservations){
             if (e.id == id){
                 return e;
             }
@@ -466,13 +466,13 @@ class ListeReservations {
     remove(m){
         // console.log(m);
         let toSuppr = "";
-        this._panier.forEach(function (element, index){
+        this._listReservations.forEach(function (element, index){
             if(element.id == m){
                 toSuppr = index;
             }
         })
-        this._panier.splice(toSuppr, 1);
-        window.localStorage.setItem("panier", JSON.stringify(this._panier));
+        this._listReservations.splice(toSuppr, 1);
+        window.localStorage.setItem("panier", JSON.stringify(this._listReservations));
 
         // console.log(this._panier);
     }
