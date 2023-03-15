@@ -19,7 +19,6 @@ function start(){
 }
 
 function genererResume() {
-
     let nbJourRestants = 9999999;
     let prixTotal = 0;
     // on clear le template pour ne l'avoir qu'une seule fois

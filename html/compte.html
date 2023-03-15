@@ -29,13 +29,14 @@
                 <p>N° de téléphone : <span id="tel"></span></p>
             </div>
         <h2>Mon historique de voyage</h2>
+            <div id="historique" class="historique-voyages"></div>
             <template id="historique-voyage">
                 <div class="img-destination">
                     <img {{src}}="{{imgDest}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
                 </div>
                 <div class="resume-voyage">
                     <p>Vous êtes déjà parti à <b>{{destination}}</b></p>
-                    <p>Du <b>{{dateDebut}}</b> au <b>{{dateFin}}</b>, soit <b>{{nbJour}}</b></p>
+                    <p>Du <b>{{dateDebut}}</b> au <b>{{dateFin}}</b></p>
                     <p>Vous étiez <b>{{nbAdultes}}</b> et <b>{{nbEnfants}}</b></p>
                     <p><b>{{petitDej}}</b></p>
                     <p>Ce voyage vous avait coûté <b>{{prixVoyage}}€</b></p>

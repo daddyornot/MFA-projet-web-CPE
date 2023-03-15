@@ -202,7 +202,10 @@ function getUser() {
     fetchJSONUsers().then(users => {
         allUsers = users;
         verifUserConnected();
-        if (window.location.href.includes("compte.html")) afficherInfosUser();
+        if (window.location.href.includes("compte.html")) {
+            afficherInfosUser();
+            afficherHistorique();
+        }
     });
 }
 

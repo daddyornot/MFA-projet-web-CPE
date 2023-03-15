@@ -11,12 +11,30 @@
     "tel": "0123456789",
     "historique": [
       {
-        "_selection": "canada",
-        "_datedebut": "2023-03-16T00:00:00.000Z",
-        "_datefin": "2023-03-17T00:00:00.000Z",
-        "_nbadulte": 1,
-        "_nbenfant": 0,
-        "_petitdej": false
+        "ville": "Quebec",
+        "datedebut": "2023-03-16T00:00:00.000Z",
+        "datefin": "2023-03-17T00:00:00.000Z",
+        "images": [
+          "../assets/img/canada/01.jpg"
+        ],
+        "temperature": 1.72,
+        "nbAdulte": 1,
+        "nbEnfant": 0,
+        "petitDej": false,
+        "total": 500
+      },
+      {
+        "ville": "Paris",
+        "datedebut": "2023-02-16T00:00:00.000Z",
+        "datefin": "2023-03-05T00:00:00.000Z",
+        "images": [
+          "../assets/img/france/01.jpg"
+        ],
+        "temperature": 3.52,
+        "nbAdulte": 2,
+        "nbEnfant": 2,
+        "petitDej": true,
+        "total": 9000
       }
     ]
   },

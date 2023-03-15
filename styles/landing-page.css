@@ -37,15 +37,18 @@
     font-size: 4rem;
 }
 
-.landing-text .cie {
-    text-align: center;
-    text-transform: uppercase;
-    color: #F1FAEE;
-    font-family: 'Rampart One';
-    font-size: 120px;
+/*.landing-text .cie {*/
+/*    text-align: center;*/
+/*    text-transform: uppercase;*/
+/*    color: #F1FAEE;*/
+/*    font-family: 'Rampart One';*/
+/*    font-size: 120px;*/
+/*}*/
+
+.landing-text img {
+    width: fit-content;
+    height: 50%;
 }
-
-
 
 .landing-text a {
     color: ghostwhite;
