@@ -44,7 +44,10 @@ function remove(id){
 
 function desactivationDesChamps(toDesactivate){
     if (toDesactivate){
-        document.getElementById("contenu-panier").innerHTML = "Aucun Voyage ajouté au panier";
+        document.getElementById("contenu-panier").style.display = 'none';
+        document.getElementById("panier-vide").style.display = 'flex';
+        document.getElementById("panier-vide").innerHTML = "Vous vous trouvez actuellement sur un panier vide, " +
+            "on espère qu'il ne le restera pas trop longtemps... 🌴😃";
         document.getElementById("divtotal").style.display = 'none';
         document.getElementsByClassName("info-commande")[0].style.display = 'none';
         document.getElementsByClassName("infos")[0].style.display = 'none';

@@ -30,20 +30,20 @@
     flex-direction: column;
 }
 
-.landing-text h1 {
+.landing-text h1, .landing-text h2{
     text-align: center;
-    text-transform: uppercase;
     color: #F1FAEE;
+}
+
+.landing-text h1 {
+    text-transform: uppercase;
     font-size: 4rem;
 }
 
-/*.landing-text .cie {*/
-/*    text-align: center;*/
-/*    text-transform: uppercase;*/
-/*    color: #F1FAEE;*/
-/*    font-family: 'Rampart One';*/
-/*    font-size: 120px;*/
-/*}*/
+.landing-text h2 {
+    font-size: 2rem;
+}
+
 
 .landing-text img {
     width: fit-content;
