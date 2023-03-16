@@ -30,6 +30,7 @@ function genererResume() {
         let imgSejour = clone.firstElementChild.innerHTML
             .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
             .replace(/{{imgDest}}/g, voyage.images[0])
+            .replace(/{{alt}}/g, "Photo de " + voyage.destination)
             .replace(/{{temperature}}/g, voyage.temperature);
 
         let detailSejour = clone.lastElementChild.innerHTML

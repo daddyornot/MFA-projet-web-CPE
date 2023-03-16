@@ -89,6 +89,7 @@ function creationtableau(){
                     .replace(/{{nbEnfants}}/g, voyage.nbEnfant)
                     .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
                     .replace(/{{imgDest}}/g, voyage.images[0])
+                    .replace(/{{alt}}/g, "Photo de " + voyage.destination)
                     .replace(/{{petitdej}}/g, dej)
                     .replace(/{{prix}}/g, voyage.total)
                     .replace(/{{idVoyage}}/g, voyage.id);
@@ -128,6 +129,7 @@ function creationtableau(){
                     .replace(/{{nbEnfants}}/g, voyage.nbEnfant > 1 ? voyage.nbEnfant + " enfants" : voyage.nbEnfant === 1 ? voyage.nbEnfant + " enfant" : "Pas d'enfants, youpi !")
                     .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
                     .replace(/{{imgDest}}/g, voyage.images[0])
+                    .replace(/{{alt}}/g, "Photo de " + voyage.destination)
                     .replace(/{{petitdej}}/g, dej)
                     .replace(/{{prix}}/g, voyage.total)
                     .replace(/{{idVoyage}}/g, voyage.id);
