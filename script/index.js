@@ -8,7 +8,7 @@ window.onload = () => {
 
 }
 
-let voyagesLocal = [];
+//let voyagesLocal = [];
 
 function start() { //on créé la liste de voyages et on génère le tableau une fois qu'on a les donnees
     for (let dest of listDestination) {

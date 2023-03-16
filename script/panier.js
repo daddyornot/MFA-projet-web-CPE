@@ -11,7 +11,7 @@ window.onload = () => {
     if (checkFields())
         checkAndValidateForm();
 }
-let voyagesLocal = [];
+voyagesLocal = [];
 
 function start(){
     panier = new ListeReservations();

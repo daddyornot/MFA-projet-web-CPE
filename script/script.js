@@ -474,10 +474,11 @@ function getCookie(cname) {
     return "";
 }
 
-if (window.location.href.includes("index.html")
-    || window.location.href.includes("landing-page.html")
-    || window.location.href.includes("compte.html")
-    || window.location.href.includes("a-propos.html")) {
+if (window.location.href.includes("index")
+    || window.location.href.includes("landing-page")
+    || window.location.href.includes("panier")
+    || window.location.href.includes("compte")
+    || window.location.href.includes("a-propos")) {
     backgroundInterval = setInterval(function () {
         randomizeBackground();
     }, 4000);
