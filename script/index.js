@@ -48,17 +48,25 @@ function changeFilter() {
     })
 
     if (filter.length === 0 ){
-        document.getElementById("liste-destinations").innerHTML = "Désolé aucun voyage correspond à vos critère\n" +
-            " merci de modifier vos critères pour plus de résultats"
+        document.getElementById("liste-destinations").innerHTML = "";
+        let aucunResultat = document.getElementById("no-destination");
+        aucunResultat.style.display = "block";
+        if (search) {
+            aucunResultat.innerHTML = "Désolé, nous ne trouvons aucun voyage contenant '" + search + "' 😭"
+        }
+        else {
+            aucunResultat.innerHTML = "Désolé, nous ne trouvons aucun voyage qui correspond à vos critères 😭"
+        }
     }
     else
     {
+        document.getElementById("no-destination").style.display = "none";
         let template = document.querySelector("#listeDestinations");
         document.getElementById("liste-destinations").innerHTML = "";
         for (const d of filter) {
             let clone = document.importNode(template.content, true);
 
-            newDestination = clone.firstElementChild.innerHTML
+            let newDestination = clone.firstElementChild.innerHTML
                 .replace(/{{destination}}/g, d.destination)
                 .replace(/{{temperature}}/g, d.temperature)
                 .replace(/{{prixNuit}}/g, d.prixNuit)
