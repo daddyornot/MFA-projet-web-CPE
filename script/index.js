@@ -8,7 +8,8 @@ window.onload = () => {
 
 }
 
-let voyagesLocal = [];
+//let voyagesLocal = [];
+
 function start() { //on créé la liste de voyages et on génère le tableau une fois qu'on a les donnees
     for (let dest of listDestination) {
         voyagesLocal.push(new Voyage(dest));
@@ -20,8 +21,8 @@ function start() { //on créé la liste de voyages et on génère le tableau une
 function onUpdate(){
     changeFilter();
 }
+
 function changeFilter() {
-    // console.log('ChangeFilter');
     let filter = voyagesLocal;
     let search = document.getElementById("searchbar").value;
     if(search !== ""){
@@ -30,7 +31,6 @@ function changeFilter() {
                 dest.ville.toLocaleLowerCase().includes(search.toLocaleLowerCase());
         })
     }
-    // console.log($("#petitdej")[0].checked);
     if($("#petitdej")[0].checked){
         filter = filter.filter(function (dest) {
             return dest.petitDejAvailable
