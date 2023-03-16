@@ -45,7 +45,12 @@ function afficherHistorique() {
 }
 
 window.onload = () => {
+    getVoyages();
 
+}
+
+function start(){
+    
 }
 
 

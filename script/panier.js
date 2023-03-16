@@ -1,6 +1,7 @@
 
 var panier;
 var panierLocal;
+voyagesLocal = [];
 
 window.onload = () => {
     getVoyages();
@@ -10,7 +11,6 @@ window.onload = () => {
     if (checkFields())
         checkAndValidateForm();
 }
-voyagesLocal = [];
 
 function start(){
     panier = new ListeReservations();
@@ -159,16 +159,8 @@ function checkAndValidateForm() {
     let confirmForm = document.getElementById("confirm-commande");
     // comme le bouton "valider" est sorti du form, on ajoute un listener dessus
     confirmForm.addEventListener("click", () => {
-        let isModified = false;
-        panierLocal.get().forEach(function (dest) {
-            if(dest.modif)
-                if(dest != panier.get()[dest.id]){
-                    if(!isModified) {
-                        alert('Modification non enregistré !');
-                        isModified = true;
-                    }
-                }
-        });
+        let isModified = checkIsModify();
+        console.log("loc" + isModified);
         if (!isModified) {
             if (formulaire.checkValidity()) {
                 //si le form est rempli correctement, on passe a la suite
@@ -186,6 +178,8 @@ function checkAndValidateForm() {
                 }
                 // alert("Attention ! Les champs suivants ne sont pas correctement remplis : " + invalidFields.join(", "));
             }
+        } else {
+            alert('Modification non enregistré !');
         }
     });
 }
@@ -280,3 +274,33 @@ function remplirInfos() {
         document.getElementById("email").value = connectedUser.email;
     }
 }
+
+function checkIsModify(){
+    let isModified = false;
+
+    panierLocal.get().forEach(function (dest) {
+        if(dest.modif)
+            if(dest != panier.get()[dest.id]){
+                if(!isModified){
+                    console.log('true');
+                    isModified = true;
+                }
+                
+            }
+    });
+    console.log(isModified);
+
+    return isModified;
+}
+
+function alerteChangementPage(){
+    modif = checkIsModify();
+    if(modif==true){
+        if(confirm('Des modifications ont été apportées, voulez-vous quitter ?')){
+          return true;
+        }
+        else { 
+          return false ; 
+        }
+      }
+  }
