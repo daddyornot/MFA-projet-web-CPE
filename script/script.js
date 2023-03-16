@@ -445,6 +445,10 @@ function verificationDate(){
 
 function randomizeBackground() {
     let listBackgrounds = [];
+    if (voyagesLocal.length == 0){
+        for(let dest of listDestination)
+            voyagesLocal.push(new Voyage(dest));
+    }
     for (let dest of voyagesLocal) {
         listBackgrounds.push(dest.images);
     }
@@ -474,12 +478,7 @@ function getCookie(cname) {
     return "";
 }
 
-if (window.location.href.includes("index")
-    || window.location.href.includes("landing-page")
-    || window.location.href.includes("panier")
-    || window.location.href.includes("compte")
-    || window.location.href.includes("a-propos")) {
-    backgroundInterval = setInterval(function () {
-        randomizeBackground();
-    }, 4000);
-}
+
+backgroundInterval = setInterval(function () {
+    randomizeBackground();
+}, 4000);
