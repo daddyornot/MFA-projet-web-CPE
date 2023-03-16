@@ -30,8 +30,6 @@ function verifierLogin() {
 
     fetchJSONUsers().then((users) => {
         allUsers = users;
-        // console.log("verifierLogin - allUsers")
-        // console.log(allUsers)
         // on regarde d'abord si l'username existe
         user = allUsers.find(userTry => {
             return userTry.username === loginUser.val();
@@ -39,11 +37,8 @@ function verifierLogin() {
         // s'il existe, on test le password
         if (user) {
             if (user.password === passwordUser.val()) {
-                // console.log("connecte");
                 passwordUser.removeClass("wrongCredential");
-                // passwordUser.addClass("rightCredential");
                 loginUser.removeClass("wrongCredential");
-                // loginUser.addClass("rightCredential");
                 loginUser.val("");
                 passwordUser.val("");
                 hideModal();
@@ -52,7 +47,6 @@ function verifierLogin() {
             }
             else
             {
-                console.log("mauvais mdp");
                 loginUser.addClass("rightCredential");
                 loginUser.removeClass("wrongCredential");
                 passwordUser.addClass("wrongCredential");
@@ -60,7 +54,6 @@ function verifierLogin() {
         }
         else
         {
-            console.log("l'user n'existe pas")
             loginUser.addClass("wrongCredential");
         }
     })
@@ -96,7 +89,6 @@ function verifUserConnected() {
         document.getElementById("msg-accueil").innerHTML = "";
         hideModal();
     }
-    // console.log("-------- 5 verifUserConnected - end--------");
 }
 
 function logout() {

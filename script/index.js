@@ -89,7 +89,6 @@ function changeFilter() {
 }
 
 function resetForm(){
-    console.log("reset");
     document.getElementById("prix-mini").value = document.getElementById("prix-mini").min;
     document.getElementById("prix-max").value = document.getElementById("prix-max").max;
     document.getElementById("nb-adulte").value = 1;
@@ -110,7 +109,6 @@ const formFiltres = document.getElementById('filtres');
 toggleButton.addEventListener('click', () => {
     formFiltres.classList.toggle("active-filter");
     formFiltres.classList.toggle("hidden");
-    // console.log(formFiltres.className);
     if (formFiltres.className === "hidden") {
         toggleButton.innerText = "Afficher les filtres";
     }

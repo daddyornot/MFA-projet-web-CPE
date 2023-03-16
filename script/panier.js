@@ -1,5 +1,3 @@
-// peut remplacer window.onload
-// document.addEventListener("DOMContentLoaded", function () {});
 
 var panier;
 var panierLocal;
@@ -43,6 +41,7 @@ function remove(id){
 }
 
 function desactivationDesChamps(toDesactivate){
+    //si le panier est vide, on affiche un petit message
     if (toDesactivate){
         document.getElementById("contenu-panier").style.display = 'none';
         document.getElementById("panier-vide").style.display = 'flex';
@@ -52,7 +51,9 @@ function desactivationDesChamps(toDesactivate){
         document.getElementsByClassName("info-commande")[0].style.display = 'none';
         document.getElementsByClassName("infos")[0].style.display = 'none';
         document.getElementsByTagName("button")[0].style.display = 'none';
-    } else {
+    } // sinon on affiche le panier
+    else {
+        document.getElementById("panier-vide").style.display = 'none';
         document.getElementById("divtotal").style.display = '';
         document.getElementsByClassName("info-commande")[0].style.display = '';
         document.getElementsByClassName("infos")[0].style.display = '';

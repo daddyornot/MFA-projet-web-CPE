@@ -58,7 +58,6 @@ class Voyage {
         } else
             dest = true;
             if (!localStorage.voyages || localStorage.voyages.length === 0 || !dest) {
-                // console.log("Requete API");
                 this._destination = voyagesJSON[_selection].destination;
                 this._ville = voyagesJSON[_selection].ville;
                 this._description = voyagesJSON[_selection].description;
@@ -78,7 +77,6 @@ class Voyage {
                             type: "GET",
                             dataType: "json",
                             success: (data) => {
-                                // console.log(data);
                                 this._temperature = data.main.temp;
                                 let tab = [];
                                 if (localStorage.voyages){
@@ -115,7 +113,6 @@ class Voyage {
                 localStorage.setItem("voyages", JSON.stringify(tab));
 
             } else {
-                // console.log("Pas de requetes API");
                 this._destination = dest._destination;
                 this._ville = dest._ville;
                 this._description = dest._description;
@@ -287,7 +284,6 @@ class ListeReservations {
     }
     get (){
         if (this._listReservations == undefined){
-            console.log("la liste est vide");
             return [];
         } else {
             return this._listReservations.sort(function (a, b) {
@@ -304,7 +300,6 @@ class ListeReservations {
     }
 
     remove(m){
-        // console.log(m);
         let toSuppr = "";
         this._listReservations.forEach(function (element, index){
             if(element.id == m){
@@ -314,7 +309,6 @@ class ListeReservations {
         this._listReservations.splice(toSuppr, 1);
         window.localStorage.setItem("panier", JSON.stringify(this._listReservations));
 
-        // console.log(this._panier);
     }
 
     modifi(id, sejour){

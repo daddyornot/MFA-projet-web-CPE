@@ -35,7 +35,6 @@ function start(){
 }
 
 function onUpdate(){
-    // console.log("à implementer avec la météo : " + resa.temperature);
     document.getElementById("temperature").innerHTML = resa.temperature + "°C";
 }
 
@@ -132,7 +131,6 @@ function valider() {
 }
 
 function resetForm(){
-    console.log("reset");
     document.getElementById("nb-adulte").value = 1;
     document.getElementById("nb-enfant").value = 0;
     document.getElementById("petitdej").checked = false;
