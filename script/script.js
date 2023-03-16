@@ -41,9 +41,12 @@ function getUser() {
     fetchJSONUsers().then(users => {
         allUsers = users;
         verifUserConnected();
-        if (window.location.href.includes("compte.html")) {
+        if (window.location.href.includes("compte")) {
             afficherInfosUser();
             afficherHistorique();
+        }
+        if (window.location.href.includes("panier")) {
+            remplirInfos();
         }
     });
 }

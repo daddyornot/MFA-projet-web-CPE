@@ -42,6 +42,7 @@ function verifierLogin() {
                 loginUser.val("");
                 passwordUser.val("");
                 hideModal();
+                window.location.reload();
                 document.cookie = "currentUser=" + user.username;
                 verifUserConnected();
             }

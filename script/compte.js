@@ -8,6 +8,7 @@ function afficherInfosUser() {
         document.getElementById("ville").innerHTML = connectedUser.ville;
         document.getElementById("pays").innerHTML = connectedUser.pays;
         document.getElementById("tel").innerHTML = connectedUser.tel;
+        document.getElementById("email").innerHTML = connectedUser.email;
     }
     else {
         window.location.href = "index.html"

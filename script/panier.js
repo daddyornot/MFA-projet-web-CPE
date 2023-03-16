@@ -4,8 +4,9 @@ var panierLocal;
 
 window.onload = () => {
     getVoyages();
+    // si un user est connecté, on préremplit les champs
+    getUser();
     // on ne test et valide le form que si les champs sont respectés
-    // TODO : et si un user est connecté on préremplit les champs
     if (checkFields())
         checkAndValidateForm();
 }
@@ -266,4 +267,16 @@ function changeValue(id){
     if (sejour.petitDejAvailable)
         sejour.petitDej = document.getElementById("petitDejModif" + id).checked;
     creationtableau();
+}
+
+function remplirInfos() {
+    if (connectedUser) {
+        document.getElementById("lastName").value = connectedUser.nom;
+        document.getElementById("firstName").value = connectedUser.prenom;
+        document.getElementById("adresse").value = connectedUser.adresse;
+        document.getElementById("code-postal").value = connectedUser.codePostal;
+        document.getElementById("ville").value = connectedUser.ville;
+        document.getElementById("tel").value = connectedUser.tel;
+        document.getElementById("email").value = connectedUser.email;
+    }
 }

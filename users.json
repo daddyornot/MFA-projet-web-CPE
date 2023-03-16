@@ -9,6 +9,7 @@
     "ville": "Lyon",
     "pays": "France",
     "tel": "0123456789",
+    "email": "test@gmail.com",
     "historique": [
       {
         "ville": "Quebec",
