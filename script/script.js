@@ -185,9 +185,6 @@ function getVoyages(){
 async function fetchJSONVoyages() {
     const response = await fetch('../voyages.json');
     const jsonVoyages = await response.json();
-    // console.log("fetch données json");
-    // console.log(jsonVoyages);
-    // voyagesJSON = jsonVoyages;
     for (let val in jsonVoyages){
         listDestination.push(val);
     }
@@ -196,7 +193,6 @@ async function fetchJSONVoyages() {
 
 async function fetchJSONUsers() {
     const response = await fetch('../users.json');
-    // const jsonUsers = await response.json();
     return await response.json();
 }
 

@@ -82,18 +82,11 @@ function toggleShowPassword() {
 
 // On vérifie si un user est connecté pour afficher son prénom
 function verifUserConnected() {
-    // console.log("-------- 1 verifUserConnected - all users-------- ");
-    // console.log(allUsers);
-    // console.log("-------- 2 verifUserConnected - cookie + each user");
     currentUserCookie = getCookie("currentUser");
-    // console.log(currentUserCookie);
     if (currentUserCookie) {
         for (const user of allUsers) {
-            // console.log(user);
             if (user.username === currentUserCookie) {
                 connectedUser = user;
-                console.log("-------- 3 verifUserConnected - connectedUser");
-                console.log("-------- 4 connectedUser = "+connectedUser.username);
                 document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.username + " !";
                 break;
             }
