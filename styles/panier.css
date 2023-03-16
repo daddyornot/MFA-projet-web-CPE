@@ -8,7 +8,16 @@ table td, table th{
     margin-bottom: 10px;
 }
 
+#valider {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
 #supprimer {
+    font-size: 12px;
+}
+
+#annuler {
     font-size: 12px;
 }
 
