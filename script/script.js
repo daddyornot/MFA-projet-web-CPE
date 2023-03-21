@@ -118,7 +118,7 @@ class Voyage {
             console.log(this._temperature);
             if (this._temperature == null || this._temperature === "Err") { //Si on a pas la température (Bug API ou 1ere visite)
                 console.log("requette");
-                $.ajax({  //Requette GET pour récuperer la température
+                $.ajax({  //Requête GET pour récupérer la température
                     url: url,
                     type: "GET",
                     dataType: "json",
@@ -126,7 +126,7 @@ class Voyage {
                         console.log(data);
                         this._temperature = data.main.temp; //on définit la température
                         let tab = [];
-                        //On la stock dans le sessionstorage
+                        //On la stocke dans le sessionStorage
                         if (sessionStorage.voyages) {
                             let info = JSON.parse(sessionStorage.voyages);
                             for (let e of info) {
@@ -137,11 +137,11 @@ class Voyage {
                             }
                         }
                         sessionStorage.setItem("voyages", JSON.stringify(tab)); //On rajoute la température au sessionStorage
-                        onUpdate(); //on appelle sur chaque page une fonction update personalisé
+                        onUpdate(); //on appelle sur chaque page une fonction update personalisée
                     },
                     error: () => {
-                        this._temperature = "Err"; //En cas de Bug API on affichera Err
-                        //Qu'on stock quand même dans le sessionstorage
+                        this._temperature = "Err"; //En cas de Bug API on affichera "Err"
+                        //Qu'on stocke quand même dans le sessionStorage
                         let tab = [];
                         if (sessionStorage.voyages) {
                             let info = JSON.parse(sessionStorage.voyages);
@@ -153,7 +153,7 @@ class Voyage {
                             }
                         }
                         sessionStorage.setItem("voyages", JSON.stringify(tab)); //On rajoute la température au sessionStorage
-                        onUpdate(); //on appelle sur chaque page une fonction update personalisé
+                        onUpdate(); //on appelle sur chaque page une fonction update personalisée
                     }
                 });
             }
@@ -162,7 +162,7 @@ class Voyage {
         }
     }
 
-    //Function pour récurerer les différentes information d'un voyage
+    //Function pour récurérer les différentes informations d'un voyage
     get destination() {
         return this._destination
     }
@@ -223,10 +223,10 @@ class Voyage {
     }
 }
 
-//Défintion de la Class qui créer des reservation en fonction d'un Voyage
+//Définition de la Class qui crée des reservations en fonction d'un Voyage
 class Reservation extends Voyage {
     constructor(m) {
-        super(m); //On creer la reservation en fonction d'un voyage
+        super(m); //On crée la réservation en fonction d'un voyage
     }
 
     //Ajout des données par le script
@@ -245,7 +245,7 @@ class Reservation extends Voyage {
         this._datedebut = new Date(document.getElementById('date-debut').value);
         this._datefin = new Date(document.getElementById('date-fin').value);
 
-        //permet de bloqué le boutton de validation si un utilisateur arrive a mettre un nombre de jour négatif
+        //permet de bloquer le bouton de validation si un utilisateur arrive à mettre un nombre de jours négatif
         if (this.nbJour <= 0)
             this._check = false;
         else
@@ -284,7 +284,7 @@ class Reservation extends Voyage {
         return this._check
     };
 
-    //Fonction qui retourne le nombre de jour total de la reservation s'il est positif
+    //Fonction qui retourne le nombre de jours total de la reservation s'il est positif
     get nbJour() {
         if (dateDiff(this._datedebut, this._datefin).day > 0)
             return dateDiff(this._datedebut, this._datefin).day
@@ -293,7 +293,7 @@ class Reservation extends Voyage {
         return 0;
     }
 
-    //Fonction qui définit le nombre d'adulte si il est supérieur à 1
+    //Fonction qui définit le nombre d'adultes s'il est supérieur à 1
     set nbAdulte(a) {
         if (a < 1) {
             alert("Il faut au minimum un adulte pour le voyage !");
@@ -324,7 +324,7 @@ class Reservation extends Voyage {
         return this._petitdej
     };
 
-    //retour le nombre de personnes total
+    //retourne le nombre de personnes total
     get nbPersonnes() {
         return this._nbenfant + this._nbadulte
     }
@@ -337,22 +337,22 @@ class Reservation extends Voyage {
             return 0;
     }
 
-    //retour le prix total pour les adultes
+    //retourne le prix total pour les adultes
     get totalAdulte() {
         return this.nbJour * this._nbadulte * this._prixnuit;
     }
 
-    //calcul le prix d'une nuit pour un enfant
+    //calcule le prix d'une nuit pour un enfant
     get prixnuitenfant() {
         return this._prixnuit * 0.4;
     }
 
-    // retourn le prix total pour les enfants
+    // retourne le prix total pour les enfants
     get totalEnfants() {
         return this.nbJour * this._nbenfant * this.prixnuitenfant;
     }
 
-    //retourn le prix total de la reservation
+    //retourne le prix total de la reservation
     get total() {
         return this.totalAdulte + this.totalEnfants + this.totalpetitdej;
     }
@@ -362,12 +362,12 @@ class Reservation extends Voyage {
     }
 }
 
-//Définition d'une class permettant de gérer les listes de Reservation (utilisé pour le panier)
+//Définition d'une classe permettant de gérer les listes de Reservation (utilisé pour le panier)
 class ListeReservations {
     constructor() {
     }
 
-    //on récupère les info du local Storage (Ce n'est pas dans le constructeur afin de laisser la possibilté de récuperer l'info d'un historique par exemple)
+    //on récupère les infos du localStorage (Ce n'est pas dans le constructeur afin de laisser la possibilité de récupérer l'info d'un historique par exemple)
     setFromLocalStorage() {
         if (localStorage.panier) {
             this._listReservations = [];
@@ -381,7 +381,7 @@ class ListeReservations {
         }
     }
 
-    //on ajoute une reservation a la liste
+    //on ajoute une reservation à la liste
     set add(a) {
         a.id = MD5(a.destination + a.datedebut + a.datefin + a.nbadulte + a.nbenfant + a.petitdej); //on génère un ID
         if (this._listReservations) {
@@ -396,7 +396,7 @@ class ListeReservations {
         window.localStorage.setItem("panier", JSON.stringify(DTO));
     }
 
-    //Fonction Permettant de filtrer seulement les informations utiles a Stocker (les autres seront regénérer automatiquement par la class voyage)
+    //Fonction Permettant de filtrer seulement les informations utiles à stocker (les autres seront regénérées automatiquement par la classe Voyage)
     toDTO(a) {
         let b = {
             value: a.value,
@@ -410,7 +410,7 @@ class ListeReservations {
         return b;
     }
 
-    //Pour récuperer la list trié par date
+    //Pour récupérer la list triées par date croissante
     get() {
         if (this._listReservations == undefined) {
             return [];
@@ -421,7 +421,7 @@ class ListeReservations {
         }
     }
 
-    //Pour récuperer une Reservation par son ID
+    //Pour récupérer une Reservation par son ID
     getByID(id) {
         for (let e of this._listReservations) {
             if (e.id == id) {
@@ -430,7 +430,7 @@ class ListeReservations {
         }
     }
 
-    //Supprimer une reservation par son ID
+    //Supprimer une réservation par son ID
     remove(id) {
         let toSuppr = "";
         this._listReservations.forEach(function (element, index) {
@@ -443,7 +443,7 @@ class ListeReservations {
 
     }
 
-    //Pour modifier une reservation on recupère les données clean, on supprime l'id en question puis on ajoute le nouveau séjour
+    //Pour modifier une réservation, on récupère les données clean, on supprime l'id en question puis on ajoute le nouveau séjour
     modifi(id, sejour) {
         this.setFromLocalStorage();
         this.remove(id);
@@ -472,7 +472,7 @@ function imgPrevious() {
     document.body.style.backgroundSize = 'cover';
 }
 
-//Fonction de calcul de différence entre 2 date (Source StackOverflow)
+//Fonction de calcul de différence entre 2 dates (Source StackOverflow)
 function dateDiff(date1, date2) {
     var diff = {} // Initialisation du retour
     var tmp = date2 - date1;
@@ -492,7 +492,7 @@ function dateDiff(date1, date2) {
     return diff;
 }
 
-// Permet de transformer une date en format humainent lisible
+// Permet de transformer une date en format humainement lisible
 function toFormattedDate(date) {
     return date.toLocaleString("fr-FR", {
         year: "numeric",
@@ -501,12 +501,12 @@ function toFormattedDate(date) {
     })
 }
 
-//Permet de mettre a jour les données sur la page en fonction des critères stocker dans le sessionStorage
+//Permet de mettre à jour les données sur la page en fonction des critères stocker dans le sessionStorage
 function ecritureCritere() {
     let demain = new Date();
-    demain.setDate(new Date().getDate() + 1); //calcule de la date de demain (valeur par défaut de la date de début)
+    demain.setDate(new Date().getDate() + 1); //calcul de la date de demain (valeur par défaut de la date de début)
     let lendemain = new Date();
-    lendemain.setDate(demain.getDate() + 1); //calcule de la date du lendemain (valeur par défaut de la date de fin)
+    lendemain.setDate(demain.getDate() + 1); //calcul de la date du lendemain (valeur par défaut de la date de fin)
 
     if (sessionStorage.getItem("critere")) {
         crit = JSON.parse(sessionStorage.getItem("critere"));
@@ -515,7 +515,7 @@ function ecritureCritere() {
         } else {
             document.getElementById("date-debut").value = crit.datedebut;
             lendemain = new Date();
-            lendemain.setDate(new Date(crit.datedebut).getDate() + 1); //On modifi le lendement en fonction de la date de début
+            lendemain.setDate(new Date(crit.datedebut).getDate() + 1); //On modifie le lendemain en fonction de la date de début
         }
         if (crit.datefin == "") {
             document.getElementById('date-fin').value = lendemain.toISOString().substring(0, 10);
@@ -534,7 +534,7 @@ function ecritureCritere() {
     }
 }
 
-//Sauvegarde les critéres dans le sessionStorage
+//Sauvegarde les critères dans le sessionStorage
 function lectureCritere() {
     let critere = {
         datedebut: document.getElementById("date-debut").value,
@@ -546,7 +546,7 @@ function lectureCritere() {
     window.sessionStorage.setItem("critere", JSON.stringify(critere));
 }
 
-//Permet de vérifier la validité des dates et de redéfinir si c'est pas bon
+//Permet de vérifier la validité des dates et de redéfinir si ce n'est pas bon
 function verificationDate() {
     let datedebut = new Date(document.getElementById('date-debut').value);
     let demain = new Date();
@@ -555,7 +555,6 @@ function verificationDate() {
     document.getElementById('date-debut').min = demain.toISOString().substring(0, 10);
     //il ne faut pas que la date soit avant aujourd'hui
     if (datedebut < Date.now()) {
-        // alert("La date de début n'est pas bonne");
         document.getElementById('date-debut').value = demain.toISOString().substring(0, 10);
 
         let lendemain = new Date();
@@ -578,12 +577,12 @@ function verificationDate() {
 //Permet la gestion du background aléatoire
 function randomizeBackground() {
     let listBackgrounds = [];
-    if (voyagesLocal.length == 0) { //Si voyageLocal est vide on prend toute les images
+    if (voyagesLocal.length == 0) { //Si voyageLocal est vide on prend toutes les images
         for (let dest of listDestination)
             voyagesLocal.push(new Voyage(dest));
     }
     for (let dest of voyagesLocal) {
-        listBackgrounds.push(dest.images); //Sinon on prend les images de Voyage Local (permet d'avoir un fond d'écran sur la page panier qui est en rapport avec les destinations sélectionné)
+        listBackgrounds.push(dest.images); //Sinon on prend les images de voyagesLocal (permet d'avoir un fond d'écran sur la page panier qui est en rapport avec les destinations sélectionnées)
     }
     // On concatène toutes nos url dans un seul tableau
     // l'opérateur de decomposition "..." extrait les éléments du tableau 1 à 1, pour les concaténer dans un seul
@@ -595,7 +594,7 @@ function randomizeBackground() {
     document.body.style.backgroundSize = 'cover';
 }
 
-//Permet la récupération d'un cookie spécifique
+//Permet la récupération d'un cookie spécifique => source: https://www.w3schools.com/js/js_cookies.asp
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);

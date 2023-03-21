@@ -1,7 +1,7 @@
 window.onload = () => { //au chargement de la page
-    ecritureCritere(); //on écrit les critères stocké dans le sessionstorage
+    ecritureCritere(); //on écrit les critères stockés dans le sessionStorage
 
-    //dès qu'un filtre ou que la search bar change on appelle la fonction changeFilter
+    //dès qu'un filtre ou que la searchbar change on appelle la fonction changeFilter
     document.getElementById("filtres").addEventListener('input', changeFilter);
     document.getElementById("searchbar").addEventListener('input', changeFilter);
 
@@ -15,6 +15,7 @@ window.onload = () => { //au chargement de la page
     toggleButton.addEventListener('click', () => {
         formFiltres.classList.toggle("active-filter");
         formFiltres.classList.toggle("hidden");
+        formFiltres.classList.toggle("box");
         if (formFiltres.className === "hidden") {
             toggleButton.innerText = "Afficher les filtres";
         } else {
@@ -23,8 +24,8 @@ window.onload = () => { //au chargement de la page
     })
 }
 
-//Fonction start appeler une fois qu'on as les données
-function start() { //on créé la liste de voyages et on génère le tableau une fois qu'on a les donnees
+//Fonction start appelée une fois qu'on a les données
+function start() { //on crée la liste de voyages et on génère le tableau une fois qu'on à les données
     for (let dest of listDestination) {
         voyagesLocal.push(new Voyage(dest));
     }
@@ -32,7 +33,7 @@ function start() { //on créé la liste de voyages et on génère le tableau une
     changeFilter();
 }
 
-//en cas de mis à jour (Retour de l'API météo) on rappelle la fonction changeFilter
+//en cas de mise à jour (Retour de l'API météo) on rappelle la fonction changeFilter
 function onUpdate() {
     changeFilter();
 }
@@ -53,7 +54,7 @@ function changeFilter() {
             return dest.petitDejAvailable
         })
     }
-    //filtre pour les annimaux
+    //filtre pour les animaux
     if (document.getElementById("animaux-form").checked)
         filter = filter.filter(function (dest) {
             return dest.animaux;
@@ -66,7 +67,7 @@ function changeFilter() {
         return prixmin <= dest._prixnuit && dest._prixnuit <= prixmax
     })
 
-    //Si aucun résultat correspond au critère on affiche un message d'érreur
+    //Si aucun résultat ne correspond au critère, on affiche un message d'erreur
     if (filter.length === 0) {
         document.getElementById("liste-destinations").innerHTML = "";
         let aucunResultat = document.getElementById("no-destination");
@@ -80,7 +81,7 @@ function changeFilter() {
         document.getElementById("no-destination").style.display = "none";
         let template = document.querySelector("#listeDestinations");
         document.getElementById("liste-destinations").innerHTML = "";
-        //Pour chaque element filtrer on créer un clone du template avec ses valeurs
+        //Pour chaque élément filtré on crée un clone du template avec ses valeurs
         for (const d of filter) {
             let clone = document.importNode(template.content, true);
 
@@ -93,7 +94,7 @@ function changeFilter() {
                 .replace(/{{url}}/g, d.value);
 
             clone.firstElementChild.innerHTML = newDestination;
-            //Ajout ou pas de l'icon petit déjeuner et animaux
+            //Ajout ou pas de l'icone petit déjeuner et animaux
             if (!d.petitDejAvailable)
                 clone.getElementById("ptidej-destination").style.display = "none";
             if (!d.animaux)
@@ -102,7 +103,7 @@ function changeFilter() {
             document.getElementById("liste-destinations").appendChild(clone);
         }
     }
-    lectureCritere(); //On met a jour le sessionStorage des critères avec les nouveaux critères
+    lectureCritere(); //On met à jour le sessionStorage des critères avec les nouveaux critères
     verificationDate(); //On vérifie la validité des dates
 }
 
@@ -118,5 +119,5 @@ function resetForm() {
     sessionStorage.clear();
     ecritureCritere(); //écriture des valeurs pas défaut
     verificationDate(); //écriture des dates par défaut
-    changeFilter(); //on met a jours les destinations avec ces nouveaux critères
+    changeFilter(); //on met à jour les destinations avec ces nouveaux critères
 }

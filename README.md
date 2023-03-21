@@ -8,18 +8,23 @@ Toutes les fonctionnalités demandées sont implémentées.
 
 ## Fonctionnalités ajoutées
 ### Toutes les pages
-- Background dynamique : tous les voyages défilent en arrière-plan, sauf sur la page panier qui ne fait défiler que les 
+- Background dynamique : tous les voyages défilent en arrière-plan toutes les 4s, sauf sur la page panier qui ne fait défiler que les 
 voyages du panier et la landing page qui a une image fixe
 - Ajout d'un favicon
 - Le logo du site a été créé par nous
+- Pour tester le login-modal : 
+
+   | **usernames** | test | test1 | test2 | test3 |
+   |-------------  | ---- | ----- |-------| ----- |
+   | **passwords** | test | test1 | test2 | test3 |
 
 ### Page landing-page.html
 - Ajout d'une page de landing pour accéder au site.
 
-![landing](final/landing.png)
+![landing](final_screenshots/landing.png)
 
 ### Page index.html
-![header](final/header_and_search.png)
+![header](final_screenshots/header_and_search.png)
 
 - Ajout d'un bouton à gauche dans le header pour arrêter/démarrer le défilement du fond d'écran. Le pictogramme change 
 selon le mode choisi.
@@ -27,33 +32,33 @@ selon le mode choisi.
 - Ajout d'une barre de recherche pour trouver une destination, et texte personnalisé si pas de résultat
 - Ajout d'une fenêtre modale de connexion
 
-![no_result](final/no_results.png)
+![no_result](final_screenshots/no_results.png)
 
 - Affichage texte des pictogrammes sous chaque voyage au survol de la souris
 
-![hint](final/index_img_modal_hover.png)
+![hint](final_screenshots/index_img_modal_hover.png)
 
 ### Page panier.html
 
 - Possibilité de modifier ou supprimer un élément du panier
 
-![panier_modif](final/panier_modif.png)
+![panier_modif](final_screenshots/panier_modif.png)
 
 - Les reservations sont triées par date croissante
 - Les critères (dates, case petit dej...) sont gardés de la page index et inversement
 - Informations utilisateur préremplies si on est connecté (sauf n° de carte)
 
-![infos](final/panier_infos_preremplies.png)
+![infos](final_screenshots/panier_infos_preremplies.png)
 
 - Si le panier est vide, affichage d'un message
 
-![pavier_vide](final/panier_vide.png)
+![pavier_vide](final_screenshots/panier_vide.png)
 
 ### Page confirmation.html
 
 - Calcul et affichage du nombre de jours restant avant le départ
 
-![confirm](final/conf_calcul_jours.png)
+![confirm](final_screenshots/conf_calcul_jours.png)
 
 ### Page compte.html
 
@@ -70,12 +75,20 @@ Tant que le `SessionStorage` n'est pas vide, on ne refait pas de requête pour l
 ## Différentes façons de faire dans le code
 Ici il s'agissait surtout d'explorer les différentes possibilités que nous avions, même si sur un vrai projet il vaut mieux uniformiser ces méthodes.
 
-- fetch User : appel depuis `script.js` les fonctions nécessaires en fonction de la page
-- fetch Voyages : appel de la fonction `start()`, redéfinie dans chaque fichier JS nécessaire
+- fetch User : appelle depuis `script.js` les fonctions nécessaires en fonction de la page
+- fetch Voyages : appel depuis `script.js`, de la fonction `start()`, redéfinie dans chaque fichier JS nécessaire
 - jQuery / getElementBy...
 - Dans le HTML : `onclick=` / Dans le JS : `addEventListener`
 
+# OUTILS / Sites utilisés
+- Les box-shadow ont été générées grâce à : https://neumorphism.io/#e0e0e0
+- Certains styles (button, checkbox) ont été trouvés sur : https://uiverse.io/
+- Le Rolling Text de la landing page a été trouvé sur : https://www.rareprogrammer.com/rolling-text-effect-using-css/
+- Le logo du site a été designé sur Procreate (iPad)
+- Certaines sources sont citées dans les commentaires du code
+
 ---
+
 # IDEES / TODO
 
 - [x] ~~adulte(s) a remplacer par singulier et pluriel~~
