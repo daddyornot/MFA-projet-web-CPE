@@ -253,28 +253,28 @@ class Reservation extends Voyage{
     get total(){
         return this.totalAdulte + this.totalEnfants + this.totalpetitdej;
     }
+    get id(){
+        return this._id;
+    }
 }
 
 class ListeReservations {
     constructor() {
-        
-    }
-    setFromHistory(){
-
     }
     setFromLocalStorage(){
         if(localStorage.panier){
             this._listReservations = [];
             let listReservation = JSON.parse(localStorage.panier);
             for (let e of listReservation){
-                const voyage = new Reservation(e._selection);
-                voyage.all(e._datedebut, e._datefin, e._nbadulte, e._nbenfant, e._petitdej, e._id);
+                console.log(e.value);
+                const voyage = new Reservation(e.value);
+                voyage.all(e.datedebut, e.datefin, e.nbadulte, e.nbenfant, e.petitdej, e.id);
                 this.add = voyage;
             }
         }
     }
     set add(a) {
-        a.id = MD5(a._destination + a._datedebut + a._datefin + a._nbadulte + a._nbenfant + a._petitdej);
+        a.id = MD5(a.destination + a.datedebut + a.datefin + a.nbadulte + a.nbenfant + a.petitdej);
         if (this._listReservations){
             this._listReservations.push(a);
         }
@@ -282,7 +282,24 @@ class ListeReservations {
         {
             this._listReservations = [a];
         }
-        window.localStorage.setItem("panier", JSON.stringify(this._listReservations));
+        let DTO = []
+        for (let resa of this._listReservations ) {
+            DTO.push(this.toDTO(resa))
+        }
+        window.localStorage.setItem("panier", JSON.stringify(DTO));
+    }
+    toDTO(a){
+        let b = {
+            value : a.value,
+            datedebut : a.datedebut,
+            datefin : a.datefin,
+            nbadulte : a.nbAdulte,
+            nbenfant : a.nbEnfant,
+            petitdej : a.petitDej,
+            id : a.id
+        }
+        console.log(b);
+        return b;
     }
     get (){
         if (this._listReservations == undefined){
