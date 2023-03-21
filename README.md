@@ -1,4 +1,5 @@
-# Projet WEB - Agence de Voyages
+# Projet WEB - Agence de Voyages 
+## *3IRC - 2022/2025*
 ## DUBOIS Maxime & MAILHEBIAU Damien
 
 ## Fonctionnalités de base
@@ -16,11 +17,10 @@ voyages du panier et la landing page qui a une image fixe
 - Ajout d'une page de landing pour accéder au site.
 
 ![landing](final/landing.png)
-![img.png](img.png)
 
 ### Page index.html
 ![header](final/header_and_search.png)
-![img.png](img.png)
+
 - Ajout d'un bouton à gauche dans le header pour arrêter/démarrer le défilement du fond d'écran. Le pictogramme change 
 selon le mode choisi.
 - Les liens vers les différentes pages se colorent selon où on se trouve
@@ -58,7 +58,7 @@ selon le mode choisi.
 /ou modifier l'historique des utilisateurs en JS.
 
 ## Optimisations 
-- Requete API : si on a déjà la température, on ne refait pas de requête, elle est stockée dans le SessionStorage
+- Requête API : si on a déjà la température, on ne refait pas de requête, elle est stockée dans le SessionStorage
 - Fetch JSON : on récupère les données de tous les v``oyages une fois dans le JSON, et on les stocke dans le SessionStorage.
 Tant que le SessionStorage n'est pas vide, on ne refait pas de requête pour les voyages.
 
@@ -74,31 +74,31 @@ Ici il s'agissait surtout d'explorer les différentes possibilités que nous avi
 ---
 # IDEES / TODO
 
-- ~~adulte(s) a remplacer par singulier et pluriel~~
-- ~~harmoniser le style de tous les inputs~~
-- ~~background "live" => faire défiler les photos des destinations sur landing et index~~
-- ~~background "conditionnel" sur detail sejour~~
-- virer le .html dans l'url
-- arriver sur la landing page du site
-- ~~optimiser requete API : si on a deja la T°C on refait pas de requete~~
-- ~~authentification~~
-- ~~historique des voyages mode dur~~
-- historique des voyages mode dynamique
-- pop up accepter les cookies a l'arrivée
-- responsive
-- ~~bouton modifier panier : sur la meme page ! remplacer les lignes correspodnantes~~
-- ajouter prévisions météo ?
-- ajouter heure locale
-- ~~Une recherche de destination~~
-- Accessibilité 
-- w3school
-- Modification plusieurs destination a la fois
-- ~~Panier "Attention modification en cours"
-- ~~Panier click sur la destination pour aller vers la page détail sejour~~
-- ~~Caroussel image buggé~~
-- ~~Panier > background ne change pas tout seul~~
-- ~~Panier > pas de fond d'écran par défault~~
-- Panier > boutton "Ajouter un voyage"
+- [x] ~~adulte(s) a remplacer par singulier et pluriel~~
+- [x] ~~harmoniser le style de tous les inputs~~
+- [x] ~~background "live" => faire défiler les photos des destinations sur landing et index~~
+- [x] ~~background "conditionnel" sur detail sejour~~
+- [x] ~~Panier click sur la destination pour aller vers la page détail sejour~~
+- [x] ~~Caroussel image buggé~~
+- [x] ~~Panier > background ne change pas tout seul~~
+- [x] ~~Panier > pas de fond d'écran par défault~~
+- [x] ~~Une recherche de destination~~
+- [x] ~~optimiser requete API : si on a deja la T°C on refait pas de requete~~
+- [x] ~~authentification~~
+- [x] ~~historique des voyages mode dur~~
+- [x] ~~bouton modifier panier : sur la meme page ! remplacer les lignes correspodnantes~~
+- [x] ~~Panier "Attention modification en cours"~~
+- [ ] virer le .html dans l'url
+- [ ] arriver sur la landing page du site
+- [ ] historique des voyages mode dynamique
+- [ ] pop up accepter les cookies a l'arrivée
+- [ ] responsive
+- [ ] ajouter prévisions météo ?
+- [ ] ajouter heure locale
+- [ ] Accessibilité 
+- [ ] w3school
+- [ ] Modification plusieurs destinations à la fois
+- [ ] Panier > bouton "Ajouter un voyage"
 
 # Questions
 - Compatibilité navigateurs > Firefox / chrome
