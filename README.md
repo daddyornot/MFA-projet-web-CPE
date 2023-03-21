@@ -37,6 +37,8 @@ selon le mode choisi.
 ### Page panier.html
 
 - Possibilité de modifier ou supprimer un élément du panier
+- les Reservations sont trié par Date
+- Les critères sont gardés de la page index et inversement
 
 ![panier](final/panier_modif.png)
 
@@ -61,6 +63,9 @@ selon le mode choisi.
 - Fetch JSON : on récupère les données de tous les v``oyages une fois dans le JSON, et on les stocke dans le SessionStorage.
 Tant que le SessionStorage n'est pas vide, on ne refait pas de requête pour les voyages.
 
+
+## Différente façon de faire 
+- fetch User/Voyages > appel des fonctions nécéssaire
 
 ---
 # IDEES / TODO
