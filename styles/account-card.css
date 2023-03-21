@@ -92,6 +92,16 @@
     padding: 20px 35px;
 }
 
+.wrongCredential {
+    border: solid 2px red;
+    background-color: #a5252a20;
+}
+
+.rightCredential {
+    border: solid 2px green;
+    background-color: rgba(74, 255, 54, .2);
+}
+
 #show-password {
     cursor: pointer;
 }

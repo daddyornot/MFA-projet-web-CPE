@@ -84,6 +84,11 @@ table img {
     row-gap: 5px;
 }
 
+.invalid {
+    border: 2px solid red;
+    background-color: #a5252a20;
+}
+
 .confirm-total {
     display: flex;
     flex-flow: column nowrap;
