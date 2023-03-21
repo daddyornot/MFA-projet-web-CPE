@@ -1,4 +1,4 @@
-table td, table th{
+table td, table th {
     width: 15%;
     text-align: center;
 }
@@ -73,8 +73,7 @@ table img {
 
 .form-complet h2 {
     width: 80%;
-    margin: 0;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
 }
 
 .info-commande {
@@ -89,11 +88,6 @@ table img {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-}
-
-.invalid {
-    border: 2px solid red;
-    background-color: #a5252a20;
 }
 
 button {

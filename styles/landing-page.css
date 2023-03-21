@@ -1,19 +1,4 @@
 
-@keyframes a {
-    0% {
-        opacity: 1;
-        transform: scale(1) rotateY(0deg);
-    }
-    50% {
-        opacity: 0;
-        transform: scale(.8) rotateY(180deg);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) rotateY(360deg);
-    }
-}
-
 .landing {
     background: url("../assets/img/canada/03.jpg") no-repeat center center fixed;
     overflow: hidden;
@@ -30,7 +15,7 @@
     flex-direction: column;
 }
 
-.landing-text h1, .landing-text h2{
+.landing-text h1, .landing-text h2 {
     text-align: center;
     color: #F1FAEE;
 }
@@ -105,6 +90,6 @@
         top: -28rem;
     }
     100% {
-        top: 0rem;
+        top: 0;
     }
 }

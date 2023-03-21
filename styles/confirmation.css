@@ -1,11 +1,3 @@
-/*@keyframes color {*/
-/*    0%   { background: #A309DA80; }*/
-/*    20%  { background: #FE00A580; }*/
-/*    40%  { background: #FF367180; }*/
-/*    60%  { background: #FF864C80; }*/
-/*    80%  { background: #FFC44680; }*/
-/*    100% { background: #A309DA80; }*/
-/*}*/
 
 .confirmation {
     margin: 15px;
@@ -16,7 +8,7 @@
 
 }
 
-.confirmation a:link, .confirmation a:visited{
+.confirmation a:link, .confirmation a:visited {
     color: var(--color2);
 }
 

@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-#searchbar{
+#searchbar {
     width: 25%;
     text-align: center;
 }
@@ -99,7 +99,7 @@
     transition: transform 500ms ease;
 }
 
-.grid-item:hover .grid-img{
+.grid-item:hover .grid-img {
     transform: scale(1.1);
 }
 

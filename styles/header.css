@@ -35,12 +35,12 @@
     font-size: 20px;
 }
 
-.nav-links ul li{
+.nav-links ul li {
     margin: 25px;
 }
 
 
-.nav-links ul li.active a{
+.nav-links ul li.active a {
     color: #3486AF;
     font-weight: 800;
 }
@@ -57,7 +57,7 @@
     line-height: 3.8rem;
 }
 
-.background-action{
+.background-action {
     position: absolute;
     left: 3rem;
     bottom: 1rem;
