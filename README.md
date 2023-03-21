@@ -25,12 +25,9 @@ voyages du panier et la landing page qui a une image fixe
 selon le mode choisi.
 - Les liens vers les différentes pages se colorent selon où on se trouve
 - Ajout d'une barre de recherche pour trouver une destination, et texte personnalisé si pas de résultat
-
-![header](final/no_results.png)
-
 - Ajout d'une fenêtre modale de connexion
 
-![login](final/compte_modal.png)
+![header](final/no_results.png)
 
 - Affichage texte des pictogrammes sous chaque voyage au survol de la souris
 
@@ -39,11 +36,11 @@ selon le mode choisi.
 ### Page panier.html
 
 - Possibilité de modifier ou supprimer un élément du panier
-- les Reservations sont trié par Date
-- Les critères sont gardés de la page index et inversement
 
 ![panier](final/panier_modif.png)
 
+- Les reservations sont triées par date croissante
+- Les critères (dates, case petit dej...) sont gardés de la page index et inversement
 - Informations utilisateur préremplies si on est connecté (sauf n° de carte)
 
 ![infos](final/panier_infos_preremplies.png)
@@ -66,8 +63,13 @@ selon le mode choisi.
 Tant que le SessionStorage n'est pas vide, on ne refait pas de requête pour les voyages.
 
 
-## Différente façon de faire 
-- fetch User/Voyages > appel des fonctions nécéssaire
+## Différentes façons de faire dans le code
+Ici il s'agissait surtout d'explorer les différentes possibilités que nous avions, même si sur un vrai projet il veut mieux uniformiser ces méthodes.
+
+- fetch User : appel depuis `script.js` les fonctions nécessaires en fonction de la page
+- fetch Voyages : appel de `start()`, redéfinie dans chaque fichier JS nécessaire
+- jQuery / getElementBy...
+- Dans le HTML : `onclick=` / Dans le JS : `addEventListener`
 
 ---
 # IDEES / TODO
