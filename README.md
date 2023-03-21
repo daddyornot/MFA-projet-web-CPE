@@ -27,7 +27,7 @@ selon le mode choisi.
 - Ajout d'une barre de recherche pour trouver une destination, et texte personnalisé si pas de résultat
 - Ajout d'une fenêtre modale de connexion
 
-![header](final/no_results.png)
+![no_result](final/no_results.png)
 
 - Affichage texte des pictogrammes sous chaque voyage au survol de la souris
 
@@ -37,13 +37,17 @@ selon le mode choisi.
 
 - Possibilité de modifier ou supprimer un élément du panier
 
-![panier](final/panier_modif.png)
+![panier_modif](final/panier_modif.png)
 
 - Les reservations sont triées par date croissante
 - Les critères (dates, case petit dej...) sont gardés de la page index et inversement
 - Informations utilisateur préremplies si on est connecté (sauf n° de carte)
 
 ![infos](final/panier_infos_preremplies.png)
+
+- Si le panier est vide, affichage d'un message
+
+![pavier_vide](final/panier_vide.png)
 
 ### Page confirmation.html
 
@@ -54,20 +58,20 @@ selon le mode choisi.
 ### Page compte.html
 
 - Affichage des infos utilisateur
-- Affichage de l'historique des voyages : l'historique est écrit en dur dans le users.json, car on ne peut pas écrire et
+- Affichage de l'historique des voyages : l'historique est écrit en dur dans le `users.json`, car on ne peut pas écrire et
 /ou modifier l'historique des utilisateurs en JS.
 
 ## Optimisations 
-- Requête API : si on a déjà la température, on ne refait pas de requête, elle est stockée dans le SessionStorage
-- Fetch JSON : on récupère les données de tous les v``oyages une fois dans le JSON, et on les stocke dans le SessionStorage.
-Tant que le SessionStorage n'est pas vide, on ne refait pas de requête pour les voyages.
+- Requête API : si on a déjà la température, on ne refait pas de requête, elle est stockée dans le `SessionStorage`
+- Fetch JSON : on récupère les données de tous les voyages une fois dans le JSON, et on les stocke dans le `SessionStorage`.
+Tant que le `SessionStorage` n'est pas vide, on ne refait pas de requête pour les voyages.
 
 
 ## Différentes façons de faire dans le code
-Ici il s'agissait surtout d'explorer les différentes possibilités que nous avions, même si sur un vrai projet il veut mieux uniformiser ces méthodes.
+Ici il s'agissait surtout d'explorer les différentes possibilités que nous avions, même si sur un vrai projet il vaut mieux uniformiser ces méthodes.
 
 - fetch User : appel depuis `script.js` les fonctions nécessaires en fonction de la page
-- fetch Voyages : appel de `start()`, redéfinie dans chaque fichier JS nécessaire
+- fetch Voyages : appel de la fonction `start()`, redéfinie dans chaque fichier JS nécessaire
 - jQuery / getElementBy...
 - Dans le HTML : `onclick=` / Dans le JS : `addEventListener`
 
@@ -88,6 +92,8 @@ Ici il s'agissait surtout d'explorer les différentes possibilités que nous avi
 - [x] ~~historique des voyages mode dur~~
 - [x] ~~bouton modifier panier : sur la meme page ! remplacer les lignes correspodnantes~~
 - [x] ~~Panier "Attention modification en cours"~~
+- [x] ~~Accessibilité~~
+- [x] ~~w3school~~
 - [ ] virer le .html dans l'url
 - [ ] arriver sur la landing page du site
 - [ ] historique des voyages mode dynamique
@@ -95,8 +101,6 @@ Ici il s'agissait surtout d'explorer les différentes possibilités que nous avi
 - [ ] responsive
 - [ ] ajouter prévisions météo ?
 - [ ] ajouter heure locale
-- [ ] Accessibilité 
-- [ ] w3school
 - [ ] Modification plusieurs destinations à la fois
 - [ ] Panier > bouton "Ajouter un voyage"
 
