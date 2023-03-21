@@ -25,8 +25,8 @@ function start(){
 }
 
 function onUpdate(){
-    panier.setFromLocalStorage();
-    panierLocal.setFromLocalStorage();
+    panier.update();
+    panierLocal.update();
     creationtableau();
 }
 
@@ -158,7 +158,6 @@ function checkAndValidateForm() {
     // comme le bouton "valider" est sorti du form, on ajoute un listener dessus
     confirmForm.addEventListener("click", () => {
         let isModified = checkIsModify();
-        console.log("loc" + isModified);
         if (!isModified) {
             if (formulaire.checkValidity()) {
                 //si le form est rempli correctement, on passe a la suite
@@ -280,13 +279,11 @@ function checkIsModify(){
         if(dest.modif)
             if(dest != panier.get()[dest.id]){
                 if(!isModified){
-                    console.log('true');
                     isModified = true;
                 }
                 
             }
     });
-    console.log(isModified);
 
     return isModified;
 }
