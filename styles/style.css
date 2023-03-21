@@ -175,6 +175,15 @@ button:disabled {
     visibility: visible;
     transition: 500ms ease;
     opacity: 1;
-    transform: translate3d(10%, -10%, 5px);
+}
+
+.tooltip:hover .hint {
+    transform: translate3d(-5rem, 3rem, 0);
+    font-size: 15px;
+}
+
+.tooltip:hover .play {
+    transform: translate3d(10%, -10%, 0);
+
 }
 
