@@ -1,13 +1,9 @@
 # Projet WEB - Agence de Voyages
 ## DUBOIS Maxime & MAILHEBIAU Damien
 
----
-
 ## Fonctionnalités de base
 
 Toutes les fonctionnalités demandées sont implémentées.
-
----
 
 ## Fonctionnalités ajoutées
 ### Toutes les pages
