@@ -16,9 +16,11 @@ voyages du panier et la landing page qui a une image fixe
 - Ajout d'une page de landing pour accéder au site.
 
 ![landing](final/landing.png)
+![img.png](img.png)
 
 ### Page index.html
 ![header](final/header_and_search.png)
+![img.png](img.png)
 - Ajout d'un bouton à gauche dans le header pour arrêter/démarrer le défilement du fond d'écran. Le pictogramme change 
 selon le mode choisi.
 - Les liens vers les différentes pages se colorent selon où on se trouve
