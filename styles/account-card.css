@@ -8,7 +8,7 @@
     width: 400px;
     height: 400px;
     overflow: hidden;
-    z-index: 1;
+    z-index: 1; /* on met la fenetre login au dessus du reste */
 }
 
 .modal-content {
@@ -40,7 +40,6 @@
     background-color: rgb(255, 255, 255);
     border-radius: 120px;
     padding: 0;
-    /*transition: transform 0.3s ease-in-out;*/
 }
 
 .account-card a {

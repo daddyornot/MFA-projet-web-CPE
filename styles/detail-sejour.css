@@ -28,12 +28,6 @@
     height: 80px;
     width: 80px;
     line-height: 5em;
-    background-color: lightgray;
-    color: whitesmoke;
-    border-radius: 50%;
-    text-align: center;
-    padding-right: 0;
-    background-color: rgba(60, 79, 94, .6)
 }
 
 .left-container {

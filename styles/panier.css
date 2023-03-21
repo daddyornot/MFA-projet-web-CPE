@@ -39,12 +39,6 @@ table img {
     width: 50px;
     line-height: 4em;
     font-size: 12px;
-    background-color: lightgray;
-    color: whitesmoke;
-    border-radius: 50%;
-    text-align: center;
-    padding-right: 0;
-    background-color: rgba(60, 79, 94, .6);
 }
 
 .contenu-panier {

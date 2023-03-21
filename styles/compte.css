@@ -37,6 +37,6 @@
 
 .historique-voyages img {
     width: 85%;
-    clip-path: circle(50%);
+    clip-path: circle(50%); /* on "crop" l'image en forme de cercle */
 }
 
