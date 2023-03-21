@@ -118,6 +118,7 @@ Ici il s'agissait surtout d'explorer les différentes possibilités que nous avi
 - [ ] ajouter heure locale
 - [ ] Modification plusieurs destinations à la fois
 - [ ] Panier > bouton "Ajouter un voyage"
+- [ ] Background détail séjour
 
 # Questions
 - Compatibilité navigateurs > Firefox / chrome
