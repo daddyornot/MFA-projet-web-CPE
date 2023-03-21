@@ -1,14 +1,20 @@
 # Projet WEB - Agence de Voyages
 ## DUBOIS Maxime & MAILHEBIAU Damien
 
+---
+
 ## Fonctionnalités de base
 
 Toutes les fonctionnalités demandées sont implémentées.
 
+---
+
 ## Fonctionnalités ajoutées
 ### Toutes les pages
 - Background dynamique : tous les voyages défilent en arrière-plan, sauf sur la page panier qui ne fait défiler que les 
-voyages du panier et la landing page qui a une image fixe.
+voyages du panier et la landing page qui a une image fixe
+- Ajout d'un favicon
+- Le logo du site a été créé par nous
 
 ### Page landing-page.html
 - Ajout d'une page de landing pour accéder au site.
@@ -56,7 +62,7 @@ selon le mode choisi.
 
 ## Optimisations 
 - Requete API : si on a déjà la température, on ne refait pas de requête, elle est stockée dans le SessionStorage
-- Fetch JSON : on récupère les données de tous les voyages une fois dans le JSON, et on les stocke dans le SessionStorage.
+- Fetch JSON : on récupère les données de tous les v``oyages une fois dans le JSON, et on les stocke dans le SessionStorage.
 Tant que le SessionStorage n'est pas vide, on ne refait pas de requête pour les voyages.
 
 
