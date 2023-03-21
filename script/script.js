@@ -12,8 +12,7 @@ let voyagesLocal = [];
 let backgroundInterval;
 
 function getVoyages(){
-    if (localStorage.voyages && localStorage.voyages.length === listDestination.length){ //on vérifie qu'on as tous les voyages
-        // voyagesJSON = JSON.parse(localStorage.voyages);
+    if (sessionStorage.voyages && sessionStorage.voyages.length === listDestination.length){ //on vérifie qu'on as tous les voyages
         start();
     } else { //sinon on recupere les voyages par l'API
         fetchJSONVoyages().then(voyages => {
@@ -53,14 +52,14 @@ function getUser() {
 
 class Voyage {
     constructor(_selection){
-        if (localStorage.voyages){
-            var dest = JSON.parse(localStorage.voyages).find(function (voy) {
+        if (sessionStorage.voyages){
+            var dest = JSON.parse(sessionStorage.voyages).find(function (voy) {
                 return voy._selection == _selection;
             });
 
         } else
             dest = true;
-            if (!localStorage.voyages || localStorage.voyages.length === 0 || !dest) {
+            if (!sessionStorage.voyages || sessionStorage.voyages.length === 0 || !dest) {
                 this._destination = voyagesJSON[_selection].destination;
                 this._ville = voyagesJSON[_selection].ville;
                 this._description = voyagesJSON[_selection].description;
@@ -82,8 +81,8 @@ class Voyage {
                             success: (data) => {
                                 this._temperature = data.main.temp;
                                 let tab = [];
-                                if (localStorage.voyages){
-                                    let info = JSON.parse(localStorage.voyages);
+                                if (sessionStorage.voyages){
+                                    let info = JSON.parse(sessionStorage.voyages);
                                     for (let e of info){
                                         if(e._selection == _selection){
                                             e._temperature = data.main.temp;
@@ -91,7 +90,7 @@ class Voyage {
                                         tab.push(e);
                                     }
                                 }
-                                localStorage.setItem("voyages", JSON.stringify(tab));
+                                sessionStorage.setItem("voyages", JSON.stringify(tab));
                                 onUpdate();
                             },
                             error: () => {
@@ -103,8 +102,8 @@ class Voyage {
                     this._temperature = -272; //temperature de l'espace, openWeather n'a pas cette donnée malheureusement
                 }
                 let tab = [];
-                if (localStorage.voyages){
-                    let info = JSON.parse(localStorage.voyages);
+                if (sessionStorage.voyages){
+                    let info = JSON.parse(sessionStorage.voyages);
                     for (let e of info){
                         tab.push(e);
                     }
@@ -113,7 +112,7 @@ class Voyage {
                     tab.push(this);
                 else
                     tab = [this];
-                localStorage.setItem("voyages", JSON.stringify(tab));
+                sessionStorage.setItem("voyages", JSON.stringify(tab));
 
             } else {
                 this._destination = dest._destination;
