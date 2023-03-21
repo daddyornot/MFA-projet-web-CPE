@@ -5,6 +5,7 @@
 ## Fonctionnalités de base
 
 Toutes les fonctionnalités demandées sont implémentées.
+Le responsive n'a pas été notre priorité.
 
 ## Fonctionnalités ajoutées
 ### Toutes les pages
