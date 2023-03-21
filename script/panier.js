@@ -7,7 +7,7 @@ window.onload = () => {
     getVoyages();
     // si un user est connecté, on préremplit les champs
     getUser();
-    // on ne test et valide le form que si les champs sont respectés
+    // on ne teste et valide le form que si les champs sont respectés
     if (checkFields())
         checkAndValidateForm();
 }
@@ -160,7 +160,7 @@ function checkAndValidateForm() {
         let isModified = checkIsModify();
         if (!isModified) {
             if (formulaire.checkValidity()) {
-                //si le form est rempli correctement, on passe a la suite
+                //si le form est rempli correctement, on passe à la suite
                 formulaire.submit();
             } else {
                 // s'il manque ou s'il y a des infos erronées
@@ -186,7 +186,7 @@ function checkFields() {
     for (let i = 0; i < fields.length; i++) {
         fields[i].addEventListener("input", () => {
             if (!fields[i].validity.valid) {
-                // si un champ est invalide, on change sa classe et on ne test/valide pas le form
+                // si un champ est invalide, on change sa classe et on ne teste/valide pas le form
                 fields[i].classList.add("invalid");
                 return false
             }
@@ -227,7 +227,6 @@ function verificationDateModif(id){
     document.getElementById('dateDebutModif'+ id ).min = demain.toISOString().substring(0,10);
 
     if( datedebut < Date.now()){
-        // alert("La date de début n'est pas bonne");
         document.getElementById('dateDebutModif' + id).value = demain.toISOString().substring(0,10);
 
         let lendemain = new Date();

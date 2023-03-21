@@ -112,7 +112,7 @@ Ici il s'agissait surtout d'explorer les différentes possibilités que nous avi
 - [ ] virer le .html dans l'url
 - [ ] arriver sur la landing page du site
 - [ ] historique des voyages mode dynamique
-- [ ] pop up accepter les cookies a l'arrivée
+- [ ] pop up accepter les cookies à l'arrivée
 - [ ] responsive
 - [ ] ajouter prévisions météo ?
 - [ ] ajouter heure locale

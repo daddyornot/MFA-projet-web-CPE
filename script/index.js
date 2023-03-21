@@ -25,7 +25,7 @@ window.onload = () => { //au chargement de la page
 }
 
 //Fonction start appelée une fois qu'on a les données
-function start() { //on crée la liste de voyages et on génère le tableau une fois qu'on à les données
+function start() { //on crée la liste de voyages et on génère le tableau une fois qu'on a les données
     for (let dest of listDestination) {
         voyagesLocal.push(new Voyage(dest));
     }

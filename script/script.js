@@ -16,12 +16,12 @@ let backgroundInterval;
 
 //Fonction appeler sur chaque page pour demander la liste des voyages
 function getVoyages() {
-    if (sessionStorage.voyages && sessionStorage.voyages.length === listDestination.length) { //on vérifie qu'on as tous les voyages
-        start(); //Si on as déjà les voyages on appel directement la fonction start qui est personnalisé sur chaque page
-    } else { //sinon on recupere les voyages par l'API
+    if (sessionStorage.voyages && sessionStorage.voyages.length === listDestination.length) { //on vérifie qu'on a tous les voyages
+        start(); //Si on a déjà les voyages, on appelle directement la fonction start qui est personnalisé sur chaque page
+    } else { //sinon on récupère les voyages par l'API
         fetchJSONVoyages().then(voyages => {
             voyagesJSON = voyages;
-            start(); // on appel start une fois qu'on as les données
+            start(); // on appelle start une fois qu'on a les données
         });
     }
 }
@@ -42,7 +42,7 @@ async function fetchJSONUsers() {
     return await response.json();
 }
 
-//Fonction appeler par les pages pour récuperé les utilisateurs
+//Fonction appelée par les pages pour récuperer les utilisateurs
 function getUser() {
     fetchJSONUsers().then(users => {
         allUsers = users;
@@ -58,21 +58,20 @@ function getUser() {
     });
 }
 
-//Définission de la class d'un voyages
+//Definition de la class d'un voyage
 class Voyage {
     constructor(_selection) { //On récupère la selection (destination)
         if (sessionStorage.voyages) {
-            try{
+            try {
                 var dest = JSON.parse(sessionStorage.voyages).find(function (voy) {
                     return voy._selection == _selection;
                 });
-            }
-            catch (e){ //en cas d'érreur dans le parse on clear le sessionStorage pour le recréer plus tard
+            } catch (e) { //en cas d'erreur dans le parse on clear le sessionStorage pour le recréer plus tard
                 sessionStorage.voyages = "";
             }
         } else
             dest = true;
-        if (!sessionStorage.voyages || sessionStorage.voyages.length === 0 || !dest) { //Si on a pas de données dans le sessionStorage on va les récuperer dans le voyagesJSON
+        if (!sessionStorage.voyages || sessionStorage.voyages.length === 0 || !dest) { //Si on n'a pas de données dans le sessionStorage on va les récuperer dans le voyagesJSON
             this._destination = voyagesJSON[_selection].destination;
             this._ville = voyagesJSON[_selection].ville;
             this._description = voyagesJSON[_selection].description;
@@ -98,7 +97,7 @@ class Voyage {
                 tab = [this];
             sessionStorage.setItem("voyages", JSON.stringify(tab));
 
-        } else { //Si on a trouver la destination dans le sessionStorage on la récupère
+        } else { //Si on a trouvé la destination dans le sessionStorage on la récupère
             this._destination = dest._destination;
             this._ville = dest._ville;
             this._description = dest._description;
@@ -115,7 +114,7 @@ class Voyage {
         if (this.value !== "espace") { //Si ce n'est pas l'espace (car openweathermap n'a pas de température pour l'espace
             // const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
             const url = "http://localhost:3000/" + this.ville;
-            if (this._temperature == null || this._temperature === "Err") { //Si on a pas la température (Bug API ou 1ere visite)
+            if (this._temperature == null || this._temperature === "Err") { //Si on n'a pas la température (Bug API ou 1ʳᵉ visite)
                 console.log("requette");
                 $.ajax({  //Requête GET pour récupérer la température
                     url: url,
@@ -193,6 +192,7 @@ class Voyage {
     get value() {
         return this._selection
     }
+
     get temperature() {
         return this._temperature;
     }
@@ -610,7 +610,7 @@ function getCookie(cname) {
     return "";
 }
 
-    //Lancement du background aléatoire si on n'est pas sur une de ces pages
+//Lancement du background aléatoire si on n'est pas sur une de ces pages
 if (!window.location.pathname.includes("detail-sejour") ||
     !window.location.pathname.includes("landing-page")) {
     backgroundInterval = setInterval(function () {

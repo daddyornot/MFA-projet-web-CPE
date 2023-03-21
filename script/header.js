@@ -1,6 +1,6 @@
 // Afficher la modal
 function hideAndShowModal() {
-    //si la modal est déjà affichée, reclicuer sur le bouton permet de la fermer
+    //si la modal est déjà affichée, recliquer sur le bouton permet de la fermer
     if (document.getElementById("account-modal").style.display === "flex" ||
         document.getElementById("login-modal").style.display === "flex") {
         document.getElementById("login-modal").style.display = "none"
@@ -34,7 +34,7 @@ function verifierLogin() {
         user = allUsers.find(userTry => {
             return userTry.username === loginUser.val();
         })
-        // s'il existe, on test le password
+        // s'il existe, on teste le password
         if (user) {
             if (user.password === passwordUser.val()) {
                 passwordUser.removeClass("wrongCredential");
@@ -94,7 +94,7 @@ function verifUserConnected() {
 
 function logout() {
     document.cookie = "currentUser=";
-    //si on se deconnecte depuis le compte, on redirige vers l'accueil
+    //si on se déconnecte depuis le compte, on redirige vers l'accueil
     if (window.location.href.includes("compte.html")) {
         window.location.href = "index.html"
     }
