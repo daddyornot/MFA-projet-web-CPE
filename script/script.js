@@ -113,13 +113,17 @@ class Voyage {
         }
         //Pour la température
         if (this.value !== "espace") { //Si ce n'est pas l'espace (car openweathermap n'a pas de température pour l'espace
-            const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
-            if (this._temperature !== null || this._temperature === "Err") { //Si on a pas la température (Bug API ou 1ere visite)
+            // const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
+            const url = "http://localhost:3000/" + this.ville;
+            console.log(this._temperature);
+            if (this._temperature == null || this._temperature === "Err") { //Si on a pas la température (Bug API ou 1ere visite)
+                console.log("requette");
                 $.ajax({  //Requette GET pour récuperer la température
                     url: url,
                     type: "GET",
                     dataType: "json",
                     success: (data) => {
+                        console.log(data);
                         this._temperature = data.main.temp; //on définit la température
                         let tab = [];
                         //On la stock dans le sessionstorage

@@ -25,9 +25,7 @@ function start(){
 }
 
 function onUpdate(){
-    panier = new ListeReservations();
     panier.setFromLocalStorage();
-    panierLocal = new ListeReservations();
     panierLocal.setFromLocalStorage();
     creationtableau();
 }
