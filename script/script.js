@@ -611,7 +611,11 @@ function getCookie(cname) {
     return "";
 }
 
-//Lancement du background aléatoire
-backgroundInterval = setInterval(function () {
-    randomizeBackground();
-}, 4000);
+    //Lancement du background aléatoire si on n'est pas sur une de ces pages
+if (!window.location.pathname.includes("detail-sejour") ||
+    !window.location.pathname.includes("landing-page")) {
+    backgroundInterval = setInterval(function () {
+        randomizeBackground();
+    }, 4000);
+}
+

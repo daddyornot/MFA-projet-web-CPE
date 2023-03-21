@@ -8,8 +8,9 @@ Toutes les fonctionnalités demandées sont implémentées.
 
 ## Fonctionnalités ajoutées
 ### Toutes les pages
-- Background dynamique : tous les voyages défilent en arrière-plan toutes les 4s, sauf sur la page panier qui ne fait défiler que les 
-voyages du panier et la landing page qui a une image fixe
+- Background dynamique : tous les voyages défilent en arrière-plan toutes les 4s, sauf sur la page panier qui ne fait 
+défiler que les voyages du panier, la landing page qui a une image fixe, et le detail-sejour qui a son background 
+conditionné par la photo du séjour affichée.
 - Ajout d'un favicon
 - Le logo du site a été créé par nous
 - Pour tester le login-modal : 
