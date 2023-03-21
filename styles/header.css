@@ -9,9 +9,6 @@
     width: 100%;
     align-items: center;
     overflow: hidden;
-    /*box-shadow: -20px 5px 60px #bebebe,*/
-    /*20px -20px 60px #ffffff;*/
-    /*border-radius: 50px;*/
     background-color: rgba(60, 79, 94, .6);
     height: 16rem;
 }
@@ -19,13 +16,6 @@
 .sticky {
     position: sticky;
 }
-
-/*.header-navbar .homelink {*/
-/*    font-family: 'Rampart One';*/
-/*    font-size: 80px;*/
-/*    color: white;*/
-/*    padding-top: 20px;*/
-/*}*/
 
 .homelink img {
     height: 10rem;
@@ -45,13 +35,13 @@
     font-size: 20px;
 }
 
-.nav-links ul li{
+.nav-links ul li {
     margin: 25px;
 }
 
 
-.nav-links ul li.active a{
-    color: #3486AF;
+.nav-links ul li.active a {
+    color: #D6F4FF;
     font-weight: 800;
 }
 
@@ -67,7 +57,7 @@
     line-height: 3.8rem;
 }
 
-.background-action{
+.background-action {
     position: absolute;
     left: 3rem;
     bottom: 1rem;

@@ -1,6 +1,5 @@
 .section-infos-persos {
     box-shadow: -10px 10px 40px #bebebe, 10px -10px 20px #ffffff;
-    background-color: rgba(255, 255, 255, .8);
     border-radius: 30px;
     padding: 20px;
     margin-left: 5rem;
@@ -28,12 +27,9 @@
 }
 
 .historique-voyages {
-    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
-    background-color: rgba(255, 255, 255, .8);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin: 30px;
-    border-radius: 20px;
     column-gap: 30px;
     align-items: center;
     justify-items: center;
@@ -41,6 +37,6 @@
 
 .historique-voyages img {
     width: 85%;
-    clip-path: circle(50%);
+    clip-path: circle(50%); /* on "crop" l'image en forme de cercle */
 }
 

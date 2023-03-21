@@ -10,7 +10,7 @@
 .main-container img {
     max-width: 95%;
     margin-left: 20px;
-    align-items: end ;
+    align-items: end;
     border-radius: 20px;
 }
 
@@ -28,12 +28,6 @@
     height: 80px;
     width: 80px;
     line-height: 5em;
-    background-color: lightgray;
-    color: whitesmoke;
-    border-radius: 50%;
-    text-align: center;
-    padding-right: 0;
-    background-color: rgba(60, 79, 94, .6)
 }
 
 .left-container {
@@ -92,9 +86,6 @@
     column-gap: 20px;
     margin-bottom: 10px;
     padding: 1rem 2rem;
-    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, .8);
 }
 
 .animaux, .petit-dej {
@@ -115,12 +106,6 @@
 
 .animaux #animaux-destination, .petit-dej #petit-dej-destination {
     font-size: 15px;
-}
-
-.left-container, table {
-    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, .8);
 }
 
 th, td {

@@ -6,8 +6,6 @@
     <title>Bravo !</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/confirmation.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@600&family=Rampart+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="../script/script.js" defer></script>
     <script src="../script/confirmation.js" defer></script>
@@ -16,13 +14,13 @@
 <body>
     <header></header>
     <div class="main-content">
-        <div class="confirmation">
+        <div class="box confirmation">
             <h1><span id="nb-jour-restants"></span></h1>
             <p>Retrouvez les détails juste en dessous, ou vous pouvez revenir sur notre <a href="index.html">page d'accueil</a> pour voir nos autres voyages !</p>
         </div>
         <template id="resumeVoyage">
             <div class="img-destination">
-                <img {{src}}="{{imgDest}}" alt="{{alt}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
+                <img {{src}}="{{imgDest}}" alt="{{alt}}"><p id="temperature" class="circle-temperature temperature">{{temperature}}°C</p>
             </div>
             <div class="resume-voyage">
                 <p>Vous partez à <b>{{destination}}</b></p>
@@ -32,9 +30,9 @@
                 <p>Ce voyage coûte donc <b>{{prixVoyage}}€</b></p>
             </div>
         </template>
-        <div id="resume-voyage" class="confirmation-voyage">
+        <div id="resume-voyage" class="box confirmation-voyage">
         </div>
-        <div class="prix-total">
+        <div class="box prix-total">
             <p>Coût total : <span id="prix-total"></span></p>
         </div>
     </div>

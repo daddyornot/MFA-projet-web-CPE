@@ -6,8 +6,6 @@
     <title>Mon panier</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/panier.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@600&family=Rampart+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="../script/script.js" defer></script>
     <script src="../script/panier.js" defer></script>
@@ -21,7 +19,7 @@
                 <td>
                     <a href="detail-sejour.html?selection={{selection}}">
                         <div class="img-destination">
-                            <img {{src}}="{{imgDest}}" alt="{{alt}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
+                            <img {{src}}="{{imgDest}}" alt="{{alt}}"><p id="temperature" class="circle-temperature temperature">{{temperature}}°C</p>
                         </div>
                     </a>
                 </td>
@@ -41,7 +39,7 @@
             <tr>
                 <td>
                     <div class="img-destination">
-                        <img {{src}}="{{imgDest}}" alt="{{alt}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
+                        <img {{src}}="{{imgDest}}" alt="{{alt}}"><p id="temperature" class="circle-temperature temperature">{{temperature}}°C</p>
                     </div>
                 </td>
                 <td>{{destination}}</td>
@@ -86,9 +84,9 @@
                 </td>
             </tr>
         </template>
-        <table id="contenu-panier" class="contenu-panier">
+        <table id="contenu-panier" class="box contenu-panier">
         </table>
-        <div id="panier-vide" class="panier-vide"></div>
+        <div id="panier-vide" class="box panier-vide"></div>
 
         <template id="total">
             <span id="spantotal">Total {{prix}} €</span>
@@ -96,7 +94,7 @@
         </div>
 
         <div class="infos">
-            <div class="form-complet">
+            <div class="box form-complet">
                 <h2>Plus qu'une étape avant de prendre du bon temps...</h2>
                 <form id="formulaire" action="confirmation.html" class="info-commande">
                     <div>
@@ -130,7 +128,7 @@
                 </form>
             </div>
             <div class="confirm-total">
-                <div id="divtotal" class="total">
+                <div id="divtotal" class="box total">
                     Total {{prix}} €
                 </div>
                 <button id="confirm-commande" type="button">Cette fois ca y est !</button>

@@ -6,8 +6,6 @@
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/compte.css">
     <link rel="stylesheet" href="../styles/confirmation.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@600&family=Rampart+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="../script/script.js" defer></script>
     <script src="../script/compte.js" defer></script>
@@ -18,8 +16,7 @@
     <div class="main-content">
         <h1>Mon compte</h1>
             <h2>Mes informations personnelles</h2>
-<!--        <button aria-expanded="true" aria-controls="section-infos-persos">Mes infos</button>-->
-            <div id="section-infos-persos" class="section-infos-persos visible">
+            <div id="section-infos-persos" class="box section-infos-persos">
                 <p>Nom : <span id="nom"></span></p>
                 <p>Prenom : <span id="prenom"></span></p>
                 <p>Adresse : <span id="adresse"></span></p>
@@ -30,10 +27,10 @@
                 <p>Email : <span id="email"></span></p>
             </div>
         <h2>Mon historique de voyage</h2>
-            <div id="historique" class="historique-voyages"></div>
+            <div id="historique" class="box historique-voyages"></div>
             <template id="historique-voyage">
                 <div class="img-destination">
-                    <img {{src}}="{{imgDest}}" alt="{{alt}}"><p id="temperature" class="temperature">{{temperature}}°C</p>
+                    <img {{src}}="{{imgDest}}" alt="{{alt}}"><p id="temperature" class="circle-temperature temperature">{{temperature}}°C</p>
                 </div>
                 <div class="resume-voyage">
                     <p>Vous êtes déjà parti à <b>{{destination}}</b></p>

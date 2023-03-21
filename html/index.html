@@ -7,8 +7,6 @@
         <title>L'Agence</title>
         <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/index.css">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@600&family=Rampart+One&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
         <script src="../script/script.js" defer></script>
         <script src="../script/index.js" defer></script>
@@ -68,7 +66,7 @@
 
             <div class="grid-container" id="liste-destinations">
             </div>
-            <div class="no-destination" id="no-destination">
+            <div class="box no-destination" id="no-destination">
 
             </div>
         </div>
@@ -77,11 +75,11 @@
     </body>
 
     <template id="listeDestinations">
-                <div class="grid-item">
+                <div class="box grid-item">
                     <div class="img-temp">
                         <a href="detail-sejour.html?selection={{url}}">
                             <h2>{{destination}}</h2>
-                            <p class="temperature">{{temperature}}°C</p>
+                            <p class="circle-temperature temperature">{{temperature}}°C</p>
                             <img class="grid-img" {{src}}="{{imgDest}}" alt="Photo de {{destination}}">
                         </a>
                         </div>
