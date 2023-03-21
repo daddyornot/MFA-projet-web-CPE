@@ -26,14 +26,11 @@
     opacity: 1;
     margin: 30px 4% 20px 4%;
     padding: 15px;
-    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
-    border-radius: 20px;
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(8, 1fr);
     width: 90%;
     height: fit-content;
-    background-color: rgba(169, 189, 207, .85);
     row-gap: 1em;
     transition: all 500ms ease;
     transform: scale(1);
@@ -66,8 +63,6 @@
     align-content: center;
     position: relative;
     text-align: center;
-    box-shadow:  -20px 20px 60px #bebebe,
-    20px -20px 60px #ffffff;
     border-radius: 50px;
     background-color: rgba(169, 189, 207, .85);
 }
@@ -135,9 +130,6 @@
     text-align: center;
     font-size: 30px;
     padding: 15px;
-    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
-    border-radius: 20px;
-    background-color: white;
     margin: 0 10rem;
 }
 

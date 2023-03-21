@@ -52,10 +52,6 @@ table img {
 }
 
 .contenu-panier, #divtotal {
-    box-shadow:  -20px 20px 60px #bebebe,
-    20px -20px 60px #ffffff;
-    background-color: rgba(255, 255, 255, .8);
-    border-radius: 20px;
     padding: 10px;
 }
 
@@ -78,9 +74,6 @@ table img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
-    background-color: rgba(255, 255, 255, .8);
-    border-radius: 20px;
     padding: 20px;
 }
 
@@ -115,9 +108,6 @@ button {
 }
 
 .panier-vide {
-    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
-    background-color: rgba(255, 255, 255, .8);
-    border-radius: 20px;
     padding: 20px;
     width: 65%;
     margin: 5rem auto;

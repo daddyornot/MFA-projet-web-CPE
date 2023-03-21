@@ -17,7 +17,7 @@
     <header></header>
     <div class="main">
         <template id="template">
-            <div class="left-container">
+            <div class="box left-container">
                 <h1 id="titre-destination">{{destination}}</h1>
                 <section id="desc-destination">{{description}}</section>
             </div>
@@ -36,7 +36,7 @@
         <div class="info-container">
             <div class="info-left-container">
                 <form action="panier.html" id="form">
-                    <div class="choix">
+                    <div class="box choix">
                         <!--                Colonnes de la grille-->
                         <label for="date-debut">Début du Séjour</label>
                         <label for="date-fin">Fin du Séjour</label>
@@ -85,7 +85,7 @@
                 </form>
             </div>
             <div class="resume-container">
-                <table id="solde-destination">
+                <table id="solde-destination" class="box">
                 </table>
                 <button onclick="valider()" value="Je pars en voyage !" id="btnvalider">Je pars en voyage !</button>
                 <button onclick="resetForm()" class="reset" >Réinitialiser</button>
