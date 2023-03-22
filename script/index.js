@@ -118,7 +118,7 @@ function resetForm() {
     document.getElementById("animaux-form").checked = false;
     document.getElementById("petitdej").checked = false;
     document.getElementById('searchbar').value = "";
-    sessionStorage.clear();
+    sessionStorage.clear(); //on vide le session storage
     ecritureCritere(); //écriture des valeurs pas défaut
     verificationDate(); //écriture des dates par défaut
     changeFilter(); //on met à jour les destinations avec ces nouveaux critères

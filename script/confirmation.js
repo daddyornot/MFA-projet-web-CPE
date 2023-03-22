@@ -1,23 +1,25 @@
-
+//Définition des variables
 let panier;
 let template = document.querySelector("#resumeVoyage");
 
 window.onload = () => {
-    getVoyages();
+    getVoyages(); //on récupère les voyages
 }
 
-// on vide le panier une fois qu'on est arrivé sur la page de confirmation
+// on vide le panier une fois qu'on part de la page de confirmation
 window.onunload = () => {
     window.localStorage.clear();
     window.sessionStorage.clear();
 }
+
+//une fois qu'on a les données
 function start(){
+    //On récupère le panier
     panier = new ListeReservations();
     panier.setFromLocalStorage();
-    if(panier.get().length == 0)
+    if(panier.get().length == 0) //si il est vide on redirige vers l'index
         window.location = "./index.html"
-    genererResume();
-
+    genererResume(); //on affiche
 }
 
 function genererResume() {
@@ -39,7 +41,6 @@ function genererResume() {
             .replace(/{{dateDebut}}/g, toFormattedDate(voyage.datedebut))
             .replace(/{{dateFin}}/g, toFormattedDate(voyage.datefin))
             .replace(/{{nbJour}}/g, voyage.nbJour>1 ? voyage.nbJour + " jours" : voyage.nbJour + " jour")
-                            // expr ternaire :  condition testée ?  valeur si true      :  valeur si false
             .replace(/{{petitDej}}/g, (voyage.petitDej ? "Avec le Pti dej' !" : "Sans pti dej'"))
             .replace(/{{nbAdultes}}/g, voyage.nbAdulte>1 ? voyage.nbAdulte + " adultes" : voyage.nbAdulte + " adulte")
             .replace(/{{nbEnfants}}/g, voyage.nbEnfant>1 ? voyage.nbEnfant + " enfants" : voyage.nbEnfant===1 ? voyage.nbEnfant + " enfant" : "sans enfants en plus !")
@@ -65,7 +66,10 @@ function genererResume() {
     document.getElementById("prix-total").innerHTML = " " + prixTotal + " €";
 }
 
+//Quand on reçoit les températures
 function onUpdate(){
+    for (let dest of panier.get())
+        dest.update();//On met a jour la température
     genererResume();
 }
 

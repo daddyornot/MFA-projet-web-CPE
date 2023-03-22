@@ -66,7 +66,7 @@ function getTemperature(val) {
                 dataType: "json",
                 success: (data) => {
                     voyagesJSON[val].temperature = data.main.temp; //on définit la température
-                    addVoyageSession(val);
+                    addVoyageSession(val); //On stock la valeur dans le sessionstorage
 
                     onUpdate(); //on appelle sur chaque page une fonction update personalisé
                 },
@@ -101,6 +101,7 @@ function getUser() {
     });
 }
 
+//Fonction permettant l'ajout et la modification d'un voyage dans le sessionStorage
 function addVoyageSession(val){
     // On ajoute le Voyage au SessionStorage
     let tab = {};
@@ -116,7 +117,7 @@ function addVoyageSession(val){
     sessionStorage.setItem("voyages", JSON.stringify(tab)); //On rajoute la température au sessionStorage
 }
 
-//Définission de la class d'un voyages
+//Définission de la class d'un voyage
 class Voyage {
     constructor(_selection) { //On récupère la selection (destination)
         if (sessionStorage.voyages) {
@@ -384,6 +385,7 @@ class ListeReservations{
 
     //on ajoute une reservation à la liste
     set add(a) {
+        console.log(a);
         a.id = MD5(a.destination + a.datedebut + a.datefin + a.nbadulte + a.nbenfant + a.petitdej); //on génère un ID
         if (this._listReservations) {
             this._listReservations.push(a);
@@ -449,7 +451,6 @@ class ListeReservations{
 
     //Pour modifier une réservation, on récupère les données clean, on supprime l'id en question puis on ajoute le nouveau séjour
     modifi(id, sejour) {
-        this.setFromLocalStorage();
         this.remove(id);
         this.add = sejour;
     }

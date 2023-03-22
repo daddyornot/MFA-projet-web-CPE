@@ -1,28 +1,30 @@
-
+//Définition des variables
 let resa;
 
-
 window.onload = () => {
-    getVoyages();
+    getVoyages(); //Récupération des voyages
+    document.getElementById("form").addEventListener('change', changeForm);
 }
 
-function start(){
+//Une fois que les voyages sont récupéré
+function start() {
     const urlParams = new URLSearchParams(window.location.search);
-
+    //On récupère par la méthode get la destination choisi
     if (urlParams.get('selection'))
         selection = urlParams.get('selection');
     else
         selection = "japon";
 
-    resa = new Reservation(selection);
-    document.body.style.background = `url(${resa.images[0]}) no-repeat center center fixed`;
+    resa = new Reservation(selection); //on initie une reservation en fonction de la destination
+    document.body.style.background = `url(${resa.images[0]}) no-repeat center center fixed`; //On définit le 1er background
     document.body.style.backgroundSize = 'cover';
 
-    document.body.addEventListener("keyup", function(key) {
-        if (key.code === "ArrowRight"){
+    //Permet de changer d'image avec les fleches du clavier
+    document.body.addEventListener("keyup", function (key) {
+        if (key.code === "ArrowRight") {
             imgNext();
         }
-        if(key.code === "ArrowLeft") {
+        if (key.code === "ArrowLeft") {
             imgPrevious();
         }
     })
@@ -34,14 +36,14 @@ function start(){
     onUpdate();
 }
 
-function onUpdate(){
-    resa.update();
-    document.getElementById("temperature").innerHTML = resa.temperature + "°C";
+//Quand on reçoit les températures
+function onUpdate() {
+    resa.update(); //on met à jour la reservation
+    document.getElementById("temperature").innerHTML = resa.temperature + "°C"; //on affiche la température
 }
 
-function generationTemplate(){
-    document.getElementById("form").addEventListener('change', changeForm);
-
+function generationTemplate() {
+    //Template unique pour afficher les informations du voyage
     let template = document.querySelector("#template");
     let clone = document.importNode(template.content, true);
     newsejour = clone.firstElementChild.innerHTML
@@ -54,7 +56,7 @@ function generationTemplate(){
         .replace(/{{temperature}}/g, resa.temperature);
     clone.firstElementChild.innerHTML = newsejour;
     clone.lastElementChild.innerHTML = newimg;
-    document.getElementById("main-container").innerHTML= "";
+    document.getElementById("main-container").innerHTML = "";
     document.getElementById("main-container").appendChild(clone);
 
     if (resa.animaux)
@@ -76,7 +78,8 @@ function generationTemplate(){
     }
 }
 
-function resetTab(){
+//Fonction pour réinitialiser le tableau du détail du prix
+function resetTab() {
     document.getElementById('solde-destination').innerHTML =
         "        <tr>\n" +
         "            <th></th>\n" +
@@ -87,6 +90,7 @@ function resetTab(){
         "        </tr>";
 }
 
+//Fonction pour ajouter une ligne au tableau du détail du prix
 function addLigne(ligne) {
     var row = document.createElement("tr");
     for (txt of ligne) {
@@ -98,11 +102,13 @@ function addLigne(ligne) {
     document.getElementById('solde-destination').appendChild(row);
 }
 
+//Quand le formulaire change
 function changeForm() {
-    resetTab();
-    resa.setValue();
+    resetTab(); //on reset le tableau du détail prix
+    resa.setValue(); //on met a jour les valeurs dans la reservation
 
-    if (resa.check) {
+    if (resa.check) { //Si les valeurs sont valider
+        //On permet la validation et on créer le tableau avec les différentes valeurs
         document.getElementById('btnvalider').disabled = false;
         addLigne(["Nuits adultes", resa.nbJour, resa.nbAdulte, resa.prixNuit, resa.totalAdulte]);
         addLigne(["Nuits enfants", resa.nbJour, resa.nbEnfant, resa.prixnuitenfant, resa.totalEnfants]);
@@ -111,32 +117,39 @@ function changeForm() {
             addLigne(["Petits déjeuner", resa.nbJour, resa.nbPersonnes, resa.prixPetitDej, resa.totalpetitdej]);
 
         addLigne(["Total", resa.nbJour, resa.nbPersonnes, "-", resa.total]);
-        lectureCritere();
+        lectureCritere(); //On met a jour le session storage des critères pour pouvoir les récupérer plus tard
     } else {
+        // Sinon on désactive le boutton et on affiche un message
         document.getElementById('solde-destination').innerHTML = "Veuillez selectionner des dates correctes";
         document.getElementById('btnvalider').disabled = true;
     }
 }
 
 function valider() {
-    var resa = new Reservation(selection);
+    const resa = new Reservation(selection);
     resa.setValue();
-    if (resa.check){
-        var panier = new ListeReservations();
+    if (resa.check) {
+        //On créer un panier
+        const panier = new ListeReservations();
+        //on récupère les éventuelles précédente réservation
         panier.setFromLocalStorage();
+        //on ajoute la reservation
         panier.add = resa;
+        //on redirige l'utilisateur
         location.href = "panier.html";
     } else {
         alert("Veuillez selectionner des dates correctes");
     }
 }
 
-function resetForm(){
+//Réinitialisation du formulaire
+function resetForm() {
+    //valeur par défaut
     document.getElementById("nb-adulte").value = 1;
     document.getElementById("nb-enfant").value = 0;
     document.getElementById("petitdej").checked = false;
-    sessionStorage.clear();
-    ecritureCritere();
-    verificationDate();
-    changeForm();
+    sessionStorage.clear(); //on vide le session storage
+    ecritureCritere(); //écriture des valeurs pas défaut
+    verificationDate(); //écriture des dates par défaut
+    changeForm(); //On met a jour le tableau du détail du prix
 }
