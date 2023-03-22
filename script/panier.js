@@ -5,8 +5,6 @@ voyagesLocal = [];
 
 window.onload = () => {
     getVoyages();
-    // si un user est connecté, on préremplit les champs
-    getUser();
     // on ne teste et valide le form que si les champs sont respectés
     if (checkFields())
         checkAndValidateForm();
@@ -61,6 +59,7 @@ function desactivationDesChamps(toDesactivate){
 }
 
 function creationtableau(){
+    var listIdModif = []
     // Si le local storage n'existe pas ou s'il est vide, on n'affiche pas le panier
     if (!panierLocal.get() || panierLocal.get().length === 0) {
         desactivationDesChamps(true);
@@ -75,6 +74,7 @@ function creationtableau(){
             let clone;
 
             if (voyage.modif) {
+                listIdModif.push(voyage.id);
                 template = document.querySelector("#modifDestination");
                 if (voyage.petitDej)
                     var dej = "checked";
@@ -140,6 +140,8 @@ function creationtableau(){
             }
 
             document.getElementById("contenu-panier").appendChild(clone);
+            for(let id of listIdModif)
+                verificationDateModif(id);
         }
 
         let templatetotal = document.querySelector("#total");

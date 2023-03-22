@@ -17,9 +17,11 @@ let backgroundInterval;
 //Fonction appeler sur chaque page pour demander la liste des voyages
 function getVoyages() {
     if (sessionStorage.voyages && Object.keys(JSON.parse(sessionStorage.voyages)).length > 0) {
-        listDestination = [];
-        for (let dest in JSON.parse(sessionStorage.voyages))
-            listDestination.push(dest)
+        if (listDestination.length === 0){
+            listDestination = [];
+            for (let dest in JSON.parse(sessionStorage.voyages))
+                listDestination.push(dest)
+        }
         if (Object.keys(JSON.parse(sessionStorage.voyages)).length === listDestination.length) { //on vérifie qu'on as tous les voyages
             voyagesJSON = JSON.parse(sessionStorage.voyages);
             for (let val in voyagesJSON)
@@ -79,6 +81,7 @@ function getTemperature(val) {
         }
     } else {
         voyagesJSON[val].temperature = -272; //temperature de l'espace, openWeather n'a pas cette donnée malheureusement
+        addVoyageSession(val);
     }
 }
 
@@ -568,7 +571,7 @@ function verificationDate() {
     lendemain.setTime(datedebut.getTime() + 24 * 3600 * 1000);
     document.getElementById('date-fin').min = lendemain.toISOString().substring(0, 10);
 
-    datefin = new Date(document.getElementById('date-fin').value);
+    let datefin = new Date(document.getElementById('date-fin').value);
 
     if (dateDiff(datedebut, datefin).day <= 0) {
         document.getElementById('date-fin').value = lendemain.toISOString().substring(0, 10);
@@ -613,8 +616,8 @@ function getCookie(cname) {
 }
 
 //Lancement du background aléatoire si on n'est pas sur une de ces pages
-if (!window.location.pathname.includes("detail-sejour") ||
-    !window.location.pathname.includes("landing-page")) {
+if (!(window.location.pathname.includes("detail-sejour") ||
+    window.location.pathname.includes("landing-page"))) {
     backgroundInterval = setInterval(function () {
         randomizeBackground();
     }, 4000);
