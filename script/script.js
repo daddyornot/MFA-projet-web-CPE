@@ -22,6 +22,8 @@ function getVoyages() {
             listDestination.push(dest)
         if (Object.keys(JSON.parse(sessionStorage.voyages)).length === listDestination.length) { //on vérifie qu'on as tous les voyages
             voyagesJSON = JSON.parse(sessionStorage.voyages);
+            for (let val in voyagesJSON)
+                getTemperature(val); //On va récupérer la température en cas de non réponse l'ors de la 1ere requette
             start(); //Si on as déjà les voyages on appel directement la fonction start qui est personnalisé sur chaque page
         }
     } else { //sinon on recupere les voyages par l'API
@@ -54,7 +56,7 @@ async function fetchJSONUsers() {
 function getTemperature(val) {
     //Pour la température
     if (val !== "espace") { //Si ce n'est pas l'espace (car openweathermap n'a pas de température pour l'espace
-        const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
+        const url = "https://api.openweathermap.org/data/2.5/weather?q=" + voyagesJSON[val].ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
         if (voyagesJSON[val].temperature == null || voyagesJSON[val].temperature === "Err") { //Si on a pas la température (Bug API ou 1ere visite)
             $.ajax({  //Requette GET pour récuperer la température
                 url: url,
