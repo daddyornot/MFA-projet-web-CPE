@@ -35,6 +35,7 @@ function start(){
 }
 
 function onUpdate(){
+    resa.update();
     document.getElementById("temperature").innerHTML = resa.temperature + "°C";
 }
 

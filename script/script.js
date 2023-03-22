@@ -54,8 +54,7 @@ async function fetchJSONUsers() {
 function getTemperature(val) {
     //Pour la température
     if (val !== "espace") { //Si ce n'est pas l'espace (car openweathermap n'a pas de température pour l'espace
-        // const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
-        const url = "http://localhost:3000/" + voyagesJSON[val].ville;
+        const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
         if (voyagesJSON[val].temperature == null || voyagesJSON[val].temperature === "Err") { //Si on a pas la température (Bug API ou 1ere visite)
             $.ajax({  //Requette GET pour récuperer la température
                 url: url,
@@ -361,7 +360,7 @@ class Reservation extends Voyage {
 }
 
 //Définition d'une classe permettant de gérer les listes de Reservation (utilisé pour le panier)
-class ListeReservations {
+class ListeReservations{
     constructor() {
     }
 
@@ -371,7 +370,6 @@ class ListeReservations {
             this._listReservations = [];
             let listReservation = JSON.parse(localStorage.panier);
             for (let e of listReservation) {
-                console.log(e.value);
                 const voyage = new Reservation(e.value);
                 voyage.all(e.datedebut, e.datefin, e.nbadulte, e.nbenfant, e.petitdej, e.id);
                 this.add = voyage;
@@ -437,8 +435,11 @@ class ListeReservations {
             }
         })
         this._listReservations.splice(toSuppr, 1);
-        window.localStorage.setItem("panier", JSON.stringify(this._listReservations));
-
+        let DTO = [] //Passage par un DTO permettant de stocker seulement les informations utiles
+        for (let resa of this._listReservations) {
+            DTO.push(this.toDTO(resa))
+        }
+        window.localStorage.setItem("panier", JSON.stringify(DTO));
     }
 
     //Pour modifier une réservation, on récupère les données clean, on supprime l'id en question puis on ajoute le nouveau séjour

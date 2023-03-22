@@ -25,8 +25,8 @@ function start(){
 }
 
 function onUpdate(){
-    panier.update();
-    panierLocal.update();
+    for (let dest of panierLocal.get())
+        dest.update();
     creationtableau();
 }
 
