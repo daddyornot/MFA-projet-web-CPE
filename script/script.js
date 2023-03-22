@@ -18,9 +18,9 @@ let backgroundInterval;
 function getVoyages() {
     if (sessionStorage.voyages && Object.keys(JSON.parse(sessionStorage.voyages)).length > 0) {
         listDestination = [];
-        for (let dest of JSON.parse(sessionStorage.voyages))
-            listDestination.push(dest.value)
-        if (JSON.parse(sessionStorage.voyages).length === listDestination.length) { //on vérifie qu'on as tous les voyages
+        for (let dest in JSON.parse(sessionStorage.voyages))
+            listDestination.push(dest)
+        if (Object.keys(JSON.parse(sessionStorage.voyages)).length === listDestination.length) { //on vérifie qu'on as tous les voyages
             voyagesJSON = JSON.parse(sessionStorage.voyages);
             start(); //Si on as déjà les voyages on appel directement la fonction start qui est personnalisé sur chaque page
         }
@@ -57,47 +57,21 @@ function getTemperature(val) {
         // const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
         const url = "http://localhost:3000/" + voyagesJSON[val].ville;
         if (voyagesJSON[val].temperature == null || voyagesJSON[val].temperature === "Err") { //Si on a pas la température (Bug API ou 1ere visite)
-            console.log("requette");
             $.ajax({  //Requette GET pour récuperer la température
                 url: url,
                 type: "GET",
                 dataType: "json",
                 success: (data) => {
-                    console.log(data);
                     voyagesJSON[val].temperature = data.main.temp; //on définit la température
-                    let tab = {};
-                    //On la stock dans le sessionstorage
-                    if (sessionStorage.voyages) {
-                        let info = JSON.parse(sessionStorage.voyages);
-                        console.log(info);
-                        for (let e in info) {
-                            if (info[e]._selection == val) {
-                                info[e]._temperature = voyagesJSON[val].temperature;
-                            }
+                    addVoyageSession(val);
 
-                            tab = info[e];
-                            console.log(tab);
-                        }
-                    }
-                    sessionStorage.setItem("voyages", JSON.stringify(tab)); //On rajoute la température au sessionStorage
                     onUpdate(); //on appelle sur chaque page une fonction update personalisé
                 },
                 error: () => {
                     voyagesJSON[val].temperature = "Err"; //En cas de Bug API on affichera Err
                     //Qu'on stock quand même dans le sessionstorage
-                    let tab = {};
-                    //On la stock dans le sessionstorage
-                    if (sessionStorage.voyages) {
-                        let info = JSON.parse(sessionStorage.voyages);
-                        for (let e in info) {
-                            if (info[e]._selection == val) {
-                                info[e]._temperature = voyagesJSON[val].temperature;
-                            }
-                            tab = info[e];
-                            console.log(tab);
-                        }
-                    }
-                    sessionStorage.setItem("voyages", JSON.stringify(tab)); //On rajoute la température au sessionStorage
+                    addVoyageSession(val);
+
                     onUpdate(); //on appelle sur chaque page une fonction update personalisé
                 }
             });
@@ -123,7 +97,22 @@ function getUser() {
     });
 }
 
-//Definition de la class d'un voyage
+function addVoyageSession(val){
+    // On ajoute le Voyage au SessionStorage
+    let tab = {};
+    if (sessionStorage.voyages) {
+        if (JSON.parse(sessionStorage.voyages).length !==0){
+            // On ajoute le Voyage au SessionStorage
+            tab = JSON.parse(sessionStorage.voyages);
+            tab[val] = voyagesJSON[val];
+        }
+    } else {
+        tab[val] = voyagesJSON[val];
+    }
+    sessionStorage.setItem("voyages", JSON.stringify(tab)); //On rajoute la température au sessionStorage
+}
+
+//Définission de la class d'un voyages
 class Voyage {
     constructor(_selection) { //On récupère la selection (destination)
         if (sessionStorage.voyages) {
@@ -148,31 +137,20 @@ class Voyage {
             this._idimg = 0;
             this._temperature = voyagesJSON[_selection].temperature;
 
-            // On ajoute le Voyage au SessionStorage
-            let tab = {};
-            if (sessionStorage.voyages) {
-                let info = JSON.parse(sessionStorage.voyages);
-                for (let e in info) {
-                    tab = info[e];
-                }
-            }
+            addVoyageSession(_selection);
 
-            tab[this._selection] = this;
-
-            sessionStorage.setItem("voyages", JSON.stringify(tab));
-
-        } else { //Si on a trouvé la destination dans le sessionStorage on la récupère
-            this._destination = dest._destination;
-            this._ville = dest._ville;
-            this._description = dest._description;
-            this._images = dest._images;
-            this._prixnuit = dest._prixnuit;
+        } else { //Si on a trouver la destination dans le sessionStorage on la récupère
+            this._destination = dest.destination;
+            this._ville = dest.ville;
+            this._description = dest.description;
+            this._images = dest.images;
+            this._prixnuit = dest.prixnuit;
             this._prixdej = 15;
-            this._petitDejAvailable = dest._petitDejAvailable;
-            this._animaux = dest._animaux;
+            this._petitDejAvailable = dest.petitDejAvailable;
+            this._animaux = dest.animaux;
             this._selection = _selection;
             this._idimg = 0;
-            this._temperature = dest._temperature;
+            this._temperature = dest.temperature;
         }
     }
 
