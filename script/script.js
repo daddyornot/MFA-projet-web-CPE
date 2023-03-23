@@ -385,7 +385,6 @@ class ListeReservations{
 
     //on ajoute une reservation à la liste
     set add(a) {
-        console.log(a);
         a.id = MD5(a.destination + a.datedebut + a.datefin + a.nbadulte + a.nbenfant + a.petitdej); //on génère un ID
         if (this._listReservations) {
             this._listReservations.push(a);
