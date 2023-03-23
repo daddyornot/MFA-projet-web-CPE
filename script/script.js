@@ -16,12 +16,24 @@ let backgroundInterval;
 
 //Fonction appeler sur chaque page pour demander la liste des voyages
 function getVoyages() {
-    if (sessionStorage.voyages && sessionStorage.voyages.length === listDestination.length) { //on vérifie qu'on a tous les voyages
-        start(); //Si on a déjà les voyages, on appelle directement la fonction start qui est personnalisé sur chaque page
-    } else { //sinon on récupère les voyages par l'API
+    if (sessionStorage.voyages && Object.keys(JSON.parse(sessionStorage.voyages)).length > 0) {
+        if (listDestination.length === 0){
+            listDestination = [];
+            for (let dest in JSON.parse(sessionStorage.voyages))
+                listDestination.push(dest)
+        }
+        if (Object.keys(JSON.parse(sessionStorage.voyages)).length === listDestination.length) { //on vérifie qu'on as tous les voyages
+            voyagesJSON = JSON.parse(sessionStorage.voyages);
+            for (let val in voyagesJSON)
+                getTemperature(val); //On va récupérer la température en cas de non réponse l'ors de la 1ere requette
+            start(); //Si on as déjà les voyages on appel directement la fonction start qui est personnalisé sur chaque page
+        }
+    } else { //sinon on recupere les voyages par l'API
         fetchJSONVoyages().then(voyages => {
             voyagesJSON = voyages;
-            start(); // on appelle start une fois qu'on a les données
+            for (let val in voyagesJSON)
+                getTemperature(val);
+            start(); // on appel start une fois qu'on as les données
         });
     }
 }
@@ -30,6 +42,7 @@ function getVoyages() {
 async function fetchJSONVoyages() {
     const response = await fetch('../voyages.json');
     const jsonVoyages = await response.json();
+    listDestination=[];
     for (let val in jsonVoyages) {
         listDestination.push(val); //on génère la liste des destinations
     }
@@ -40,6 +53,36 @@ async function fetchJSONVoyages() {
 async function fetchJSONUsers() {
     const response = await fetch('../users.json');
     return await response.json();
+}
+
+function getTemperature(val) {
+    //Pour la température
+    if (val !== "espace") { //Si ce n'est pas l'espace (car openweathermap n'a pas de température pour l'espace
+        const url = "https://api.openweathermap.org/data/2.5/weather?q=" + voyagesJSON[val].ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
+        if (voyagesJSON[val].temperature == null || voyagesJSON[val].temperature === "Err") { //Si on a pas la température (Bug API ou 1ere visite)
+            $.ajax({  //Requette GET pour récuperer la température
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: (data) => {
+                    voyagesJSON[val].temperature = data.main.temp; //on définit la température
+                    addVoyageSession(val); //On stock la valeur dans le sessionstorage
+
+                    onUpdate(); //on appelle sur chaque page une fonction update personalisé
+                },
+                error: () => {
+                    voyagesJSON[val].temperature = "Err"; //En cas de Bug API on affichera Err
+                    //Qu'on stock quand même dans le sessionstorage
+                    addVoyageSession(val);
+
+                    onUpdate(); //on appelle sur chaque page une fonction update personalisé
+                }
+            });
+        }
+    } else {
+        voyagesJSON[val].temperature = -272; //temperature de l'espace, openWeather n'a pas cette donnée malheureusement
+        addVoyageSession(val);
+    }
 }
 
 //Fonction appelée par les pages pour récuperer les utilisateurs
@@ -58,15 +101,30 @@ function getUser() {
     });
 }
 
-//Definition de la class d'un voyage
+//Fonction permettant l'ajout et la modification d'un voyage dans le sessionStorage
+function addVoyageSession(val){
+    // On ajoute le Voyage au SessionStorage
+    let tab = {};
+    if (sessionStorage.voyages) {
+        if (JSON.parse(sessionStorage.voyages).length !==0){
+            // On ajoute le Voyage au SessionStorage
+            tab = JSON.parse(sessionStorage.voyages);
+            tab[val] = voyagesJSON[val];
+        }
+    } else {
+        tab[val] = voyagesJSON[val];
+    }
+    sessionStorage.setItem("voyages", JSON.stringify(tab)); //On rajoute la température au sessionStorage
+}
+
+//Définission de la class d'un voyage
 class Voyage {
     constructor(_selection) { //On récupère la selection (destination)
         if (sessionStorage.voyages) {
             try {
-                var dest = JSON.parse(sessionStorage.voyages).find(function (voy) {
-                    return voy._selection == _selection;
-                });
-            } catch (e) { //en cas d'erreur dans le parse on clear le sessionStorage pour le recréer plus tard
+                var dest = JSON.parse(sessionStorage.voyages)[_selection];
+            } catch (e) { //en cas d'érreur dans le parse on clear le sessionStorage pour le recréer plus tard
+                console.log(e);
                 sessionStorage.voyages = "";
             }
         } else
@@ -82,81 +140,22 @@ class Voyage {
             this._animaux = voyagesJSON[_selection].animaux;
             this._selection = _selection;
             this._idimg = 0;
+            this._temperature = voyagesJSON[_selection].temperature;
 
-            // On ajoute le Voyage au SessionStorage
-            let tab = [];
-            if (sessionStorage.voyages) {
-                let info = JSON.parse(sessionStorage.voyages);
-                for (let e of info) {
-                    tab.push(e);
-                }
-            }
-            if (tab)
-                tab.push(this);
-            else
-                tab = [this];
-            sessionStorage.setItem("voyages", JSON.stringify(tab));
+            addVoyageSession(_selection);
 
-        } else { //Si on a trouvé la destination dans le sessionStorage on la récupère
-            this._destination = dest._destination;
-            this._ville = dest._ville;
-            this._description = dest._description;
-            this._images = dest._images;
-            this._prixnuit = dest._prixnuit;
+        } else { //Si on a trouver la destination dans le sessionStorage on la récupère
+            this._destination = dest.destination;
+            this._ville = dest.ville;
+            this._description = dest.description;
+            this._images = dest.images;
+            this._prixnuit = dest.prixnuit;
             this._prixdej = 15;
-            this._petitDejAvailable = dest._petitDejAvailable;
-            this._animaux = dest._animaux;
+            this._petitDejAvailable = dest.petitDejAvailable;
+            this._animaux = dest.animaux;
             this._selection = _selection;
             this._idimg = 0;
-            this._temperature = dest._temperature;
-        }
-        //Pour la température
-        if (this.value !== "espace") { //Si ce n'est pas l'espace (car openweathermap n'a pas de température pour l'espace
-            // const url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
-            const url = "http://localhost:3000/" + this.ville;
-            if (this._temperature == null || this._temperature === "Err") { //Si on n'a pas la température (Bug API ou 1ʳᵉ visite)
-                console.log("requette");
-                $.ajax({  //Requête GET pour récupérer la température
-                    url: url,
-                    type: "GET",
-                    dataType: "json",
-                    success: (data) => {
-                        console.log(data);
-                        this._temperature = data.main.temp; //on définit la température
-                        let tab = [];
-                        //On la stocke dans le sessionStorage
-                        if (sessionStorage.voyages) {
-                            let info = JSON.parse(sessionStorage.voyages);
-                            for (let e of info) {
-                                if (e._selection == _selection) {
-                                    e._temperature = this._temperature;
-                                }
-                                tab.push(e);
-                            }
-                        }
-                        sessionStorage.setItem("voyages", JSON.stringify(tab)); //On rajoute la température au sessionStorage
-                        onUpdate(); //on appelle sur chaque page une fonction update personalisée
-                    },
-                    error: () => {
-                        this._temperature = "Err"; //En cas de Bug API on affichera "Err"
-                        //Qu'on stocke quand même dans le sessionStorage
-                        let tab = [];
-                        if (sessionStorage.voyages) {
-                            let info = JSON.parse(sessionStorage.voyages);
-                            for (let e of info) {
-                                if (e._selection == _selection) {
-                                    e._temperature = this._temperature;
-                                }
-                                tab.push(e);
-                            }
-                        }
-                        sessionStorage.setItem("voyages", JSON.stringify(tab)); //On rajoute la température au sessionStorage
-                        onUpdate(); //on appelle sur chaque page une fonction update personalisée
-                    }
-                });
-            }
-        } else {
-            this._temperature = -272; //temperature de l'espace, openWeather n'a pas cette donnée malheureusement
+            this._temperature = dest.temperature;
         }
     }
 
@@ -219,6 +218,11 @@ class Voyage {
             this._idimg--;
         let img = this._images[this._idimg];
         return img;
+    }
+
+    //Mise a jour pour ajout de la température l'ors du retour de l'API
+    update() {
+        this._temperature = voyagesJSON[this.value].temperature;
     }
 }
 
@@ -362,7 +366,7 @@ class Reservation extends Voyage {
 }
 
 //Définition d'une classe permettant de gérer les listes de Reservation (utilisé pour le panier)
-class ListeReservations {
+class ListeReservations{
     constructor() {
     }
 
@@ -372,7 +376,6 @@ class ListeReservations {
             this._listReservations = [];
             let listReservation = JSON.parse(localStorage.panier);
             for (let e of listReservation) {
-                console.log(e.value);
                 const voyage = new Reservation(e.value);
                 voyage.all(e.datedebut, e.datefin, e.nbadulte, e.nbenfant, e.petitdej, e.id);
                 this.add = voyage;
@@ -438,13 +441,15 @@ class ListeReservations {
             }
         })
         this._listReservations.splice(toSuppr, 1);
-        window.localStorage.setItem("panier", JSON.stringify(this._listReservations));
-
+        let DTO = [] //Passage par un DTO permettant de stocker seulement les informations utiles
+        for (let resa of this._listReservations) {
+            DTO.push(this.toDTO(resa))
+        }
+        window.localStorage.setItem("panier", JSON.stringify(DTO));
     }
 
     //Pour modifier une réservation, on récupère les données clean, on supprime l'id en question puis on ajoute le nouveau séjour
     modifi(id, sejour) {
-        this.setFromLocalStorage();
         this.remove(id);
         this.add = sejour;
     }
@@ -566,7 +571,7 @@ function verificationDate() {
     lendemain.setTime(datedebut.getTime() + 24 * 3600 * 1000);
     document.getElementById('date-fin').min = lendemain.toISOString().substring(0, 10);
 
-    datefin = new Date(document.getElementById('date-fin').value);
+    let datefin = new Date(document.getElementById('date-fin').value);
 
     if (dateDiff(datedebut, datefin).day <= 0) {
         document.getElementById('date-fin').value = lendemain.toISOString().substring(0, 10);
@@ -611,8 +616,8 @@ function getCookie(cname) {
 }
 
 //Lancement du background aléatoire si on n'est pas sur une de ces pages
-if (!window.location.pathname.includes("detail-sejour") ||
-    !window.location.pathname.includes("landing-page")) {
+if (!(window.location.pathname.includes("detail-sejour") ||
+    window.location.pathname.includes("landing-page"))) {
     backgroundInterval = setInterval(function () {
         randomizeBackground();
     }, 4000);

@@ -10,7 +10,7 @@ function afficherInfosUser() {
         document.getElementById("tel").innerHTML = connectedUser.tel;
         document.getElementById("email").innerHTML = connectedUser.email;
     }
-    else {
+    else { //Si on est pas connecter on est rediriger vers l'index
         window.location.href = "index.html"
     }
 }
@@ -45,12 +45,10 @@ function afficherHistorique() {
 }
 
 window.onload = () => {
-    getVoyages();
-
+    getVoyages(); //on récupère les voyages
 }
 
-function start(){
-    
-}
+//Ces fonctions sont appeler l'ors de la récupération des voyages mais non nécéssaire ici (donc déclaration vide)
+function start(){}
 
-
+function onUpdate(){}

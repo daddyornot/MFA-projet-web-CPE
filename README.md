@@ -40,12 +40,16 @@ selon le mode choisi.
 
 ![hint](final_screenshots/index_img_modal_hover.png)
 
+### Page Détail séjour
+
+- Changement d'image par les fleches clavier
+
 ### Page panier.html
 
-- Possibilité de modifier ou supprimer un élément du panier
-
+- Possibilité de modifier ou supprimer un ou **plusieurs** élément(s) du panier
 ![panier_modif](final_screenshots/panier_modif.png)
 
+- Ajout d'un message quand les modifications ne sont pas enregistrer
 - Les reservations sont triées par date croissante
 - Les critères (dates, case petit dej...) sont gardés de la page index et inversement
 - Informations utilisateur préremplies si on est connecté (sauf n° de carte)
@@ -118,6 +122,8 @@ Ici il s'agissait surtout d'explorer les différentes possibilités que nous avi
 - [ ] ajouter heure locale
 - [ ] Modification plusieurs destinations à la fois
 - [ ] Panier > bouton "Ajouter un voyage"
+- [ ] Background détail séjour
+- [ ] **Détail-séjour : Page 404 destination not Found** 
 
 # Questions
 - Compatibilité navigateurs > Firefox / chrome

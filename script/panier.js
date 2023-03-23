@@ -1,22 +1,23 @@
-
+//Définission des variables
 var panier;
 var panierLocal;
 voyagesLocal = [];
 
 window.onload = () => {
-    getVoyages();
-    // si un user est connecté, on préremplit les champs
-    getUser();
+    getVoyages(); //On récupère les données
     // on ne teste et valide le form que si les champs sont respectés
     if (checkFields())
         checkAndValidateForm();
 }
 
-function start(){
+//Une fois les données récupérés
+function start() {
     panier = new ListeReservations();
     panier.setFromLocalStorage();
+    //On créer un panierLocal qui va contenir les modifications de l'utilisateur avant d'ètre enregistrer
     panierLocal = new ListeReservations();
     panierLocal.setFromLocalStorage();
+    //On récupère la liste des voyages présent dans le panier
     for (let dest of panierLocal.get()) {
         voyagesLocal.push(new Voyage(dest.value));
     }
@@ -24,24 +25,23 @@ function start(){
     randomizeBackground();
 }
 
-function onUpdate(){
-    panier.update();
-    panierLocal.update();
-    creationtableau();
+//Quand on reçoit les température
+function onUpdate() {
+    for (let dest of panierLocal.get())
+        dest.update();//On met a jour la température
+    creationtableau(); //on recréer le tableau
 }
 
-function remove(id){
+//Suppression d'une reservation par son ID
+function remove(id) {
     panier.remove(id);
     panierLocal.remove(id);
-    // panier = new ListeReservations();
-    // panierLocal = new ListeReservations();
-    // location.reload();
     creationtableau();
 }
 
-function desactivationDesChamps(toDesactivate){
+function desactivationDesChamps(toDesactivate) {
     //si le panier est vide, on affiche un petit message
-    if (toDesactivate){
+    if (toDesactivate) {
         document.getElementById("contenu-panier").style.display = 'none';
         document.getElementById("panier-vide").style.display = 'flex';
         document.getElementById("panier-vide").innerHTML = "Vous vous trouvez actuellement sur un panier vide, " +
@@ -60,7 +60,9 @@ function desactivationDesChamps(toDesactivate){
     }
 }
 
-function creationtableau(){
+//Affichage des données
+function creationtableau() {
+    var listIdModif = []
     // Si le local storage n'existe pas ou s'il est vide, on n'affiche pas le panier
     if (!panierLocal.get() || panierLocal.get().length === 0) {
         desactivationDesChamps(true);
@@ -74,7 +76,9 @@ function creationtableau(){
         for (let voyage of panierLocal.get()) {
             let clone;
 
-            if (voyage.modif) {
+            if (voyage.modif) { //Si on souhaite faire une modification sur le cette reservation
+                listIdModif.push(voyage.id);
+                //On utilise un template avec des inputs
                 template = document.querySelector("#modifDestination");
                 if (voyage.petitDej)
                     var dej = "checked";
@@ -97,27 +101,29 @@ function creationtableau(){
                     .replace(/{{prix}}/g, voyage.total)
                     .replace(/{{idVoyage}}/g, voyage.id);
                 clone.firstElementChild.innerHTML = newDestination;
+                //on insert les anciennes données
                 let selectAdulte = clone.getElementById("nbAdultesModif" + voyage.id);
                 [...selectAdulte].forEach(element => {
-                    if (element.value == voyage.nbAdulte){
+                    if (element.value == voyage.nbAdulte) {
                         element.setAttribute("selected", "");
                     }
                 });
                 let selectEnfant = clone.getElementById("nbEnfantsModif" + voyage.id);
                 [...selectEnfant].forEach(element => {
-                    if (element.value == voyage.nbEnfant){
+                    if (element.value == voyage.nbEnfant) {
                         element.setAttribute("selected", "");
                     }
                 });
                 if (!voyage.petitDejAvailable)
                     clone.getElementById("caseDej" + voyage.id).innerHTML = "Pti dej' non dispo";
             } else {
+                //Ici on utilise le template d'affichage
                 template = document.querySelector("#listeDestinations");
                 if (voyage.petitDej)
                     var dej = "Pti dej' inclus";
                 else
                     var dej = "Pas de Pti dej'";
-                if(!voyage.petitDejAvailable)
+                if (!voyage.petitDejAvailable)
                     dej = "Pti dej' non dispo";
 
                 clone = document.importNode(template.content, true);
@@ -140,8 +146,11 @@ function creationtableau(){
             }
 
             document.getElementById("contenu-panier").appendChild(clone);
+            for (let id of listIdModif) //Pour les voyages en cours de modification
+                verificationDateModif(id); //on vérifie que la date est bonne et on bloque les dates impossible
         }
 
+        //Utilisation d'un template unique pour afficher le prix total de toute les réservations
         let templatetotal = document.querySelector("#total");
         let clone = document.importNode(templatetotal.content, true);
         newtotal = clone.firstElementChild.innerHTML
@@ -157,7 +166,7 @@ function checkAndValidateForm() {
     let confirmForm = document.getElementById("confirm-commande");
     // comme le bouton "valider" est sorti du form, on ajoute un listener dessus
     confirmForm.addEventListener("click", () => {
-        let isModified = checkIsModify();
+        let isModified = checkIsModify(); //On vérifie si une modification est en cours
         if (!isModified) {
             if (formulaire.checkValidity()) {
                 //si le form est rempli correctement, on passe à la suite
@@ -189,8 +198,7 @@ function checkFields() {
                 // si un champ est invalide, on change sa classe et on ne teste/valide pas le form
                 fields[i].classList.add("invalid");
                 return false
-            }
-            else {
+            } else {
                 fields[i].classList.remove("invalid");
             }
         })
@@ -198,57 +206,63 @@ function checkFields() {
     return true
 }
 
+//Quand on clique sur le boutton modifier
 function modifSejour(id) {
     panierLocal.getByID(id).modif = true;
     creationtableau();
 }
 
+//Quand on annule une modification
 function cancelModif(id) {
-    panier.setFromLocalStorage();
-    panierLocal.getByID(id).modif = false;
-    panierLocal.modifi(id, panier.getByID(id));
-    creationtableau();
+    panier.setFromLocalStorage(); //On récupère les anciennes valeurs
+    panierLocal.modifi(id, panier.getByID(id)); //on modifi le panier local
+    creationtableau(); //on affiche
 }
 
+//Validation des modifications
 function validerModif(id) {
-    panier.setFromLocalStorage();
-    let sejour = panierLocal.getByID(id);
-    panier.modifi(id, sejour);
-    panier.setFromLocalStorage();
-    panierLocal.setFromLocalStorage();
-    creationtableau();
+    let sejour = panierLocal.getByID(id); //On récupère les valeurs modifié
+    sejour.modif = false; //on définit qu'on est plus en modifications
+    panierLocal.modifi(id, sejour); //on modifi le panier local ainsi que le localStorage
+    creationtableau(); //on affiche
 }
 
-function verificationDateModif(id){
+//Vérification des dates du voyage en fonction de son ID
+function verificationDateModif(id) {
     let datedebut = new Date(document.getElementById('dateDebutModif' + id).value);
     let demain = new Date();
     demain.setTime(new Date().getTime() + 24 * 3600 * 1000);
 
-    document.getElementById('dateDebutModif'+ id ).min = demain.toISOString().substring(0,10);
+    document.getElementById('dateDebutModif' + id).min = demain.toISOString().substring(0, 10); //on définit la date minimum
 
-    if( datedebut < Date.now()){
-        document.getElementById('dateDebutModif' + id).value = demain.toISOString().substring(0,10);
+    if (datedebut < Date.now()) { //si la date n'est pas bonne on la modifie
+        document.getElementById('dateDebutModif' + id).value = demain.toISOString().substring(0, 10);
 
+        //et on modifie la date de fin
         let lendemain = new Date();
         lendemain.setTime(demain.getTime() + 24 * 3600 * 1000);
-        document.getElementById('dateFinModif' + id).value = lendemain.toISOString().substring(0,10);
+        document.getElementById('dateFinModif' + id).value = lendemain.toISOString().substring(0, 10);
 
         datedebut = new Date(document.getElementById('dateDebutModif' + id).value);
 
     }
+    //On calcul la date de fin minimum (le lendemain du départ)
     let lendemain = new Date();
     lendemain.setTime(datedebut.getTime() + 24 * 3600 * 1000);
-    document.getElementById('dateFinModif'+ id).min = lendemain.toISOString().substring(0,10);
+    document.getElementById('dateFinModif' + id).min = lendemain.toISOString().substring(0, 10);
 
     let datefin = new Date(document.getElementById('dateFinModif' + id).value);
 
-    if(dateDiff(datedebut, datefin).day <= 0){
-        document.getElementById('dateFinModif' + id).value = lendemain.toISOString().substring(0,10);
+    //Si la date de fin est avant la date de début (normalement bloqué par les minimums mais on sait jamais
+    if (dateDiff(datedebut, datefin).day <= 0) {
+        document.getElementById('dateFinModif' + id).value = lendemain.toISOString().substring(0, 10);
     }
 }
 
-function changeValue(id){
-    verificationDateModif(id);
+//Pour tout changement de valeurs
+function changeValue(id) {
+    verificationDateModif(id); //On vérifie les dates
+    //et on modifie le panierLocal avec les nouvelles valeurs (sans modifier le localStorage)
     let sejour = panierLocal.getByID(id);
     sejour.datedebut = new Date(document.getElementById("dateDebutModif" + id).value);
     sejour.datefin = new Date(document.getElementById("dateFinModif" + id).value);
@@ -256,9 +270,10 @@ function changeValue(id){
     sejour.nbEnfant = Number(document.getElementById("nbEnfantsModif" + id).value);
     if (sejour.petitDejAvailable)
         sejour.petitDej = document.getElementById("petitDejModif" + id).checked;
-    creationtableau();
+    creationtableau(); //On affiche
 }
 
+//Remplissage des infos utilisateurs si on est connecté
 function remplirInfos() {
     if (connectedUser) {
         document.getElementById("lastName").value = connectedUser.nom;
@@ -271,30 +286,29 @@ function remplirInfos() {
     }
 }
 
-function checkIsModify(){
+//Vérification d'une modification en cour
+function checkIsModify() {
     let isModified = false;
-
     panierLocal.get().forEach(function (dest) {
-        if(dest.modif)
-            if(dest != panier.get()[dest.id]){
-                if(!isModified){
+        if (dest.modif)
+            if (dest != panier.get()[dest.id]) {
+                if (!isModified) {
                     isModified = true;
                 }
-                
             }
     });
-
     return isModified;
 }
 
-function alerteChangementPage(){
+//Affichage de l'alerte en cas de modification en cours
+//appel par le body 'onbeforeUnload'
+function alerteChangementPage() {
     modif = checkIsModify();
-    if(modif==true){
-        if(confirm('Des modifications ont été apportées, voulez-vous quitter ?')){
-          return true;
+    if (modif == true) {
+        if (confirm('Des modifications ont été apportées, voulez-vous quitter ?')) {
+            return true;
+        } else {
+            return false;
         }
-        else { 
-          return false ; 
-        }
-      }
-  }
+    }
+}
