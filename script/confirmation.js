@@ -69,7 +69,7 @@ function genererResume() {
 //Quand on reçoit les températures
 function onUpdate(){
     for (let dest of panier.get())
-        dest.update();//On met à jour la température
+        dest.updateTemp();//On met à jour la température
     genererResume();
 }
 

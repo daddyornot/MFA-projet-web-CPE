@@ -58,7 +58,7 @@ selon le mode choisi.
 
 - Si le panier est vide, affichage d'un message
 
-![pavier_vide](final_screenshots/panier_vide.png)
+![panier_vide](final_screenshots/panier_vide.png)
 
 ### Page confirmation.html
 
@@ -76,7 +76,9 @@ selon le mode choisi.
 - Requête API : si on a déjà la température, on ne refait pas de requête, elle est stockée dans le `SessionStorage`
 - Fetch JSON : on récupère les données de tous les voyages une fois dans le JSON, et on les stocke dans le `SessionStorage`.
 Tant que le `SessionStorage` n'est pas vide, on ne refait pas de requête pour les voyages.
-
+- Optimisation du temps de chargement des pages ansi que du volume de donnés chargés (passage d)
+![opti-avant](final_screenshots/opti-avant.png)
+![opti-après](final_screenshots/opti-après.png)
 
 ## Différentes façons de faire dans le code
 Ici il s'agissait surtout d'explorer les différentes possibilités que nous avions, même si sur un vrai projet il vaut mieux uniformiser ces méthodes.
@@ -114,14 +116,14 @@ Ici il s'agissait surtout d'explorer les différentes possibilités que nous avi
 - [x] ~~Accessibilité~~
 - [x] ~~w3school~~
 - [x] ~~Background détail séjour~~
-- [ ] virer le .html dans l'url
-- [ ] arriver sur la landing page du site
-- [ ] historique des voyages mode dynamique
+- [ ] ~~virer le .html dans l'url~~
+- [ ] ~~arriver sur la landing page du site~~
+- [ ] ~~historique des voyages mode dynamique~~ > Annulé car on ne peut pas écrire et/ou modifier l'historique des utilisateurs en JS.
 - [ ] pop up accepter les cookies à l'arrivée
 - [ ] responsive
 - [ ] ajouter prévisions météo ?
 - [ ] ajouter heure locale
-- [ ] Modification plusieurs destinations à la fois
+- [X] ~~Modification plusieurs destinations à la fois~~
 - [ ] Panier > bouton "Ajouter un voyage"
 - [ ] **Détail-séjour : Page 404 destination not Found** 
 - [ ] Animation background : keyframes perso

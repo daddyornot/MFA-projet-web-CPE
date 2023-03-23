@@ -225,7 +225,7 @@ class Voyage {
     }
 
     //Mise à jour pour ajout de la température lors du retour de l'API
-    update() {
+    updateTemp() {
         this._temperature = voyagesJSON[this.value].temperature;
     }
 }

@@ -36,7 +36,7 @@ function start() { //on crée la liste de voyages et on génère le tableau une 
 //en cas de mise à jour (Retour de l'API météo) on rappelle la fonction changeFilter
 function onUpdate() {
     for (let dest of voyagesLocal)
-        dest.update();
+        dest.updateTemp();
     changeFilter();
 }
 

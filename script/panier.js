@@ -28,7 +28,7 @@ function start() {
 //Quand on reçoit les températures
 function onUpdate() {
     for (let dest of panierLocal.get())
-        dest.update();//On met à jour la température
+        dest.updateTemp();//On met à jour la température
     creationtableau(); //on recrée le tableau
 }
 
