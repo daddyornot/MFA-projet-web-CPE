@@ -81,7 +81,7 @@ function verifUserConnected() {
         for (const user of allUsers) {
             if (user.username === currentUserCookie) {
                 connectedUser = user;
-                document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.username + " !";
+                document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.prenom + " " + connectedUser.nom + " !";
                 break;
             }
         }

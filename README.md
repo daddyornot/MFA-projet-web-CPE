@@ -16,9 +16,9 @@ conditionné par la photo du séjour affichée.
 - Le logo du site a été créé par nous
 - Pour tester le login : 
 
-| **usernames** | test | test1 | test2 | test3 |
-|---------------|------|-------|-------|-------|
-| **passwords** | test | test1 | test2 | test3 |
+| **usernames** | lolo | mimi | lili | toto |
+|---------------|------|------|------|------|
+| **passwords** | 1234 | 5678 | abcd | 1234 |
 
 ### Page landing-page.html
 - Ajout d'une page de landing pour accéder au site.
