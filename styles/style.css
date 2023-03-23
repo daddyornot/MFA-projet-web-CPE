@@ -20,7 +20,7 @@ body {
     height: fit-content;
     color: #3c3c3c;
     font-family: "Lexend Deca", serif;
-    background: url("../assets/img/canada/03.jpg") no-repeat center center fixed;
+    background: url("../assets/img/canada/03.webp") no-repeat center center fixed;
     background-size: cover;
     backdrop-filter: blur(5px);
     margin: 0;

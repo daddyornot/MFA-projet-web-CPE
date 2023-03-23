@@ -16,7 +16,7 @@
         "datedebut": "2023-03-16T00:00:00.000Z",
         "datefin": "2023-03-17T00:00:00.000Z",
         "images": [
-          "../assets/img/canada/01.jpg"
+          "../assets/img/canada/01.webp"
         ],
         "temperature": 1.72,
         "nbAdulte": 1,
@@ -29,7 +29,7 @@
         "datedebut": "2023-02-16T00:00:00.000Z",
         "datefin": "2023-03-05T00:00:00.000Z",
         "images": [
-          "../assets/img/france/01.jpg"
+          "../assets/img/france/01.webp"
         ],
         "temperature": 3.52,
         "nbAdulte": 2,
