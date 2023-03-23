@@ -52,12 +52,12 @@ function genererResume() {
         document.getElementById("resume-voyage").appendChild(clone);
 
         if (dateDiff(new Date(), voyage.datedebut).day < nbJourRestants) {
-            nbJourRestants = dateDiff(new Date(), voyage.datedebut).day;
+            nbJourRestants = dateDiff(new Date(), voyage.datedebut).day + 1;
         }
         prixTotal += voyage.total;
     }
     // On change l'affichage selon le nb de jour avant le départ
-    if (nbJourRestants > 0) {
+    if (nbJourRestants > 1) {
         document.getElementById("nb-jour-restants").innerHTML = "Félicitations, plus que " + nbJourRestants + " jours avant de partir en voyage !";
     }
     else {
