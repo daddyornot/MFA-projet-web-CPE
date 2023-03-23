@@ -22,18 +22,18 @@ function getVoyages() {
             for (let dest in JSON.parse(sessionStorage.voyages))
                 listDestination.push(dest)
         }
-        if (Object.keys(JSON.parse(sessionStorage.voyages)).length === listDestination.length) { //on vérifie qu'on as tous les voyages
+        if (Object.keys(JSON.parse(sessionStorage.voyages)).length === listDestination.length) { //on vérifie qu'on a tous les voyages
             voyagesJSON = JSON.parse(sessionStorage.voyages);
             for (let val in voyagesJSON)
-                getTemperature(val); //On va récupérer la température en cas de non réponse l'ors de la 1ere requette
-            start(); //Si on as déjà les voyages on appel directement la fonction start qui est personnalisé sur chaque page
+                getTemperature(val); //On va récupérer la température en cas de non réponse lors de la 1ere requête
+            start(); //Si on a déjà les voyages, on appelle directement la fonction start qui est personnalisée sur chaque page
         }
-    } else { //sinon on recupere les voyages par l'API
+    } else { //sinon, on recupère les voyages par l'API
         fetchJSONVoyages().then(voyages => {
             voyagesJSON = voyages;
             for (let val in voyagesJSON)
                 getTemperature(val);
-            start(); // on appel start une fois qu'on as les données
+            start(); // on appelle start une fois qu'on a les données
         });
     }
 }
@@ -59,23 +59,23 @@ function getTemperature(val) {
     //Pour la température
     if (val !== "espace") { //Si ce n'est pas l'espace (car openweathermap n'a pas de température pour l'espace
         const url = "https://api.openweathermap.org/data/2.5/weather?q=" + voyagesJSON[val].ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
-        if (voyagesJSON[val].temperature == null || voyagesJSON[val].temperature === "Err") { //Si on a pas la température (Bug API ou 1ere visite)
+        if (voyagesJSON[val].temperature == null || voyagesJSON[val].temperature === "Err") { //Si on n'a pas la température (Bug API ou 1ere visite)
             $.ajax({  //Requette GET pour récuperer la température
                 url: url,
                 type: "GET",
                 dataType: "json",
                 success: (data) => {
                     voyagesJSON[val].temperature = data.main.temp; //on définit la température
-                    addVoyageSession(val); //On stock la valeur dans le sessionstorage
+                    addVoyageSession(val); //On stocke la valeur dans le sessionStorage
 
-                    onUpdate(); //on appelle sur chaque page une fonction update personalisé
+                    onUpdate(); //on appelle sur chaque page une fonction update personalisée
                 },
                 error: () => {
                     voyagesJSON[val].temperature = "Err"; //En cas de Bug API on affichera Err
-                    //Qu'on stock quand même dans le sessionstorage
+                    //Qu'on stock quand même dans le sessionStorage
                     addVoyageSession(val);
 
-                    onUpdate(); //on appelle sur chaque page une fonction update personalisé
+                    onUpdate(); //on appelle sur chaque page une fonction update personalisée
                 }
             });
         }
@@ -123,13 +123,13 @@ class Voyage {
         if (sessionStorage.voyages) {
             try {
                 var dest = JSON.parse(sessionStorage.voyages)[_selection];
-            } catch (e) { //en cas d'érreur dans le parse on clear le sessionStorage pour le recréer plus tard
+            } catch (e) { //en cas d'erreur dans le parse, on clear le sessionStorage pour le recréer plus tard
                 console.log(e);
                 sessionStorage.voyages = "";
             }
         } else
             dest = true;
-        if (!sessionStorage.voyages || sessionStorage.voyages.length === 0 || !dest) { //Si on n'a pas de données dans le sessionStorage on va les récuperer dans le voyagesJSON
+        if (!sessionStorage.voyages || sessionStorage.voyages.length === 0 || !dest) { //Si on n'a pas de données dans le sessionStorage on va les récupérer dans le voyagesJSON
             this._destination = voyagesJSON[_selection].destination;
             this._ville = voyagesJSON[_selection].ville;
             this._description = voyagesJSON[_selection].description;
@@ -144,7 +144,7 @@ class Voyage {
 
             addVoyageSession(_selection);
 
-        } else { //Si on a trouver la destination dans le sessionStorage on la récupère
+        } else { //Si on a trouvé la destination dans le sessionStorage on la récupère
             this._destination = dest.destination;
             this._ville = dest.ville;
             this._description = dest.description;
@@ -220,7 +220,7 @@ class Voyage {
         return img;
     }
 
-    //Mise a jour pour ajout de la température l'ors du retour de l'API
+    //Mise à jour pour ajout de la température lors du retour de l'API
     update() {
         this._temperature = voyagesJSON[this.value].temperature;
     }
@@ -586,7 +586,7 @@ function randomizeBackground() {
             voyagesLocal.push(new Voyage(dest));
     }
     for (let dest of voyagesLocal) {
-        listBackgrounds.push(dest.images); //Sinon on prend les images de voyagesLocal (permet d'avoir un fond d'écran sur la page panier qui est en rapport avec les destinations sélectionnées)
+        listBackgrounds.push(dest.images); //Sinon, on prend les images de voyagesLocal (permet d'avoir un fond d'écran sur la page panier qui est en rapport avec les destinations sélectionnées)
     }
     // On concatène toutes nos url dans un seul tableau
     // l'opérateur de decomposition "..." extrait les éléments du tableau 1 à 1, pour les concaténer dans un seul

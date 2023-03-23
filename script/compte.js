@@ -10,7 +10,7 @@ function afficherInfosUser() {
         document.getElementById("tel").innerHTML = connectedUser.tel;
         document.getElementById("email").innerHTML = connectedUser.email;
     }
-    else { //Si on est pas connecter on est rediriger vers l'index
+    else { //Si on n'est pas connecté on est redirigé vers l'index
         window.location.href = "index.html"
     }
 }
@@ -48,7 +48,7 @@ window.onload = () => {
     getVoyages(); //on récupère les voyages
 }
 
-//Ces fonctions sont appeler l'ors de la récupération des voyages mais non nécéssaire ici (donc déclaration vide)
+//Ces fonctions sont appelées lors de la récupération des voyages, mais non nécéssaires ici (donc déclaration vide)
 function start(){}
 
 function onUpdate(){}

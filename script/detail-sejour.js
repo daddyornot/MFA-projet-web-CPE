@@ -6,10 +6,10 @@ window.onload = () => {
     document.getElementById("form").addEventListener('change', changeForm);
 }
 
-//Une fois que les voyages sont récupéré
+//Une fois que les voyages sont récupérés
 function start() {
     const urlParams = new URLSearchParams(window.location.search);
-    //On récupère par la méthode get la destination choisi
+    //On récupère par la méthode get la destination choisie
     if (urlParams.get('selection'))
         selection = urlParams.get('selection');
     else
@@ -105,10 +105,10 @@ function addLigne(ligne) {
 //Quand le formulaire change
 function changeForm() {
     resetTab(); //on reset le tableau du détail prix
-    resa.setValue(); //on met a jour les valeurs dans la reservation
+    resa.setValue(); //on met à jour les valeurs dans la reservation
 
-    if (resa.check) { //Si les valeurs sont valider
-        //On permet la validation et on créer le tableau avec les différentes valeurs
+    if (resa.check) { //Si les valeurs sont validées
+        //On permet la validation et on crée le tableau avec les différentes valeurs
         document.getElementById('btnvalider').disabled = false;
         addLigne(["Nuits adultes", resa.nbJour, resa.nbAdulte, resa.prixNuit, resa.totalAdulte]);
         addLigne(["Nuits enfants", resa.nbJour, resa.nbEnfant, resa.prixnuitenfant, resa.totalEnfants]);
@@ -117,9 +117,9 @@ function changeForm() {
             addLigne(["Petits déjeuner", resa.nbJour, resa.nbPersonnes, resa.prixPetitDej, resa.totalpetitdej]);
 
         addLigne(["Total", resa.nbJour, resa.nbPersonnes, "-", resa.total]);
-        lectureCritere(); //On met a jour le session storage des critères pour pouvoir les récupérer plus tard
+        lectureCritere(); //On met à jour le sessionStorage des critères pour pouvoir les récupérer plus tard
     } else {
-        // Sinon on désactive le boutton et on affiche un message
+        // Sinon, on désactive le bouton et on affiche un message
         document.getElementById('solde-destination').innerHTML = "Veuillez selectionner des dates correctes";
         document.getElementById('btnvalider').disabled = true;
     }
@@ -129,9 +129,9 @@ function valider() {
     const resa = new Reservation(selection);
     resa.setValue();
     if (resa.check) {
-        //On créer un panier
+        //On crée un panier
         const panier = new ListeReservations();
-        //on récupère les éventuelles précédente réservation
+        //on récupère les éventuelles précédentes réservation
         panier.setFromLocalStorage();
         //on ajoute la reservation
         panier.add = resa;
@@ -148,8 +148,8 @@ function resetForm() {
     document.getElementById("nb-adulte").value = 1;
     document.getElementById("nb-enfant").value = 0;
     document.getElementById("petitdej").checked = false;
-    sessionStorage.clear(); //on vide le session storage
+    sessionStorage.clear(); //on vide le sessionStorage
     ecritureCritere(); //écriture des valeurs pas défaut
     verificationDate(); //écriture des dates par défaut
-    changeForm(); //On met a jour le tableau du détail du prix
+    changeForm(); //On met à jour le tableau du détail du prix
 }

@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.searchAndFilters label {
+    display: none;
+}
+
 #searchbar {
     width: 25%;
     text-align: center;
@@ -49,13 +53,12 @@
 
 .grid-container {
     max-width: 2560px;
-    margin: 40px;
     display: grid;
     grid-template-columns: 450px;
     gap: 3rem;
     color: whitesmoke;
     justify-content: space-around;
-    margin-top: 0;
+    margin: 0 40px 40px;
 }
 
 .grid-item {

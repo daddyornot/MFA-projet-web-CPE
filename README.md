@@ -14,11 +14,11 @@ défiler que les voyages du panier, la landing page qui a une image fixe, et le 
 conditionné par la photo du séjour affichée.
 - Ajout d'un favicon
 - Le logo du site a été créé par nous
-- Pour tester le login-modal : 
+- Pour tester le login : 
 
-   | **usernames** | test | test1 | test2 | test3 |
-   |-------------  | ---- | ----- |-------| ----- |
-   | **passwords** | test | test1 | test2 | test3 |
+| **usernames** | test | test1 | test2 | test3 |
+|---------------|------|-------|-------|-------|
+| **passwords** | test | test1 | test2 | test3 |
 
 ### Page landing-page.html
 - Ajout d'une page de landing pour accéder au site.
@@ -49,7 +49,7 @@ selon le mode choisi.
 - Possibilité de modifier ou supprimer un ou **plusieurs** élément(s) du panier
 ![panier_modif](final_screenshots/panier_modif.png)
 
-- Ajout d'un message quand les modifications ne sont pas enregistrer
+- Ajout d'un message quand les modifications ne sont pas enregistrées
 - Les reservations sont triées par date croissante
 - Les critères (dates, case petit dej...) sont gardés de la page index et inversement
 - Informations utilisateur préremplies si on est connecté (sauf n° de carte)
@@ -62,7 +62,7 @@ selon le mode choisi.
 
 ### Page confirmation.html
 
-- Calcul et affichage du nombre de jours restant avant le départ
+- Calcul et affichage du nombre de jours restants avant le départ
 
 ![confirm](final_screenshots/conf_calcul_jours.png)
 
@@ -81,8 +81,8 @@ Tant que le `SessionStorage` n'est pas vide, on ne refait pas de requête pour l
 ## Différentes façons de faire dans le code
 Ici il s'agissait surtout d'explorer les différentes possibilités que nous avions, même si sur un vrai projet il vaut mieux uniformiser ces méthodes.
 
-- fetch User : appelle depuis `script.js` les fonctions nécessaires en fonction de la page
-- fetch Voyages : appel depuis `script.js`, de la fonction `start()`, redéfinie dans chaque fichier JS nécessaire
+- `fetchUser` : appelle depuis `script.js` les fonctions nécessaires en fonction de la page
+- `fetchVoyages` : appel depuis `script.js`, de la fonction `start()`, redéfinie dans chaque fichier JS nécessaire
 - jQuery / getElementBy...
 - Dans le HTML : `onclick=` / Dans le JS : `addEventListener`
 
@@ -113,6 +113,7 @@ Ici il s'agissait surtout d'explorer les différentes possibilités que nous avi
 - [x] ~~Panier "Attention modification en cours"~~
 - [x] ~~Accessibilité~~
 - [x] ~~w3school~~
+- [x] ~~Background détail séjour~~
 - [ ] virer le .html dans l'url
 - [ ] arriver sur la landing page du site
 - [ ] historique des voyages mode dynamique
@@ -122,8 +123,8 @@ Ici il s'agissait surtout d'explorer les différentes possibilités que nous avi
 - [ ] ajouter heure locale
 - [ ] Modification plusieurs destinations à la fois
 - [ ] Panier > bouton "Ajouter un voyage"
-- [ ] Background détail séjour
 - [ ] **Détail-séjour : Page 404 destination not Found** 
+- [ ] Animation background : keyframes perso
 
 # Questions
 - Compatibilité navigateurs > Firefox / chrome

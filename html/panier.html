@@ -44,9 +44,12 @@
                 </td>
                 <td>{{destination}}</td>
 
+                <label for="dateDebutModif{{idVoyage}}"></label>
+                <label for="dateFinModif{{idVoyage}}"></label>
                 <td onchange="changeValue('{{idVoyage}}')">Du <input id="dateDebutModif{{idVoyage}}" type="date" value="{{dateDebut}}"><br>
                     Au <input id="dateFinModif{{idVoyage}}" type="date" value="{{dateFin}}"></td>
                 <td onchange="changeValue('{{idVoyage}}')">Adultes<br>
+                    <label for="nbAdultesModif{{idVoyage}}"></label>
                     <select name="nb-adulte" id="nbAdultesModif{{idVoyage}}">
                         <option value="1">1</option>
                         <option value="2">2</option>

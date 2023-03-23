@@ -10,14 +10,14 @@ window.onload = () => {
         checkAndValidateForm();
 }
 
-//Une fois les données récupérés
+//Une fois les données récupérées
 function start() {
     panier = new ListeReservations();
     panier.setFromLocalStorage();
-    //On créer un panierLocal qui va contenir les modifications de l'utilisateur avant d'ètre enregistrer
+    //On crée un panierLocal qui va contenir les modifications de l'utilisateur avant d'être enregistré
     panierLocal = new ListeReservations();
     panierLocal.setFromLocalStorage();
-    //On récupère la liste des voyages présent dans le panier
+    //On récupère la liste des voyages présents dans le panier
     for (let dest of panierLocal.get()) {
         voyagesLocal.push(new Voyage(dest.value));
     }
@@ -25,11 +25,11 @@ function start() {
     randomizeBackground();
 }
 
-//Quand on reçoit les température
+//Quand on reçoit les températures
 function onUpdate() {
     for (let dest of panierLocal.get())
-        dest.update();//On met a jour la température
-    creationtableau(); //on recréer le tableau
+        dest.update();//On met à jour la température
+    creationtableau(); //on recrée le tableau
 }
 
 //Suppression d'une reservation par son ID
@@ -76,7 +76,7 @@ function creationtableau() {
         for (let voyage of panierLocal.get()) {
             let clone;
 
-            if (voyage.modif) { //Si on souhaite faire une modification sur le cette reservation
+            if (voyage.modif) { //Si on souhaite faire une modification sur cette reservation
                 listIdModif.push(voyage.id);
                 //On utilise un template avec des inputs
                 template = document.querySelector("#modifDestination");
@@ -101,7 +101,7 @@ function creationtableau() {
                     .replace(/{{prix}}/g, voyage.total)
                     .replace(/{{idVoyage}}/g, voyage.id);
                 clone.firstElementChild.innerHTML = newDestination;
-                //on insert les anciennes données
+                //on insère les anciennes données
                 let selectAdulte = clone.getElementById("nbAdultesModif" + voyage.id);
                 [...selectAdulte].forEach(element => {
                     if (element.value == voyage.nbAdulte) {
@@ -117,7 +117,7 @@ function creationtableau() {
                 if (!voyage.petitDejAvailable)
                     clone.getElementById("caseDej" + voyage.id).innerHTML = "Pti dej' non dispo";
             } else {
-                //Ici on utilise le template d'affichage
+                //Ici, on utilise le template d'affichage
                 template = document.querySelector("#listeDestinations");
                 if (voyage.petitDej)
                     var dej = "Pti dej' inclus";
@@ -147,10 +147,10 @@ function creationtableau() {
 
             document.getElementById("contenu-panier").appendChild(clone);
             for (let id of listIdModif) //Pour les voyages en cours de modification
-                verificationDateModif(id); //on vérifie que la date est bonne et on bloque les dates impossible
+                verificationDateModif(id); //on vérifie que la date est bonne et on bloque les dates impossibles
         }
 
-        //Utilisation d'un template unique pour afficher le prix total de toute les réservations
+        //Utilisation d'un template unique pour afficher le prix total de toutes les réservations
         let templatetotal = document.querySelector("#total");
         let clone = document.importNode(templatetotal.content, true);
         newtotal = clone.firstElementChild.innerHTML
@@ -221,9 +221,9 @@ function cancelModif(id) {
 
 //Validation des modifications
 function validerModif(id) {
-    let sejour = panierLocal.getByID(id); //On récupère les valeurs modifié
+    let sejour = panierLocal.getByID(id); //On récupère les valeurs modifiées
     sejour.modif = false; //on définit qu'on est plus en modifications
-    panierLocal.modifi(id, sejour); //on modifi le panier local ainsi que le localStorage
+    panierLocal.modifi(id, sejour); //on modifie le panier local ainsi que le localStorage
     creationtableau(); //on affiche
 }
 
@@ -246,14 +246,14 @@ function verificationDateModif(id) {
         datedebut = new Date(document.getElementById('dateDebutModif' + id).value);
 
     }
-    //On calcul la date de fin minimum (le lendemain du départ)
+    //On calcule la date de fin minimum (le lendemain du départ)
     let lendemain = new Date();
     lendemain.setTime(datedebut.getTime() + 24 * 3600 * 1000);
     document.getElementById('dateFinModif' + id).min = lendemain.toISOString().substring(0, 10);
 
     let datefin = new Date(document.getElementById('dateFinModif' + id).value);
 
-    //Si la date de fin est avant la date de début (normalement bloqué par les minimums mais on sait jamais
+    //Si la date de fin est avant la date de début (normalement bloqué par les minimums, mais on ne sait jamais
     if (dateDiff(datedebut, datefin).day <= 0) {
         document.getElementById('dateFinModif' + id).value = lendemain.toISOString().substring(0, 10);
     }
