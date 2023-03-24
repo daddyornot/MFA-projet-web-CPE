@@ -5,6 +5,12 @@
 ## Fonctionnalités de base
 
 Toutes les fonctionnalités demandées sont implémentées.
+
+
+Entièrement codé en HTML, CSS, JavaScript.
+
+jQuery est la seule librairie utilisée.
+
 Le responsive n'a pas été notre priorité.
 
 ## Fonctionnalités ajoutées
@@ -18,7 +24,9 @@ conditionné par la photo du séjour affichée.
 
 | **usernames** | lolo | mimi | lili | toto |
 |---------------|------|------|------|------|
-| **passwords** | 1234 | 5678 | abcd | 1234 |
+| **passwords** | 1234 | 1234 | 1234 | 1234 |
+
+**PS : On vous conseille de vous connecter avec lolo...**
 
 ### Page landing-page.html
 - Ajout d'une page de landing pour accéder au site.

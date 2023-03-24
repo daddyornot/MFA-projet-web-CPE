@@ -38,7 +38,7 @@ function start() {
 
 //Quand on reçoit les températures
 function onUpdate() {
-    resa.update(); //on met à jour la reservation
+    resa.setValue(); //on met à jour la reservation
     document.getElementById("temperature").innerHTML = resa.temperature + "°C"; //on affiche la température
 }
 
@@ -46,10 +46,10 @@ function generationTemplate() {
     //Template unique pour afficher les informations du voyage
     let template = document.querySelector("#template");
     let clone = document.importNode(template.content, true);
-    newsejour = clone.firstElementChild.innerHTML
+    let newsejour = clone.firstElementChild.innerHTML
         .replace(/{{destination}}/g, resa.destination)
         .replace(/{{description}}/g, resa.description);
-    newimg = clone.lastElementChild.innerHTML
+    let newimg = clone.lastElementChild.innerHTML
         .replace(/{{destination}}/g, resa.value)
         .replace(/{{src}}/g, "src") // permet d'éviter que le template essaye de charger l'image
         .replace(/{{imgDest}}/g, resa.images[0])
@@ -104,6 +104,7 @@ function addLigne(ligne) {
 
 //Quand le formulaire change
 function changeForm() {
+    console.log("changeFOrm")
     resetTab(); //on reset le tableau du détail prix
     resa.setValue(); //on met à jour les valeurs dans la reservation
 
