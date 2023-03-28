@@ -38,7 +38,7 @@ function start() {
 
 //Quand on reçoit les températures
 function onUpdate() {
-    resa.setValue(); //on met à jour la reservation
+    resa.updateTemp(); //on met à jour la reservation
     document.getElementById("temperature").innerHTML = resa.temperature + "°C"; //on affiche la température
 }
 
@@ -104,7 +104,6 @@ function addLigne(ligne) {
 
 //Quand le formulaire change
 function changeForm() {
-    console.log("changeFOrm")
     resetTab(); //on reset le tableau du détail prix
     resa.setValue(); //on met à jour les valeurs dans la reservation
 
