@@ -1,0 +1,144 @@
+
+#toggle-filtres, #searchbar {
+    font-size: 1em;
+}
+
+.searchAndFilters {
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.searchAndFilters label {
+    display: none;
+}
+
+#searchbar {
+    width: 25%;
+    text-align: center;
+}
+
+.hidden {
+    /*display: none;*/
+    opacity: 0;
+    transform: scale(0);
+}
+
+.active-filter {
+    opacity: 1;
+    margin: 30px 4% 20px 4%;
+    padding: 15px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(8, 1fr);
+    width: 90%;
+    height: fit-content;
+    row-gap: 1em;
+    transition: all 500ms ease;
+    transform: scale(1);
+}
+
+/*On place le bouton reset en 3e ligne, dans les colonnes 4 et 5, et on le décale un peu du reste*/
+.reset {
+    grid-row: 3;
+    grid-column: 4/6;
+    margin-top: 15px;
+}
+
+.age {
+    font-size: 12px;
+}
+
+.grid-container {
+    max-width: 2560px;
+    display: grid;
+    grid-template-columns: 450px;
+    gap: 3rem;
+    color: whitesmoke;
+    justify-content: space-around;
+    margin: 0 40px 40px;
+}
+
+.grid-item {
+    display: grid;
+    align-content: center;
+    position: relative;
+    text-align: center;
+    border-radius: 50px;
+    background-color: rgba(169, 189, 207, .85);
+}
+
+.grid-item h2 {
+    font-size: 30px;
+}
+
+.grid-item p.prix {
+    text-align: right;
+    font-size: 23px;
+    padding-left: 8px;
+}
+
+/* ronds de temperature */
+.grid-item p.temperature {
+    position: absolute;
+    top: 20%;
+    left: 65%;
+    height: 65px;
+    width: 65px;
+    line-height: 4em;
+    z-index: 1;
+    transition: transform 500ms ease;
+}
+
+.grid-img {
+    border-radius: 50px;
+    background: linear-gradient(225deg, #cacaca, #f0f0f0);
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    justify-content: center;
+    transition: transform 500ms ease;
+}
+
+.grid-item:hover .grid-img {
+    transform: scale(1.1);
+}
+
+.grid-item:hover .temperature {
+    transform: scale(1.5);
+}
+
+.dest-infos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+}
+
+.dest-infos span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.no-destination {
+    display: none;
+    text-align: center;
+    font-size: 30px;
+    padding: 15px;
+    margin: 0 10rem;
+}
+
+@media (min-width: 400px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -109,7 +109,7 @@ let currentUserCookie;
 //on change la couleur de la section du header selon où on est
 url = window.location.pathname;
 switch (true) {
-    case url.includes("index"):
+    case url.includes("accueil"):
         document.getElementById("nos-voyages").className += "active";
         break;
     case url.includes("panier"):

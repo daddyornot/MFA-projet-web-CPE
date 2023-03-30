@@ -10,7 +10,7 @@ function afficherInfosUser() {
         document.getElementById("tel").innerHTML = connectedUser.tel;
         document.getElementById("email").innerHTML = connectedUser.email;
     }
-    else { //Si on n'est pas connecté on est redirigé vers l'index
+    else { //Si on n'est pas connecté on est redirigé vers l'accueil
         window.location.href = "accueil.html"
     }
 }
