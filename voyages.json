@@ -1,4 +1,13 @@
 {
+  "espace": {
+    "destination": "L'Espace ?!",
+    "ville": "ISS",
+    "description": "Imaginez-vous pouvoir voyager dans l'espace et visiter d'autres planètes de notre système solaire. Vous pourriez découvrir les paysages fascinants et les phénomènes uniques de chaque planète, ainsi que les technologies avancées nécessaires pour voyager dans l'espace.Sur Mars, vous pourriez explorer les vastes étendues de la planète rouge, y compris ses volcans éteints et ses canyons profonds. Vous pourriez également visiter le cratère de Gale, où le rover Curiosity de la NASA a découvert des preuves de l'ancienne présence d'eau sur Mars.Sur Vénus, vous pourriez découvrir la planète la plus chaude de notre système solaire, où les températures peuvent atteindre plus de 460 degrés Celsius. Vous pourriez également étudier les émissions volcaniques de Vénus, qui ont été détectées par des sondes spatiales.Sur Jupiter, la plus grande planète de notre système solaire, vous pourriez découvrir les tempêtes incroyables et les nuages colorés qui tourbillonnent autour de la planète. Vous pourriez également visiter les lunes de Jupiter, y compris Io, qui est l'une des lunes les plus volcaniques de notre système solaire.Sur Saturne, vous pourriez admirer ses célèbres anneaux, qui sont constitués de milliards de particules de glace et de roche. Vous pourriez également découvrir Titan, la plus grande lune de Saturne, qui possède une atmosphère dense et des lacs liquides de méthane et d'éthane à sa surface.Enfin, sur Pluton, vous pourriez explorer cette petite planète naine située à la frontière de notre système solaire. Vous pourriez y découvrir ses montagnes glacées, ses plaines lisses et ses cratères, ainsi que les mystères qui entourent la formation et l'évolution de cette planète.En somme, un voyage interplanétaire serait une expérience incroyable et unique pour les amateurs d'astronomie, pour une immersion totale dans l'univers fascinant et infini qui nous entoure.",
+    "images": ["../assets/img/espace/01.webp", "../assets/img/espace/02.webp", "../assets/img/espace/03.webp"],
+    "prixnuit": 5000,
+    "petitDejAvailable": false,
+    "animaux": true
+  },
   "japon": {
     "destination": "Le Japon",
     "ville": "Tokyo",
@@ -34,15 +43,6 @@
     "prixnuit": 500,
     "petitDejAvailable": false,
     "animaux": false
-  },
-  "espace": {
-    "destination": "L'Espace ?!",
-    "ville": "ISS",
-    "description": "Imaginez-vous pouvoir voyager dans l'espace et visiter d'autres planètes de notre système solaire. Vous pourriez découvrir les paysages fascinants et les phénomènes uniques de chaque planète, ainsi que les technologies avancées nécessaires pour voyager dans l'espace.Sur Mars, vous pourriez explorer les vastes étendues de la planète rouge, y compris ses volcans éteints et ses canyons profonds. Vous pourriez également visiter le cratère de Gale, où le rover Curiosity de la NASA a découvert des preuves de l'ancienne présence d'eau sur Mars.Sur Vénus, vous pourriez découvrir la planète la plus chaude de notre système solaire, où les températures peuvent atteindre plus de 460 degrés Celsius. Vous pourriez également étudier les émissions volcaniques de Vénus, qui ont été détectées par des sondes spatiales.Sur Jupiter, la plus grande planète de notre système solaire, vous pourriez découvrir les tempêtes incroyables et les nuages colorés qui tourbillonnent autour de la planète. Vous pourriez également visiter les lunes de Jupiter, y compris Io, qui est l'une des lunes les plus volcaniques de notre système solaire.Sur Saturne, vous pourriez admirer ses célèbres anneaux, qui sont constitués de milliards de particules de glace et de roche. Vous pourriez également découvrir Titan, la plus grande lune de Saturne, qui possède une atmosphère dense et des lacs liquides de méthane et d'éthane à sa surface.Enfin, sur Pluton, vous pourriez explorer cette petite planète naine située à la frontière de notre système solaire. Vous pourriez y découvrir ses montagnes glacées, ses plaines lisses et ses cratères, ainsi que les mystères qui entourent la formation et l'évolution de cette planète.En somme, un voyage interplanétaire serait une expérience incroyable et unique pour les amateurs d'astronomie, pour une immersion totale dans l'univers fascinant et infini qui nous entoure.",
-    "images": ["../assets/img/espace/01.webp", "../assets/img/espace/02.webp", "../assets/img/espace/03.webp"],
-    "prixnuit": 5000,
-    "petitDejAvailable": false,
-    "animaux": true
   },
   "france": {
     "destination": "La France",

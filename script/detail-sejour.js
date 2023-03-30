@@ -88,7 +88,6 @@ function addLigne(ligne) {
     //Template unique pour afficher les informations de la reservation
     let template = document.querySelector("#template-ligneTableau");
     let clone = document.importNode(template.content, true);
-    console.log(ligne[0]);
     let newLine = clone.firstElementChild.innerHTML
         .replace(/{{titre}}/g, ligne[0])
         .replace(/{{nbJours}}/g, ligne[1])
