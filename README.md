@@ -59,7 +59,7 @@ conditionné par la photo du séjour affichée.
 selon le mode choisi.
 - [Damien] Les liens vers les différentes pages se colorent selon où on se trouve
 - [Maxime] Ajout d'une barre de recherche pour trouver une destination, et texte personnalisé si pas de résultat
-- [Maxime] Blocage des dates incorrects (avant demain et avant la date de début)
+- [Maxime] Blocage des dates incorrectes (avant demain et avant la date de début)
 - [Damien] Ajout d'une fenêtre modale de connexion
 
 ![no_result](final_screenshots/no_results.png)
@@ -71,7 +71,8 @@ selon le mode choisi.
 ### Page Détail séjour
 
 - [Maxime] Changement d'image par les fleches clavier
-- [Maxime] Blocage des dates incorrects (avant demain et avant la date de début)
+- [Maxime] Blocage des dates incorrectes (avant demain et avant la date de début)
+- [Maxime] Tableau avec un détail sur le prix
 
 ### Page panier.html
 
@@ -102,8 +103,8 @@ selon le mode choisi.
 /ou modifier l'historique des utilisateurs en JS.
 
 ## Optimisations 
-- [Maxime] Requête API : si on a déjà la température, on ne refait pas de requête, elle est stockée dans le `SessionStorage`
 - [Maxime] Fetch JSON : on récupère les données de tous les voyages une fois dans le JSON, et on les stocke dans le `SessionStorage`.
+- [Maxime] Requête API : si on a déjà la température, on ne refait pas de requête, elle est stockée dans le `SessionStorage`
 Tant que le `SessionStorage` n'est pas vide, on ne refait pas de requête pour les voyages.
 - [Maxime] Optimisation du temps de chargement des pages ansi que du volume de donnés chargés (passage des images de jpg vers webp)
 
