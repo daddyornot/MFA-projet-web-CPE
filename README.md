@@ -13,13 +13,13 @@ jQuery est la seule librairie utilisée.
 
 Le responsive n'a pas été notre priorité.
 
-## Fonctionnalités ajoutées
-### Toutes les pages
-- Background dynamique : tous les voyages défilent en arrière-plan toutes les 4s, sauf sur la page panier qui ne fait 
+## Fonctionnalités ajoutées 
+### Toutes les pages [Responsable fonction]
+- [Damien] Background dynamique : tous les voyages défilent en arrière-plan toutes les 4s, sauf sur la page panier qui ne fait 
 défiler que les voyages du panier, la page index qui a une image fixe, et le detail-sejour qui a son background 
 conditionné par la photo du séjour affichée.
-- Ajout d'un favicon
-- Le logo du site a été créé par nous
+- [Damien] Ajout d'un favicon
+- [Damien] Le logo du site a été créé par nous
 - Pour tester le login : 
 
 | **usernames** | lolo | mimi | lili | toto |
@@ -28,69 +28,75 @@ conditionné par la photo du séjour affichée.
 
 **PS : On vous conseille de vous connecter avec lolo...**
 
-- Mots de passe stocké en MD5 (C'est mieux que rien)
-- Cookie Username stocké en MD5 aussi
+- [Maxime] Mots de passe stocké en MD5 (C'est mieux que rien)
+- [Maxime] Cookie Username stocké en MD5 aussi
 
 ### Page index.html
-- Ajout d'une page de landing pour accéder au site.
+- [Damien] Ajout d'une page de landing pour accéder au site.
 
 ![landing](final_screenshots/landing.png)
 
 ### Page accueil.html
 ![header](final_screenshots/header_and_search.png)
 
-- Ajout d'un bouton à gauche dans le header pour arrêter/démarrer le défilement du fond d'écran. Le pictogramme change 
+- [Damien] Ajout d'un bouton à gauche dans le header pour arrêter/démarrer le défilement du fond d'écran. Le pictogramme change 
 selon le mode choisi.
-- Les liens vers les différentes pages se colorent selon où on se trouve
-- Ajout d'une barre de recherche pour trouver une destination, et texte personnalisé si pas de résultat
-- Blocage des dates incorrects (avant demain et avant la date de début)
-- Ajout d'une fenêtre modale de connexion
+- [Damien] Les liens vers les différentes pages se colorent selon où on se trouve
+- [Maxime] Ajout d'une barre de recherche pour trouver une destination, et texte personnalisé si pas de résultat
+- [Maxime] Blocage des dates incorrects (avant demain et avant la date de début)
+- [Damien] Ajout d'une fenêtre modale de connexion
 
 ![no_result](final_screenshots/no_results.png)
 
-- Affichage texte des pictogrammes sous chaque voyage au survol de la souris
+- [Damien] Affichage texte des pictogrammes sous chaque voyage au survol de la souris
 
 ![hint](final_screenshots/index_img_modal_hover.png)
 
 ### Page Détail séjour
 
-- Changement d'image par les fleches clavier
-- Blocage des dates incorrects (avant demain et avant la date de début)
+- [Maxime] Changement d'image par les fleches clavier
+- [Maxime] Blocage des dates incorrects (avant demain et avant la date de début)
 
 ### Page panier.html
 
-- Possibilité de modifier ou supprimer un ou **plusieurs** élément(s) du panier
+- [Maxime] Possibilité de modifier ou supprimer un ou **plusieurs** élément(s) du panier
 ![panier_modif](final_screenshots/panier_modif.png)
 
-- Ajout d'un message quand les modifications ne sont pas enregistrées
-- Les reservations sont triées par date croissante
-- Les critères (dates, case petit dej...) sont gardés de la page accueil et inversement
-- Informations utilisateur préremplies si on est connecté (sauf n° de carte)
+- [Maxime] Ajout d'un message quand les modifications ne sont pas enregistrées
+- [Maxime] Les reservations sont triées par date croissante
+- [Maxime] Les critères (dates, nombre de personnes, case petit dej...) sont gardés quand on change de page
+- [Damien] Informations utilisateur préremplies si on est connecté (sauf n° de carte)
 
 ![infos](final_screenshots/panier_infos_preremplies.png)
 
-- Si le panier est vide, affichage d'un message
+- [Damien] Si le panier est vide, affichage d'un message
 
 ![panier_vide](final_screenshots/panier_vide.png)
 
 ### Page confirmation.html
 
-- Calcul et affichage du nombre de jours restants avant le départ
+- [Damien] Calcul et affichage du nombre de jours restants avant le départ
 
 ![confirm](final_screenshots/conf_calcul_jours.png)
 
 ### Page compte.html
 
-- Affichage des infos utilisateur
-- Affichage de l'historique des voyages : l'historique est écrit en dur dans le `users.json`, car on ne peut pas écrire et
+- [Damien] Affichage des infos utilisateur
+- [Damien] Affichage de l'historique des voyages : l'historique est écrit en dur dans le `users.json`, car on ne peut pas écrire et
 /ou modifier l'historique des utilisateurs en JS.
 
 ## Optimisations 
-- Requête API : si on a déjà la température, on ne refait pas de requête, elle est stockée dans le `SessionStorage`
-- Fetch JSON : on récupère les données de tous les voyages une fois dans le JSON, et on les stocke dans le `SessionStorage`.
+- [Maxime] Requête API : si on a déjà la température, on ne refait pas de requête, elle est stockée dans le `SessionStorage`
+- [Maxime] Fetch JSON : on récupère les données de tous les voyages une fois dans le JSON, et on les stocke dans le `SessionStorage`.
 Tant que le `SessionStorage` n'est pas vide, on ne refait pas de requête pour les voyages.
-- Optimisation du temps de chargement des pages ansi que du volume de donnés chargés (passage d)
+- [Maxime] Optimisation du temps de chargement des pages ansi que du volume de donnés chargés (passage des images de jpg vers webp)
+
+Avant : 
+
 ![opti-avant](final_screenshots/opti-avant.png)
+
+Après : 
+
 ![opti-après](final_screenshots/opti-après.png)
 
 ## Différentes façons de faire dans le code
