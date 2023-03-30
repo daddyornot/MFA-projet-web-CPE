@@ -48,7 +48,7 @@ conditionné par la photo du séjour affichée.
 - [Maxime] Cookie Username stocké en MD5 aussi
 
 ### Page index.html
-- [Damien] Ajout d'une page de landing pour accéder au site.
+- [Damien] Ajout d'une page pour accéder au site.
 
 ![landing](final_screenshots/landing.png)
 
