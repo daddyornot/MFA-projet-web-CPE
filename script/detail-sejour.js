@@ -80,26 +80,23 @@ function generationTemplate() {
 
 //Fonction pour réinitialiser le tableau du détail du prix
 function resetTab() {
-    document.getElementById('solde-destination').innerHTML =
-        "        <tr>\n" +
-        "            <th></th>\n" +
-        "            <th>Nombre de jours</th>\n" +
-        "            <th>Nombre de personne</th>\n" +
-        "            <th>Prix unitaire</th>\n" +
-        "            <th>Prix</th>\n" +
-        "        </tr>";
+    document.getElementById("solde-destination").innerHTML = "";
 }
 
 //Fonction pour ajouter une ligne au tableau du détail du prix
 function addLigne(ligne) {
-    var row = document.createElement("tr");
-    for (txt of ligne) {
-        var cell = document.createElement("td");
-        text = document.createTextNode(txt);
-        cell.appendChild(text);
-        row.appendChild(cell);
-    }
-    document.getElementById('solde-destination').appendChild(row);
+    //Template unique pour afficher les informations de la reservation
+    let template = document.querySelector("#template-ligneTableau");
+    let clone = document.importNode(template.content, true);
+    console.log(ligne[0]);
+    let newLine = clone.firstElementChild.innerHTML
+        .replace(/{{titre}}/g, ligne[0])
+        .replace(/{{nbJours}}/g, ligne[1])
+        .replace(/{{nbPersonnes}}/g, ligne[2])
+        .replace(/{{prixU}}/g, ligne[3])
+        .replace(/{{prix}}/g, ligne[4]);
+    clone.firstElementChild.innerHTML = newLine;
+    document.getElementById("solde-destination").appendChild(clone);
 }
 
 //Quand le formulaire change

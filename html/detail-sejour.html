@@ -24,6 +24,15 @@
                 <img alt="image de {{destination}}" {{src}}="{{imgDest}}" id="img-destination">
             </div>
         </template>
+        <template id="template-ligneTableau">
+            <tr>
+                <td>{{titre}}</td>
+                <td>{{nbJours}}</td>
+                <td>{{nbPersonnes}}</td>
+                <td>{{prixU}}</td>
+                <td>{{prix}}</td>
+            </tr>
+        </template>
         <div class="main-container" id="main-container">
         </div>
         <div class="navigate-img">
@@ -83,7 +92,18 @@
                 </form>
             </div>
             <div class="resume-container">
-                <table id="solde-destination" class="box">
+                <table  class="box">
+                    <caption>Récapitulatif</caption>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nombre de jours</th>
+                            <th>Nombre de personnes</th>
+                            <th>Prix unitaire</th>
+                            <th>Prix</th>
+                        </tr>
+                    </thead>
+                    <tbody id="solde-destination"></tbody>
                 </table>
                 <button onclick="valider()" value="Je pars en voyage !" id="btnvalider">Je pars en voyage !</button>
                 <button onclick="resetForm()" class="reset" >Réinitialiser</button>

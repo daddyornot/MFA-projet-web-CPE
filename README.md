@@ -40,6 +40,7 @@ conditionné par la photo du séjour affichée.
 selon le mode choisi.
 - Les liens vers les différentes pages se colorent selon où on se trouve
 - Ajout d'une barre de recherche pour trouver une destination, et texte personnalisé si pas de résultat
+- Blocage des dates incorrects (avant demain et avant la date de début)
 - Ajout d'une fenêtre modale de connexion
 
 ![no_result](final_screenshots/no_results.png)
@@ -51,6 +52,7 @@ selon le mode choisi.
 ### Page Détail séjour
 
 - Changement d'image par les fleches clavier
+- Blocage des dates incorrects (avant demain et avant la date de début)
 
 ### Page panier.html
 
