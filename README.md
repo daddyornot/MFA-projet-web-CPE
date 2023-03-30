@@ -29,10 +29,6 @@ Nous avons beaucoup travaillé ensemble "en physique", du coup nous nous entraid
 un bug, etc. Au final, nous avons tous les 2 travaillés sur l'ensemble du projet, HTML, CSS et JS. 
 Nous avons quand même suivi assez scrupuleusement un workflow Git.
 
-## Fonctionnalités ajoutées
-### Toutes les pages
-- Background dynamique : tous les voyages défilent en arrière-plan toutes les 4s, sauf sur la page panier qui ne fait 
-défiler que les voyages du panier, la page index qui a une image fixe,et le detail-sejour qui a son background 
 ## Fonctionnalités ajoutées 
 ### Toutes les pages [Responsable fonction]
 - [Damien] Background dynamique : tous les voyages défilent en arrière-plan toutes les 4s, sauf sur la page panier qui ne fait 
