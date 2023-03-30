@@ -36,14 +36,14 @@ function verifierLogin() {
         })
         // s'il existe, on teste le password
         if (user) {
-            if (user.password === passwordUser.val()) {
+            if (user.password === MD5(passwordUser.val())) {
                 passwordUser.removeClass("wrongCredential");
                 loginUser.removeClass("wrongCredential");
                 loginUser.val("");
                 passwordUser.val("");
                 hideModal();
                 window.location.reload();
-                document.cookie = "currentUser=" + user.username;
+                document.cookie = "currentUser=" + MD5(user.username);
                 verifUserConnected();
             }
             else
@@ -79,7 +79,7 @@ function verifUserConnected() {
     currentUserCookie = getCookie("currentUser");
     if (currentUserCookie) {
         for (const user of allUsers) {
-            if (user.username === currentUserCookie) {
+            if (MD5(user.username) === currentUserCookie) {
                 connectedUser = user;
                 document.getElementById("msg-accueil").innerHTML = "Salut " + connectedUser.prenom + " " + connectedUser.nom + " !";
                 break;

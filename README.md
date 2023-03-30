@@ -28,8 +28,11 @@ conditionné par la photo du séjour affichée.
 
 **PS : On vous conseille de vous connecter avec lolo...**
 
+- Mots de passe stocké en MD5 (C'est mieux que rien)
+- Cookie Username stocké en MD5 aussi
+
 ### Page index.html
-- Ajout d'une page pour accéder au site.
+- Ajout d'une page de landing pour accéder au site.
 
 ![landing](final_screenshots/landing.png)
 
