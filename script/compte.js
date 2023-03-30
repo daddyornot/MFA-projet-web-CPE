@@ -11,7 +11,7 @@ function afficherInfosUser() {
         document.getElementById("email").innerHTML = connectedUser.email;
     }
     else { //Si on n'est pas connecté on est redirigé vers l'index
-        window.location.href = "index.html"
+        window.location.href = "accueil.html"
     }
 }
 

@@ -18,3 +18,14 @@ section {
 section a:link, section a:visited {
     color: var(--color2);
 }
+
+.map {
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -96,7 +96,7 @@ function logout() {
     document.cookie = "currentUser=";
     //si on se déconnecte depuis le compte, on redirige vers l'accueil
     if (window.location.href.includes("compte.html")) {
-        window.location.href = "index.html"
+        window.location.href = "accueil.html"
     }
     verifUserConnected();
 }
