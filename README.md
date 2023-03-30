@@ -5,7 +5,7 @@
 ## Fonctionnalités de base
 
 ## Clé API
-Insérer sa clé API dans le fichier `script/apikey.js`
+Insérer sa clé API dans le fichier `script/script.js` à la ligne 1.
 
 Toutes les fonctionnalités demandées sont implémentées (excepté pour la disponibilité en fonction de la date).
 
