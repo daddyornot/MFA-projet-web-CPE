@@ -18,7 +18,7 @@ function start(){
     panier = new ListeReservations();
     panier.setFromLocalStorage();
     if(panier.get().length == 0) //si il est vide on redirige vers l'index
-        window.location = "./index.html"
+        window.location = "./accueil.html"
     genererResume(); //on affiche
 }
 

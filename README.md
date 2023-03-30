@@ -16,7 +16,7 @@ Le responsive n'a pas été notre priorité.
 ## Fonctionnalités ajoutées
 ### Toutes les pages
 - Background dynamique : tous les voyages défilent en arrière-plan toutes les 4s, sauf sur la page panier qui ne fait 
-défiler que les voyages du panier, la landing page qui a une image fixe, et le detail-sejour qui a son background 
+défiler que les voyages du panier, la page index qui a une image fixe, et le detail-sejour qui a son background 
 conditionné par la photo du séjour affichée.
 - Ajout d'un favicon
 - Le logo du site a été créé par nous
@@ -28,12 +28,12 @@ conditionné par la photo du séjour affichée.
 
 **PS : On vous conseille de vous connecter avec lolo...**
 
-### Page landing-page.html
-- Ajout d'une page de landing pour accéder au site.
+### Page index.html
+- Ajout d'une page pour accéder au site.
 
 ![landing](final_screenshots/landing.png)
 
-### Page index.html
+### Page accueil.html
 ![header](final_screenshots/header_and_search.png)
 
 - Ajout d'un bouton à gauche dans le header pour arrêter/démarrer le défilement du fond d'écran. Le pictogramme change 
@@ -61,7 +61,7 @@ selon le mode choisi.
 
 - Ajout d'un message quand les modifications ne sont pas enregistrées
 - Les reservations sont triées par date croissante
-- Les critères (dates, case petit dej...) sont gardés de la page index et inversement
+- Les critères (dates, case petit dej...) sont gardés de la page accueil et inversement
 - Informations utilisateur préremplies si on est connecté (sauf n° de carte)
 
 ![infos](final_screenshots/panier_infos_preremplies.png)
