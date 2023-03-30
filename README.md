@@ -4,8 +4,10 @@
 
 ## Fonctionnalités de base
 
-Toutes les fonctionnalités demandées sont implémentées.
+## Clé API
+Insérer sa clé API dans le fichier `apikey.js` situé dans le dossier `script`
 
+Toutes les fonctionnalités demandées sont implémentées (excepté pour la disponibilité en fonction de la date).
 
 Entièrement codé en HTML, CSS, JavaScript.
 
@@ -13,6 +15,24 @@ jQuery est la seule librairie utilisée.
 
 Le responsive n'a pas été notre priorité.
 
+Pour ce qui est de la répartition du travail : Au début, Maxime était plus côté JS et Damien était plus côté HTML/CSS.
+Au fur et à mesure que l'on avançait, nous nous sommes un peu plus repartis les tâches. 
+On peut résumer ça par ce tableau :
+
+|            | HTML | CSS | JS  |
+|------------|------|-----|-----|
+| **Damien** | 70%  | 90% | 25% |
+| **Maxime** | 30%  | 10% | 75% |
+
+Bien que ce tableau ne soit pas réellement représentatif, il donne une idée de notre répartition globale de travail.
+Nous avons beaucoup travaillé ensemble "en physique", du coup nous nous entraidions dès qu'il y avait un bloquant, 
+un bug, etc. Au final, nous avons tous les 2 travaillés sur l'ensemble du projet, HTML, CSS et JS. 
+Nous avons quand même suivi assez scrupuleusement un workflow Git.
+
+## Fonctionnalités ajoutées
+### Toutes les pages
+- Background dynamique : tous les voyages défilent en arrière-plan toutes les 4s, sauf sur la page panier qui ne fait 
+défiler que les voyages du panier, la page index qui a une image fixe,et le detail-sejour qui a son background 
 ## Fonctionnalités ajoutées 
 ### Toutes les pages [Responsable fonction]
 - [Damien] Background dynamique : tous les voyages défilent en arrière-plan toutes les 4s, sauf sur la page panier qui ne fait 
