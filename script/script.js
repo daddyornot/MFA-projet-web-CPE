@@ -59,29 +59,26 @@ async function fetchJSONUsers() {
     return await response.json();
 }
 
-function getTemperature(val) {
+async function getTemperature(val) {
     //Pour la température
-    if (val !== "espace") { //Si ce n'est pas l'espace (car openweathermap n'a pas de température pour l'espace
-        const url = "https://api.openweathermap.org/data/2.5/weather?q=" + voyagesJSON[val].ville + "&appid=df6563e90f96a55de8945ab09b817dc9&units=metric";  //on définit l'URL
+    if (val !== "espace") { //Si ce n'est pas l'espace (car openweathermap n'a pas de température pour l'espace)
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${voyagesJSON[val].ville}&appid=df6563e90f96a55de8945ab09b817dc9&units=metric`;  //on définit l'URL
         if (voyagesJSON[val].temperature == null || voyagesJSON[val].temperature === "Err") { //Si on n'a pas la température (Bug API ou 1ere visite)
-            $.ajax({  //Requette GET pour récuperer la température
-                url: url,
-                type: "GET",
-                dataType: "json",
-                success: (data) => {
+            await fetch(url) //Requête fetch pour récupérer la température
+                .then((response) => response.json())
+                .then(function (data) {
                     voyagesJSON[val].temperature = data.main.temp; //on définit la température
                     addVoyageSession(val); //On stocke la valeur dans le sessionStorage
 
-                    onUpdate(); //on appelle sur chaque page une fonction update personalisée
-                },
-                error: () => {
+                    onUpdate(); //on appelle sur chaque page une fonction update personnalisée
+                })
+                .catch(function () {
                     voyagesJSON[val].temperature = "Err"; //En cas de Bug API on affichera Err
-                    //Qu'on stock quand même dans le sessionStorage
+                    //Qu'on stocke quand même dans le sessionStorage
                     addVoyageSession(val);
 
-                    onUpdate(); //on appelle sur chaque page une fonction update personalisée
-                }
-            });
+                    onUpdate(); //on appelle sur chaque page une fonction update personnalisée
+                })
         }
     } else {
         voyagesJSON[val].temperature = -272; //temperature de l'espace, openWeather n'a pas cette donnée malheureusement
